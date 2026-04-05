@@ -117,13 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Patient.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Department.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -5168,7 +5171,7 @@
   <data name="panel2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABeQAAAfQCAYAAACjTF/6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAU
-        cgAAFHIBOTgSawAA/7JJREFUeF7svYu2JCfOdfu//wOfr9uX7jNAWtLUgsidVS67fUk8cASgy5IQCpKM
+        bAAAFGwB1KVOXwAA/7JJREFUeF7svYu2JCfOdfu//wOfr9uX7jNAWtLUgsidVS67fUk8cASgy5IQCpKM
         nfX//vspn/Ipn/Ipn/Ipn/Ipn/Ipn/Ipn/Ipn/Ipn/Ipn/Ipn/Ipv3v5f97xKZ/yKZ/yKZ/yKZ/yKZ/y
         KZ/yKZ/yKZ/yKZ/yKZ/yKZ/yKT++fA7kP+VTPuVTPuVTPuVTPuVTPuVTPuVTPuVTPuVTPuVTPuVT/oDy
         OZD/lE/5lE/5hvKf/0T9u5T//J2M+ZRP+ZRP+Y7yd0uD/4S8/k+w8VM+5VM+ReWT8z7lVfmEx6d8yl+z
@@ -16499,7 +16502,7 @@
   <data name="pictureBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJ3SURBVHhe7ZvP
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJ3SURBVHhe7ZvP
         q01RFMefUi/PmzxlIik/MjGQwZOeEYbCSDFR5srMiDIxkrGkyNTglbwYPGGAifgLhJAfpRhRxEdLW537
         7Zx3znH2vXed2/rUHp3vXmvtb6d7zj177ampIMgOsAqYB45mGvuBNZrHJcBq4C75eQFs0nzuAE5o5Rm5
         pvncAVzUqjPyVPO5A7ikVWfkueZzRxhQbsAT1dUBXNAgYcAoDQBmgQMlz+S6cVurBr4Cyy3HKw0CvCzJ
@@ -16532,7 +16535,7 @@
   <data name="pictureBox6.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKcSURBVHhe7Zsx
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKcSURBVHhe7Zsx
         blQxGIRTQUEAIcocAirgCogGCUGDuAFwl8CdCFRQUgcugKCgQBpk5JWSD+9ij//1Wz38tf5nPP/sy0qJ
         8o6OJpNLSLoq6bWk95J+qJGCXxcVfl8lPeGchaQTSZ94QwsFzy4q/X5Jes7ZJvIn37V8ouDbRYNfXwn5
         se+m4NtFo59fgqQPdHMo+HZh+HklSPpOJ4eCbxemXyrhBbU7oYNLtG+HX1sJVLtE+3b61ZdApUu0b4Bf

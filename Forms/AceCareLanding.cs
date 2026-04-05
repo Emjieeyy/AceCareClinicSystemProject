@@ -16,7 +16,7 @@ namespace AceCareClinicSystem.Forms
             InitializeComponent();
             this.DoubleBuffered = true;
 
-            // 1. Initialize images from Resources
+          
             sliderImages = new Image[] {
                 Properties.Resources.Blue_Modern_Business_Marketing_Banner_Landscape,
                 Properties.Resources._1,
@@ -26,20 +26,19 @@ namespace AceCareClinicSystem.Forms
                 Properties.Resources._5
             };
 
-            // 2. Setup the initial display with ZOOM
+           
             if (sliderImages.Length > 0)
             {
                 ImageSlider.BackgroundImage = sliderImages[currentIndex];
-                ImageSlider.BackgroundImageLayout = ImageLayout.Zoom; // KEPT AS ZOOM
+                ImageSlider.BackgroundImageLayout = ImageLayout.Zoom; 
             }
 
-            // 3. Setup the Auto-timer
+           
             sliderTimer = new System.Windows.Forms.Timer();
             sliderTimer.Interval = 5000;
             sliderTimer.Tick += (s, e) => { MoveToNextSlide(); };
             sliderTimer.Start();
 
-            // 4. Existing Scroll Logic
             SetupCustomScroll();
         }
 
@@ -75,7 +74,7 @@ namespace AceCareClinicSystem.Forms
             {
                 currentIndex = (currentIndex + 1) % sliderImages.Length;
                 ImageSlider.BackgroundImage = sliderImages[currentIndex];
-                ImageSlider.BackgroundImageLayout = ImageLayout.Zoom; // ENSURE ZOOM REMAINS
+                ImageSlider.BackgroundImageLayout = ImageLayout.Zoom; 
             }
         }
 
@@ -85,11 +84,11 @@ namespace AceCareClinicSystem.Forms
             {
                 currentIndex = (currentIndex - 1 + sliderImages.Length) % sliderImages.Length;
                 ImageSlider.BackgroundImage = sliderImages[currentIndex];
-                ImageSlider.BackgroundImageLayout = ImageLayout.Zoom; // ENSURE ZOOM REMAINS
+                ImageSlider.BackgroundImageLayout = ImageLayout.Zoom; 
             }
         }
 
-        // --- BUTTON CLICKS ---
+     
         private void NavRight_Click(object sender, EventArgs e)
         {
             MoveToNextSlide();
@@ -108,7 +107,7 @@ namespace AceCareClinicSystem.Forms
         {
             Login login = new Login();
             login.Show();
-            this.Hide(); // hides the landing page
+            this.Hide(); 
         }
     }
 }

@@ -39,9 +39,9 @@
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             hopeButton6 = new ReaLTaiizor.Controls.HopeButton();
-            hopeButton5 = new ReaLTaiizor.Controls.HopeButton();
-            hopeButton4 = new ReaLTaiizor.Controls.HopeButton();
-            hopeButton3 = new ReaLTaiizor.Controls.HopeButton();
+            ReportBtn = new ReaLTaiizor.Controls.HopeButton();
+            InventoryBtn = new ReaLTaiizor.Controls.HopeButton();
+            ConsultationBtn = new ReaLTaiizor.Controls.HopeButton();
             PatientRecordsBtn = new ReaLTaiizor.Controls.HopeButton();
             panel2 = new Panel();
             pictureBox8 = new PictureBox();
@@ -71,9 +71,9 @@
             SideBarPanel.Controls.Add(pictureBox2);
             SideBarPanel.Controls.Add(pictureBox1);
             SideBarPanel.Controls.Add(hopeButton6);
-            SideBarPanel.Controls.Add(hopeButton5);
-            SideBarPanel.Controls.Add(hopeButton4);
-            SideBarPanel.Controls.Add(hopeButton3);
+            SideBarPanel.Controls.Add(ReportBtn);
+            SideBarPanel.Controls.Add(InventoryBtn);
+            SideBarPanel.Controls.Add(ConsultationBtn);
             SideBarPanel.Controls.Add(PatientRecordsBtn);
             SideBarPanel.Controls.Add(panel2);
             SideBarPanel.Controls.Add(Homebtn);
@@ -118,7 +118,7 @@
             pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
             pictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox6.InitialImage = (Image)resources.GetObject("pictureBox6.InitialImage");
-            pictureBox6.Location = new Point(24, 447);
+            pictureBox6.Location = new Point(24, 463);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(44, 35);
             pictureBox6.TabIndex = 15;
@@ -129,7 +129,7 @@
             pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
             pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox5.InitialImage = (Image)resources.GetObject("pictureBox5.InitialImage");
-            pictureBox5.Location = new Point(24, 391);
+            pictureBox5.Location = new Point(24, 402);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(44, 35);
             pictureBox5.TabIndex = 14;
@@ -140,7 +140,7 @@
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox4.InitialImage = (Image)resources.GetObject("pictureBox4.InitialImage");
-            pictureBox4.Location = new Point(23, 330);
+            pictureBox4.Location = new Point(23, 338);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(44, 35);
             pictureBox4.TabIndex = 13;
@@ -151,7 +151,7 @@
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox3.InitialImage = (Image)resources.GetObject("pictureBox3.InitialImage");
-            pictureBox3.Location = new Point(22, 271);
+            pictureBox3.Location = new Point(22, 279);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(44, 35);
             pictureBox3.TabIndex = 12;
@@ -162,7 +162,7 @@
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(21, 213);
+            pictureBox2.Location = new Point(21, 219);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(44, 35);
             pictureBox2.TabIndex = 11;
@@ -188,7 +188,7 @@
             hopeButton6.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hopeButton6.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeButton6.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton6.Location = new Point(-20, 447);
+            hopeButton6.Location = new Point(-20, 463);
             hopeButton6.Name = "hopeButton6";
             hopeButton6.PrimaryColor = Color.FromArgb(11, 45, 114);
             hopeButton6.Size = new Size(297, 50);
@@ -197,63 +197,67 @@
             hopeButton6.Text = "           User Management";
             hopeButton6.TextColor = Color.White;
             hopeButton6.WarningColor = Color.FromArgb(230, 162, 60);
+            hopeButton6.Click += hopeButton6_Click;
             // 
-            // hopeButton5
+            // ReportBtn
             // 
-            hopeButton5.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeButton5.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeButton5.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeButton5.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeButton5.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeButton5.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeButton5.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton5.Location = new Point(-50, 389);
-            hopeButton5.Name = "hopeButton5";
-            hopeButton5.PrimaryColor = Color.FromArgb(11, 45, 114);
-            hopeButton5.Size = new Size(300, 50);
-            hopeButton5.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeButton5.TabIndex = 9;
-            hopeButton5.Text = "     Reports";
-            hopeButton5.TextColor = Color.White;
-            hopeButton5.WarningColor = Color.FromArgb(230, 162, 60);
+            ReportBtn.BorderColor = Color.FromArgb(220, 223, 230);
+            ReportBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            ReportBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            ReportBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            ReportBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ReportBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            ReportBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            ReportBtn.Location = new Point(-50, 400);
+            ReportBtn.Name = "ReportBtn";
+            ReportBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
+            ReportBtn.Size = new Size(300, 50);
+            ReportBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            ReportBtn.TabIndex = 9;
+            ReportBtn.Text = "     Reports";
+            ReportBtn.TextColor = Color.White;
+            ReportBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            ReportBtn.Click += ReportBtn_Click;
             // 
-            // hopeButton4
+            // InventoryBtn
             // 
-            hopeButton4.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeButton4.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeButton4.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeButton4.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeButton4.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeButton4.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeButton4.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton4.Location = new Point(-14, 327);
-            hopeButton4.Name = "hopeButton4";
-            hopeButton4.PrimaryColor = Color.FromArgb(11, 45, 114);
-            hopeButton4.Size = new Size(284, 50);
-            hopeButton4.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeButton4.TabIndex = 8;
-            hopeButton4.Text = "            Medicine Inventory";
-            hopeButton4.TextColor = Color.White;
-            hopeButton4.WarningColor = Color.FromArgb(230, 162, 60);
+            InventoryBtn.BorderColor = Color.FromArgb(220, 223, 230);
+            InventoryBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            InventoryBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            InventoryBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            InventoryBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            InventoryBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            InventoryBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            InventoryBtn.Location = new Point(-14, 335);
+            InventoryBtn.Name = "InventoryBtn";
+            InventoryBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
+            InventoryBtn.Size = new Size(284, 50);
+            InventoryBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            InventoryBtn.TabIndex = 8;
+            InventoryBtn.Text = "            Medicine Inventory";
+            InventoryBtn.TextColor = Color.White;
+            InventoryBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            InventoryBtn.Click += hopeButton4_Click;
             // 
-            // hopeButton3
+            // ConsultationBtn
             // 
-            hopeButton3.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeButton3.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeButton3.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeButton3.DefaultColor = Color.FromArgb(255, 255, 255);
-            hopeButton3.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hopeButton3.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeButton3.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton3.Location = new Point(-17, 268);
-            hopeButton3.Name = "hopeButton3";
-            hopeButton3.PrimaryColor = Color.FromArgb(11, 45, 114);
-            hopeButton3.Size = new Size(267, 50);
-            hopeButton3.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeButton3.TabIndex = 6;
-            hopeButton3.Text = "     Consultation";
-            hopeButton3.TextColor = Color.White;
-            hopeButton3.WarningColor = Color.FromArgb(230, 162, 60);
+            ConsultationBtn.BorderColor = Color.FromArgb(220, 223, 230);
+            ConsultationBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            ConsultationBtn.DangerColor = Color.FromArgb(245, 108, 108);
+            ConsultationBtn.DefaultColor = Color.FromArgb(255, 255, 255);
+            ConsultationBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ConsultationBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            ConsultationBtn.InfoColor = Color.FromArgb(144, 147, 153);
+            ConsultationBtn.Location = new Point(-17, 276);
+            ConsultationBtn.Name = "ConsultationBtn";
+            ConsultationBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
+            ConsultationBtn.Size = new Size(267, 50);
+            ConsultationBtn.SuccessColor = Color.FromArgb(103, 194, 58);
+            ConsultationBtn.TabIndex = 6;
+            ConsultationBtn.Text = "     Consultation";
+            ConsultationBtn.TextColor = Color.White;
+            ConsultationBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            ConsultationBtn.Click += ConsultationBtn_Click;
             // 
             // PatientRecordsBtn
             // 
@@ -264,7 +268,7 @@
             PatientRecordsBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PatientRecordsBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             PatientRecordsBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            PatientRecordsBtn.Location = new Point(-14, 207);
+            PatientRecordsBtn.Location = new Point(-14, 213);
             PatientRecordsBtn.Name = "PatientRecordsBtn";
             PatientRecordsBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             PatientRecordsBtn.Size = new Size(257, 50);
@@ -352,11 +356,11 @@
         private Panel SideBarPanel;
         private Panel panel2;
         private ReaLTaiizor.Controls.HopeButton Homebtn;
-        private ReaLTaiizor.Controls.HopeButton hopeButton3;
+        private ReaLTaiizor.Controls.HopeButton ConsultationBtn;
         private ReaLTaiizor.Controls.HopeButton PatientRecordsBtn;
-        private ReaLTaiizor.Controls.HopeButton hopeButton4;
+        private ReaLTaiizor.Controls.HopeButton InventoryBtn;
         private ReaLTaiizor.Controls.HopeButton hopeButton6;
-        private ReaLTaiizor.Controls.HopeButton hopeButton5;
+        private ReaLTaiizor.Controls.HopeButton ReportBtn;
         private Panel HomemainPanel;
         private PictureBox pictureBox6;
         private PictureBox pictureBox5;

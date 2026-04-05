@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtUser = new TextBox();
+            txtPass = new TextBox();
             LoginBtn = new ReaLTaiizor.Controls.HopeRoundButton();
-            checkBox1 = new CheckBox();
+            showPassCB = new CheckBox();
             label3 = new Label();
             label2 = new Label();
             pictureBox4 = new PictureBox();
@@ -61,10 +61,10 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtUser);
+            panel1.Controls.Add(txtPass);
             panel1.Controls.Add(LoginBtn);
-            panel1.Controls.Add(checkBox1);
+            panel1.Controls.Add(showPassCB);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox4);
@@ -77,21 +77,22 @@
             panel1.Size = new Size(540, 696);
             panel1.TabIndex = 1;
             // 
-            // textBox2
+            // txtUser
             // 
-            textBox2.BackColor = Color.WhiteSmoke;
-            textBox2.Location = new Point(112, 406);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(342, 27);
-            textBox2.TabIndex = 10;
+            txtUser.BackColor = Color.FromArgb(235, 239, 244);
+            txtUser.Location = new Point(112, 292);
+            txtUser.Name = "txtUser";
+            txtUser.Size = new Size(342, 27);
+            txtUser.TabIndex = 11;
             // 
-            // textBox1
+            // txtPass
             // 
-            textBox1.BackColor = Color.WhiteSmoke;
-            textBox1.Location = new Point(110, 292);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(343, 27);
-            textBox1.TabIndex = 9;
+            txtPass.BackColor = Color.FromArgb(235, 239, 244);
+            txtPass.Location = new Point(112, 406);
+            txtPass.Name = "txtPass";
+            txtPass.Size = new Size(342, 27);
+            txtPass.TabIndex = 10;
+            txtPass.UseSystemPasswordChar = true;
             // 
             // LoginBtn
             // 
@@ -111,17 +112,19 @@
             LoginBtn.Text = "Login";
             LoginBtn.TextColor = Color.White;
             LoginBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            LoginBtn.Click += LoginBtn_Click;
             // 
-            // checkBox1
+            // showPassCB
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBox1.Location = new Point(93, 491);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(145, 24);
-            checkBox1.TabIndex = 7;
-            checkBox1.Text = "Show Password";
-            checkBox1.UseVisualStyleBackColor = true;
+            showPassCB.AutoSize = true;
+            showPassCB.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            showPassCB.Location = new Point(93, 491);
+            showPassCB.Name = "showPassCB";
+            showPassCB.Size = new Size(145, 24);
+            showPassCB.TabIndex = 7;
+            showPassCB.Text = "Show Password";
+            showPassCB.UseVisualStyleBackColor = true;
+            showPassCB.CheckedChanged += showPassCB_CheckedChanged;
             // 
             // label3
             // 
@@ -172,7 +175,6 @@
             pictureBox3.Size = new Size(126, 91);
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
-            pictureBox3.Click += pictureBox3_Click;
             // 
             // pictureBox2
             // 
@@ -215,9 +217,9 @@
         private PictureBox pictureBox4;
         private Label label2;
         private ReaLTaiizor.Controls.HopeRoundButton LoginBtn;
-        private CheckBox checkBox1;
+        private CheckBox showPassCB;
         private Label label3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtPass;
+        private TextBox txtUser;
     }
 }

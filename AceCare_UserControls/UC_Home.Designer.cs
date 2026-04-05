@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
             panel3 = new Panel();
-            label3 = new Label();
+            lblTotalPatients = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             panel1 = new Panel();
-            label4 = new Label();
+            lblTodaysVisit = new Label();
             label5 = new Label();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
-            label6 = new Label();
+            lblLowInventory = new Label();
             label7 = new Label();
             pictureBox3 = new PictureBox();
-            poisonDataGridView1 = new ReaLTaiizor.Controls.PoisonDataGridView();
+            dgvRecent = new ReaLTaiizor.Controls.PoisonDataGridView();
             Patient = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
@@ -56,7 +56,7 @@
             SearchBtn = new ReaLTaiizor.Controls.HopeRoundButton();
             parrotWidgetPanel1 = new ReaLTaiizor.Controls.ParrotWidgetPanel();
             label9 = new Label();
-            hopeRoundProgressBar1 = new ReaLTaiizor.Controls.HopeRoundProgressBar();
+            medicineCircle = new ReaLTaiizor.Controls.HopeRoundProgressBar();
             pictureBox7 = new PictureBox();
             NewConsultBtn = new ReaLTaiizor.Controls.HopeButton();
             CreateUserBtn = new ReaLTaiizor.Controls.HopeButton();
@@ -70,13 +70,15 @@
             pictureBox12 = new PictureBox();
             panel4 = new Panel();
             panel5 = new Panel();
+            btnPrev = new ReaLTaiizor.Controls.HopeRoundButton();
+            btnNext = new ReaLTaiizor.Controls.HopeRoundButton();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)poisonDataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRecent).BeginInit();
             parrotWidgetPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -94,7 +96,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(235, 239, 244);
-            panel3.Controls.Add(label3);
+            panel3.Controls.Add(lblTotalPatients);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(pictureBox1);
             panel3.Location = new Point(53, 109);
@@ -102,15 +104,15 @@
             panel3.Size = new Size(252, 108);
             panel3.TabIndex = 4;
             // 
-            // label3
+            // lblTotalPatients
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(144, 38);
-            label3.Name = "label3";
-            label3.Size = new Size(40, 44);
-            label3.TabIndex = 4;
-            label3.Text = "0";
+            lblTotalPatients.AutoSize = true;
+            lblTotalPatients.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotalPatients.Location = new Point(144, 40);
+            lblTotalPatients.Name = "lblTotalPatients";
+            lblTotalPatients.Size = new Size(40, 44);
+            lblTotalPatients.TabIndex = 4;
+            lblTotalPatients.Text = "0";
             // 
             // label2
             // 
@@ -145,7 +147,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(235, 239, 244);
-            panel1.Controls.Add(label4);
+            panel1.Controls.Add(lblTodaysVisit);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(pictureBox2);
             panel1.Location = new Point(396, 108);
@@ -153,15 +155,15 @@
             panel1.Size = new Size(276, 103);
             panel1.TabIndex = 5;
             // 
-            // label4
+            // lblTodaysVisit
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(146, 38);
-            label4.Name = "label4";
-            label4.Size = new Size(40, 44);
-            label4.TabIndex = 4;
-            label4.Text = "0";
+            lblTodaysVisit.AutoSize = true;
+            lblTodaysVisit.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTodaysVisit.Location = new Point(146, 40);
+            lblTodaysVisit.Name = "lblTodaysVisit";
+            lblTodaysVisit.Size = new Size(40, 44);
+            lblTodaysVisit.TabIndex = 4;
+            lblTodaysVisit.Text = "0";
             // 
             // label5
             // 
@@ -183,29 +185,27 @@
             pictureBox2.Size = new Size(67, 62);
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(235, 239, 244);
-            panel2.Controls.Add(label6);
+            panel2.Controls.Add(lblLowInventory);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(pictureBox3);
             panel2.Location = new Point(748, 106);
             panel2.Name = "panel2";
             panel2.Size = new Size(286, 103);
             panel2.TabIndex = 6;
-            panel2.Paint += panel2_Paint;
             // 
-            // label6
+            // lblLowInventory
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(151, 38);
-            label6.Name = "label6";
-            label6.Size = new Size(40, 44);
-            label6.TabIndex = 4;
-            label6.Text = "0";
+            lblLowInventory.AutoSize = true;
+            lblLowInventory.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLowInventory.Location = new Point(151, 40);
+            lblLowInventory.Name = "lblLowInventory";
+            lblLowInventory.Size = new Size(40, 44);
+            lblLowInventory.TabIndex = 4;
+            lblLowInventory.Text = "0";
             // 
             // label7
             // 
@@ -227,59 +227,59 @@
             pictureBox3.TabIndex = 0;
             pictureBox3.TabStop = false;
             // 
-            // poisonDataGridView1
+            // dgvRecent
             // 
-            poisonDataGridView1.AllowUserToOrderColumns = true;
-            poisonDataGridView1.AllowUserToResizeRows = false;
-            poisonDataGridView1.BackgroundColor = Color.FromArgb(255, 255, 255);
-            poisonDataGridView1.BorderStyle = BorderStyle.None;
-            poisonDataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
-            poisonDataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            poisonDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            poisonDataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            poisonDataGridView1.Columns.AddRange(new DataGridViewColumn[] { Patient, Column1, Column3, Column4 });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle3.Padding = new Padding(7);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(192, 255, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            poisonDataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            poisonDataGridView1.EnableHeadersVisualStyles = false;
-            poisonDataGridView1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            poisonDataGridView1.GridColor = Color.FromArgb(11, 45, 114);
-            poisonDataGridView1.Location = new Point(29, 333);
-            poisonDataGridView1.Name = "poisonDataGridView1";
-            poisonDataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            poisonDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            poisonDataGridView1.RowHeadersWidth = 51;
-            poisonDataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            poisonDataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            poisonDataGridView1.Size = new Size(679, 438);
-            poisonDataGridView1.TabIndex = 10;
+            dgvRecent.AllowUserToOrderColumns = true;
+            dgvRecent.AllowUserToResizeRows = false;
+            dgvRecent.BackgroundColor = Color.FromArgb(255, 255, 255);
+            dgvRecent.BorderStyle = BorderStyle.None;
+            dgvRecent.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
+            dgvRecent.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle21.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle21.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle21.SelectionBackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle21.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
+            dgvRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dgvRecent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRecent.Columns.AddRange(new DataGridViewColumn[] { Patient, Column1, Column3, Column4 });
+            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle23.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle23.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle23.Padding = new Padding(7);
+            dataGridViewCellStyle23.SelectionBackColor = Color.FromArgb(192, 255, 255);
+            dataGridViewCellStyle23.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle23.WrapMode = DataGridViewTriState.True;
+            dgvRecent.DefaultCellStyle = dataGridViewCellStyle23;
+            dgvRecent.EnableHeadersVisualStyles = false;
+            dgvRecent.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dgvRecent.GridColor = Color.FromArgb(11, 45, 114);
+            dgvRecent.Location = new Point(29, 333);
+            dgvRecent.Name = "dgvRecent";
+            dgvRecent.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle24.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle24.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle24.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle24.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.True;
+            dgvRecent.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dgvRecent.RowHeadersWidth = 51;
+            dgvRecent.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvRecent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRecent.Size = new Size(679, 438);
+            dgvRecent.TabIndex = 10;
             // 
             // Patient
             // 
             Patient.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            Patient.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.True;
+            Patient.DefaultCellStyle = dataGridViewCellStyle22;
             Patient.HeaderText = "Patients Name";
             Patient.MinimumWidth = 6;
             Patient.Name = "Patient";
@@ -345,7 +345,7 @@
             // 
             parrotWidgetPanel1.BackColor = Color.FromArgb(235, 239, 244);
             parrotWidgetPanel1.Controls.Add(label9);
-            parrotWidgetPanel1.Controls.Add(hopeRoundProgressBar1);
+            parrotWidgetPanel1.Controls.Add(medicineCircle);
             parrotWidgetPanel1.ControlsAsWidgets = false;
             parrotWidgetPanel1.Location = new Point(787, 269);
             parrotWidgetPanel1.Name = "parrotWidgetPanel1";
@@ -363,28 +363,28 @@
             label9.TabIndex = 19;
             label9.Text = "Medicine Inventory";
             // 
-            // hopeRoundProgressBar1
+            // medicineCircle
             // 
-            hopeRoundProgressBar1.BackColor = Color.FromArgb(235, 239, 244);
-            hopeRoundProgressBar1.BackgroundImageLayout = ImageLayout.Zoom;
-            hopeRoundProgressBar1.BarColor = Color.FromArgb(64, 158, 255);
-            hopeRoundProgressBar1.BorderColor = Color.DarkBlue;
-            hopeRoundProgressBar1.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundProgressBar1.DangerTextColorA = Color.FromArgb(245, 108, 108);
-            hopeRoundProgressBar1.DangerTextColorB = Color.FromArgb(245, 108, 108);
-            hopeRoundProgressBar1.Font = new Font("Segoe UI", 12F);
-            hopeRoundProgressBar1.ForeColor = Color.FromArgb(64, 158, 255);
-            hopeRoundProgressBar1.FullBarColor = Color.FromArgb(103, 194, 58);
-            hopeRoundProgressBar1.FullTextColorA = Color.FromArgb(103, 194, 58);
-            hopeRoundProgressBar1.FullTextColorB = Color.FromArgb(103, 194, 58);
-            hopeRoundProgressBar1.IsError = false;
-            hopeRoundProgressBar1.Location = new Point(58, 18);
-            hopeRoundProgressBar1.Name = "hopeRoundProgressBar1";
-            hopeRoundProgressBar1.PercentText = "%";
-            hopeRoundProgressBar1.Size = new Size(129, 129);
-            hopeRoundProgressBar1.TabIndex = 18;
-            hopeRoundProgressBar1.Text = "hopeRoundProgressBar1";
-            hopeRoundProgressBar1.ValueNumber = 0;
+            medicineCircle.BackColor = Color.FromArgb(235, 239, 244);
+            medicineCircle.BackgroundImageLayout = ImageLayout.Zoom;
+            medicineCircle.BarColor = Color.FromArgb(64, 158, 255);
+            medicineCircle.BorderColor = Color.DarkBlue;
+            medicineCircle.DangerColor = Color.FromArgb(245, 108, 108);
+            medicineCircle.DangerTextColorA = Color.FromArgb(245, 108, 108);
+            medicineCircle.DangerTextColorB = Color.FromArgb(245, 108, 108);
+            medicineCircle.Font = new Font("Segoe UI", 12F);
+            medicineCircle.ForeColor = Color.FromArgb(64, 158, 255);
+            medicineCircle.FullBarColor = Color.FromArgb(103, 194, 58);
+            medicineCircle.FullTextColorA = Color.FromArgb(103, 194, 58);
+            medicineCircle.FullTextColorB = Color.FromArgb(103, 194, 58);
+            medicineCircle.IsError = false;
+            medicineCircle.Location = new Point(58, 18);
+            medicineCircle.Name = "medicineCircle";
+            medicineCircle.PercentText = "%";
+            medicineCircle.Size = new Size(129, 129);
+            medicineCircle.TabIndex = 18;
+            medicineCircle.Text = "hopeRoundProgressBar1";
+            medicineCircle.ValueNumber = 0;
             // 
             // pictureBox7
             // 
@@ -417,6 +417,7 @@
             NewConsultBtn.Text = "New Consultation";
             NewConsultBtn.TextColor = Color.Black;
             NewConsultBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            NewConsultBtn.Click += NewConsultBtn_Click;
             // 
             // CreateUserBtn
             // 
@@ -438,6 +439,7 @@
             CreateUserBtn.Text = "Create User";
             CreateUserBtn.TextColor = Color.Black;
             CreateUserBtn.WarningColor = Color.FromArgb(230, 162, 60);
+         
             // 
             // pictureBox8
             // 
@@ -499,7 +501,6 @@
             pictureBox5.Size = new Size(342, 152);
             pictureBox5.TabIndex = 23;
             pictureBox5.TabStop = false;
-            pictureBox5.Click += pictureBox5_Click;
             // 
             // pictureBox6
             // 
@@ -541,11 +542,53 @@
             panel5.Size = new Size(240, 89);
             panel5.TabIndex = 28;
             // 
+            // btnPrev
+            // 
+            btnPrev.BorderColor = Color.FromArgb(220, 223, 230);
+            btnPrev.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            btnPrev.DangerColor = Color.FromArgb(245, 108, 108);
+            btnPrev.DefaultColor = Color.FromArgb(255, 255, 255);
+            btnPrev.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPrev.HoverTextColor = Color.FromArgb(48, 49, 51);
+            btnPrev.InfoColor = Color.FromArgb(144, 147, 153);
+            btnPrev.Location = new Point(563, 736);
+            btnPrev.Name = "btnPrev";
+            btnPrev.PrimaryColor = Color.FromArgb(11, 45, 114);
+            btnPrev.Size = new Size(70, 35);
+            btnPrev.SuccessColor = Color.FromArgb(103, 194, 58);
+            btnPrev.TabIndex = 30;
+            btnPrev.Text = "<<";
+            btnPrev.TextColor = Color.White;
+            btnPrev.WarningColor = Color.FromArgb(230, 162, 60);
+            btnPrev.Click += btnPrev_Click;
+            // 
+            // btnNext
+            // 
+            btnNext.BorderColor = Color.FromArgb(220, 223, 230);
+            btnNext.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            btnNext.DangerColor = Color.FromArgb(245, 108, 108);
+            btnNext.DefaultColor = Color.FromArgb(255, 255, 255);
+            btnNext.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNext.HoverTextColor = Color.FromArgb(48, 49, 51);
+            btnNext.InfoColor = Color.FromArgb(144, 147, 153);
+            btnNext.Location = new Point(639, 736);
+            btnNext.Name = "btnNext";
+            btnNext.PrimaryColor = Color.FromArgb(11, 45, 114);
+            btnNext.Size = new Size(70, 35);
+            btnNext.SuccessColor = Color.FromArgb(103, 194, 58);
+            btnNext.TabIndex = 29;
+            btnNext.Text = ">>";
+            btnNext.TextColor = Color.White;
+            btnNext.WarningColor = Color.FromArgb(230, 162, 60);
+            btnNext.Click += btnNext_Click;
+            // 
             // UC_Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(btnPrev);
+            Controls.Add(btnNext);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(pictureBox12);
@@ -554,7 +597,7 @@
             Controls.Add(SearchBtn);
             Controls.Add(textBox1);
             Controls.Add(label8);
-            Controls.Add(poisonDataGridView1);
+            Controls.Add(dgvRecent);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(label1);
@@ -577,7 +620,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)poisonDataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRecent).EndInit();
             parrotWidgetPanel1.ResumeLayout(false);
             parrotWidgetPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
@@ -598,19 +641,19 @@
         #endregion
 
         private Panel panel3;
-        private Label label3;
+        private Label lblTotalPatients;
         private Label label2;
         private PictureBox pictureBox1;
         private Label label1;
         private Panel panel1;
-        private Label label4;
+        private Label lblTodaysVisit;
         private Label label5;
         private PictureBox pictureBox2;
         private Panel panel2;
-        private Label label6;
+        private Label lblLowInventory;
         private Label label7;
         private PictureBox pictureBox3;
-        private ReaLTaiizor.Controls.PoisonDataGridView poisonDataGridView1;
+        private ReaLTaiizor.Controls.PoisonDataGridView dgvRecent;
         private DataGridViewTextBoxColumn Patient;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column3;
@@ -619,7 +662,7 @@
         private TextBox textBox1;
         private ReaLTaiizor.Controls.HopeRoundButton SearchBtn;
         private ReaLTaiizor.Controls.ParrotWidgetPanel parrotWidgetPanel1;
-        private ReaLTaiizor.Controls.HopeRoundProgressBar hopeRoundProgressBar1;
+        private ReaLTaiizor.Controls.HopeRoundProgressBar medicineCircle;
         private Label label9;
         private PictureBox pictureBox7;
         private PictureBox pictureBox8;
@@ -634,5 +677,7 @@
         private PictureBox pictureBox12;
         private Panel panel4;
         private Panel panel5;
+        private ReaLTaiizor.Controls.HopeRoundButton btnPrev;
+        private ReaLTaiizor.Controls.HopeRoundButton btnNext;
     }
 }

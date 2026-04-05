@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using AceCareClinicSystem.Controllers; // Step 1: Add this!
 
 namespace AceCareClinicSystem.Forms
 {
@@ -15,14 +11,29 @@ namespace AceCareClinicSystem.Forms
             InitializeComponent();
         }
 
-        private void materialExpansionPanel1_Paint(object sender, PaintEventArgs e)
+        private void LoginBtn_Click(object sender, EventArgs e)
         {
+            AuthController auth = new AuthController();
 
-        }
+            if (auth.ValidateLogin(txtUser.Text, txtPass.Text))
+            {
+               
+                this.Hide();
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+                AdminDashboard adminHome = new AdminDashboard();
+                adminHome.Show();
+                
+            }
+            else
+            {
+                MessageBox.Show("Invalid Username or Password.", "AceCare Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        } 
+
+        private void showPassCB_CheckedChanged(object sender, EventArgs e)
         {
-
+           
+            txtPass.UseSystemPasswordChar = !showPassCB.Checked;
         }
-    }
+    } 
 }
