@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using System;
 using System.Windows.Forms;
 
@@ -161,6 +161,7 @@ namespace AceCareClinicSystem.Controllers
                         cmd.Parameters.AddWithValue("@fNote", finalNotes ?? "");
 
                         int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0) new AuthController().LogActivity(0, "Consultation Saved", $"Saved consultation for patient ID: {pId}");
                         return rowsAffected > 0;
                     }
                 }
