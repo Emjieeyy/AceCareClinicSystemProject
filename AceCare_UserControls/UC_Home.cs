@@ -11,18 +11,24 @@ namespace AceCareClinicSystem.AceCare_UserControls
     {
         private DashboardController _dashboard = new DashboardController();
         private int currentOffset = 0;
+        private int totalRecords = 0;
+        private const int PageSize = 10;
 
         public UC_Home()
         {
             InitializeComponent();
-
             dgvRecent.AutoGenerateColumns = false;
         }
 
         private void UC_Home_Load(object sender, EventArgs e)
         {
             DataGridViewStyle.ApplyModernDesign(dgvRecent);
+            SetupColumns();
+            RefreshDashboard();
+        }
 
+        private void SetupColumns()
+        {
             if (dgvRecent.Columns.Count >= 4)
             {
                 dgvRecent.Columns[0].DataPropertyName = "Patients Name";
@@ -30,45 +36,78 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 dgvRecent.Columns[2].DataPropertyName = "Time of Visit";
                 dgvRecent.Columns[3].DataPropertyName = "Outcome";
             }
-
-            RefreshDashboard();
         }
 
         public void RefreshDashboard()
         {
+            // Update Top Stats
             lblTotalPatients.Text = _dashboard.GetTotalPatients();
             lblTodaysVisit.Text = _dashboard.GetTodaysVisits();
             lblLowInventory.Text = _dashboard.GetLowInventoryCount();
 
-            DataTable dt = _dashboard.GetRecentConsultations(currentOffset);
-            dgvRecent.DataSource = dt;
+            // Fetch Table Data
+            DataTable dt = _dashboard.GetRecentConsultations(currentOffset, PageSize, txtSearch.Text.Trim());
+            totalRecords = _dashboard.GetTotalConsultations(txtSearch.Text.Trim());
 
-            int lowItems = 0;
-            int.TryParse(lblLowInventory.Text, out lowItems);
-            medicineCircle.ValueNumber = (lowItems > 100) ? 100 : lowItems;
+            // Pagination Safety
+            if (dt.Rows.Count == 0 && currentOffset > 0)
+            {
+                currentOffset -= PageSize;
+                RefreshDashboard();
+                return;
+            }
+
+            BindingHelper.BindToGrid(dgvRecent, dt);
+            UpdatePaginationButtons();
+
+            // Update Medicine Inventory Circle
+            if (int.TryParse(lblLowInventory.Text, out int lowItems))
+            {
+                medicineCircle.ValueNumber = (lowItems > 100) ? 100 : lowItems;
+            }
         }
 
-       
+        private void UpdatePaginationButtons()
+        {
+            btnPrev.Enabled = currentOffset > 0;
+            btnNext.Enabled = (currentOffset + PageSize) < totalRecords;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            currentOffset = 0;
+            RefreshDashboard();
+        }
+
         private void btnNext_Click(object sender, EventArgs e)
         {
-            currentOffset += 5;
-            DataTable nextData = _dashboard.GetRecentConsultations(currentOffset);
-            if (nextData.Rows.Count > 0) dgvRecent.DataSource = nextData;
-            else { currentOffset -= 5; MessageBox.Show("End of records."); }
+            if ((currentOffset + PageSize) < totalRecords)
+            {
+                currentOffset += PageSize;
+                RefreshDashboard();
+            }
         }
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
-            if (currentOffset >= 5)
+            if (currentOffset >= PageSize)
             {
-                currentOffset -= 5;
-                dgvRecent.DataSource = _dashboard.GetRecentConsultations(currentOffset);
+                currentOffset -= PageSize;
+                RefreshDashboard();
             }
+        }
+
+        private void ReloadPix_Click(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+            currentOffset = 0;
+            RefreshDashboard();
         }
 
         private void NewConsultBtn_Click(object sender, EventArgs e)
         {
-            if (this.ParentForm is AdminDashboard main) main.addUserControl(new UC_ConsultationWizard());
+            if (this.ParentForm is AdminDashboard main)
+                main.addUserControl(new UC_ConsultationWizard());
         }
     }
 }

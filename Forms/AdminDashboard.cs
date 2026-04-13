@@ -6,49 +6,86 @@ namespace AceCareClinicSystem.Forms
 {
     public partial class AdminDashboard : Form
     {
+        // NEW: Store references to UserControls so we can access them
+        private UC_PatientRecords ucPatientRecords;
+        private UC_ConsultationWizard ucConsultationWizard;
+
         public AdminDashboard()
         {
             InitializeComponent();
 
-           
             addUserControl(new UC_Home());
         }
 
-      
         public void addUserControl(UserControl userControl)
         {
-            
             userControl.Dock = DockStyle.Fill;
-
             HomemainPanel.Controls.Clear();
             HomemainPanel.Controls.Add(userControl);
             userControl.BringToFront();
         }
 
+        // NEW: Method to switch to consultation with patient data
+        public void OpenConsultationWithPatient(System.Data.DataRow patient)
+        {
+            // Create consultation wizard if not exists
+            if (ucConsultationWizard == null)
+            {
+                ucConsultationWizard = new UC_ConsultationWizard();
+            }
+
+            // Load patient data into consultation
+            ucConsultationWizard.LoadPatientData(
+                patient["patient_number"].ToString(),
+                patient["first_name"].ToString(),
+                patient["last_name"].ToString(),
+                patient["middle_initial"].ToString(),
+                patient["category"].ToString(),
+                patient["department"].ToString(),
+                Convert.ToDateTime(patient["date_of_birth"]),
+                patient["contact_number"].ToString(),
+                patient["emergency_contact_name"].ToString(),
+                patient["year_level"]?.ToString()
+            );
+
+            // Switch to consultation view
+            addUserControl(ucConsultationWizard);
+        }
+
         private void Homebtn_Click(object sender, EventArgs e)
         {
-           
             addUserControl(new UC_Home());
         }
 
         private void HomemainPanel_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
         {
-
         }
 
+        // CHANGED: Store reference and wire up event
         private void PatientRecordsBtn_Click(object sender, EventArgs e)
         {
-            addUserControl(new UC_PatientRecords());
+            ucPatientRecords = new UC_PatientRecords();
+
+            // NEW: Wire up double-click event
+            ucPatientRecords.PatientSelectedForConsultation += (patient) =>
+            {
+                OpenConsultationWithPatient(patient);
+            };
+
+            addUserControl(ucPatientRecords);
         }
 
         private void ConsultationBtn_Click(object sender, EventArgs e)
         {
-            addUserControl(new UC_ConsultationWizard());
+            if (ucConsultationWizard == null)
+            {
+                ucConsultationWizard = new UC_ConsultationWizard();
+            }
+            addUserControl(ucConsultationWizard);
         }
 
         private void hopeButton4_Click(object sender, EventArgs e)

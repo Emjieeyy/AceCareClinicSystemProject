@@ -9,16 +9,22 @@ namespace AceCareClinicSystem.Controllers
     {
         private DbConnection db = new DbConnection();
 
-        public bool RegisterPatient(string category, string idNo, string fName, string lName, string mInitial, string department, string contact, string emergency)
+        // CHANGED: Added DateTime dateOfBirth parameter
+        public bool RegisterPatient(string category, string idNo, string fName, string lName,
+            string mInitial, string department, string contact, string emergency,
+            string yearLevel, DateTime dateOfBirth)
         {
             try
             {
                 using (MySqlConnection conn = db.GetConnection())
                 {
                     conn.Open();
-                    // FIXED QUERY: Added sex and date_of_birth which are REQUIRED (NOT NULL) in your DB
-                    string query = @"INSERT INTO patients (category, patient_number, first_name, last_name, middle_initial, department, contact_number, emergency_contact_name, sex, date_of_birth) 
-                                     VALUES (@cat, @id, @fname, @lname, @mi, @dept, @contact, @emergency, @sex, @dob)";
+
+                    string query = @"INSERT INTO patients 
+                        (category, patient_number, first_name, last_name, middle_initial, 
+                         department, contact_number, emergency_contact_name, sex, date_of_birth, year_level) 
+                        VALUES 
+                        (@cat, @id, @fname, @lname, @mi, @dept, @contact, @emergency, @sex, @dob, @year)";
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@cat", category);
@@ -29,17 +35,19 @@ namespace AceCareClinicSystem.Controllers
                     cmd.Parameters.AddWithValue("@dept", department);
                     cmd.Parameters.AddWithValue("@contact", contact);
                     cmd.Parameters.AddWithValue("@emergency", emergency);
-
-                    // Default values so the DB doesn't reject the insert
                     cmd.Parameters.AddWithValue("@sex", "Male");
-                    cmd.Parameters.AddWithValue("@dob", "2000-01-01");
+
+                    // CHANGED: Now uses actual date from date picker
+                    cmd.Parameters.AddWithValue("@dob", dateOfBirth);
+
+                    cmd.Parameters.AddWithValue("@year",
+                        string.IsNullOrEmpty(yearLevel) ? (object)DBNull.Value : yearLevel);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
             catch (Exception ex)
             {
-                // This will pop up if there is a SQL error so you aren't guessing!
                 MessageBox.Show("Registration Error: " + ex.Message, "Database Error");
                 return false;
             }
@@ -52,18 +60,26 @@ namespace AceCareClinicSystem.Controllers
                 try
                 {
                     conn.Open();
-                    // Simplified Query to ensure patients show up even if they have 0 visits
+
                     string query = @"SELECT 
-                                        CONCAT(first_name, ' ', last_name) AS PatientName, 
-                                        patient_number AS IDNumber, 
-                                        category AS PatientType, 
-                                        department AS Dept, 
-                                        'New Patient' AS LastVisit
-                                     FROM patients 
-                                     WHERE first_name LIKE @s 
-                                        OR last_name LIKE @s 
-                                        OR patient_number LIKE @s
-                                     ORDER BY last_name ASC
+                                        CONCAT(p.first_name, ' ', p.last_name) AS PatientName, 
+                                        p.patient_number AS IDNumber, 
+                                        p.category AS PatientType, 
+                                        p.department AS Dept, 
+                                        COALESCE(
+                                            DATE_FORMAT(
+                                                (SELECT MAX(c.visit_date) 
+                                                 FROM consultations c 
+                                                 WHERE c.patient_id = p.patient_id), 
+                                                '%b %d, %Y %h:%i %p'
+                                            ), 
+                                            'New Patient'
+                                        ) AS LastVisit
+                                     FROM patients p
+                                     WHERE p.first_name LIKE @s 
+                                        OR p.last_name LIKE @s 
+                                        OR p.patient_number LIKE @s
+                                     ORDER BY p.last_name ASC
                                      LIMIT 10 OFFSET @offset";
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -79,6 +95,31 @@ namespace AceCareClinicSystem.Controllers
                 {
                     MessageBox.Show("Table Load Error: " + ex.Message);
                     return new DataTable();
+                }
+            }
+        }
+
+        public DataRow GetPatientById(string patientNumber)
+        {
+            using (MySqlConnection conn = db.GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = @"SELECT * FROM patients WHERE patient_number = @id";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", patientNumber);
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Get Patient Error: " + ex.Message);
+                    return null;
                 }
             }
         }

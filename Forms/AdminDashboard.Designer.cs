@@ -80,7 +80,7 @@
             SideBarPanel.Dock = DockStyle.Left;
             SideBarPanel.Location = new Point(0, 0);
             SideBarPanel.Name = "SideBarPanel";
-            SideBarPanel.Size = new Size(258, 797);
+            SideBarPanel.Size = new Size(258, 819);
             SideBarPanel.TabIndex = 0;
             // 
             // pictureBox7
@@ -88,7 +88,7 @@
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox7.InitialImage = (Image)resources.GetObject("pictureBox7.InitialImage");
-            pictureBox7.Location = new Point(34, 740);
+            pictureBox7.Location = new Point(24, 763);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(52, 30);
             pictureBox7.TabIndex = 17;
@@ -103,7 +103,7 @@
             LogoutBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LogoutBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             LogoutBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            LogoutBtn.Location = new Point(-32, 734);
+            LogoutBtn.Location = new Point(-42, 757);
             LogoutBtn.Name = "LogoutBtn";
             LogoutBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             LogoutBtn.Size = new Size(313, 50);
@@ -322,7 +322,7 @@
             HomemainPanel.Dock = DockStyle.Fill;
             HomemainPanel.Location = new Point(258, 0);
             HomemainPanel.Name = "HomemainPanel";
-            HomemainPanel.Size = new Size(1062, 797);
+            HomemainPanel.Size = new Size(1226, 819);
             HomemainPanel.TabIndex = 1;
             HomemainPanel.Paint += HomemainPanel_Paint;
             // 
@@ -331,7 +331,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1320, 797);
+            ClientSize = new Size(1484, 819);
             Controls.Add(HomemainPanel);
             Controls.Add(SideBarPanel);
             FormBorderStyle = FormBorderStyle.None;

@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
-            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             panel3 = new Panel();
             lblTotalPatients = new Label();
             label2 = new Label();
@@ -52,8 +53,8 @@
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             label8 = new Label();
-            textBox1 = new TextBox();
-            SearchBtn = new ReaLTaiizor.Controls.HopeRoundButton();
+            txtSearch = new TextBox();
+            btnSearch = new ReaLTaiizor.Controls.HopeRoundButton();
             parrotWidgetPanel1 = new ReaLTaiizor.Controls.ParrotWidgetPanel();
             label9 = new Label();
             medicineCircle = new ReaLTaiizor.Controls.HopeRoundProgressBar();
@@ -65,13 +66,20 @@
             pictureBox9 = new PictureBox();
             pictureBox10 = new PictureBox();
             pictureBox11 = new PictureBox();
-            pictureBox5 = new PictureBox();
-            pictureBox6 = new PictureBox();
             pictureBox12 = new PictureBox();
             panel4 = new Panel();
             panel5 = new Panel();
             btnPrev = new ReaLTaiizor.Controls.HopeRoundButton();
             btnNext = new ReaLTaiizor.Controls.HopeRoundButton();
+            panel6 = new Panel();
+            label3 = new Label();
+            label4 = new Label();
+            pictureBox14 = new PictureBox();
+            pictureBox5 = new PictureBox();
+            pictureBox6 = new PictureBox();
+            pictureBox13 = new PictureBox();
+            ReloadPix = new PictureBox();
+            toolTip1 = new ToolTip(components);
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -86,11 +94,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).BeginInit();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
+            panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ReloadPix).BeginInit();
             SuspendLayout();
             // 
             // panel3
@@ -99,9 +111,9 @@
             panel3.Controls.Add(lblTotalPatients);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(pictureBox1);
-            panel3.Location = new Point(53, 109);
+            panel3.Location = new Point(29, 119);
             panel3.Name = "panel3";
-            panel3.Size = new Size(252, 108);
+            panel3.Size = new Size(242, 101);
             panel3.TabIndex = 4;
             // 
             // lblTotalPatients
@@ -138,11 +150,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(24, 25);
+            label1.Location = new Point(10, 27);
             label1.Name = "label1";
-            label1.Size = new Size(226, 51);
+            label1.Size = new Size(389, 51);
             label1.TabIndex = 3;
-            label1.Text = "Welcome";
+            label1.Text = "Clinic Dashboard";
             // 
             // panel1
             // 
@@ -150,9 +162,9 @@
             panel1.Controls.Add(lblTodaysVisit);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(pictureBox2);
-            panel1.Location = new Point(396, 108);
+            panel1.Location = new Point(335, 118);
             panel1.Name = "panel1";
-            panel1.Size = new Size(276, 103);
+            panel1.Size = new Size(236, 103);
             panel1.TabIndex = 5;
             // 
             // lblTodaysVisit
@@ -192,9 +204,9 @@
             panel2.Controls.Add(lblLowInventory);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(pictureBox3);
-            panel2.Location = new Point(748, 106);
+            panel2.Location = new Point(628, 120);
             panel2.Name = "panel2";
-            panel2.Size = new Size(286, 103);
+            panel2.Size = new Size(246, 101);
             panel2.TabIndex = 6;
             // 
             // lblLowInventory
@@ -221,7 +233,7 @@
             // 
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox3.Location = new Point(35, 10);
+            pictureBox3.Location = new Point(35, 17);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(67, 62);
             pictureBox3.TabIndex = 0;
@@ -235,51 +247,51 @@
             dgvRecent.BorderStyle = BorderStyle.None;
             dgvRecent.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
             dgvRecent.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle21.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle21.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle21.SelectionBackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle21.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
-            dgvRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle9.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvRecent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecent.Columns.AddRange(new DataGridViewColumn[] { Patient, Column1, Column3, Column4 });
-            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle23.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle23.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle23.Padding = new Padding(7);
-            dataGridViewCellStyle23.SelectionBackColor = Color.FromArgb(192, 255, 255);
-            dataGridViewCellStyle23.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle23.WrapMode = DataGridViewTriState.True;
-            dgvRecent.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle11.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle11.Padding = new Padding(7);
+            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(192, 255, 255);
+            dataGridViewCellStyle11.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dgvRecent.DefaultCellStyle = dataGridViewCellStyle11;
             dgvRecent.EnableHeadersVisualStyles = false;
             dgvRecent.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvRecent.GridColor = Color.FromArgb(11, 45, 114);
             dgvRecent.Location = new Point(29, 333);
             dgvRecent.Name = "dgvRecent";
             dgvRecent.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle24.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle24.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle24.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle24.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.True;
-            dgvRecent.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle12.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dgvRecent.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             dgvRecent.RowHeadersWidth = 51;
             dgvRecent.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvRecent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRecent.Size = new Size(679, 438);
+            dgvRecent.Size = new Size(858, 413);
             dgvRecent.TabIndex = 10;
             // 
             // Patient
             // 
             Patient.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.True;
-            Patient.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            Patient.DefaultCellStyle = dataGridViewCellStyle10;
             Patient.HeaderText = "Patients Name";
             Patient.MinimumWidth = 6;
             Patient.Name = "Patient";
@@ -315,31 +327,33 @@
             label8.TabIndex = 11;
             label8.Text = "Recent Consultations";
             // 
-            // textBox1
+            // txtSearch
             // 
-            textBox1.Location = new Point(392, 290);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(202, 27);
-            textBox1.TabIndex = 12;
+            txtSearch.Location = new Point(495, 293);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(270, 27);
+            txtSearch.TabIndex = 12;
+           
             // 
-            // SearchBtn
+            // btnSearch
             // 
-            SearchBtn.BorderColor = Color.FromArgb(220, 223, 230);
-            SearchBtn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            SearchBtn.DangerColor = Color.FromArgb(245, 108, 108);
-            SearchBtn.DefaultColor = Color.FromArgb(255, 255, 255);
-            SearchBtn.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SearchBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
-            SearchBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            SearchBtn.Location = new Point(600, 285);
-            SearchBtn.Name = "SearchBtn";
-            SearchBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
-            SearchBtn.Size = new Size(109, 35);
-            SearchBtn.SuccessColor = Color.FromArgb(103, 194, 58);
-            SearchBtn.TabIndex = 13;
-            SearchBtn.Text = "Search";
-            SearchBtn.TextColor = Color.White;
-            SearchBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            btnSearch.BorderColor = Color.FromArgb(220, 223, 230);
+            btnSearch.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            btnSearch.DangerColor = Color.FromArgb(245, 108, 108);
+            btnSearch.DefaultColor = Color.FromArgb(255, 255, 255);
+            btnSearch.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearch.HoverTextColor = Color.FromArgb(48, 49, 51);
+            btnSearch.InfoColor = Color.FromArgb(144, 147, 153);
+            btnSearch.Location = new Point(771, 288);
+            btnSearch.Name = "btnSearch";
+            btnSearch.PrimaryColor = Color.FromArgb(11, 45, 114);
+            btnSearch.Size = new Size(109, 35);
+            btnSearch.SuccessColor = Color.FromArgb(103, 194, 58);
+            btnSearch.TabIndex = 13;
+            btnSearch.Text = "Search";
+            btnSearch.TextColor = Color.White;
+            btnSearch.WarningColor = Color.FromArgb(230, 162, 60);
+            btnSearch.Click += btnSearch_Click;
             // 
             // parrotWidgetPanel1
             // 
@@ -347,7 +361,7 @@
             parrotWidgetPanel1.Controls.Add(label9);
             parrotWidgetPanel1.Controls.Add(medicineCircle);
             parrotWidgetPanel1.ControlsAsWidgets = false;
-            parrotWidgetPanel1.Location = new Point(787, 269);
+            parrotWidgetPanel1.Location = new Point(948, 275);
             parrotWidgetPanel1.Name = "parrotWidgetPanel1";
             parrotWidgetPanel1.Size = new Size(222, 228);
             parrotWidgetPanel1.TabIndex = 17;
@@ -357,7 +371,7 @@
             label9.AutoSize = true;
             label9.BackColor = Color.FromArgb(235, 239, 244);
             label9.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(46, 162);
+            label9.Location = new Point(46, 167);
             label9.Name = "label9";
             label9.Size = new Size(151, 18);
             label9.TabIndex = 19;
@@ -439,7 +453,6 @@
             CreateUserBtn.Text = "Create User";
             CreateUserBtn.TextColor = Color.Black;
             CreateUserBtn.WarningColor = Color.FromArgb(230, 162, 60);
-         
             // 
             // pictureBox8
             // 
@@ -456,9 +469,9 @@
             // 
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Location = new Point(21, 85);
+            pictureBox4.Location = new Point(9, 93);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(328, 152);
+            pictureBox4.Size = new Size(289, 152);
             pictureBox4.TabIndex = 20;
             pictureBox4.TabStop = false;
             // 
@@ -466,7 +479,7 @@
             // 
             pictureBox9.BackgroundImage = (Image)resources.GetObject("pictureBox9.BackgroundImage");
             pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox9.Location = new Point(751, 237);
+            pictureBox9.Location = new Point(912, 243);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(306, 295);
             pictureBox9.TabIndex = 21;
@@ -476,7 +489,7 @@
             // 
             pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
             pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox10.Location = new Point(750, 538);
+            pictureBox10.Location = new Point(915, 544);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(307, 118);
             pictureBox10.TabIndex = 21;
@@ -486,39 +499,19 @@
             // 
             pictureBox11.BackgroundImage = (Image)resources.GetObject("pictureBox11.BackgroundImage");
             pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox11.Location = new Point(752, 658);
+            pictureBox11.Location = new Point(917, 664);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(307, 118);
             pictureBox11.TabIndex = 22;
             pictureBox11.TabStop = false;
             // 
-            // pictureBox5
-            // 
-            pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
-            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Location = new Point(365, 84);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(342, 152);
-            pictureBox5.TabIndex = 23;
-            pictureBox5.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
-            pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox6.Location = new Point(724, 85);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(339, 152);
-            pictureBox6.TabIndex = 24;
-            pictureBox6.TabStop = false;
-            // 
             // pictureBox12
             // 
             pictureBox12.BackgroundImage = (Image)resources.GetObject("pictureBox12.BackgroundImage");
             pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox12.Location = new Point(975, -3);
+            pictureBox12.Location = new Point(1122, -6);
             pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(91, 89);
+            pictureBox12.Size = new Size(113, 105);
             pictureBox12.TabIndex = 5;
             pictureBox12.TabStop = false;
             // 
@@ -527,7 +520,7 @@
             panel4.BackColor = Color.FromArgb(235, 239, 244);
             panel4.Controls.Add(pictureBox7);
             panel4.Controls.Add(NewConsultBtn);
-            panel4.Location = new Point(783, 556);
+            panel4.Location = new Point(948, 562);
             panel4.Name = "panel4";
             panel4.Size = new Size(240, 89);
             panel4.TabIndex = 27;
@@ -537,7 +530,7 @@
             panel5.BackColor = Color.FromArgb(235, 239, 244);
             panel5.Controls.Add(pictureBox8);
             panel5.Controls.Add(CreateUserBtn);
-            panel5.Location = new Point(783, 674);
+            panel5.Location = new Point(948, 680);
             panel5.Name = "panel5";
             panel5.Size = new Size(240, 89);
             panel5.TabIndex = 28;
@@ -551,7 +544,7 @@
             btnPrev.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPrev.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnPrev.InfoColor = Color.FromArgb(144, 147, 153);
-            btnPrev.Location = new Point(563, 736);
+            btnPrev.Location = new Point(728, 757);
             btnPrev.Name = "btnPrev";
             btnPrev.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnPrev.Size = new Size(70, 35);
@@ -571,7 +564,7 @@
             btnNext.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNext.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnNext.InfoColor = Color.FromArgb(144, 147, 153);
-            btnNext.Location = new Point(639, 736);
+            btnNext.Location = new Point(818, 757);
             btnNext.Name = "btnNext";
             btnNext.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnNext.Size = new Size(70, 35);
@@ -582,20 +575,107 @@
             btnNext.WarningColor = Color.FromArgb(230, 162, 60);
             btnNext.Click += btnNext_Click;
             // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(235, 239, 244);
+            panel6.Controls.Add(label3);
+            panel6.Controls.Add(label4);
+            panel6.Controls.Add(pictureBox14);
+            panel6.Location = new Point(944, 119);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(232, 100);
+            panel6.TabIndex = 7;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(151, 40);
+            label3.Name = "label3";
+            label3.Size = new Size(40, 44);
+            label3.TabIndex = 4;
+            label3.Text = "0";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(114, 12);
+            label4.Name = "label4";
+            label4.Size = new Size(94, 22);
+            label4.TabIndex = 3;
+            label4.Text = "Total User";
+            // 
+            // pictureBox14
+            // 
+            pictureBox14.BackgroundImage = (Image)resources.GetObject("pictureBox14.BackgroundImage");
+            pictureBox14.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox14.Location = new Point(35, 15);
+            pictureBox14.Name = "pictureBox14";
+            pictureBox14.Size = new Size(67, 62);
+            pictureBox14.TabIndex = 0;
+            pictureBox14.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
+            pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox5.Location = new Point(311, 94);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(289, 152);
+            pictureBox5.TabIndex = 31;
+            pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
+            pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox6.Location = new Point(612, 94);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(289, 152);
+            pictureBox6.TabIndex = 21;
+            pictureBox6.TabStop = false;
+            // 
+            // pictureBox13
+            // 
+            pictureBox13.BackgroundImage = (Image)resources.GetObject("pictureBox13.BackgroundImage");
+            pictureBox13.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox13.Location = new Point(917, 93);
+            pictureBox13.Name = "pictureBox13";
+            pictureBox13.Size = new Size(289, 152);
+            pictureBox13.TabIndex = 32;
+            pictureBox13.TabStop = false;
+            // 
+            // ReloadPix
+            // 
+            ReloadPix.BackColor = Color.Transparent;
+            ReloadPix.BackgroundImage = Properties.Resources.loading_arrow;
+            ReloadPix.BackgroundImageLayout = ImageLayout.Zoom;
+            ReloadPix.InitialImage = Properties.Resources.loading_arrow;
+            ReloadPix.Location = new Point(664, 757);
+            ReloadPix.Name = "ReloadPix";
+            ReloadPix.Size = new Size(50, 32);
+            ReloadPix.TabIndex = 49;
+            ReloadPix.TabStop = false;
+            toolTip1.SetToolTip(ReloadPix, "Refresh Records");
+            ReloadPix.Click += ReloadPix_Click;
+            // 
             // UC_Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(ReloadPix);
+            Controls.Add(panel1);
+            Controls.Add(panel6);
             Controls.Add(btnPrev);
             Controls.Add(btnNext);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(pictureBox12);
-            Controls.Add(panel1);
             Controls.Add(parrotWidgetPanel1);
-            Controls.Add(SearchBtn);
-            Controls.Add(textBox1);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearch);
             Controls.Add(label8);
             Controls.Add(dgvRecent);
             Controls.Add(panel2);
@@ -607,9 +687,10 @@
             Controls.Add(pictureBox11);
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox6);
+            Controls.Add(pictureBox13);
             MinimumSize = new Size(126, 50);
             Name = "UC_Home";
-            Size = new Size(1066, 787);
+            Size = new Size(1250, 804);
             Load += UC_Home_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -629,11 +710,16 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox12).EndInit();
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ReloadPix).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -659,8 +745,8 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private Label label8;
-        private TextBox textBox1;
-        private ReaLTaiizor.Controls.HopeRoundButton SearchBtn;
+        private TextBox txtSearch;
+        private ReaLTaiizor.Controls.HopeRoundButton btnSearch;
         private ReaLTaiizor.Controls.ParrotWidgetPanel parrotWidgetPanel1;
         private ReaLTaiizor.Controls.HopeRoundProgressBar medicineCircle;
         private Label label9;
@@ -670,8 +756,6 @@
         private PictureBox pictureBox9;
         private PictureBox pictureBox10;
         private PictureBox pictureBox11;
-        private PictureBox pictureBox5;
-        private PictureBox pictureBox6;
         private ReaLTaiizor.Controls.HopeButton NewConsultBtn;
         private ReaLTaiizor.Controls.HopeButton CreateUserBtn;
         private PictureBox pictureBox12;
@@ -679,5 +763,14 @@
         private Panel panel5;
         private ReaLTaiizor.Controls.HopeRoundButton btnPrev;
         private ReaLTaiizor.Controls.HopeRoundButton btnNext;
+        private Panel panel6;
+        private Label label3;
+        private Label label4;
+        private PictureBox pictureBox14;
+        private PictureBox pictureBox5;
+        private PictureBox pictureBox6;
+        private PictureBox pictureBox13;
+        private PictureBox ReloadPix;
+        private ToolTip toolTip1;
     }
 }
