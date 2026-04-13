@@ -9,7 +9,7 @@ namespace AceCareClinicSystem.Controllers
     {
         private DbConnection db = new DbConnection();
 
-        // CHANGED: Added DateTime dateOfBirth parameter
+        // CREATE: Register new patient
         public bool RegisterPatient(string category, string idNo, string fName, string lName,
             string mInitial, string department, string contact, string emergency,
             string yearLevel, DateTime dateOfBirth)
@@ -36,10 +36,7 @@ namespace AceCareClinicSystem.Controllers
                     cmd.Parameters.AddWithValue("@contact", contact);
                     cmd.Parameters.AddWithValue("@emergency", emergency);
                     cmd.Parameters.AddWithValue("@sex", "Male");
-
-                    // CHANGED: Now uses actual date from date picker
                     cmd.Parameters.AddWithValue("@dob", dateOfBirth);
-
                     cmd.Parameters.AddWithValue("@year",
                         string.IsNullOrEmpty(yearLevel) ? (object)DBNull.Value : yearLevel);
 
@@ -53,6 +50,7 @@ namespace AceCareClinicSystem.Controllers
             }
         }
 
+        // READ: Get all patients with pagination
         public DataTable GetPatients(string search = "", int offset = 0)
         {
             using (MySqlConnection conn = db.GetConnection())
@@ -99,6 +97,7 @@ namespace AceCareClinicSystem.Controllers
             }
         }
 
+        // READ: Get single patient by ID
         public DataRow GetPatientById(string patientNumber)
         {
             using (MySqlConnection conn = db.GetConnection())
@@ -121,6 +120,78 @@ namespace AceCareClinicSystem.Controllers
                     MessageBox.Show("Get Patient Error: " + ex.Message);
                     return null;
                 }
+            }
+        }
+
+        // UPDATE: Update existing patient
+        public bool UpdatePatient(string patientNumber, string category, string idNo, string fName, string lName,
+            string mInitial, string department, string contact, string emergency,
+            string yearLevel, DateTime dateOfBirth)
+        {
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    string query = @"UPDATE patients 
+                        SET category = @cat,
+                            patient_number = @id,
+                            first_name = @fname,
+                            last_name = @lname,
+                            middle_initial = @mi,
+                            department = @dept,
+                            contact_number = @contact,
+                            emergency_contact_name = @emergency,
+                            date_of_birth = @dob,
+                            year_level = @year
+                        WHERE patient_number = @originalId";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@cat", category);
+                    cmd.Parameters.AddWithValue("@id", idNo);
+                    cmd.Parameters.AddWithValue("@fname", fName);
+                    cmd.Parameters.AddWithValue("@lname", lName);
+                    cmd.Parameters.AddWithValue("@mi", mInitial);
+                    cmd.Parameters.AddWithValue("@dept", department);
+                    cmd.Parameters.AddWithValue("@contact", contact);
+                    cmd.Parameters.AddWithValue("@emergency", emergency);
+                    cmd.Parameters.AddWithValue("@dob", dateOfBirth);
+                    cmd.Parameters.AddWithValue("@year",
+                        string.IsNullOrEmpty(yearLevel) ? (object)DBNull.Value : yearLevel);
+                    cmd.Parameters.AddWithValue("@originalId", patientNumber);
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update Error: " + ex.Message, "Database Error");
+                return false;
+            }
+        }
+
+        // DELETE: Delete patient
+        public bool DeletePatient(string patientNumber)
+        {
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    string query = "DELETE FROM patients WHERE patient_number = @id";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", patientNumber);
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Delete Error: " + ex.Message, "Database Error");
+                return false;
             }
         }
     }

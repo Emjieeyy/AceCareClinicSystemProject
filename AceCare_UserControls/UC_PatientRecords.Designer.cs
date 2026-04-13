@@ -50,6 +50,8 @@
             pictureBox4 = new PictureBox();
             ReloadPix = new PictureBox();
             panel2 = new Panel();
+            pictureBox2 = new PictureBox();
+            btnAddNewPatient = new ReaLTaiizor.Controls.HopeButton();
             dobTimePicker = new ReaLTaiizor.Controls.PoisonDateTime();
             label13 = new Label();
             pictureBox1 = new PictureBox();
@@ -81,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ReloadPix).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             SuspendLayout();
@@ -244,6 +247,7 @@
             dgvPatients.TabIndex = 25;
             dgvPatients.UseCustomBackColor = true;
             dgvPatients.UseCustomForeColor = true;
+            dgvPatients.CellClick += dgvPatients_CellContentClick;
             // 
             // Column1
             // 
@@ -338,6 +342,8 @@
             // 
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
             panel2.BackgroundImageLayout = ImageLayout.Zoom;
+            panel2.Controls.Add(pictureBox2);
+            panel2.Controls.Add(btnAddNewPatient);
             panel2.Controls.Add(dobTimePicker);
             panel2.Controls.Add(label13);
             panel2.Controls.Add(pictureBox1);
@@ -369,10 +375,42 @@
             panel2.Size = new Size(569, 813);
             panel2.TabIndex = 6;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.White;
+            pictureBox2.BackgroundImage = Properties.Resources.add__1_;
+            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
+            pictureBox2.Location = new Point(211, 102);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(57, 29);
+            pictureBox2.TabIndex = 54;
+            pictureBox2.TabStop = false;
+            // 
+            // btnAddNewPatient
+            // 
+            btnAddNewPatient.BorderColor = Color.FromArgb(0, 0, 192);
+            btnAddNewPatient.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            btnAddNewPatient.DangerColor = Color.FromArgb(245, 108, 108);
+            btnAddNewPatient.DefaultColor = Color.FromArgb(255, 255, 255);
+            btnAddNewPatient.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAddNewPatient.HoverTextColor = Color.FromArgb(48, 49, 51);
+            btnAddNewPatient.InfoColor = Color.FromArgb(144, 147, 153);
+            btnAddNewPatient.Location = new Point(87, 96);
+            btnAddNewPatient.Name = "btnAddNewPatient";
+            btnAddNewPatient.PrimaryColor = Color.White;
+            btnAddNewPatient.Size = new Size(431, 42);
+            btnAddNewPatient.SuccessColor = Color.FromArgb(103, 194, 58);
+            btnAddNewPatient.TabIndex = 55;
+            btnAddNewPatient.Text = "        New Patient";
+            btnAddNewPatient.TextColor = Color.Black;
+            btnAddNewPatient.WarningColor = Color.FromArgb(230, 162, 60);
+            btnAddNewPatient.Click += btnAddNewPatient_Click;
+            // 
             // dobTimePicker
             // 
             dobTimePicker.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dobTimePicker.Location = new Point(294, 371);
+            dobTimePicker.Location = new Point(294, 411);
             dobTimePicker.MinimumSize = new Size(0, 30);
             dobTimePicker.Name = "dobTimePicker";
             dobTimePicker.Size = new Size(224, 30);
@@ -383,7 +421,7 @@
             label13.AutoSize = true;
             label13.BackColor = Color.FromArgb(235, 239, 244);
             label13.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(294, 342);
+            label13.Location = new Point(294, 382);
             label13.Name = "label13";
             label13.Size = new Size(106, 19);
             label13.TabIndex = 51;
@@ -395,7 +433,7 @@
             pictureBox1.BackgroundImage = Properties.Resources.bin;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(196, 666);
+            pictureBox1.Location = new Point(200, 706);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(47, 29);
             pictureBox1.TabIndex = 50;
@@ -405,7 +443,7 @@
             // 
             cmbYearLevel.FormattingEnabled = true;
             cmbYearLevel.ItemHeight = 24;
-            cmbYearLevel.Location = new Point(294, 451);
+            cmbYearLevel.Location = new Point(294, 491);
             cmbYearLevel.Name = "cmbYearLevel";
             cmbYearLevel.Size = new Size(224, 30);
             cmbYearLevel.TabIndex = 49;
@@ -416,7 +454,7 @@
             label12.AutoSize = true;
             label12.BackColor = Color.FromArgb(235, 239, 244);
             label12.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(294, 421);
+            label12.Location = new Point(294, 448);
             label12.Name = "label12";
             label12.Size = new Size(95, 19);
             label12.TabIndex = 48;
@@ -431,7 +469,7 @@
             btnClear.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnClear.InfoColor = Color.FromArgb(144, 147, 153);
-            btnClear.Location = new Point(182, 651);
+            btnClear.Location = new Point(186, 691);
             btnClear.Name = "btnClear";
             btnClear.PrimaryColor = Color.DarkRed;
             btnClear.Size = new Size(160, 59);
@@ -447,7 +485,7 @@
             pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
             pictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox6.InitialImage = (Image)resources.GetObject("pictureBox6.InitialImage");
-            pictureBox6.Location = new Point(386, 666);
+            pictureBox6.Location = new Point(390, 706);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(47, 29);
             pictureBox6.TabIndex = 46;
@@ -462,7 +500,7 @@
             btnSave.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnSave.InfoColor = Color.FromArgb(144, 147, 153);
-            btnSave.Location = new Point(361, 651);
+            btnSave.Location = new Point(365, 691);
             btnSave.Name = "btnSave";
             btnSave.PrimaryColor = Color.LimeGreen;
             btnSave.Size = new Size(160, 59);
@@ -476,7 +514,7 @@
             // txtEmergency
             // 
             txtEmergency.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEmergency.Location = new Point(87, 592);
+            txtEmergency.Location = new Point(87, 632);
             txtEmergency.Name = "txtEmergency";
             txtEmergency.Size = new Size(434, 34);
             txtEmergency.TabIndex = 45;
@@ -486,7 +524,7 @@
             label11.AutoSize = true;
             label11.BackColor = Color.FromArgb(235, 239, 244);
             label11.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(85, 561);
+            label11.Location = new Point(85, 603);
             label11.Name = "label11";
             label11.Size = new Size(172, 19);
             label11.TabIndex = 44;
@@ -495,7 +533,7 @@
             // txtContact
             // 
             txtContact.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContact.Location = new Point(86, 520);
+            txtContact.Location = new Point(86, 562);
             txtContact.Name = "txtContact";
             txtContact.Size = new Size(434, 34);
             txtContact.TabIndex = 43;
@@ -505,7 +543,7 @@
             label10.AutoSize = true;
             label10.BackColor = Color.FromArgb(235, 239, 244);
             label10.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(83, 492);
+            label10.Location = new Point(83, 534);
             label10.Name = "label10";
             label10.Size = new Size(107, 19);
             label10.TabIndex = 42;
@@ -515,7 +553,7 @@
             // 
             cmbDepartment.FormattingEnabled = true;
             cmbDepartment.ItemHeight = 24;
-            cmbDepartment.Location = new Point(85, 451);
+            cmbDepartment.Location = new Point(85, 491);
             cmbDepartment.Name = "cmbDepartment";
             cmbDepartment.Size = new Size(197, 30);
             cmbDepartment.TabIndex = 41;
@@ -526,7 +564,7 @@
             label9.AutoSize = true;
             label9.BackColor = Color.FromArgb(235, 239, 244);
             label9.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(85, 420);
+            label9.Location = new Point(85, 447);
             label9.Name = "label9";
             label9.Size = new Size(104, 19);
             label9.TabIndex = 40;
@@ -535,7 +573,7 @@
             // txtMI
             // 
             txtMI.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtMI.Location = new Point(84, 374);
+            txtMI.Location = new Point(84, 414);
             txtMI.Name = "txtMI";
             txtMI.Size = new Size(198, 34);
             txtMI.TabIndex = 39;
@@ -543,7 +581,7 @@
             // txtLastName
             // 
             txtLastName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLastName.Location = new Point(294, 292);
+            txtLastName.Location = new Point(294, 332);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(224, 34);
             txtLastName.TabIndex = 38;
@@ -551,7 +589,7 @@
             // txtFirstName
             // 
             txtFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtFirstName.Location = new Point(84, 292);
+            txtFirstName.Location = new Point(84, 332);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(198, 34);
             txtFirstName.TabIndex = 37;
@@ -561,7 +599,7 @@
             label8.AutoSize = true;
             label8.BackColor = Color.FromArgb(235, 239, 244);
             label8.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(86, 342);
+            label8.Location = new Point(86, 382);
             label8.Name = "label8";
             label8.Size = new Size(112, 19);
             label8.TabIndex = 36;
@@ -572,7 +610,7 @@
             label7.AutoSize = true;
             label7.BackColor = Color.FromArgb(235, 239, 244);
             label7.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(294, 260);
+            label7.Location = new Point(294, 300);
             label7.Name = "label7";
             label7.Size = new Size(95, 19);
             label7.TabIndex = 35;
@@ -583,7 +621,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.FromArgb(235, 239, 244);
             label6.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(84, 260);
+            label6.Location = new Point(84, 300);
             label6.Name = "label6";
             label6.Size = new Size(94, 19);
             label6.TabIndex = 34;
@@ -592,7 +630,7 @@
             // txtIDNumber
             // 
             txtIDNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtIDNumber.Location = new Point(86, 214);
+            txtIDNumber.Location = new Point(86, 248);
             txtIDNumber.Name = "txtIDNumber";
             txtIDNumber.Size = new Size(434, 34);
             txtIDNumber.TabIndex = 33;
@@ -603,7 +641,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.FromArgb(235, 239, 244);
             label5.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(84, 187);
+            label5.Location = new Point(84, 218);
             label5.Name = "label5";
             label5.Size = new Size(97, 19);
             label5.TabIndex = 32;
@@ -614,7 +652,7 @@
             cmbCategory.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             cmbCategory.FormattingEnabled = true;
             cmbCategory.ItemHeight = 24;
-            cmbCategory.Location = new Point(255, 132);
+            cmbCategory.Location = new Point(255, 172);
             cmbCategory.Name = "cmbCategory";
             cmbCategory.Size = new Size(263, 30);
             cmbCategory.TabIndex = 31;
@@ -626,7 +664,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.FromArgb(235, 239, 244);
             label4.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(83, 136);
+            label4.Location = new Point(83, 176);
             label4.Name = "label4";
             label4.Size = new Size(157, 22);
             label4.TabIndex = 30;
@@ -636,11 +674,11 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(24, 11);
+            label3.Location = new Point(21, 17);
             label3.Name = "label3";
-            label3.Size = new Size(281, 40);
+            label3.Size = new Size(325, 40);
             label3.TabIndex = 29;
-            label3.Text = "Add/Edit Patient";
+            label3.Text = "Patient Information";
             // 
             // UC_PatientRecords
             // 
@@ -658,6 +696,7 @@
             ((System.ComponentModel.ISupportInitialize)ReloadPix).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ResumeLayout(false);
@@ -708,5 +747,7 @@
         private PictureBox pictureBox1;
         private ReaLTaiizor.Controls.PoisonDateTime dobTimePicker;
         private Label label13;
+        private PictureBox pictureBox2;
+        private ReaLTaiizor.Controls.HopeButton btnAddNewPatient;
     }
 }
