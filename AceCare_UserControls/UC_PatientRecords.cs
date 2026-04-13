@@ -3,7 +3,6 @@ using AceCareClinicSystem.Services;
 using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace AceCareClinicSystem.AceCare_UserControls
@@ -14,231 +13,241 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private int patientOffset = 0;
         private const int PageSize = 10;
 
-        // Event to notify main form when patient is selected for consultation
         public event Action<DataRow> PatientSelectedForConsultation;
 
         public UC_PatientRecords()
         {
             InitializeComponent();
+
             dgvPatients.AutoGenerateColumns = false;
+
+            DataGridViewStyle.ApplyModernDesign(dgvPatients);
+
             InitializeDropdowns();
             InitializeDatePickers();
             InitializeDeleteColumn();
-            DataGridViewStyle.ApplyModernDesign(dgvPatients);
 
-            // Wire up events
-            dgvPatients.CellClick += dgvPatients_CellClick;           // Single click to edit
-            dgvPatients.CellContentClick += dgvPatients_CellContentClick; // Delete button
-            dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;    
+            dgvPatients.CellClick += dgvPatients_CellClick;
+            dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;
+            dgvPatients.CellFormatting += dgvPatients_CellFormatting;
 
-            this.Load += (s, e) => RefreshPatientTable();
+            btnClear.Click += btnClear_Click;
+            btnSave.Click += btnSave_Click;
+            btnNext.Click += btnNext_Click;
+            btnPrev.Click += btnPrev_Click;
+            btnSearch.Click += btnSearch_Click;
+            btnAddNewPatient.Click += btnAddNewPatient_Click;
+
+            this.Load += (s, e) =>
+            {
+                SetAddMode(); // 🔥 default mode
+                RefreshPatientTable();
+            };
         }
 
-        private void InitializeDropdowns()
+        // ===========================
+        // 🔥 MODE HANDLING
+        // ===========================
+        private void SetAddMode()
         {
-            cmbCategory.Items.Clear();
-            cmbCategory.Items.AddRange(new string[] {
-                "Student", "Faculty", "Teaching Staff", "Non-Teaching Staff",
-                "Employee", "JDVP", "Visitor"
-            });
+            btnSave.Text = "Save";
+            btnSave.Tag = null;
+            btnSave.BackColor = Color.LimeGreen;
 
-            cmbDepartment.Items.Clear();
-            cmbDepartment.Items.AddRange(new string[] { "IICT", "IHTM", "IABM", "ITE", "SHS" });
+            btnClear.Text = "Clear";
+            btnClear.BackColor = Color.OrangeRed;
 
-            cmbYearLevel.Items.Clear();
-            cmbYearLevel.Items.AddRange(new string[] {
-                "1st Year", "2nd Year", "3rd Year", "4th Year", "Grade 11", "Grade 12"
-            });
+            dgvPatients.ClearSelection();
         }
 
-        private void InitializeDatePickers()
+        private void SetEditMode(string patientID)
         {
-            dobTimePicker.Format = DateTimePickerFormat.Short;
-            dobTimePicker.MaxDate = DateTime.Now;
-            dobTimePicker.Value = new DateTime(2000, 1, 1);
+            btnSave.Text = "Update";
+            btnSave.Tag = patientID;
+            btnSave.BackColor = Color.LightBlue;
+
+            btnClear.Text = "Cancel";
+            btnClear.BackColor = Color.Orange;
         }
 
-        // ADD: Delete button column to DataGridView
+        // ===========================
+        // 🔥 DELETE COLUMN
+        // ===========================
         private void InitializeDeleteColumn()
         {
-            // Check if column already exists
             if (dgvPatients.Columns["Delete"] == null)
             {
                 DataGridViewButtonColumn deleteBtn = new DataGridViewButtonColumn();
                 deleteBtn.Name = "Delete";
-                deleteBtn.HeaderText = "Delete";
-                deleteBtn.Text = "🗑️";
+                deleteBtn.HeaderText = "";
+                deleteBtn.Text = "X";
                 deleteBtn.UseColumnTextForButtonValue = true;
-                deleteBtn.DefaultCellStyle.BackColor = Color.DarkRed;
-                deleteBtn.DefaultCellStyle.ForeColor = Color.White;
-                deleteBtn.Width = 60;
+
+                deleteBtn.FlatStyle = FlatStyle.Flat;
+                deleteBtn.Width = 40;
+
+                deleteBtn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                deleteBtn.DefaultCellStyle.ForeColor = Color.Red;
+                deleteBtn.DefaultCellStyle.SelectionForeColor = Color.Red;
+                deleteBtn.DefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
+
                 dgvPatients.Columns.Add(deleteBtn);
+            }
+
+            dgvPatients.Columns["Delete"].DisplayIndex = dgvPatients.Columns.Count - 1;
+        }
+
+        // ===========================
+        // 🔥 LOAD TABLE
+        // ===========================
+        public void RefreshPatientTable()
+        {
+            DataTable dt = _patientController.GetPatients(txtSearch.Text, patientOffset);
+            BindingHelper.BindToGrid(dgvPatients, dt);
+
+            InitializeDeleteColumn();
+
+            btnPrev.Enabled = (patientOffset > 0);
+        }
+
+        // ===========================
+        // 🔥 GRID EVENTS
+        // ===========================
+        private void dgvPatients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvPatients.Columns[e.ColumnIndex].Name == "Delete" && e.RowIndex >= 0)
+            {
+                e.Value = "X"; // 🔥 FIX
+                e.CellStyle.ForeColor = Color.Red;
+                e.CellStyle.SelectionForeColor = Color.Red;
+                e.CellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
+                e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                e.FormattingApplied = true;
             }
         }
 
-        // NEW: Single click to load patient for editing
         private void dgvPatients_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return; // Ignore header clicks
-            if (e.ColumnIndex == dgvPatients.Columns["Delete"]?.Index) return; // Ignore delete column
+            if (e.RowIndex < 0) return;
+
+            if (dgvPatients.Columns[e.ColumnIndex].Name == "Delete")
+            {
+                string id = dgvPatients.Rows[e.RowIndex].Cells["IDNumber"]?.Value?.ToString();
+
+                if (MessageBox.Show($"Delete patient {id}?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (_patientController.DeletePatient(id))
+                        RefreshPatientTable();
+                }
+                return;
+            }
 
             LoadPatientIntoForm(e.RowIndex);
         }
 
-        // NEW: Load patient data into form for editing
+        private void dgvPatients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string id = dgvPatients.Rows[e.RowIndex].Cells["IDNumber"]?.Value?.ToString();
+                DataRow p = _patientController.GetPatientById(id);
+                if (p != null) PatientSelectedForConsultation?.Invoke(p);
+            }
+        }
+
+        // ===========================
+        // 🔥 LOAD FORM DATA
+        // ===========================
         private void LoadPatientIntoForm(int rowIndex)
         {
             string patientID = dgvPatients.Rows[rowIndex].Cells["IDNumber"]?.Value?.ToString();
-
-            if (string.IsNullOrEmpty(patientID))
-            {
-                MessageBox.Show("Could not get patient ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             DataRow patient = _patientController.GetPatientById(patientID);
+            if (patient == null) return;
 
-            if (patient == null)
-            {
-                MessageBox.Show("Patient not found in database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Fill form fields
             txtIDNumber.Text = patient["patient_number"].ToString();
             txtFirstName.Text = patient["first_name"].ToString();
             txtLastName.Text = patient["last_name"].ToString();
             txtMI.Text = patient["middle_initial"].ToString();
             txtContact.Text = patient["contact_number"].ToString();
-            txtEmergency.Text = patient["emergency_contact_name"].ToString();
-
+            txtEmergencyContactName.Text = patient["emergency_contact_name"].ToString();
+            txtEmergencyContactNo.Text = patient["emergency_contact_number"].ToString();
             cmbCategory.Text = patient["category"].ToString();
             cmbDepartment.Text = patient["department"].ToString();
+            cmbYearLevel.Text = patient["year_level"]?.ToString() ?? "";
 
-            // Handle year level
-            if (patient["year_level"] != DBNull.Value)
-            {
-                cmbYearLevel.Text = patient["year_level"].ToString();
-            }
-            else
-            {
-                cmbYearLevel.SelectedIndex = -1;
-            }
-
-            // Handle date of birth
-            if (patient["date_of_birth"] != DBNull.Value && DateTime.TryParse(patient["date_of_birth"].ToString(), out DateTime dob))
-            {
+            if (DateTime.TryParse(patient["date_of_birth"].ToString(), out DateTime dob))
                 dobTimePicker.Value = dob;
-            }
-            else
-            {
-                dobTimePicker.Value = new DateTime(2000, 1, 1);
-            }
 
-            // Change to Update mode
-            btnSave.Text = "💾 Update";
-            btnSave.Tag = patientID; // Store original ID for update
-            btnSave.BackColor = Color.Orange; // Visual cue for edit mode
+            // 🔥 SWITCH TO EDIT MODE
+            SetEditMode(patientID);
 
-            // Highlight selected row
             dgvPatients.ClearSelection();
             dgvPatients.Rows[rowIndex].Selected = true;
         }
 
-        // NEW: Delete button click handler
-        private void dgvPatients_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        // ===========================
+        // 🔥 BUTTON EVENTS
+        // ===========================
+        private void btnAddNewPatient_Click(object sender, EventArgs e)
         {
-            // Check if delete button was clicked
-            if (e.ColumnIndex != dgvPatients.Columns["Delete"]?.Index || e.RowIndex < 0)
-                return;
-
-            string patientID = dgvPatients.Rows[e.RowIndex].Cells["IDNumber"]?.Value?.ToString();
-
-            if (string.IsNullOrEmpty(patientID)) return;
-
-            // Get patient name for confirmation message
-            string patientName = dgvPatients.Rows[e.RowIndex].Cells["PatientName"]?.Value?.ToString();
-
-            DialogResult result = MessageBox.Show(
-                $"Are you sure you want to delete patient:\n\n{patientName} ({patientID})?\n\nThis action cannot be undone.",
-                "Confirm Delete",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                bool isDeleted = _patientController.DeletePatient(patientID);
-
-                if (isDeleted)
-                {
-                    MessageBox.Show("Patient deleted successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Clear form if we just deleted the patient being edited
-                    if (btnSave.Tag?.ToString() == patientID)
-                    {
-                        ClearFields();
-                        ResetSaveButton();
-                    }
-
-                    RefreshPatientTable();
-                }
-            }
+            ClearFields();
+            SetAddMode();
         }
 
-        // EXISTING: Double-click handler for consultation
-        private void dgvPatients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex < 0) return;
-
-            string patientID = dgvPatients.Rows[e.RowIndex].Cells["IDNumber"]?.Value?.ToString();
-
-            if (string.IsNullOrEmpty(patientID))
-            {
-                MessageBox.Show("Could not get patient ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            DataRow patient = _patientController.GetPatientById(patientID);
-
-            if (patient == null)
-            {
-                MessageBox.Show("Patient not found in database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            PatientSelectedForConsultation?.Invoke(patient);
+            ClearFields();
+            SetAddMode();
         }
 
-        public void RefreshPatientTable()
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            DataTable dt = _patientController.GetPatients(txtSearch.Text, patientOffset);
-
-            if (dt.Rows.Count == 0 && patientOffset > 0)
-            {
-                MessageBox.Show("No more records to display.", "End of List", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                patientOffset -= PageSize;
+            if (string.IsNullOrWhiteSpace(txtFirstName.Text) || string.IsNullOrWhiteSpace(txtIDNumber.Text))
                 return;
-            }
 
-            // Map columns
-            if (dgvPatients.Columns.Count >= 5)
+            bool success;
+
+            if (btnSave.Text == "Update" && btnSave.Tag != null)
             {
-                dgvPatients.Columns["PatientName"].DataPropertyName = "PatientName";
-                dgvPatients.Columns["IDNumber"].DataPropertyName = "IDNumber";
-                dgvPatients.Columns["PatientType"].DataPropertyName = "PatientType";
-                dgvPatients.Columns["Dept"].DataPropertyName = "Dept";
-                dgvPatients.Columns["LastVisit"].DataPropertyName = "LastVisit";
-
-                foreach (DataGridViewColumn col in dgvPatients.Columns)
-                {
-                    if (col.Name != "Delete") // Don't center delete button
-                        col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
+                success = _patientController.UpdatePatient(
+                    btnSave.Tag.ToString(),
+                    cmbCategory.Text,
+                    txtIDNumber.Text,
+                    txtFirstName.Text,
+                    txtLastName.Text,
+                    txtMI.Text,
+                    cmbDepartment.Text,
+                    txtContact.Text,
+                    txtEmergencyContactName.Text,
+                    txtEmergencyContactNo.Text,
+                    cmbYearLevel.Text,
+                    dobTimePicker.Value
+                );
+            }
+            else
+            {
+                success = _patientController.RegisterPatient(
+                    cmbCategory.Text,
+                    txtIDNumber.Text,
+                    txtFirstName.Text,
+                    txtLastName.Text,
+                    txtMI.Text,
+                    cmbDepartment.Text,
+                    txtContact.Text,
+                    txtEmergencyContactName.Text,
+                    txtEmergencyContactNo.Text,
+                    cmbYearLevel.Text,
+                    dobTimePicker.Value
+                );
             }
 
-            BindingHelper.BindToGrid(dgvPatients, dt);
-            btnPrev.Enabled = (patientOffset > 0);
+            if (success)
+            {
+                MessageBox.Show("Record updated/saved!");
+                ClearFields();
+                SetAddMode(); // 🔥 instant reset
+                RefreshPatientTable();
+            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -262,89 +271,30 @@ namespace AceCareClinicSystem.AceCare_UserControls
             RefreshPatientTable();
         }
 
-        // MODIFIED: Handle both Save and Update
-        private void btnSave_Click(object sender, EventArgs e)
+        // ===========================
+        // 🔥 HELPERS
+        // ===========================
+        private void InitializeDropdowns()
         {
-            if (string.IsNullOrWhiteSpace(txtFirstName.Text) || string.IsNullOrWhiteSpace(txtIDNumber.Text))
-            {
-                MessageBox.Show("Please fill in the Name and ID Number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            cmbCategory.Items.AddRange(new string[] {
+                "Student", "Faculty", "Teaching Staff",
+                "Non-Teaching Staff", "Employee", "JDVP", "Visitor"
+            });
 
-            if (IsStudentCategory(cmbCategory.Text) && cmbYearLevel.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please select a Year Level for Student/JDVP patients.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            cmbDepartment.Items.AddRange(new string[] {
+                "IICT", "IHTM", "IABM", "ITE", "SHS"
+            });
 
-            // CHECK: Are we in Update mode?
-            if (btnSave.Text == "💾 Update" && btnSave.Tag != null)
-            {
-                // UPDATE existing patient
-                string originalPatientID = btnSave.Tag.ToString();
-
-                bool isUpdated = _patientController.UpdatePatient(
-                    originalPatientID,
-                    cmbCategory.Text,
-                    txtIDNumber.Text,
-                    txtFirstName.Text,
-                    txtLastName.Text,
-                    txtMI.Text,
-                    cmbDepartment.Text,
-                    txtContact.Text,
-                    txtEmergency.Text,
-                    cmbYearLevel.Text,
-                    dobTimePicker.Value
-                );
-
-                if (isUpdated)
-                {
-                    MessageBox.Show("Patient updated successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearFields();
-                    ResetSaveButton();
-                    RefreshPatientTable();
-                }
-            }
-            else
-            {
-                // CREATE new patient
-                bool isSaved = _patientController.RegisterPatient(
-                    cmbCategory.Text, txtIDNumber.Text, txtFirstName.Text,
-                    txtLastName.Text, txtMI.Text, cmbDepartment.Text,
-                    txtContact.Text, txtEmergency.Text,
-                    cmbYearLevel.Text,
-                    dobTimePicker.Value
-                );
-
-                if (isSaved)
-                {
-                    MessageBox.Show("Patient saved successfully! ✅", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearFields();
-                    RefreshPatientTable();
-                }
-            }
+            cmbYearLevel.Items.AddRange(new string[] {
+                "1st Year", "2nd Year", "3rd Year",
+                "4th Year", "Grade 11", "Grade 12"
+            });
         }
 
-        // NEW: Add New Patient button handler
-        private void btnAddNewPatient_Click(object sender, EventArgs e)
+        private void InitializeDatePickers()
         {
-            ClearFields();
-            ResetSaveButton();
-        }
-
-        // NEW: Reset button to Save mode
-        private void ResetSaveButton()
-        {
-            btnSave.Text = "💾 Save";
-            btnSave.Tag = null;
-            btnSave.BackColor = Color.Green; // Back to green for add mode
-
-            dgvPatients.ClearSelection();
-        }
-
-        private bool IsStudentCategory(string category)
-        {
-            return category == "Student" || category == "JDVP";
+            dobTimePicker.Format = DateTimePickerFormat.Short;
+            dobTimePicker.Value = new DateTime(2000, 1, 1);
         }
 
         private void ClearFields()
@@ -354,49 +304,18 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtIDNumber.Clear();
             txtMI.Clear();
             txtContact.Clear();
-            txtEmergency.Clear();
+            txtEmergencyContactName.Clear();
+            txtEmergencyContactNo.Clear();
+
             cmbCategory.SelectedIndex = -1;
             cmbDepartment.SelectedIndex = -1;
             cmbYearLevel.SelectedIndex = -1;
+
             dobTimePicker.Value = new DateTime(2000, 1, 1);
-
-            cmbYearLevel.Enabled = true;
-            cmbYearLevel.BackColor = Color.White;
         }
 
-        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (IsStudentCategory(cmbCategory.Text))
-            {
-                cmbYearLevel.Enabled = true;
-                cmbYearLevel.BackColor = Color.White;
-
-                if (cmbCategory.Text == "JDVP")
-                {
-                    cmbYearLevel.SelectedItem = "Grade 12";
-                }
-                else if (cmbYearLevel.Text == "N/A")
-                {
-                    cmbYearLevel.SelectedIndex = -1;
-                }
-            }
-            else
-            {
-                cmbYearLevel.Enabled = false;
-                cmbYearLevel.BackColor = Color.LightGray;
-                cmbYearLevel.SelectedIndex = -1;
-            }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            txtSearch.Clear();
-            patientOffset = 0;
-            RefreshPatientTable();
-        }
-
-        private void txtIDNumber_TextChanged(object sender, EventArgs e)
-        {
-        }
+        private void txtIDNumber_TextChanged(object sender, EventArgs e) { }
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void label8_Click(object sender, EventArgs e) { }
     }
 }
