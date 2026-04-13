@@ -29,7 +29,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             // Wire up events
             dgvPatients.CellClick += dgvPatients_CellClick;           // Single click to edit
             dgvPatients.CellContentClick += dgvPatients_CellContentClick; // Delete button
-            dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;    // Consultation
+            dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;    
 
             this.Load += (s, e) => RefreshPatientTable();
         }
@@ -299,7 +299,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
                 if (isUpdated)
                 {
-                    MessageBox.Show("Patient updated successfully! ✅", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Patient updated successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearFields();
                     ResetSaveButton();
                     RefreshPatientTable();
