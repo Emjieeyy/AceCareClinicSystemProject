@@ -1,4 +1,4 @@
-﻿namespace AceCareClinicSystem.AceCare_UserControls
+namespace AceCareClinicSystem.AceCare_UserControls
 {
     partial class UC_UserManagement
     {
@@ -64,7 +64,7 @@
             btnUpdateUser = new ReaLTaiizor.Controls.HopeRoundButton();
             dgvUserManagemend = new ReaLTaiizor.Controls.PoisonDataGridView();
             ID = new DataGridViewTextBoxColumn();
-            Name = new DataGridViewTextBoxColumn();
+            ColFullName = new DataGridViewTextBoxColumn();
             Role = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
@@ -401,7 +401,7 @@
             // 
             // Timestamp
             // 
-            Timestamp.DataPropertyName = "created_at";
+            Timestamp.DataPropertyName = "timestamp";
             Timestamp.HeaderText = "Timestamp";
             Timestamp.MinimumWidth = 6;
             Timestamp.Name = "Timestamp";
@@ -417,7 +417,7 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "action";
+            dataGridViewTextBoxColumn3.DataPropertyName = "activity";
             dataGridViewTextBoxColumn3.HeaderText = "Activity";
             dataGridViewTextBoxColumn3.MinimumWidth = 6;
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -425,7 +425,7 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "details";
+            dataGridViewTextBoxColumn4.DataPropertyName = "description";
             dataGridViewTextBoxColumn4.HeaderText = "Description";
             dataGridViewTextBoxColumn4.MinimumWidth = 6;
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -587,7 +587,7 @@
             dataGridViewCellStyle22.WrapMode = DataGridViewTriState.True;
             dgvUserManagemend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             dgvUserManagemend.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUserManagemend.Columns.AddRange(new DataGridViewColumn[] { ID, Name, Role, Email, Status });
+            dgvUserManagemend.Columns.AddRange(new DataGridViewColumn[] { ID, ColFullName, Role, Email, Status });
             dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = Color.FromArgb(255, 255, 255);
             dataGridViewCellStyle23.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -626,17 +626,17 @@
             ID.Name = "ID";
             ID.Width = 125;
             // 
-            // Name
+            // ColFullName
             // 
-            Name.DataPropertyName = "full_name";
-            Name.HeaderText = "Name";
-            Name.MinimumWidth = 6;
-            Name.Name = "Name";
-            Name.Width = 125;
+            ColFullName.DataPropertyName = "full_name";
+            ColFullName.HeaderText = "Name";
+            ColFullName.MinimumWidth = 6;
+            ColFullName.Name = "ColFullName";
+            ColFullName.Width = 125;
             // 
             // Role
             // 
-            Role.DataPropertyName = "role_id";
+            Role.DataPropertyName = "role_name";
             Role.HeaderText = "Role";
             Role.MinimumWidth = 6;
             Role.Name = "Role";
@@ -759,7 +759,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn ColFullName;
         private DataGridViewTextBoxColumn Role;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Status;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
@@ -10,7 +10,7 @@ namespace AceCareClinicSystem.Controllers
         private string connectionString = "server=localhost;database=acecaredb;uid=root;pwd=;";
 
         // 2. Wrap the connection logic inside a METHOD
-        public MySqlConnection GetConnection()
+        public MySqlConnection? GetConnection()
         {
             MySqlConnection conn = new MySqlConnection(connectionString);
             try

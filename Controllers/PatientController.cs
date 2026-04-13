@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
@@ -43,7 +43,9 @@ namespace AceCareClinicSystem.Controllers
                     cmd.Parameters.AddWithValue("@year",
                         string.IsNullOrEmpty(yearLevel) ? (object)DBNull.Value : yearLevel);
 
-                    return cmd.ExecuteNonQuery() > 0;
+                    bool success = cmd.ExecuteNonQuery() > 0;
+                    if (success) new AuthController().LogActivity(0, "Patient Registered", $"Registered patient: {fName} {lName} ({idNo})");
+                    return success;
                 }
             }
             catch (Exception ex)
