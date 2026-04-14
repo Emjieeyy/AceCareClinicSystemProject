@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using AceCareClinicSystem.Controllers;
+using AceCareClinicSystem.Forms;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
@@ -26,12 +27,22 @@ namespace AceCareClinicSystem.AceCare_UserControls
             InitializeComponent();
             LoadData();
 
-            // Wire up search button
+            // Wire up search buttons
             SearchBtn.Click += (s, e) => LoadPatientsTable(poisonTextBox1.Text);
             poisonTextBox1.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) LoadPatientsTable(poisonTextBox1.Text); };
 
+            // Panel 5 Search (Right side) - wire it to the same patient search for simplicity or general report filter
+            hopeRoundButton1.Click += (s, e) => LoadPatientsTable(poisonTextBox2.Text);
+            poisonTextBox2.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) LoadPatientsTable(poisonTextBox2.Text); };
+
             // Wire up Export button
             hopeRoundButton2.Click += (s, e) => ExportToPdf();
+
+            // Wire up Edit button (hopeRoundButton3)
+            hopeRoundButton3.Click += (s, e) => EditSelectedPatient();
+
+            // Wire up Delete button (hopeRoundButton4)
+            hopeRoundButton4.Click += (s, e) => DeleteSelectedPatient();
 
             // Ensure grid row height is set
             poisonDataGridView1.RowTemplate.Height = 45;
@@ -61,6 +72,59 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     row["PatientType"],
                     row["LastVisit"]
                 );
+            }
+        }
+
+        private string GetSelectedPatientId()
+        {
+            if (poisonDataGridView1.SelectedRows.Count > 0)
+            {
+                return poisonDataGridView1.SelectedRows[0].Cells[1].Value?.ToString(); // Column 1 is ID No.
+            }
+            return null;
+        }
+
+        private void EditSelectedPatient()
+        {
+            string id = GetSelectedPatientId();
+            if (string.IsNullOrEmpty(id))
+            {
+                MessageBox.Show("Please select a patient from the list to edit.", "Selection Required");
+                return;
+            }
+
+            FormPatientEdit editForm = new FormPatientEdit(id);
+            editForm.ShowDialog();
+            
+            if (editForm.IsSuccess)
+            {
+                LoadData();
+            }
+        }
+
+        private void DeleteSelectedPatient()
+        {
+            string id = GetSelectedPatientId();
+            if (string.IsNullOrEmpty(id))
+            {
+                MessageBox.Show("Please select a patient from the list to delete.", "Selection Required");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete patient record {id}? This action cannot be undone.", 
+                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                if (patientController.DeletePatient(id))
+                {
+                    MessageBox.Show("Patient record deleted successfully.");
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to delete patient record.");
+                }
             }
         }
 
