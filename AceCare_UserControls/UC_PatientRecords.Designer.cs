@@ -346,7 +346,7 @@
             ReloadPix.TabIndex = 48;
             ReloadPix.TabStop = false;
             toolTip1.SetToolTip(ReloadPix, "Refresh Table");
-         
+            ReloadPix.Click += ReloadPix_Click;
             // 
             // panel2
             // 
