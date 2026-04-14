@@ -32,7 +32,7 @@ namespace AceCareClinicSystem.Controllers
                     cmd.Parameters.AddWithValue("@dept", department);
                     cmd.Parameters.AddWithValue("@contact", contact);
                     cmd.Parameters.AddWithValue("@eName", emergencyName);
-                    cmd.Parameters.AddWithValue("@eNo", emergencyNumber);
+                    cmd.Parameters.AddWithValue("@eNum", emergencyNumber);
                     cmd.Parameters.AddWithValue("@dob", dateOfBirth);
                     cmd.Parameters.AddWithValue("@year", string.IsNullOrEmpty(yearLevel) ? (object)DBNull.Value : yearLevel);
 
@@ -41,7 +41,11 @@ namespace AceCareClinicSystem.Controllers
                     return success;
                 }
             }
-            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); return false; }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Register Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         public DataTable GetPatients(string search = "", int offset = 0)
@@ -51,11 +55,25 @@ namespace AceCareClinicSystem.Controllers
                 try
                 {
                     conn.Open();
-                    string query = @"SELECT CONCAT(p.first_name, ' ', p.last_name) AS PatientName, 
-                                     p.patient_number AS IDNumber, p.category AS PatientType, p.department AS Dept, 
-                                     COALESCE(DATE_FORMAT((SELECT MAX(visit_date) FROM consultations WHERE patient_id = p.patient_id), '%b %d, %Y %h:%i %p'), 'New Patient') AS LastVisit
-                                     FROM patients p WHERE p.first_name LIKE @s OR p.last_name LIKE @s OR p.patient_number LIKE @s
-                                     ORDER BY p.last_name ASC LIMIT 10 OFFSET @offset";
+                    // 🔥 FIXED: Properly shows "New Patient" when no consultations exist
+                    string query = @"SELECT 
+                        CONCAT(p.first_name, ' ', p.last_name) AS PatientName, 
+                        p.patient_number AS IDNumber, 
+                        p.category AS PatientType, 
+                        p.department AS Dept,
+                        CASE 
+                            WHEN (SELECT COUNT(*) FROM consultations c WHERE c.patient_id = p.patient_id) = 0 
+                            THEN 'New Patient'
+                            ELSE COALESCE(
+                                DATE_FORMAT((SELECT MAX(visit_date) FROM consultations WHERE patient_id = p.patient_id), '%b %d, %Y %h:%i %p'),
+                                'New Patient'
+                            )
+                        END AS LastVisit
+                        FROM patients p 
+                        WHERE p.first_name LIKE @s OR p.last_name LIKE @s OR p.patient_number LIKE @s
+                        ORDER BY p.last_name ASC 
+                        LIMIT 10 OFFSET @offset";
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@s", "%" + search + "%");
                     cmd.Parameters.AddWithValue("@offset", offset);
@@ -64,7 +82,11 @@ namespace AceCareClinicSystem.Controllers
                     adapter.Fill(dt);
                     return dt;
                 }
-                catch { return new DataTable(); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("GetPatients Error: " + ex.Message);
+                    return new DataTable();
+                }
             }
         }
 
@@ -93,7 +115,7 @@ namespace AceCareClinicSystem.Controllers
                     conn.Open();
                     string query = @"UPDATE patients SET category=@cat, patient_number=@id, first_name=@fname, last_name=@lname, 
                                      middle_initial=@mi, department=@dept, contact_number=@contact, 
-                                     emergency_contact_name=@eName, emergency_contact_number=@eNo, date_of_birth=@dob, year_level=@year 
+                                     emergency_contact_name=@eName, emergency_contact_number=@eNum, date_of_birth=@dob, year_level=@year 
                                      WHERE patient_number=@originalId";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@cat", category);
@@ -104,24 +126,36 @@ namespace AceCareClinicSystem.Controllers
                     cmd.Parameters.AddWithValue("@dept", department);
                     cmd.Parameters.AddWithValue("@contact", contact);
                     cmd.Parameters.AddWithValue("@eName", emergencyName);
-                    cmd.Parameters.AddWithValue("@eNo", emergencyNumber);
+                    cmd.Parameters.AddWithValue("@eNum", emergencyNumber);
                     cmd.Parameters.AddWithValue("@dob", dateOfBirth);
-                    cmd.Parameters.AddWithValue("@year", yearLevel);
+                    cmd.Parameters.AddWithValue("@year", string.IsNullOrEmpty(yearLevel) ? (object)DBNull.Value : yearLevel);
                     cmd.Parameters.AddWithValue("@originalId", originalId);
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
-            catch { return false; }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         public bool DeletePatient(string id)
         {
-            using (MySqlConnection conn = db.GetConnection())
+            try
             {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand("DELETE FROM patients WHERE patient_number = @id", conn);
-                cmd.Parameters.AddWithValue("@id", id);
-                return cmd.ExecuteNonQuery() > 0;
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("DELETE FROM patients WHERE patient_number = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Delete Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
     }
