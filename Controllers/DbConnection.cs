@@ -1,28 +1,52 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
+using System.Data;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace AceCareClinicSystem.Controllers
 {
     public class DbConnection
     {
-        // 1. Define the connection string as a variable
         private string connectionString = "server=localhost;database=acecaredb;uid=root;pwd=;";
 
-        // 2. Wrap the connection logic inside a METHOD
-        public MySqlConnection GetConnection()
+        public MySqlConnection GetConnection() => new MySqlConnection(connectionString);
+
+        public DataTable ExecuteRead(string query, Dictionary<string, object> parameters = null)
         {
-            MySqlConnection conn = new MySqlConnection(connectionString);
+            DataTable dt = new DataTable();
             try
             {
-                // We don't open it here yet, we just return the object
-                return conn;
+                using (MySqlConnection conn = GetConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        if (parameters != null)
+                            foreach (var param in parameters) cmd.Parameters.AddWithValue(param.Key, param.Value);
+                        conn.Open();
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd)) { adapter.Fill(dt); }
+                    }
+                }
             }
-            catch (Exception ex)
+            catch (Exception ex) { MessageBox.Show("Database Read Error: " + ex.Message); }
+            return dt;
+        }
+
+        public bool ExecuteWrite(string query, Dictionary<string, object> parameters)
+        {
+            try
             {
-                MessageBox.Show("Connection Error: " + ex.Message);
-                return null;
+                using (MySqlConnection conn = GetConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        foreach (var param in parameters) cmd.Parameters.AddWithValue(param.Key, param.Value);
+                        conn.Open();
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
             }
+            catch (Exception ex) { MessageBox.Show("Database Write Error: " + ex.Message); return false; }
         }
     }
 }

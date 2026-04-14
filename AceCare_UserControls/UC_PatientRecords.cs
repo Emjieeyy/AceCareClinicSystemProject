@@ -237,5 +237,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private void dgvPatients_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
+
+        private void btnAddNewPatient_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
