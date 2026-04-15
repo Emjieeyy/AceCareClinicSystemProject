@@ -34,7 +34,7 @@ namespace AceCareClinicSystem.Forms
                 ucConsultationWizard = new UC_ConsultationWizard();
             }
 
-            // Load patient data into consultation
+            // Load patient data into consultation - FIXED: Added emergencyContactNumber parameter
             ucConsultationWizard.LoadPatientData(
                 patient["patient_number"].ToString(),
                 patient["first_name"].ToString(),
@@ -44,7 +44,8 @@ namespace AceCareClinicSystem.Forms
                 patient["department"].ToString(),
                 Convert.ToDateTime(patient["date_of_birth"]),
                 patient["contact_number"].ToString(),
-                patient["emergency_contact_name"].ToString(),
+                patient["emergency_contact_number"].ToString(),  // ✅ ADDED: Emergency Contact NUMBER
+                patient["emergency_contact_name"].ToString(),      // ✅ Emergency Contact NAME
                 patient["year_level"]?.ToString()
             );
 

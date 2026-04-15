@@ -36,10 +36,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
             WizardMethods.ShowStep(1, StagePanel, stepIcons, stepLines);
         }
 
-        // CHANGED: Removed auto-advance to Step 2, now stays on Step 1
+        // CHANGED: Renamed parameters for clarity
         public void LoadPatientData(string patientID, string firstName, string lastName,
             string middleInitial, string category, string department,
-            DateTime dateOfBirth, string contact, string emergency, string yearLevel)
+            DateTime dateOfBirth, string contact, string emergencyContactNumber,
+            string emergencyContactName, string yearLevel)
         {
             // Store patient ID
             loadedPatientID = patientID;
@@ -64,12 +65,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
             // Address - leave blank for input
             txtAddress.Text = "";
 
-            // Guardian/Emergency from patient record
-            txtGuardian.Text = emergency ?? "";
-            txtEmergencyContact.Text = emergency ?? "";
-
-            // REMOVED: Don't auto-advance to Step 2, stay on Step 1 for review
-            // WizardMethods.ShowStep(2, StagePanel, stepIcons, stepLines);
+            // CHANGED: Use renamed controls
+            txtEmergencyContactName.Text = emergencyContactName ?? "";
+            txtEmergencyContactNumber.Text = emergencyContactNumber ?? "";
 
             // Show confirmation
             string patientName = $"{firstName} {middleInitial} {lastName}".Trim();
@@ -101,6 +99,18 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private void txtTemperature_Validating(object sender, System.ComponentModel.CancelEventArgs e) =>
             errorProvider1.SetError(txtTemperature, decimal.TryParse(txtTemperature.Text, out _) ? "" : "Invalid temperature.");
 
+        private void txtNumPulseRate_Validating(object sender, System.ComponentModel.CancelEventArgs e) =>
+            errorProvider1.SetError(txtNumPulseRate, int.TryParse(txtNumPulseRate.Text, out _) ? "" : "Invalid pulse rate.");
+
+        private void txtNumRespiratoryRate_Validating(object sender, System.ComponentModel.CancelEventArgs e) =>
+            errorProvider1.SetError(txtNumRespiratoryRate, int.TryParse(txtNumRespiratoryRate.Text, out _) ? "" : "Invalid respiratory rate.");
+
+        private void txtNumOxygenSaturation_Validating(object sender, System.ComponentModel.CancelEventArgs e) =>
+            errorProvider1.SetError(txtNumOxygenSaturation, decimal.TryParse(txtNumOxygenSaturation.Text, out _) ? "" : "Invalid oxygen saturation.");
+
+        private void txtNumMedQuantity_Validating(object sender, System.ComponentModel.CancelEventArgs e) =>
+            errorProvider1.SetError(txtNumMedQuantity, int.TryParse(txtNumMedQuantity.Text, out _) ? "" : "Invalid quantity.");
+
         private void txtStaffID_Validating(object sender, System.ComponentModel.CancelEventArgs e) =>
             errorProvider1.SetError(txtStaffID, int.TryParse(txtStaffID.Text, out _) ? "" : "Numeric Staff ID required.");
 
@@ -123,6 +133,35 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 return;
             }
 
+            // Validate numeric textbox fields
+            if (!int.TryParse(txtNumPulseRate.Text, out int pulseRate))
+            {
+                MessageBox.Show("Please enter a valid Pulse Rate.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(txtNumRespiratoryRate.Text, out int respiratoryRate))
+            {
+                MessageBox.Show("Please enter a valid Respiratory Rate.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!decimal.TryParse(txtNumOxygenSaturation.Text, out decimal oxygenSat))
+            {
+                MessageBox.Show("Please enter a valid Oxygen Saturation.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(txtNumMedQuantity.Text, out int medQty))
+            {
+                MessageBox.Show("Please enter a valid Medicine Quantity.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (MessageBox.Show("Finalize and save this consultation?", "Confirm Save",
                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
             {
@@ -138,15 +177,15 @@ namespace AceCareClinicSystem.AceCare_UserControls
                                rbRefSelf.Checked ? "Self" :
                                txtRefOtherDetails.Text;
 
+                // CHANGED: Added rbCough and rbCold options
                 string complaint = rbHeadache.Checked ? "Headache" :
                                    rbFever.Checked ? "Fever" :
+                                   rbCough.Checked ? "Cough" :
+                                   rbCold.Checked ? "Cold" :
                                    txtComplaintOther.Text;
 
                 decimal temp = 0;
                 decimal.TryParse(txtTemperature.Text, out temp);
-
-                decimal oxySat = 0;
-                decimal.TryParse(numOxygenSaturation.Value.ToString(), out oxySat);
 
                 string treatment = "";
                 if (chkMedication.Checked) treatment += "Medication; ";
@@ -160,7 +199,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     ? txtDosage.Text.Trim()
                     : "N/A";
 
-                // Use actual names from form
+                // CHANGED: Use renamed controls
                 bool success = _conController.SaveFullConsultation(
                     patientNumber,
                     vType,
@@ -169,15 +208,15 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     rtbSymptomsDescription.Text,
                     temp,
                     txtBloodPressure.Text,
-                    (int)numPulseRate.Value,
-                    (int)numRespiratoryRate.Value,
-                    oxySat,
+                    pulseRate,
+                    respiratoryRate,
+                    oxygenSat,
                     txtPhysicalFindings.Text,
                     rtbInjuryDescription.Text,
                     rtbNurseNotes.Text,
                     treatment,
                     cmbMedicineName.Text,
-                    (int)numMedQuantity.Value,
+                    medQty,
                     safeDosage,
                     dtpExpiration.Value,
                     rtbTreatmentNotes.Text,
@@ -189,8 +228,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     txtAge.Text,
                     cmbSex.Text,
                     txtAddress.Text,
-                    txtGuardian.Text,
-                    txtEmergencyContact.Text,
+                    txtEmergencyContactName.Text,   // CHANGED: Renamed from txtGuardian
+                    txtEmergencyContactNumber.Text, // CHANGED: Renamed from txtEmergencyContact
                     txtFirstName.Text,
                     txtLastName.Text,
                     "Student",
@@ -232,6 +271,13 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtTemperature.Clear();
             txtBloodPressure.Clear();
             txtPhysicalFindings.Clear();
+
+            // CHANGED: Clear renamed textbox fields
+            txtNumPulseRate.Clear();
+            txtNumRespiratoryRate.Clear();
+            txtNumOxygenSaturation.Clear();
+            txtNumMedQuantity.Clear();
+
             rtbSymptomsDescription.Clear();
             rtbInjuryDescription.Clear();
             rtbNurseNotes.Clear();
@@ -241,8 +287,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtClinicIncharge.Clear();
             txtAge.Clear();
             txtAddress.Clear();
-            txtGuardian.Clear();
-            txtEmergencyContact.Clear();
+
+            // CHANGED: Clear renamed emergency contact fields
+            txtEmergencyContactName.Clear();
+            txtEmergencyContactNumber.Clear();
+
             txtRefOtherDetails.Clear();
             txtComplaintOther.Text = "";
             txtFirstAidOther.Clear();
@@ -256,12 +305,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             rbNormalActivity.Checked = true;
             chkMedication.Checked = false;
             chkRest.Checked = false;
-
-            numPulseRate.Value = 0;
-            numRespiratoryRate.Value = 0;
-            numOxygenSaturation.Value = 0;
-            numMedQuantity.Value = 0;
-            dtpExpiration.Value = DateTime.Now.AddYears(1);
         }
 
         private void txtPatientID_Click(object sender, EventArgs e)
@@ -270,6 +313,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private void pictureBox12_Click(object sender, EventArgs e)
         {
+        }
+
+        private void label52_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
