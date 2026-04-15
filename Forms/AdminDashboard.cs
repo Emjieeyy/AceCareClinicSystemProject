@@ -34,7 +34,7 @@ namespace AceCareClinicSystem.Forms
                 ucConsultationWizard = new UC_ConsultationWizard();
             }
 
-            // Load patient data into consultation
+            // Load patient data into consultation - FIXED: Added emergencyContactNumber parameter
             ucConsultationWizard.LoadPatientData(
                 patient["patient_number"].ToString(),
                 patient["first_name"].ToString(),
@@ -44,7 +44,8 @@ namespace AceCareClinicSystem.Forms
                 patient["department"].ToString(),
                 Convert.ToDateTime(patient["date_of_birth"]),
                 patient["contact_number"].ToString(),
-                patient["emergency_contact_name"].ToString(),
+                patient["emergency_contact_number"].ToString(),  // ✅ ADDED: Emergency Contact NUMBER
+                patient["emergency_contact_name"].ToString(),      // ✅ Emergency Contact NAME
                 patient["year_level"]?.ToString()
             );
 
@@ -101,6 +102,26 @@ namespace AceCareClinicSystem.Forms
         private void hopeButton6_Click(object sender, EventArgs e)
         {
             addUserControl(new UC_UserManagement());
+        }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+
+            DialogResult dialog = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialog == DialogResult.Yes)
+            {
+                // 1. Create a new instance of your Login Form
+                Login login = new Login();
+
+                // 2. Show the Login Form
+                login.Show();
+
+                // 3. Close the current Dashboard Form
+                // Use this.Hide() if you want to keep the process alive in the background
+                // Use this.Close() if the Login form is the 'Main' entry point of the app
+                this.Hide();
+            }
         }
     }
 }

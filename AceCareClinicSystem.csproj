@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="itext.bouncy-castle-adapter" Version="9.6.0" />
+    <PackageReference Include="itext7" Version="9.6.0" />
     <PackageReference Include="MySql.Data" Version="9.6.0" />
     <PackageReference Include="ReaLTaiizor" Version="3.8.1.5" />
   </ItemGroup>

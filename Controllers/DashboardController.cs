@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
@@ -127,6 +127,22 @@ namespace AceCareClinicSystem.Controllers
                 string query = "SELECT COUNT(*) FROM medicines WHERE stock_quantity < 10";
                 return new MySqlCommand(query, conn).ExecuteScalar()?.ToString() ?? "0";
             }
+        }
+
+        public string GetTotalSupplies()
+        {
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection()!)
+                {
+                    conn.Open();
+                    // Assumes medicines table tracks all medical supplies
+                    string query = "SELECT SUM(stock_quantity) FROM medicines";
+                    object? res = new MySqlCommand(query, conn).ExecuteScalar();
+                    return (res != null && res != DBNull.Value) ? res.ToString() ?? "0" : "0";
+                }
+            }
+            catch { return "0"; }
         }
     }
 }

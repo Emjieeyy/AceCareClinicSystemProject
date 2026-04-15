@@ -39,7 +39,8 @@ namespace AceCareClinicSystem.Controllers
         /// Auto-create patient if not exists
         /// </summary>
         public int EnsurePatientExists(string patientNumber, string firstName, string lastName,
-            string age, string sex, string address, string guardian, string emergency,
+            string age, string sex, string address, string guardianName, string emergencyContactNumber,
+            string emergencyContactName,  // ADDED: Separate parameter for emergency contact name
             string category = "Student", string department = "Unknown")
         {
             // Try to find existing patient
@@ -53,12 +54,13 @@ namespace AceCareClinicSystem.Controllers
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
                     conn.Open();
+                    // CHANGED: Added emergency_contact_name to INSERT
                     string query = @"INSERT INTO patients 
                         (patient_number, first_name, last_name, age, sex, address, 
-                         guardian_name, emergency_contact_name, category, department, created_at) 
+                         guardian_name, emergency_contact, emergency_contact_name, category, department, created_at) 
                         VALUES 
                         (@pNum, @fname, @lname, @age, @sex, @addr, 
-                         @guardian, @emergency, @cat, @dept, NOW());
+                         @guardianName, @emergencyNum, @emergencyName, @cat, @dept, NOW());
                         SELECT LAST_INSERT_ID();";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -69,8 +71,9 @@ namespace AceCareClinicSystem.Controllers
                         cmd.Parameters.AddWithValue("@age", string.IsNullOrWhiteSpace(age) ? "0" : age);
                         cmd.Parameters.AddWithValue("@sex", string.IsNullOrWhiteSpace(sex) ? "Unknown" : sex);
                         cmd.Parameters.AddWithValue("@addr", string.IsNullOrWhiteSpace(address) ? "Not specified" : address);
-                        cmd.Parameters.AddWithValue("@guardian", string.IsNullOrWhiteSpace(guardian) ? "N/A" : guardian);
-                        cmd.Parameters.AddWithValue("@emergency", string.IsNullOrWhiteSpace(emergency) ? "N/A" : emergency);
+                        cmd.Parameters.AddWithValue("@guardianName", string.IsNullOrWhiteSpace(guardianName) ? "N/A" : guardianName);
+                        cmd.Parameters.AddWithValue("@emergencyNum", string.IsNullOrWhiteSpace(emergencyContactNumber) ? "N/A" : emergencyContactNumber);
+                        cmd.Parameters.AddWithValue("@emergencyName", string.IsNullOrWhiteSpace(emergencyContactName) ? "N/A" : emergencyContactName);
                         cmd.Parameters.AddWithValue("@cat", category);
                         cmd.Parameters.AddWithValue("@dept", department);
 
@@ -87,13 +90,13 @@ namespace AceCareClinicSystem.Controllers
         }
 
         public bool SaveFullConsultation(
-            string patientNumber, // Changed from int to string
+            string patientNumber,
             string vType, string refBy, string complaint, string symptoms,
             decimal temp, string bp, int pulse, int resp, decimal oxygen,
             string physical, string injury, string nurseNotes,
             string treatment, string medName, int medQty, string dosage, DateTime expiry, string treatNotes,
             string outcome, string remarks, string incharge, int sId, string finalNotes,
-            string age, string sex, string address, string guardian, string emergency,
+            string age, string sex, string address, string guardianName, string emergencyContactNumber,  // CHANGED: Separate parameters
             string firstName = "", string lastName = "", string category = "Student", string department = "Unknown")
         {
             try
@@ -103,8 +106,9 @@ namespace AceCareClinicSystem.Controllers
                     conn.Open();
 
                     // AUTO-CREATE PATIENT IF NOT EXISTS
+                    // CHANGED: Pass both emergency contact name and number
                     int pId = EnsurePatientExists(patientNumber, firstName, lastName, age, sex,
-                        address, guardian, emergency, category, department);
+                        address, guardianName, emergencyContactNumber, guardianName, category, department);
 
                     if (pId == -1)
                     {
@@ -113,6 +117,7 @@ namespace AceCareClinicSystem.Controllers
                     }
 
                     // SAVE CONSULTATION
+                    // CHANGED: Added dosage to INSERT query
                     string query = @"INSERT INTO consultations 
                         (patient_id, age, sex, address, guardian_name, emergency_contact,
                          visit_type, referred_by, chief_complaint, symptoms_description,
@@ -134,8 +139,8 @@ namespace AceCareClinicSystem.Controllers
                         cmd.Parameters.AddWithValue("@age", age ?? "");
                         cmd.Parameters.AddWithValue("@sex", sex ?? "");
                         cmd.Parameters.AddWithValue("@addr", address ?? "");
-                        cmd.Parameters.AddWithValue("@guard", guardian ?? "");
-                        cmd.Parameters.AddWithValue("@emerg", emergency ?? "");
+                        cmd.Parameters.AddWithValue("@guard", guardianName ?? "");      // CHANGED: guardian_name gets the name
+                        cmd.Parameters.AddWithValue("@emerg", emergencyContactNumber ?? "");  // CHANGED: emergency_contact gets the number
                         cmd.Parameters.AddWithValue("@vType", vType);
                         cmd.Parameters.AddWithValue("@refBy", refBy);
                         cmd.Parameters.AddWithValue("@comp", complaint);
@@ -151,7 +156,7 @@ namespace AceCareClinicSystem.Controllers
                         cmd.Parameters.AddWithValue("@tCheck", treatment ?? "");
                         cmd.Parameters.AddWithValue("@mName", medName ?? "");
                         cmd.Parameters.AddWithValue("@mQty", medQty);
-                        cmd.Parameters.AddWithValue("@dos", dosage ?? "N/A");
+                        cmd.Parameters.AddWithValue("@dos", dosage ?? "N/A");  // CHANGED: Added dosage parameter
                         cmd.Parameters.AddWithValue("@exp", expiry.Date);
                         cmd.Parameters.AddWithValue("@tNote", treatNotes ?? "");
                         cmd.Parameters.AddWithValue("@out", outcome);
