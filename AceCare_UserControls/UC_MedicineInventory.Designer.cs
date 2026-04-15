@@ -56,7 +56,6 @@
             label2 = new Label();
             pictureBox5 = new PictureBox();
             panel2 = new Panel();
-            label11 = new Label();
             pictureBox9 = new PictureBox();
             pictureBox8 = new PictureBox();
             pictureBox7 = new PictureBox();
@@ -122,18 +121,18 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1181, 248);
+            panel1.Size = new Size(1228, 248);
             panel1.TabIndex = 0;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.BackColor = Color.White;
-            label9.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(17, 35);
+            label9.Location = new Point(11, 26);
             label9.Name = "label9";
-            label9.Size = new Size(236, 36);
+            label9.Size = new Size(298, 44);
             label9.TabIndex = 12;
             label9.Text = "Clinic Inventory";
             // 
@@ -144,19 +143,19 @@
             panel6.Controls.Add(lblCountExpiring);
             panel6.Controls.Add(pictureBox4);
             panel6.Controls.Add(label8);
-            panel6.Location = new Point(853, 88);
+            panel6.Location = new Point(897, 88);
             panel6.Name = "panel6";
-            panel6.Size = new Size(245, 136);
+            panel6.Size = new Size(296, 136);
             panel6.TabIndex = 11;
             // 
             // lblCountExpiring
             // 
             lblCountExpiring.AutoSize = true;
             lblCountExpiring.BackColor = Color.FromArgb(235, 239, 244);
-            lblCountExpiring.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCountExpiring.Location = new Point(136, 67);
+            lblCountExpiring.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCountExpiring.Location = new Point(157, 59);
             lblCountExpiring.Name = "lblCountExpiring";
-            lblCountExpiring.Size = new Size(40, 42);
+            lblCountExpiring.Size = new Size(40, 44);
             lblCountExpiring.TabIndex = 7;
             lblCountExpiring.Text = "0";
             // 
@@ -165,7 +164,7 @@
             pictureBox4.BackColor = Color.FromArgb(235, 239, 244);
             pictureBox4.BackgroundImage = Properties.Resources.calendar;
             pictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox4.Location = new Point(30, 45);
+            pictureBox4.Location = new Point(54, 43);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(56, 61);
             pictureBox4.TabIndex = 5;
@@ -175,10 +174,10 @@
             // 
             label8.AutoSize = true;
             label8.BackColor = Color.FromArgb(235, 239, 244);
-            label8.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(89, 41);
+            label8.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(114, 27);
             label8.Name = "label8";
-            label8.Size = new Size(135, 22);
+            label8.Size = new Size(127, 22);
             label8.TabIndex = 6;
             label8.Text = "Expiring Soon";
             // 
@@ -189,19 +188,19 @@
             panel5.Controls.Add(lblCountLowStock);
             panel5.Controls.Add(pictureBox3);
             panel5.Controls.Add(label6);
-            panel5.Location = new Point(579, 91);
+            panel5.Location = new Point(595, 91);
             panel5.Name = "panel5";
-            panel5.Size = new Size(245, 136);
+            panel5.Size = new Size(280, 136);
             panel5.TabIndex = 10;
             // 
             // lblCountLowStock
             // 
             lblCountLowStock.AutoSize = true;
             lblCountLowStock.BackColor = Color.FromArgb(235, 239, 244);
-            lblCountLowStock.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCountLowStock.Location = new Point(136, 67);
+            lblCountLowStock.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCountLowStock.Location = new Point(140, 59);
             lblCountLowStock.Name = "lblCountLowStock";
-            lblCountLowStock.Size = new Size(40, 42);
+            lblCountLowStock.Size = new Size(40, 44);
             lblCountLowStock.TabIndex = 7;
             lblCountLowStock.Text = "0";
             // 
@@ -210,7 +209,7 @@
             pictureBox3.BackColor = Color.FromArgb(235, 239, 244);
             pictureBox3.BackgroundImage = Properties.Resources.warning__1_;
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox3.Location = new Point(30, 45);
+            pictureBox3.Location = new Point(48, 43);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(56, 61);
             pictureBox3.TabIndex = 5;
@@ -220,10 +219,10 @@
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.FromArgb(235, 239, 244);
-            label6.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(89, 41);
+            label6.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(90, 27);
             label6.Name = "label6";
-            label6.Size = new Size(134, 22);
+            label6.Size = new Size(131, 22);
             label6.TabIndex = 6;
             label6.Text = "Low Inventory";
             // 
@@ -236,28 +235,28 @@
             panel3.Controls.Add(label4);
             panel3.Location = new Point(304, 91);
             panel3.Name = "panel3";
-            panel3.Size = new Size(245, 136);
+            panel3.Size = new Size(272, 136);
             panel3.TabIndex = 9;
             // 
             // lblCountTotalSupplies
             // 
             lblCountTotalSupplies.AutoSize = true;
             lblCountTotalSupplies.BackColor = Color.FromArgb(235, 239, 244);
-            lblCountTotalSupplies.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCountTotalSupplies.Location = new Point(136, 67);
+            lblCountTotalSupplies.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCountTotalSupplies.Location = new Point(128, 60);
             lblCountTotalSupplies.Name = "lblCountTotalSupplies";
-            lblCountTotalSupplies.Size = new Size(40, 42);
+            lblCountTotalSupplies.Size = new Size(40, 44);
             lblCountTotalSupplies.TabIndex = 7;
             lblCountTotalSupplies.Text = "0";
             // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.FromArgb(235, 239, 244);
-            pictureBox2.BackgroundImage = Properties.Resources.medical_supplies;
+            pictureBox2.BackgroundImage = Properties.Resources.medical_supplies__1_;
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(30, 45);
+            pictureBox2.Location = new Point(48, 44);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(56, 61);
+            pictureBox2.Size = new Size(57, 61);
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
             // 
@@ -265,10 +264,10 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = Color.FromArgb(235, 239, 244);
-            label4.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(89, 41);
+            label4.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(85, 26);
             label4.Name = "label4";
-            label4.Size = new Size(139, 22);
+            label4.Size = new Size(128, 22);
             label4.TabIndex = 6;
             label4.Text = "Total Supplies";
             // 
@@ -281,28 +280,28 @@
             panel4.Controls.Add(label2);
             panel4.Location = new Point(18, 91);
             panel4.Name = "panel4";
-            panel4.Size = new Size(245, 136);
+            panel4.Size = new Size(267, 136);
             panel4.TabIndex = 8;
             // 
             // lblCountTotalMedicine
             // 
             lblCountTotalMedicine.AutoSize = true;
             lblCountTotalMedicine.BackColor = Color.FromArgb(235, 239, 244);
-            lblCountTotalMedicine.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCountTotalMedicine.Location = new Point(136, 67);
+            lblCountTotalMedicine.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCountTotalMedicine.Location = new Point(125, 59);
             lblCountTotalMedicine.Name = "lblCountTotalMedicine";
-            lblCountTotalMedicine.Size = new Size(40, 42);
+            lblCountTotalMedicine.Size = new Size(40, 44);
             lblCountTotalMedicine.TabIndex = 7;
             lblCountTotalMedicine.Text = "0";
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.FromArgb(235, 239, 244);
-            pictureBox1.BackgroundImage = Properties.Resources.prepared;
+            pictureBox1.BackgroundImage = Properties.Resources.medical;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(30, 45);
+            pictureBox1.Location = new Point(31, 48);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(56, 61);
+            pictureBox1.Size = new Size(51, 57);
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
@@ -310,10 +309,10 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(235, 239, 244);
-            label2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(89, 41);
+            label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(76, 27);
             label2.Name = "label2";
-            label2.Size = new Size(141, 22);
+            label2.Size = new Size(139, 22);
             label2.TabIndex = 6;
             label2.Text = "Total Medicine";
             // 
@@ -322,15 +321,14 @@
             pictureBox5.BackColor = Color.White;
             pictureBox5.BackgroundImage = Properties.Resources._646378810_910016875123051_9142573013095368996_n__1__removebg_preview1;
             pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox5.Location = new Point(1055, 0);
+            pictureBox5.Location = new Point(1110, -13);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(107, 109);
+            pictureBox5.Size = new Size(120, 118);
             pictureBox5.TabIndex = 8;
             pictureBox5.TabStop = false;
             // 
             // panel2
             // 
-            panel2.Controls.Add(label11);
             panel2.Controls.Add(pictureBox9);
             panel2.Controls.Add(pictureBox8);
             panel2.Controls.Add(pictureBox7);
@@ -343,49 +341,39 @@
             panel2.Controls.Add(btnEditItem);
             panel2.Controls.Add(btnDeleteItem);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(804, 248);
+            panel2.Location = new Point(851, 248);
             panel2.Name = "panel2";
-            panel2.Size = new Size(377, 544);
+            panel2.Size = new Size(377, 613);
             panel2.TabIndex = 1;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label11.Location = new Point(32, 65);
-            label11.Name = "label11";
-            label11.Size = new Size(262, 32);
-            label11.TabIndex = 44;
-            label11.Text = "Manage medicines, medical supplies, and \r\nother clinic inventory items";
             // 
             // pictureBox9
             // 
-            pictureBox9.BackColor = Color.DarkBlue;
+            pictureBox9.BackColor = Color.FromArgb(180, 50, 70);
             pictureBox9.BackgroundImage = Properties.Resources.folder;
             pictureBox9.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox9.Location = new Point(101, 457);
+            pictureBox9.Location = new Point(103, 502);
             pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(45, 37);
+            pictureBox9.Size = new Size(49, 33);
             pictureBox9.TabIndex = 39;
             pictureBox9.TabStop = false;
             // 
             // pictureBox8
             // 
-            pictureBox8.BackColor = Color.DarkBlue;
+            pictureBox8.BackColor = Color.FromArgb(230, 160, 50);
             pictureBox8.BackgroundImage = Properties.Resources.edit;
             pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox8.Location = new Point(99, 373);
+            pictureBox8.Location = new Point(104, 408);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(45, 37);
+            pictureBox8.Size = new Size(47, 36);
             pictureBox8.TabIndex = 38;
             pictureBox8.TabStop = false;
             // 
             // pictureBox7
             // 
-            pictureBox7.BackColor = Color.DarkBlue;
+            pictureBox7.BackColor = Color.FromArgb(75, 175, 80);
             pictureBox7.BackgroundImage = Properties.Resources.add_product;
             pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox7.Location = new Point(98, 287);
+            pictureBox7.Location = new Point(107, 313);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(45, 37);
             pictureBox7.TabIndex = 37;
@@ -393,10 +381,10 @@
             // 
             // pictureBox6
             // 
-            pictureBox6.BackColor = Color.DarkBlue;
+            pictureBox6.BackColor = Color.FromArgb(45, 150, 140);
             pictureBox6.BackgroundImage = Properties.Resources.add;
             pictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox6.Location = new Point(94, 203);
+            pictureBox6.Location = new Point(103, 218);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(45, 37);
             pictureBox6.TabIndex = 8;
@@ -406,11 +394,11 @@
             // 
             label10.AutoSize = true;
             label10.BackColor = Color.White;
-            label10.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(23, 21);
+            label10.Location = new Point(32, 34);
             label10.Name = "label10";
-            label10.Size = new Size(301, 36);
+            label10.Size = new Size(315, 37);
             label10.TabIndex = 13;
             label10.Text = "Manage Clinic Items";
             // 
@@ -429,7 +417,7 @@
             txtSearchInventory.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtSearchInventory.CustomButton.UseSelectable = true;
             txtSearchInventory.CustomButton.Visible = false;
-            txtSearchInventory.Location = new Point(29, 123);
+            txtSearchInventory.Location = new Point(32, 117);
             txtSearchInventory.MaxLength = 32767;
             txtSearchInventory.Name = "txtSearchInventory";
             txtSearchInventory.PasswordChar = '\0';
@@ -455,7 +443,7 @@
             btnSearch.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnSearch.InfoColor = Color.FromArgb(144, 147, 153);
-            btnSearch.Location = new Point(267, 124);
+            btnSearch.Location = new Point(274, 121);
             btnSearch.Name = "btnSearch";
             btnSearch.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnSearch.Size = new Size(91, 35);
@@ -475,10 +463,10 @@
             btnAddMedicine.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddMedicine.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnAddMedicine.InfoColor = Color.FromArgb(144, 147, 153);
-            btnAddMedicine.Location = new Point(31, 193);
+            btnAddMedicine.Location = new Point(42, 207);
             btnAddMedicine.Name = "btnAddMedicine";
-            btnAddMedicine.PrimaryColor = Color.DarkBlue;
-            btnAddMedicine.Size = new Size(302, 60);
+            btnAddMedicine.PrimaryColor = Color.FromArgb(45, 150, 140);
+            btnAddMedicine.Size = new Size(302, 62);
             btnAddMedicine.SuccessColor = Color.FromArgb(103, 194, 58);
             btnAddMedicine.TabIndex = 40;
             btnAddMedicine.Text = "      Add Medicine";
@@ -495,10 +483,10 @@
             btnAddSupply.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddSupply.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnAddSupply.InfoColor = Color.FromArgb(144, 147, 153);
-            btnAddSupply.Location = new Point(32, 275);
+            btnAddSupply.Location = new Point(42, 301);
             btnAddSupply.Name = "btnAddSupply";
-            btnAddSupply.PrimaryColor = Color.DarkBlue;
-            btnAddSupply.Size = new Size(299, 60);
+            btnAddSupply.PrimaryColor = Color.FromArgb(75, 175, 80);
+            btnAddSupply.Size = new Size(303, 60);
             btnAddSupply.SuccessColor = Color.FromArgb(103, 194, 58);
             btnAddSupply.TabIndex = 41;
             btnAddSupply.Text = "    Add Supply";
@@ -515,10 +503,10 @@
             btnEditItem.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditItem.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnEditItem.InfoColor = Color.FromArgb(144, 147, 153);
-            btnEditItem.Location = new Point(32, 360);
+            btnEditItem.Location = new Point(37, 395);
             btnEditItem.Name = "btnEditItem";
-            btnEditItem.PrimaryColor = Color.DarkBlue;
-            btnEditItem.Size = new Size(299, 60);
+            btnEditItem.PrimaryColor = Color.FromArgb(230, 160, 50);
+            btnEditItem.Size = new Size(303, 60);
             btnEditItem.SuccessColor = Color.FromArgb(103, 194, 58);
             btnEditItem.TabIndex = 42;
             btnEditItem.Text = " Edit";
@@ -535,9 +523,9 @@
             btnDeleteItem.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDeleteItem.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnDeleteItem.InfoColor = Color.FromArgb(144, 147, 153);
-            btnDeleteItem.Location = new Point(32, 444);
+            btnDeleteItem.Location = new Point(42, 489);
             btnDeleteItem.Name = "btnDeleteItem";
-            btnDeleteItem.PrimaryColor = Color.DarkBlue;
+            btnDeleteItem.PrimaryColor = Color.FromArgb(180, 50, 70);
             btnDeleteItem.Size = new Size(303, 60);
             btnDeleteItem.SuccessColor = Color.FromArgb(103, 194, 58);
             btnDeleteItem.TabIndex = 43;
@@ -556,7 +544,7 @@
             tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(804, 544);
+            tabControl1.Size = new Size(851, 613);
             tabControl1.TabIndex = 0;
             // 
             // MedicineRecords
@@ -568,7 +556,7 @@
             MedicineRecords.Location = new Point(4, 29);
             MedicineRecords.Name = "MedicineRecords";
             MedicineRecords.Padding = new Padding(3);
-            MedicineRecords.Size = new Size(796, 511);
+            MedicineRecords.Size = new Size(843, 580);
             MedicineRecords.TabIndex = 0;
             MedicineRecords.Text = "Medicine Records";
             MedicineRecords.UseVisualStyleBackColor = true;
@@ -579,9 +567,9 @@
             ReloadPix.BackgroundImage = Properties.Resources.loading_arrow;
             ReloadPix.BackgroundImageLayout = ImageLayout.Zoom;
             ReloadPix.InitialImage = Properties.Resources.loading_arrow;
-            ReloadPix.Location = new Point(546, 460);
+            ReloadPix.Location = new Point(594, 523);
             ReloadPix.Name = "ReloadPix";
-            ReloadPix.Size = new Size(50, 32);
+            ReloadPix.Size = new Size(58, 32);
             ReloadPix.TabIndex = 52;
             ReloadPix.TabStop = false;
             ReloadPix.Click += ReloadPix_Click;
@@ -589,7 +577,7 @@
             // btnPrev
             // 
             btnPrev.BackColor = Color.White;
-            btnPrev.BorderColor = Color.White;
+            btnPrev.BorderColor = Color.FromArgb(220, 223, 230);
             btnPrev.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
             btnPrev.DangerColor = Color.FromArgb(245, 108, 108);
             btnPrev.DefaultColor = Color.FromArgb(255, 255, 255);
@@ -597,10 +585,10 @@
             btnPrev.ForeColor = Color.Transparent;
             btnPrev.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnPrev.InfoColor = Color.FromArgb(144, 147, 153);
-            btnPrev.Location = new Point(610, 460);
+            btnPrev.Location = new Point(658, 523);
             btnPrev.Name = "btnPrev";
-            btnPrev.PrimaryColor = Color.FromArgb(11, 45, 114);
-            btnPrev.Size = new Size(70, 35);
+            btnPrev.PrimaryColor = Color.DarkBlue;
+            btnPrev.Size = new Size(78, 35);
             btnPrev.SuccessColor = Color.FromArgb(103, 194, 58);
             btnPrev.TabIndex = 51;
             btnPrev.Text = "<<";
@@ -611,17 +599,19 @@
             // btnNext
             // 
             btnNext.BackColor = Color.White;
-            btnNext.BorderColor = Color.White;
+            btnNext.BackgroundImageLayout = ImageLayout.None;
+            btnNext.BorderColor = Color.FromArgb(220, 223, 230);
             btnNext.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
             btnNext.DangerColor = Color.FromArgb(245, 108, 108);
             btnNext.DefaultColor = Color.FromArgb(255, 255, 255);
             btnNext.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNext.HoverTextColor = Color.FromArgb(48, 49, 51);
-            btnNext.InfoColor = Color.FromArgb(144, 147, 153);
-            btnNext.Location = new Point(700, 460);
+            btnNext.ForeColor = Color.White;
+            btnNext.HoverTextColor = Color.Transparent;
+            btnNext.InfoColor = Color.White;
+            btnNext.Location = new Point(748, 523);
             btnNext.Name = "btnNext";
-            btnNext.PrimaryColor = Color.FromArgb(11, 45, 114);
-            btnNext.Size = new Size(70, 35);
+            btnNext.PrimaryColor = Color.DarkBlue;
+            btnNext.Size = new Size(78, 35);
             btnNext.SuccessColor = Color.FromArgb(103, 194, 58);
             btnNext.TabIndex = 50;
             btnNext.Text = ">>";
@@ -683,7 +673,7 @@
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dgvMedicineRecords.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvMedicineRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMedicineRecords.Size = new Size(787, 437);
+            dgvMedicineRecords.Size = new Size(840, 500);
             dgvMedicineRecords.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
             dgvMedicineRecords.TabIndex = 0;
             // 
@@ -725,7 +715,7 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(796, 511);
+            tabPage2.Size = new Size(843, 580);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Supplies Records";
             // 
@@ -735,7 +725,7 @@
             ReloadPixSuppliesRecord.BackgroundImage = Properties.Resources.loading_arrow;
             ReloadPixSuppliesRecord.BackgroundImageLayout = ImageLayout.Zoom;
             ReloadPixSuppliesRecord.InitialImage = Properties.Resources.loading_arrow;
-            ReloadPixSuppliesRecord.Location = new Point(540, 470);
+            ReloadPixSuppliesRecord.Location = new Point(603, 521);
             ReloadPixSuppliesRecord.Name = "ReloadPixSuppliesRecord";
             ReloadPixSuppliesRecord.Size = new Size(50, 32);
             ReloadPixSuppliesRecord.TabIndex = 55;
@@ -752,7 +742,7 @@
             btnPrevSuppliesRecord.ForeColor = Color.Transparent;
             btnPrevSuppliesRecord.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnPrevSuppliesRecord.InfoColor = Color.FromArgb(144, 147, 153);
-            btnPrevSuppliesRecord.Location = new Point(604, 470);
+            btnPrevSuppliesRecord.Location = new Point(667, 521);
             btnPrevSuppliesRecord.Name = "btnPrevSuppliesRecord";
             btnPrevSuppliesRecord.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnPrevSuppliesRecord.Size = new Size(70, 35);
@@ -772,7 +762,7 @@
             btnNextSuppliesRecord.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNextSuppliesRecord.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnNextSuppliesRecord.InfoColor = Color.FromArgb(144, 147, 153);
-            btnNextSuppliesRecord.Location = new Point(694, 470);
+            btnNextSuppliesRecord.Location = new Point(757, 521);
             btnNextSuppliesRecord.Name = "btnNextSuppliesRecord";
             btnNextSuppliesRecord.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnNextSuppliesRecord.Size = new Size(70, 35);
@@ -837,7 +827,7 @@
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
             dgvSuppliesRecords.RowsDefaultCellStyle = dataGridViewCellStyle8;
             dgvSuppliesRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSuppliesRecords.Size = new Size(790, 462);
+            dgvSuppliesRecords.Size = new Size(840, 503);
             dgvSuppliesRecords.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
             dgvSuppliesRecords.TabIndex = 1;
             // 
@@ -878,7 +868,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "UC_MedicineInventory";
-            Size = new Size(1181, 792);
+            Size = new Size(1228, 861);
             Load += UC_MedicineInventory_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -949,7 +939,6 @@
         private ReaLTaiizor.Controls.HopeRoundButton btnEditItem;
         private ReaLTaiizor.Controls.HopeRoundButton btnDeleteItem;
         private PictureBox pictureBox5;
-        private Label label11;
         private DataGridViewTextBoxColumn MedicineName;
         private DataGridViewTextBoxColumn InStock;
         private DataGridViewTextBoxColumn UsedWk;

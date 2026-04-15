@@ -28,28 +28,29 @@ namespace AceCareClinicSystem.AceCare_UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             panel4 = new Panel();
             lblRecentLog0 = new Label();
             pictureBox1 = new PictureBox();
             label2 = new Label();
             panel2 = new Panel();
+            pictureBox2 = new PictureBox();
+            label7 = new Label();
             panel5 = new Panel();
             lblTotalUser0 = new Label();
             pictureBox3 = new PictureBox();
             label6 = new Label();
+            pictureBox8 = new PictureBox();
             AuditTable = new TabPage();
             btnSearchAudit = new ReaLTaiizor.Controls.HopeRoundButton();
             txtSearchAudit = new ReaLTaiizor.Controls.PoisonTextBox();
-            btnExport = new ReaLTaiizor.Controls.HopeRoundButton();
             btnClear = new ReaLTaiizor.Controls.HopeRoundButton();
             btnRefresh = new ReaLTaiizor.Controls.HopeRoundButton();
-            txtFilterActivity = new ReaLTaiizor.Controls.PoisonTextBox();
             dgvAuditLogs = new ReaLTaiizor.Controls.PoisonDataGridView();
             Timestamp = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -57,6 +58,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             tabPage1 = new TabPage();
+            label11 = new Label();
+            label8 = new Label();
             btnSearch = new ReaLTaiizor.Controls.HopeRoundButton();
             txtSearch = new ReaLTaiizor.Controls.PoisonTextBox();
             btnDeleteUser = new ReaLTaiizor.Controls.HopeRoundButton();
@@ -69,14 +72,14 @@ namespace AceCareClinicSystem.AceCare_UserControls
             Email = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
             UserManagementTable = new TabControl();
-            label7 = new Label();
-            label8 = new Label();
-            label11 = new Label();
+            label1 = new Label();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             AuditTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAuditLogs).BeginInit();
             tabPage1.SuspendLayout();
@@ -91,9 +94,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
             panel4.Controls.Add(lblRecentLog0);
             panel4.Controls.Add(pictureBox1);
             panel4.Controls.Add(label2);
-            panel4.Location = new Point(566, 113);
+            panel4.Location = new Point(798, 124);
             panel4.Name = "panel4";
-            panel4.Size = new Size(270, 108);
+            panel4.Size = new Size(309, 108);
             panel4.TabIndex = 12;
             // 
             // lblRecentLog0
@@ -101,7 +104,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             lblRecentLog0.AutoSize = true;
             lblRecentLog0.BackColor = Color.FromArgb(235, 239, 244);
             lblRecentLog0.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRecentLog0.Location = new Point(127, 42);
+            lblRecentLog0.Location = new Point(145, 42);
             lblRecentLog0.Name = "lblRecentLog0";
             lblRecentLog0.Size = new Size(40, 44);
             lblRecentLog0.TabIndex = 7;
@@ -111,9 +114,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.FromArgb(235, 239, 244);
-            pictureBox1.BackgroundImage = Properties.Resources.medical_supplies;
+            pictureBox1.BackgroundImage = Properties.Resources.prepared;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(30, 33);
+            pictureBox1.Location = new Point(39, 31);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(53, 54);
             pictureBox1.TabIndex = 5;
@@ -124,7 +127,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(235, 239, 244);
             label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(89, 21);
+            label2.Location = new Point(107, 21);
             label2.Name = "label2";
             label2.Size = new Size(117, 22);
             label2.TabIndex = 6;
@@ -132,15 +135,38 @@ namespace AceCareClinicSystem.AceCare_UserControls
             // 
             // panel2
             // 
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(panel5);
+            panel2.Controls.Add(pictureBox8);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1072, 227);
+            panel2.Size = new Size(1215, 397);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackgroundImage = Properties.Resources.Blue_Modern_Business_Marketing_Banner_Landscape;
+            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox2.Location = new Point(16, 116);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(428, 139);
+            pictureBox2.TabIndex = 40;
+            pictureBox2.TabStop = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(16, 25);
+            label7.Name = "label7";
+            label7.Size = new Size(320, 40);
+            label7.TabIndex = 28;
+            label7.Text = "User Management";
             // 
             // panel5
             // 
@@ -149,9 +175,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
             panel5.Controls.Add(lblTotalUser0);
             panel5.Controls.Add(pictureBox3);
             panel5.Controls.Add(label6);
-            panel5.Location = new Point(239, 109);
+            panel5.Location = new Point(475, 124);
             panel5.Name = "panel5";
-            panel5.Size = new Size(270, 112);
+            panel5.Size = new Size(298, 112);
             panel5.TabIndex = 13;
             // 
             // lblTotalUser0
@@ -159,7 +185,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             lblTotalUser0.AutoSize = true;
             lblTotalUser0.BackColor = Color.FromArgb(235, 239, 244);
             lblTotalUser0.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalUser0.Location = new Point(126, 47);
+            lblTotalUser0.Location = new Point(143, 46);
             lblTotalUser0.Name = "lblTotalUser0";
             lblTotalUser0.Size = new Size(40, 44);
             lblTotalUser0.TabIndex = 7;
@@ -169,9 +195,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
             // pictureBox3
             // 
             pictureBox3.BackColor = Color.FromArgb(235, 239, 244);
-            pictureBox3.BackgroundImage = Properties.Resources.medical_supplies;
+            pictureBox3.BackgroundImage = Properties.Resources.group;
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox3.Location = new Point(30, 38);
+            pictureBox3.Location = new Point(39, 36);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(53, 54);
             pictureBox3.TabIndex = 5;
@@ -182,26 +208,35 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label6.AutoSize = true;
             label6.BackColor = Color.FromArgb(235, 239, 244);
             label6.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(95, 27);
+            label6.Location = new Point(112, 24);
             label6.Name = "label6";
             label6.Size = new Size(94, 22);
             label6.TabIndex = 6;
             label6.Text = "Total User";
             // 
+            // pictureBox8
+            // 
+            pictureBox8.BackColor = Color.White;
+            pictureBox8.BackgroundImage = Properties.Resources._646378810_910016875123051_9142573013095368996_n__1__removebg_preview1;
+            pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox8.Location = new Point(1092, 0);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(120, 118);
+            pictureBox8.TabIndex = 39;
+            pictureBox8.TabStop = false;
+            // 
             // AuditTable
             // 
             AuditTable.Controls.Add(btnSearchAudit);
             AuditTable.Controls.Add(txtSearchAudit);
-            AuditTable.Controls.Add(btnExport);
             AuditTable.Controls.Add(btnClear);
             AuditTable.Controls.Add(btnRefresh);
-            AuditTable.Controls.Add(txtFilterActivity);
             AuditTable.Controls.Add(dgvAuditLogs);
             AuditTable.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AuditTable.Location = new Point(4, 29);
             AuditTable.Name = "AuditTable";
             AuditTable.Padding = new Padding(3);
-            AuditTable.Size = new Size(1064, 464);
+            AuditTable.Size = new Size(1207, 515);
             AuditTable.TabIndex = 1;
             AuditTable.Text = "Audit Logs";
             AuditTable.UseVisualStyleBackColor = true;
@@ -217,7 +252,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             btnSearchAudit.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearchAudit.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnSearchAudit.InfoColor = Color.FromArgb(144, 147, 153);
-            btnSearchAudit.Location = new Point(943, 61);
+            btnSearchAudit.Location = new Point(1082, 15);
             btnSearchAudit.Name = "btnSearchAudit";
             btnSearchAudit.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnSearchAudit.Size = new Size(92, 39);
@@ -235,15 +270,15 @@ namespace AceCareClinicSystem.AceCare_UserControls
             // 
             // 
             txtSearchAudit.CustomButton.Image = null;
-            txtSearchAudit.CustomButton.Location = new Point(183, 1);
+            txtSearchAudit.CustomButton.Location = new Point(217, 1);
             txtSearchAudit.CustomButton.Name = "";
-            txtSearchAudit.CustomButton.Size = new Size(37, 37);
+            txtSearchAudit.CustomButton.Size = new Size(27, 27);
             txtSearchAudit.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
             txtSearchAudit.CustomButton.TabIndex = 1;
             txtSearchAudit.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtSearchAudit.CustomButton.UseSelectable = true;
             txtSearchAudit.CustomButton.Visible = false;
-            txtSearchAudit.Location = new Point(716, 62);
+            txtSearchAudit.Location = new Point(831, 16);
             txtSearchAudit.MaxLength = 32767;
             txtSearchAudit.Name = "txtSearchAudit";
             txtSearchAudit.PasswordChar = '\0';
@@ -252,32 +287,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtSearchAudit.SelectionLength = 0;
             txtSearchAudit.SelectionStart = 0;
             txtSearchAudit.ShortcutsEnabled = true;
-            txtSearchAudit.Size = new Size(221, 39);
+            txtSearchAudit.Size = new Size(245, 29);
             txtSearchAudit.TabIndex = 60;
             txtSearchAudit.UseSelectable = true;
             txtSearchAudit.WaterMarkColor = Color.FromArgb(109, 109, 109);
             txtSearchAudit.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             txtSearchAudit.Click += txtSearchAudit_Click;
-            // 
-            // btnExport
-            // 
-            btnExport.BorderColor = Color.FromArgb(220, 223, 230);
-            btnExport.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            btnExport.DangerColor = Color.FromArgb(245, 108, 108);
-            btnExport.DefaultColor = Color.FromArgb(255, 255, 255);
-            btnExport.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExport.HoverTextColor = Color.FromArgb(48, 49, 51);
-            btnExport.InfoColor = Color.FromArgb(144, 147, 153);
-            btnExport.Location = new Point(733, 279);
-            btnExport.Name = "btnExport";
-            btnExport.PrimaryColor = Color.DarkBlue;
-            btnExport.Size = new Size(302, 60);
-            btnExport.SuccessColor = Color.FromArgb(103, 194, 58);
-            btnExport.TabIndex = 57;
-            btnExport.Text = "      Export";
-            btnExport.TextColor = Color.White;
-            btnExport.WarningColor = Color.FromArgb(230, 162, 60);
-            btnExport.Click += btnExport_Click;
             // 
             // btnClear
             // 
@@ -288,10 +303,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
             btnClear.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnClear.InfoColor = Color.FromArgb(144, 147, 153);
-            btnClear.Location = new Point(736, 192);
+            btnClear.Location = new Point(915, 455);
             btnClear.Name = "btnClear";
             btnClear.PrimaryColor = Color.DarkBlue;
-            btnClear.Size = new Size(299, 60);
+            btnClear.Size = new Size(161, 39);
             btnClear.SuccessColor = Color.FromArgb(103, 194, 58);
             btnClear.TabIndex = 58;
             btnClear.Text = "    Clear Logs";
@@ -310,7 +325,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             btnRefresh.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRefresh.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnRefresh.InfoColor = Color.FromArgb(144, 147, 153);
-            btnRefresh.Location = new Point(586, 15);
+            btnRefresh.Location = new Point(1082, 455);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnRefresh.Size = new Size(92, 39);
@@ -321,81 +336,52 @@ namespace AceCareClinicSystem.AceCare_UserControls
             btnRefresh.WarningColor = Color.FromArgb(230, 162, 60);
             btnRefresh.Click += btnRefresh_Click;
             // 
-            // txtFilterActivity
-            // 
-            txtFilterActivity.BackColor = Color.FromArgb(235, 239, 244);
-            // 
-            // 
-            // 
-            txtFilterActivity.CustomButton.Image = null;
-            txtFilterActivity.CustomButton.Location = new Point(217, 2);
-            txtFilterActivity.CustomButton.Name = "";
-            txtFilterActivity.CustomButton.Size = new Size(25, 25);
-            txtFilterActivity.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtFilterActivity.CustomButton.TabIndex = 1;
-            txtFilterActivity.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtFilterActivity.CustomButton.UseSelectable = true;
-            txtFilterActivity.CustomButton.Visible = false;
-            txtFilterActivity.Location = new Point(335, 16);
-            txtFilterActivity.MaxLength = 32767;
-            txtFilterActivity.Name = "txtFilterActivity";
-            txtFilterActivity.PasswordChar = '\0';
-            txtFilterActivity.ScrollBars = ScrollBars.None;
-            txtFilterActivity.SelectedText = "";
-            txtFilterActivity.SelectionLength = 0;
-            txtFilterActivity.SelectionStart = 0;
-            txtFilterActivity.ShortcutsEnabled = true;
-            txtFilterActivity.Size = new Size(245, 30);
-            txtFilterActivity.TabIndex = 56;
-            txtFilterActivity.UseSelectable = true;
-            txtFilterActivity.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtFilterActivity.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            txtFilterActivity.Click += txtFilterActivity_Click;
-            // 
             // dgvAuditLogs
             // 
             dgvAuditLogs.AllowUserToResizeRows = false;
+            dgvAuditLogs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAuditLogs.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvAuditLogs.BackgroundColor = Color.FromArgb(255, 255, 255);
             dgvAuditLogs.BorderStyle = BorderStyle.None;
             dgvAuditLogs.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvAuditLogs.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = Color.DarkBlue;
-            dataGridViewCellStyle19.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle19.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle19.Padding = new Padding(7);
-            dataGridViewCellStyle19.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle19.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
-            dgvAuditLogs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle7.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle7.Padding = new Padding(7);
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvAuditLogs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvAuditLogs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAuditLogs.Columns.AddRange(new DataGridViewColumn[] { Timestamp, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
-            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle20.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle20.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle20.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle20.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.False;
-            dgvAuditLogs.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvAuditLogs.DefaultCellStyle = dataGridViewCellStyle8;
             dgvAuditLogs.EnableHeadersVisualStyles = false;
             dgvAuditLogs.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvAuditLogs.GridColor = Color.FromArgb(255, 255, 255);
-            dgvAuditLogs.Location = new Point(3, 62);
+            dgvAuditLogs.Location = new Point(12, 60);
             dgvAuditLogs.Name = "dgvAuditLogs";
             dgvAuditLogs.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle21.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle21.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle21.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle21.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.True;
-            dgvAuditLogs.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvAuditLogs.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvAuditLogs.RowHeadersWidth = 51;
             dgvAuditLogs.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvAuditLogs.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAuditLogs.Size = new Size(680, 399);
+            dgvAuditLogs.Size = new Size(1162, 375);
             dgvAuditLogs.TabIndex = 1;
             dgvAuditLogs.CellContentClick += poisonDataGridView2_CellContentClick;
             // 
@@ -405,7 +391,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             Timestamp.HeaderText = "Timestamp";
             Timestamp.MinimumWidth = 6;
             Timestamp.Name = "Timestamp";
-            Timestamp.Width = 125;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -413,7 +398,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             dataGridViewTextBoxColumn2.HeaderText = "Email";
             dataGridViewTextBoxColumn2.MinimumWidth = 6;
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.Width = 125;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -421,7 +405,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             dataGridViewTextBoxColumn3.HeaderText = "Activity";
             dataGridViewTextBoxColumn3.MinimumWidth = 6;
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.Width = 125;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -429,7 +412,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             dataGridViewTextBoxColumn4.HeaderText = "Description";
             dataGridViewTextBoxColumn4.MinimumWidth = 6;
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.Width = 125;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -437,7 +419,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             dataGridViewTextBoxColumn5.HeaderText = "Status";
             dataGridViewTextBoxColumn5.MinimumWidth = 6;
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.Width = 125;
             // 
             // tabPage1
             // 
@@ -453,9 +434,31 @@ namespace AceCareClinicSystem.AceCare_UserControls
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1064, 438);
+            tabPage1.Size = new Size(1207, 515);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "User Management";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Century Gothic", 7.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label11.Location = new Point(811, 87);
+            label11.Name = "label11";
+            label11.Size = new Size(263, 16);
+            label11.TabIndex = 53;
+            label11.Text = "Centralized user account management";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(810, 38);
+            label8.Name = "label8";
+            label8.Size = new Size(223, 37);
+            label8.TabIndex = 36;
+            label8.Text = "Manage Users";
             // 
             // btnSearch
             // 
@@ -468,7 +471,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             btnSearch.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnSearch.InfoColor = Color.FromArgb(144, 147, 153);
-            btnSearch.Location = new Point(952, 104);
+            btnSearch.Location = new Point(1063, 127);
             btnSearch.Name = "btnSearch";
             btnSearch.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnSearch.Size = new Size(92, 39);
@@ -486,15 +489,15 @@ namespace AceCareClinicSystem.AceCare_UserControls
             // 
             // 
             txtSearch.CustomButton.Image = null;
-            txtSearch.CustomButton.Location = new Point(183, 1);
+            txtSearch.CustomButton.Location = new Point(191, 2);
             txtSearch.CustomButton.Name = "";
-            txtSearch.CustomButton.Size = new Size(37, 37);
+            txtSearch.CustomButton.Size = new Size(27, 27);
             txtSearch.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
             txtSearch.CustomButton.TabIndex = 1;
             txtSearch.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtSearch.CustomButton.UseSelectable = true;
             txtSearch.CustomButton.Visible = false;
-            txtSearch.Location = new Point(725, 105);
+            txtSearch.Location = new Point(836, 134);
             txtSearch.MaxLength = 32767;
             txtSearch.Name = "txtSearch";
             txtSearch.PasswordChar = '\0';
@@ -503,7 +506,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtSearch.SelectionLength = 0;
             txtSearch.SelectionStart = 0;
             txtSearch.ShortcutsEnabled = true;
-            txtSearch.Size = new Size(221, 39);
+            txtSearch.Size = new Size(221, 32);
             txtSearch.TabIndex = 52;
             txtSearch.UseSelectable = true;
             txtSearch.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -519,10 +522,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
             btnDeleteUser.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDeleteUser.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnDeleteUser.InfoColor = Color.FromArgb(144, 147, 153);
-            btnDeleteUser.Location = new Point(725, 333);
+            btnDeleteUser.Location = new Point(821, 382);
             btnDeleteUser.Name = "btnDeleteUser";
             btnDeleteUser.PrimaryColor = Color.DarkBlue;
-            btnDeleteUser.Size = new Size(313, 60);
+            btnDeleteUser.Size = new Size(345, 60);
             btnDeleteUser.SuccessColor = Color.FromArgb(103, 194, 58);
             btnDeleteUser.TabIndex = 50;
             btnDeleteUser.Text = "    Delere User";
@@ -539,10 +542,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
             btnAddUser.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddUser.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnAddUser.InfoColor = Color.FromArgb(144, 147, 153);
-            btnAddUser.Location = new Point(725, 169);
+            btnAddUser.Location = new Point(821, 204);
             btnAddUser.Name = "btnAddUser";
             btnAddUser.PrimaryColor = Color.DarkBlue;
-            btnAddUser.Size = new Size(313, 60);
+            btnAddUser.Size = new Size(345, 60);
             btnAddUser.SuccessColor = Color.FromArgb(103, 194, 58);
             btnAddUser.TabIndex = 48;
             btnAddUser.Text = "   Add User";
@@ -559,10 +562,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
             btnUpdateUser.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdateUser.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnUpdateUser.InfoColor = Color.FromArgb(144, 147, 153);
-            btnUpdateUser.Location = new Point(725, 252);
+            btnUpdateUser.Location = new Point(821, 292);
             btnUpdateUser.Name = "btnUpdateUser";
             btnUpdateUser.PrimaryColor = Color.DarkBlue;
-            btnUpdateUser.Size = new Size(313, 60);
+            btnUpdateUser.Size = new Size(345, 60);
             btnUpdateUser.SuccessColor = Color.FromArgb(103, 194, 58);
             btnUpdateUser.TabIndex = 49;
             btnUpdateUser.Text = "    Update User";
@@ -577,44 +580,43 @@ namespace AceCareClinicSystem.AceCare_UserControls
             dgvUserManagemend.BorderStyle = BorderStyle.None;
             dgvUserManagemend.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvUserManagemend.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = Color.DarkBlue;
-            dataGridViewCellStyle22.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle22.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle22.Padding = new Padding(7);
-            dataGridViewCellStyle22.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle22.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.True;
-            dgvUserManagemend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle10.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle10.Padding = new Padding(7);
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle10.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dgvUserManagemend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dgvUserManagemend.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUserManagemend.Columns.AddRange(new DataGridViewColumn[] { ID, ColFullName, Role, Email, Status });
-            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle23.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle23.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle23.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle23.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle23.WrapMode = DataGridViewTriState.False;
-            dgvUserManagemend.DefaultCellStyle = dataGridViewCellStyle23;
-            dgvUserManagemend.Dock = DockStyle.Left;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle11.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle11.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dgvUserManagemend.DefaultCellStyle = dataGridViewCellStyle11;
             dgvUserManagemend.EnableHeadersVisualStyles = false;
             dgvUserManagemend.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvUserManagemend.GridColor = Color.FromArgb(255, 255, 255);
-            dgvUserManagemend.Location = new Point(3, 3);
+            dgvUserManagemend.Location = new Point(12, 36);
             dgvUserManagemend.Name = "dgvUserManagemend";
             dgvUserManagemend.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle24.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle24.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle24.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle24.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.True;
-            dgvUserManagemend.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle12.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dgvUserManagemend.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             dgvUserManagemend.RowHeadersWidth = 51;
             dgvUserManagemend.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvUserManagemend.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUserManagemend.Size = new Size(680, 432);
+            dgvUserManagemend.Size = new Size(756, 507);
             dgvUserManagemend.TabIndex = 0;
             dgvUserManagemend.CellContentClick += poisonDataGridView1_CellContentClick;
             // 
@@ -652,54 +654,33 @@ namespace AceCareClinicSystem.AceCare_UserControls
             // 
             // Status
             // 
+            Status.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Status.DataPropertyName = "status";
             Status.HeaderText = "Status";
             Status.MinimumWidth = 6;
             Status.Name = "Status";
-            Status.Width = 125;
             // 
             // UserManagementTable
             // 
             UserManagementTable.Controls.Add(tabPage1);
             UserManagementTable.Controls.Add(AuditTable);
-            UserManagementTable.Dock = DockStyle.Fill;
-            UserManagementTable.Location = new Point(0, 227);
+            UserManagementTable.Dock = DockStyle.Bottom;
+            UserManagementTable.Location = new Point(0, 284);
             UserManagementTable.Name = "UserManagementTable";
             UserManagementTable.SelectedIndex = 0;
-            UserManagementTable.Size = new Size(1072, 471);
+            UserManagementTable.Size = new Size(1215, 548);
             UserManagementTable.TabIndex = 2;
             // 
-            // label7
+            // label1
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(19, 31);
-            label7.Name = "label7";
-            label7.Size = new Size(320, 40);
-            label7.TabIndex = 28;
-            label7.Text = "User Management";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.FromArgb(235, 239, 244);
-            label8.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(725, 29);
-            label8.Name = "label8";
-            label8.Size = new Size(170, 27);
-            label8.TabIndex = 36;
-            label8.Text = "Manage Users";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Century Gothic", 7.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label11.Location = new Point(725, 72);
-            label11.Name = "label11";
-            label11.Size = new Size(263, 16);
-            label11.TabIndex = 53;
-            label11.Text = "Centralized user account management";
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.Location = new Point(22, 75);
+            label1.Name = "label1";
+            label1.Size = new Size(349, 20);
+            label1.TabIndex = 54;
+            label1.Text = "Monitor system access and manage staff permissions.";
             // 
             // UC_UserManagement
             // 
@@ -708,16 +689,18 @@ namespace AceCareClinicSystem.AceCare_UserControls
             BackColor = Color.White;
             Controls.Add(UserManagementTable);
             Controls.Add(panel2);
-         
-            Size = new Size(1072, 698);
+            Name = "UC_UserManagement";
+            Size = new Size(1215, 832);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             AuditTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAuditLogs).EndInit();
             tabPage1.ResumeLayout(false);
@@ -740,10 +723,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private TabPage AuditTable;
         private ReaLTaiizor.Controls.HopeRoundButton btnSearchAudit;
         private ReaLTaiizor.Controls.PoisonTextBox txtSearchAudit;
-        private ReaLTaiizor.Controls.HopeRoundButton btnExport;
         private ReaLTaiizor.Controls.HopeRoundButton btnClear;
         private ReaLTaiizor.Controls.HopeRoundButton btnRefresh;
-        private ReaLTaiizor.Controls.PoisonTextBox txtFilterActivity;
         private ReaLTaiizor.Controls.PoisonDataGridView dgvAuditLogs;
         private TabPage tabPage1;
         private ReaLTaiizor.Controls.HopeRoundButton btnSearch;
@@ -758,13 +739,16 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private Label label7;
+        private Label label8;
+        private Label label11;
+        private PictureBox pictureBox8;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn ColFullName;
         private DataGridViewTextBoxColumn Role;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Status;
-        private Label label7;
-        private Label label8;
-        private Label label11;
+        private PictureBox pictureBox2;
+        private Label label1;
     }
 }

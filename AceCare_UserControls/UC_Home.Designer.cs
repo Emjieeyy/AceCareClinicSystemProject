@@ -44,7 +44,7 @@
             label5 = new Label();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
-            lblLowInventory = new Label();
+            lblLowInventory_0 = new Label();
             label7 = new Label();
             pictureBox3 = new PictureBox();
             dgvRecent = new ReaLTaiizor.Controls.PoisonDataGridView();
@@ -72,7 +72,7 @@
             btnPrev = new ReaLTaiizor.Controls.HopeRoundButton();
             btnNext = new ReaLTaiizor.Controls.HopeRoundButton();
             panel6 = new Panel();
-            label3 = new Label();
+            lbTotalUser_0 = new Label();
             label4 = new Label();
             pictureBox14 = new PictureBox();
             pictureBox5 = new PictureBox();
@@ -120,7 +120,7 @@
             // 
             lblTotalPatients.AutoSize = true;
             lblTotalPatients.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalPatients.Location = new Point(144, 40);
+            lblTotalPatients.Location = new Point(137, 46);
             lblTotalPatients.Name = "lblTotalPatients";
             lblTotalPatients.Size = new Size(40, 44);
             lblTotalPatients.TabIndex = 4;
@@ -130,7 +130,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(108, 16);
+            label2.Location = new Point(106, 12);
             label2.Name = "label2";
             label2.Size = new Size(127, 22);
             label2.TabIndex = 3;
@@ -150,7 +150,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(10, 27);
+            label1.Location = new Point(21, 25);
             label1.Name = "label1";
             label1.Size = new Size(389, 51);
             label1.TabIndex = 3;
@@ -171,7 +171,7 @@
             // 
             lblTodaysVisit.AutoSize = true;
             lblTodaysVisit.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTodaysVisit.Location = new Point(146, 40);
+            lblTodaysVisit.Location = new Point(141, 44);
             lblTodaysVisit.Name = "lblTodaysVisit";
             lblTodaysVisit.Size = new Size(40, 44);
             lblTodaysVisit.TabIndex = 4;
@@ -182,7 +182,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.FromArgb(235, 239, 244);
             label5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(110, 15);
+            label5.Location = new Point(110, 11);
             label5.Name = "label5";
             label5.Size = new Size(114, 22);
             label5.TabIndex = 3;
@@ -192,7 +192,7 @@
             // 
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(35, 14);
+            pictureBox2.Location = new Point(35, 17);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(67, 62);
             pictureBox2.TabIndex = 0;
@@ -201,7 +201,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(235, 239, 244);
-            panel2.Controls.Add(lblLowInventory);
+            panel2.Controls.Add(lblLowInventory_0);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(pictureBox3);
             panel2.Location = new Point(628, 120);
@@ -209,21 +209,21 @@
             panel2.Size = new Size(246, 101);
             panel2.TabIndex = 6;
             // 
-            // lblLowInventory
+            // lblLowInventory_0
             // 
-            lblLowInventory.AutoSize = true;
-            lblLowInventory.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLowInventory.Location = new Point(151, 40);
-            lblLowInventory.Name = "lblLowInventory";
-            lblLowInventory.Size = new Size(40, 44);
-            lblLowInventory.TabIndex = 4;
-            lblLowInventory.Text = "0";
+            lblLowInventory_0.AutoSize = true;
+            lblLowInventory_0.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLowInventory_0.Location = new Point(139, 40);
+            lblLowInventory_0.Name = "lblLowInventory_0";
+            lblLowInventory_0.Size = new Size(40, 44);
+            lblLowInventory_0.TabIndex = 4;
+            lblLowInventory_0.Text = "0";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(110, 12);
+            label7.Location = new Point(97, 8);
             label7.Name = "label7";
             label7.Size = new Size(131, 22);
             label7.TabIndex = 3;
@@ -233,7 +233,7 @@
             // 
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox3.Location = new Point(35, 17);
+            pictureBox3.Location = new Point(31, 18);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(67, 62);
             pictureBox3.TabIndex = 0;
@@ -283,7 +283,7 @@
             dgvRecent.RowHeadersWidth = 51;
             dgvRecent.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvRecent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRecent.Size = new Size(858, 413);
+            dgvRecent.Size = new Size(858, 438);
             dgvRecent.TabIndex = 10;
             // 
             // Patient
@@ -321,7 +321,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(29, 259);
+            label8.Location = new Point(19, 266);
             label8.Name = "label8";
             label8.Size = new Size(319, 37);
             label8.TabIndex = 11;
@@ -329,11 +329,10 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(495, 293);
+            txtSearch.Location = new Point(481, 286);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(270, 27);
+            txtSearch.Size = new Size(281, 27);
             txtSearch.TabIndex = 12;
-           
             // 
             // btnSearch
             // 
@@ -344,7 +343,7 @@
             btnSearch.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnSearch.InfoColor = Color.FromArgb(144, 147, 153);
-            btnSearch.Location = new Point(771, 288);
+            btnSearch.Location = new Point(777, 284);
             btnSearch.Name = "btnSearch";
             btnSearch.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnSearch.Size = new Size(109, 35);
@@ -361,7 +360,7 @@
             parrotWidgetPanel1.Controls.Add(label9);
             parrotWidgetPanel1.Controls.Add(medicineCircle);
             parrotWidgetPanel1.ControlsAsWidgets = false;
-            parrotWidgetPanel1.Location = new Point(948, 275);
+            parrotWidgetPanel1.Location = new Point(948, 287);
             parrotWidgetPanel1.Name = "parrotWidgetPanel1";
             parrotWidgetPanel1.Size = new Size(222, 228);
             parrotWidgetPanel1.TabIndex = 17;
@@ -371,7 +370,7 @@
             label9.AutoSize = true;
             label9.BackColor = Color.FromArgb(235, 239, 244);
             label9.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(46, 167);
+            label9.Location = new Point(46, 179);
             label9.Name = "label9";
             label9.Size = new Size(151, 18);
             label9.TabIndex = 19;
@@ -392,7 +391,7 @@
             medicineCircle.FullTextColorA = Color.FromArgb(103, 194, 58);
             medicineCircle.FullTextColorB = Color.FromArgb(103, 194, 58);
             medicineCircle.IsError = false;
-            medicineCircle.Location = new Point(58, 18);
+            medicineCircle.Location = new Point(58, 30);
             medicineCircle.Name = "medicineCircle";
             medicineCircle.PercentText = "%";
             medicineCircle.Size = new Size(129, 129);
@@ -405,7 +404,7 @@
             pictureBox7.BackColor = Color.FromArgb(235, 239, 244);
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox7.Location = new Point(21, 19);
+            pictureBox7.Location = new Point(21, 16);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(47, 51);
             pictureBox7.TabIndex = 5;
@@ -422,7 +421,7 @@
             NewConsultBtn.ForeColor = Color.Black;
             NewConsultBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             NewConsultBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            NewConsultBtn.Location = new Point(68, 29);
+            NewConsultBtn.Location = new Point(68, 23);
             NewConsultBtn.Name = "NewConsultBtn";
             NewConsultBtn.PrimaryColor = Color.FromArgb(235, 239, 244);
             NewConsultBtn.Size = new Size(163, 35);
@@ -444,7 +443,7 @@
             CreateUserBtn.ForeColor = Color.Black;
             CreateUserBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             CreateUserBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            CreateUserBtn.Location = new Point(72, 31);
+            CreateUserBtn.Location = new Point(72, 33);
             CreateUserBtn.Name = "CreateUserBtn";
             CreateUserBtn.PrimaryColor = Color.FromArgb(235, 239, 244);
             CreateUserBtn.Size = new Size(129, 35);
@@ -453,13 +452,14 @@
             CreateUserBtn.Text = "Create User";
             CreateUserBtn.TextColor = Color.Black;
             CreateUserBtn.WarningColor = Color.FromArgb(230, 162, 60);
+            CreateUserBtn.Click += CreateUserBtn_Click;
             // 
             // pictureBox8
             // 
             pictureBox8.BackColor = Color.FromArgb(235, 239, 244);
             pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
             pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox8.Location = new Point(24, 20);
+            pictureBox8.Location = new Point(25, 22);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(47, 51);
             pictureBox8.TabIndex = 5;
@@ -479,7 +479,7 @@
             // 
             pictureBox9.BackgroundImage = (Image)resources.GetObject("pictureBox9.BackgroundImage");
             pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox9.Location = new Point(912, 243);
+            pictureBox9.Location = new Point(912, 255);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(306, 295);
             pictureBox9.TabIndex = 21;
@@ -489,7 +489,7 @@
             // 
             pictureBox10.BackgroundImage = (Image)resources.GetObject("pictureBox10.BackgroundImage");
             pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox10.Location = new Point(915, 544);
+            pictureBox10.Location = new Point(915, 569);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(307, 118);
             pictureBox10.TabIndex = 21;
@@ -499,7 +499,7 @@
             // 
             pictureBox11.BackgroundImage = (Image)resources.GetObject("pictureBox11.BackgroundImage");
             pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox11.Location = new Point(917, 664);
+            pictureBox11.Location = new Point(917, 710);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(307, 118);
             pictureBox11.TabIndex = 22;
@@ -507,9 +507,10 @@
             // 
             // pictureBox12
             // 
+            pictureBox12.BackColor = Color.Transparent;
             pictureBox12.BackgroundImage = (Image)resources.GetObject("pictureBox12.BackgroundImage");
             pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox12.Location = new Point(1122, -6);
+            pictureBox12.Location = new Point(1124, -6);
             pictureBox12.Name = "pictureBox12";
             pictureBox12.Size = new Size(113, 105);
             pictureBox12.TabIndex = 5;
@@ -520,9 +521,9 @@
             panel4.BackColor = Color.FromArgb(235, 239, 244);
             panel4.Controls.Add(pictureBox7);
             panel4.Controls.Add(NewConsultBtn);
-            panel4.Location = new Point(948, 562);
+            panel4.Location = new Point(948, 590);
             panel4.Name = "panel4";
-            panel4.Size = new Size(240, 89);
+            panel4.Size = new Size(240, 79);
             panel4.TabIndex = 27;
             // 
             // panel5
@@ -530,7 +531,7 @@
             panel5.BackColor = Color.FromArgb(235, 239, 244);
             panel5.Controls.Add(pictureBox8);
             panel5.Controls.Add(CreateUserBtn);
-            panel5.Location = new Point(948, 680);
+            panel5.Location = new Point(948, 720);
             panel5.Name = "panel5";
             panel5.Size = new Size(240, 89);
             panel5.TabIndex = 28;
@@ -544,7 +545,7 @@
             btnPrev.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPrev.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnPrev.InfoColor = Color.FromArgb(144, 147, 153);
-            btnPrev.Location = new Point(728, 757);
+            btnPrev.Location = new Point(741, 789);
             btnPrev.Name = "btnPrev";
             btnPrev.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnPrev.Size = new Size(70, 35);
@@ -564,7 +565,7 @@
             btnNext.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNext.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnNext.InfoColor = Color.FromArgb(144, 147, 153);
-            btnNext.Location = new Point(818, 757);
+            btnNext.Location = new Point(828, 789);
             btnNext.Name = "btnNext";
             btnNext.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnNext.Size = new Size(70, 35);
@@ -578,7 +579,7 @@
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(235, 239, 244);
-            panel6.Controls.Add(label3);
+            panel6.Controls.Add(lbTotalUser_0);
             panel6.Controls.Add(label4);
             panel6.Controls.Add(pictureBox14);
             panel6.Location = new Point(944, 119);
@@ -586,21 +587,21 @@
             panel6.Size = new Size(232, 100);
             panel6.TabIndex = 7;
             // 
-            // label3
+            // lbTotalUser_0
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(151, 40);
-            label3.Name = "label3";
-            label3.Size = new Size(40, 44);
-            label3.TabIndex = 4;
-            label3.Text = "0";
+            lbTotalUser_0.AutoSize = true;
+            lbTotalUser_0.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbTotalUser_0.Location = new Point(122, 39);
+            lbTotalUser_0.Name = "lbTotalUser_0";
+            lbTotalUser_0.Size = new Size(40, 44);
+            lbTotalUser_0.TabIndex = 4;
+            lbTotalUser_0.Text = "0";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(114, 12);
+            label4.Location = new Point(99, 6);
             label4.Name = "label4";
             label4.Size = new Size(94, 22);
             label4.TabIndex = 3;
@@ -608,9 +609,9 @@
             // 
             // pictureBox14
             // 
-            pictureBox14.BackgroundImage = (Image)resources.GetObject("pictureBox14.BackgroundImage");
+            pictureBox14.BackgroundImage = Properties.Resources.group;
             pictureBox14.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox14.Location = new Point(35, 15);
+            pictureBox14.Location = new Point(31, 17);
             pictureBox14.Name = "pictureBox14";
             pictureBox14.Size = new Size(67, 62);
             pictureBox14.TabIndex = 0;
@@ -652,7 +653,7 @@
             ReloadPix.BackgroundImage = Properties.Resources.loading_arrow;
             ReloadPix.BackgroundImageLayout = ImageLayout.Zoom;
             ReloadPix.InitialImage = Properties.Resources.loading_arrow;
-            ReloadPix.Location = new Point(664, 757);
+            ReloadPix.Location = new Point(674, 789);
             ReloadPix.Name = "ReloadPix";
             ReloadPix.Size = new Size(50, 32);
             ReloadPix.TabIndex = 49;
@@ -690,7 +691,7 @@
             Controls.Add(pictureBox13);
             MinimumSize = new Size(126, 50);
             Name = "UC_Home";
-            Size = new Size(1250, 804);
+            Size = new Size(1250, 848);
             Load += UC_Home_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -736,7 +737,7 @@
         private Label label5;
         private PictureBox pictureBox2;
         private Panel panel2;
-        private Label lblLowInventory;
+        private Label lblLowInventory_0;
         private Label label7;
         private PictureBox pictureBox3;
         private ReaLTaiizor.Controls.PoisonDataGridView dgvRecent;
@@ -764,7 +765,7 @@
         private ReaLTaiizor.Controls.HopeRoundButton btnPrev;
         private ReaLTaiizor.Controls.HopeRoundButton btnNext;
         private Panel panel6;
-        private Label label3;
+        private Label lbTotalUser_0;
         private Label label4;
         private PictureBox pictureBox14;
         private PictureBox pictureBox5;

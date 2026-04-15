@@ -9,7 +9,6 @@ namespace AceCareClinicSystem.Controllers
     {
         private DbConnection db = new DbConnection();
 
-        // ------------------- LOGIN -------------------
         public bool ValidateLogin(string username, string password)
         {
             try
@@ -22,12 +21,12 @@ namespace AceCareClinicSystem.Controllers
                                    FROM users u 
                                    INNER JOIN roles r ON u.role_id = r.role_id 
                                    WHERE u.username = @user AND u.password = @pass AND u.status = 'Active'";
-                    
+
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@user", username);
                         cmd.Parameters.AddWithValue("@pass", password);
-                        
+
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
@@ -36,7 +35,7 @@ namespace AceCareClinicSystem.Controllers
                                 UserSession.Username = reader.GetString("username");
                                 UserSession.FullName = reader.GetString("full_name");
                                 UserSession.Role = reader.GetString("role_name");
-                                
+
                                 reader.Close();
                                 LogActivity(UserSession.UserId, "Login", "User logged into the system");
                                 return true;
@@ -53,13 +52,11 @@ namespace AceCareClinicSystem.Controllers
             }
         }
 
-        // ------------------- USER MANAGEMENT -------------------
         public DataTable GetUserList()
         {
             DataTable dt = new DataTable();
             using (MySqlConnection conn = db.GetConnection())
             {
-                // Including username and role_id for easier management
                 string query = @"
                     SELECT u.user_id, u.username, u.full_name, r.role_name, u.role_id, u.email, u.status
                     FROM users u
@@ -87,9 +84,9 @@ namespace AceCareClinicSystem.Controllers
                         cmd.Parameters.AddWithValue("@email", email);
                         cmd.Parameters.AddWithValue("@role", roleId);
                         cmd.Parameters.AddWithValue("@status", status);
-                        
+
                         bool success = cmd.ExecuteNonQuery() > 0;
-                        if (success) LogActivity(0, "User Created", $"Created user: {username}"); // 0 as placeholder for current user id
+                        if (success) LogActivity(0, "User Created", $"Created user: {username}");
                         return success;
                     }
                 }
@@ -108,12 +105,11 @@ namespace AceCareClinicSystem.Controllers
                 using (MySqlConnection conn = db.GetConnection())
                 {
                     conn.Open();
-                    // Update password only if provided
                     string passClause = !string.IsNullOrEmpty(password) ? ", password = @pass" : "";
                     string query = $@"UPDATE users SET username = @user, full_name = @name, 
                                      email = @email, role_id = @role, status = @status {passClause} 
                                      WHERE user_id = @id";
-                    
+
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@id", userId);
@@ -123,7 +119,7 @@ namespace AceCareClinicSystem.Controllers
                         cmd.Parameters.AddWithValue("@role", roleId);
                         cmd.Parameters.AddWithValue("@status", status);
                         if (!string.IsNullOrEmpty(password)) cmd.Parameters.AddWithValue("@pass", password);
-                        
+
                         bool success = cmd.ExecuteNonQuery() > 0;
                         if (success) LogActivity(0, "User Updated", $"Updated user: {username}");
                         return success;
@@ -182,7 +178,6 @@ namespace AceCareClinicSystem.Controllers
             }
         }
 
-        // ------------------- AUDIT LOGS -------------------
         public void LogActivity(int userId, string activity, string description)
         {
             try
@@ -193,7 +188,6 @@ namespace AceCareClinicSystem.Controllers
                     string query = "INSERT INTO audit_logs (user_id, activity, description) VALUES (@uid, @act, @desc)";
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        // Use current session ID if 0 is passed
                         int idToLog = userId == 0 ? UserSession.UserId : userId;
                         cmd.Parameters.AddWithValue("@uid", idToLog == 0 ? (object)DBNull.Value : idToLog);
                         cmd.Parameters.AddWithValue("@act", activity);
@@ -202,7 +196,7 @@ namespace AceCareClinicSystem.Controllers
                     }
                 }
             }
-            catch { /* Ignore logging errors to prevent crash */ }
+            catch { }
         }
 
         public DataTable GetAuditLogs()

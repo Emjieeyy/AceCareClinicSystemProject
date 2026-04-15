@@ -319,5 +319,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
 
         }
+
+        private void rtbInjuryDescription_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

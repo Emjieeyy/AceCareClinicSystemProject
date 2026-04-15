@@ -43,7 +43,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
             // Update Top Stats
             lblTotalPatients.Text = _dashboard.GetTotalPatients();
             lblTodaysVisit.Text = _dashboard.GetTodaysVisits();
-            lblLowInventory.Text = _dashboard.GetLowInventoryCount();
+            lblLowInventory_0.Text = _dashboard.GetLowInventoryCount();
+            lbTotalUser_0.Text = _dashboard.GetTotalUsers();
 
             // Fetch Table Data
             DataTable dt = _dashboard.GetRecentConsultations(currentOffset, PageSize, txtSearch.Text.Trim());
@@ -61,10 +62,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
             UpdatePaginationButtons();
 
             // Update Medicine Inventory Circle
-            if (int.TryParse(lblLowInventory.Text, out int lowItems))
-            {
-                medicineCircle.ValueNumber = (lowItems > 100) ? 100 : lowItems;
-            }
+            int stockPercentage = _dashboard.GetStockFillPercentage();
+            medicineCircle.ValueNumber = stockPercentage;
         }
 
         private void UpdatePaginationButtons()
@@ -108,6 +107,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             if (this.ParentForm is AdminDashboard main)
                 main.addUserControl(new UC_ConsultationWizard());
+        }
+
+        private void CreateUserBtn_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm is AdminDashboard main)
+                main.addUserControl(new UC_UserManagement());
         }
     }
 }

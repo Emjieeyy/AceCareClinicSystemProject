@@ -28,12 +28,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
             LoadData();
 
             // Wire up search buttons
-            SearchBtn.Click += (s, e) => LoadPatientsTable(poisonTextBox1.Text);
-            poisonTextBox1.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) LoadPatientsTable(poisonTextBox1.Text); };
+            //    SearchBtn.Click += (s, e) => LoadPatientsTable(poisonTextBox1.Text);
+            //   poisonTextBox1.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) LoadPatientsTable(poisonTextBox1.Text); };
 
             // Panel 5 Search (Right side) - wire it to the same patient search for simplicity or general report filter
-            hopeRoundButton1.Click += (s, e) => LoadPatientsTable(poisonTextBox2.Text);
-            poisonTextBox2.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) LoadPatientsTable(poisonTextBox2.Text); };
+            //  hopeRoundButton1.Click += (s, e) => LoadPatientsTable(poisonTextBox2.Text);
+            // poisonTextBox2.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) LoadPatientsTable(poisonTextBox2.Text); };
 
             // Wire up Export button
             hopeRoundButton2.Click += (s, e) => ExportToPdf();
@@ -95,7 +95,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
             FormPatientEdit editForm = new FormPatientEdit(id);
             editForm.ShowDialog();
-            
+
             if (editForm.IsSuccess)
             {
                 LoadData();
@@ -111,7 +111,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 return;
             }
 
-            DialogResult result = MessageBox.Show($"Are you sure you want to delete patient record {id}? This action cannot be undone.", 
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete patient record {id}? This action cannot be undone.",
                 "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
@@ -154,7 +154,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
                                     .SetTextAlignment(TextAlignment.CENTER)
                                     .SetFontSize(20)
                                     .SetFont(boldFont));
-                                
+
                                 document.Add(new Paragraph("Clinic Activity Report")
                                     .SetTextAlignment(TextAlignment.CENTER)
                                     .SetFontSize(14)
@@ -173,9 +173,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
                                 // Table Section
                                 document.Add(new Paragraph("Patient Records List").SetFont(boldFont).SetFontSize(12));
-                                
+
                                 Table table = new Table(4).UseAllAvailableWidth();
-                                
+
                                 // Table Headers
                                 table.AddHeaderCell(new Cell().Add(new Paragraph("Patient Name").SetFont(boldFont)));
                                 table.AddHeaderCell(new Cell().Add(new Paragraph("ID Number").SetFont(boldFont)));
@@ -206,6 +206,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
             {
                 MessageBox.Show("Error generating PDF: " + ex.ToString(), "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

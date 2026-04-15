@@ -48,8 +48,8 @@
             label4 = new Label();
             StagePanel = new Panel();
             Step1 = new Panel();
-            logo1 = new PictureBox();
             panel5 = new Panel();
+            logo1 = new PictureBox();
             Next1Btn = new ReaLTaiizor.Controls.HopeButton();
             dtpDateofBirth = new ReaLTaiizor.Controls.PoisonDateTime();
             label7 = new Label();
@@ -75,8 +75,8 @@
             txtPatientID = new ReaLTaiizor.Controls.PoisonTextBox();
             label8 = new Label();
             Step2 = new Panel();
-            logo = new PictureBox();
             panel1 = new Panel();
+            logo = new PictureBox();
             ChiefComplaint = new Panel();
             rbCold = new ReaLTaiizor.Controls.ParrotRadioButton();
             rbCough = new ReaLTaiizor.Controls.ParrotRadioButton();
@@ -110,8 +110,8 @@
             label19 = new Label();
             Step3 = new Panel();
             panel2 = new Panel();
-            pictureBox1 = new PictureBox();
             panel3 = new Panel();
+            pictureBox1 = new PictureBox();
             txtNumOxygenSaturation = new ReaLTaiizor.Controls.PoisonTextBox();
             txtNumRespiratoryRate = new ReaLTaiizor.Controls.PoisonTextBox();
             txtNumPulseRate = new ReaLTaiizor.Controls.PoisonTextBox();
@@ -188,18 +188,18 @@
             ((System.ComponentModel.ISupportInitialize)pbStep2).BeginInit();
             StagePanel.SuspendLayout();
             Step1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)logo1).BeginInit();
             panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)logo1).BeginInit();
             Step2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
             ChiefComplaint.SuspendLayout();
             ReferredBy.SuspendLayout();
             TypeOfVisitPanel.SuspendLayout();
             Step3.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             Step4.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -234,18 +234,18 @@
             WizardStep.Dock = DockStyle.Left;
             WizardStep.Location = new Point(0, 0);
             WizardStep.Name = "WizardStep";
-            WizardStep.Size = new Size(342, 801);
+            WizardStep.Size = new Size(342, 837);
             WizardStep.TabIndex = 0;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.FromArgb(235, 239, 244);
-            label6.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(54, 83);
+            label6.Location = new Point(46, 87);
             label6.Name = "label6";
-            label6.Size = new Size(226, 29);
+            label6.Size = new Size(258, 34);
             label6.TabIndex = 10;
             label6.Text = "Consultation Form";
             // 
@@ -294,11 +294,11 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(235, 239, 244);
-            label1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
             label1.Location = new Point(88, 159);
             label1.Name = "label1";
-            label1.Size = new Size(174, 20);
+            label1.Size = new Size(165, 19);
             label1.TabIndex = 5;
             label1.Text = " Patient Information";
             // 
@@ -336,11 +336,11 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(235, 239, 244);
-            label2.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Black;
             label2.Location = new Point(96, 261);
             label2.Name = "label2";
-            label2.Size = new Size(113, 20);
+            label2.Size = new Size(100, 19);
             label2.TabIndex = 6;
             label2.Text = "Visit Details";
             // 
@@ -348,11 +348,11 @@
             // 
             label5.AutoSize = true;
             label5.BackColor = Color.FromArgb(235, 239, 244);
-            label5.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(95, 609);
+            label5.Location = new Point(94, 606);
             label5.Name = "label5";
-            label5.Size = new Size(203, 20);
+            label5.Size = new Size(200, 19);
             label5.TabIndex = 9;
             label5.Text = "Outcome & Confirmation";
             // 
@@ -360,11 +360,11 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.FromArgb(235, 239, 244);
-            label3.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
             label3.Location = new Point(93, 379);
             label3.Name = "label3";
-            label3.Size = new Size(215, 20);
+            label3.Size = new Size(198, 19);
             label3.TabIndex = 7;
             label3.Text = "Vital Signs & Assessment";
             // 
@@ -388,11 +388,11 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = Color.FromArgb(235, 239, 244);
-            label4.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
             label4.Location = new Point(96, 492);
             label4.Name = "label4";
-            label4.Size = new Size(181, 20);
+            label4.Size = new Size(175, 19);
             label4.TabIndex = 8;
             label4.Text = "Treatment & Medicine";
             // 
@@ -406,35 +406,23 @@
             StagePanel.Dock = DockStyle.Fill;
             StagePanel.Location = new Point(342, 0);
             StagePanel.Name = "StagePanel";
-            StagePanel.Size = new Size(850, 801);
+            StagePanel.Size = new Size(875, 837);
             StagePanel.TabIndex = 1;
             // 
             // Step1
             // 
-            Step1.Controls.Add(logo1);
             Step1.Controls.Add(panel5);
             Step1.Dock = DockStyle.Fill;
             Step1.Location = new Point(0, 0);
             Step1.Name = "Step1";
-            Step1.Size = new Size(850, 801);
+            Step1.Size = new Size(875, 837);
             Step1.TabIndex = 0;
-            // 
-            // logo1
-            // 
-            logo1.BackColor = Color.Transparent;
-            logo1.BackgroundImage = (Image)resources.GetObject("logo1.BackgroundImage");
-            logo1.BackgroundImageLayout = ImageLayout.Stretch;
-            logo1.Location = new Point(702, -5);
-            logo1.Name = "logo1";
-            logo1.Size = new Size(114, 115);
-            logo1.TabIndex = 32;
-            logo1.TabStop = false;
-            logo1.Click += pictureBox12_Click;
             // 
             // panel5
             // 
             panel5.BackgroundImage = Properties.Resources._21;
             panel5.BackgroundImageLayout = ImageLayout.Stretch;
+            panel5.Controls.Add(logo1);
             panel5.Controls.Add(Next1Btn);
             panel5.Controls.Add(dtpDateofBirth);
             panel5.Controls.Add(label7);
@@ -459,10 +447,22 @@
             panel5.Controls.Add(label9);
             panel5.Controls.Add(txtPatientID);
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(-10, 37);
+            panel5.Location = new Point(0, 23);
             panel5.Name = "panel5";
-            panel5.Size = new Size(871, 760);
+            panel5.Size = new Size(875, 851);
             panel5.TabIndex = 12;
+            // 
+            // logo1
+            // 
+            logo1.BackColor = Color.Transparent;
+            logo1.BackgroundImage = (Image)resources.GetObject("logo1.BackgroundImage");
+            logo1.BackgroundImageLayout = ImageLayout.Stretch;
+            logo1.Location = new Point(751, -30);
+            logo1.Name = "logo1";
+            logo1.Size = new Size(123, 124);
+            logo1.TabIndex = 32;
+            logo1.TabStop = false;
+            logo1.Click += pictureBox12_Click;
             // 
             // Next1Btn
             // 
@@ -473,7 +473,7 @@
             Next1Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Next1Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
             Next1Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            Next1Btn.Location = new Point(677, 707);
+            Next1Btn.Location = new Point(639, 674);
             Next1Btn.Name = "Next1Btn";
             Next1Btn.PrimaryColor = Color.FromArgb(11, 45, 114);
             Next1Btn.Size = new Size(149, 49);
@@ -487,7 +487,7 @@
             // dtpDateofBirth
             // 
             dtpDateofBirth.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dtpDateofBirth.Location = new Point(189, 365);
+            dtpDateofBirth.Location = new Point(199, 380);
             dtpDateofBirth.MinimumSize = new Size(0, 30);
             dtpDateofBirth.Name = "dtpDateofBirth";
             dtpDateofBirth.Size = new Size(588, 30);
@@ -497,11 +497,11 @@
             // 
             label7.AutoSize = true;
             label7.BackColor = Color.White;
-            label7.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(9, -11);
+            label7.Location = new Point(17, 2);
             label7.Name = "label7";
-            label7.Size = new Size(291, 36);
+            label7.Size = new Size(335, 40);
             label7.TabIndex = 11;
             label7.Text = " Patient Information";
             // 
@@ -520,7 +520,7 @@
             txtEmergencyContactNumber.CustomButton.UseSelectable = true;
             txtEmergencyContactNumber.CustomButton.Visible = false;
             txtEmergencyContactNumber.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtEmergencyContactNumber.Location = new Point(331, 593);
+            txtEmergencyContactNumber.Location = new Point(341, 615);
             txtEmergencyContactNumber.MaxLength = 32767;
             txtEmergencyContactNumber.Name = "txtEmergencyContactNumber";
             txtEmergencyContactNumber.PasswordChar = '\0';
@@ -549,7 +549,7 @@
             txtEmergencyContactName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtEmergencyContactName.CustomButton.UseSelectable = true;
             txtEmergencyContactName.CustomButton.Visible = false;
-            txtEmergencyContactName.Location = new Point(313, 531);
+            txtEmergencyContactName.Location = new Point(323, 553);
             txtEmergencyContactName.MaxLength = 32767;
             txtEmergencyContactName.Name = "txtEmergencyContactName";
             txtEmergencyContactName.PasswordChar = '\0';
@@ -579,7 +579,7 @@
             txtContactNo.CustomButton.UseSelectable = true;
             txtContactNo.CustomButton.Visible = false;
             txtContactNo.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtContactNo.Location = new Point(231, 475);
+            txtContactNo.Location = new Point(241, 493);
             txtContactNo.MaxLength = 32767;
             txtContactNo.Name = "txtContactNo";
             txtContactNo.PasswordChar = '\0';
@@ -600,7 +600,7 @@
             label18.BackColor = Color.FromArgb(235, 239, 244);
             label18.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label18.ForeColor = Color.Black;
-            label18.Location = new Point(75, 599);
+            label18.Location = new Point(85, 621);
             label18.Name = "label18";
             label18.Size = new Size(250, 20);
             label18.TabIndex = 29;
@@ -612,7 +612,7 @@
             label17.BackColor = Color.FromArgb(235, 239, 244);
             label17.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.Black;
-            label17.Location = new Point(75, 487);
+            label17.Location = new Point(85, 505);
             label17.Name = "label17";
             label17.Size = new Size(151, 20);
             label17.TabIndex = 28;
@@ -624,7 +624,7 @@
             label16.BackColor = Color.FromArgb(235, 239, 244);
             label16.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label16.ForeColor = Color.Black;
-            label16.Location = new Point(74, 541);
+            label16.Location = new Point(84, 563);
             label16.Name = "label16";
             label16.Size = new Size(233, 20);
             label16.TabIndex = 27;
@@ -645,7 +645,7 @@
             txtAddress.CustomButton.UseSelectable = true;
             txtAddress.CustomButton.Visible = false;
             txtAddress.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtAddress.Location = new Point(191, 415);
+            txtAddress.Location = new Point(201, 435);
             txtAddress.MaxLength = 32767;
             txtAddress.Name = "txtAddress";
             txtAddress.PasswordChar = '\0';
@@ -666,7 +666,7 @@
             label15.BackColor = Color.FromArgb(235, 239, 244);
             label15.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label15.ForeColor = Color.Black;
-            label15.Location = new Point(85, 427);
+            label15.Location = new Point(95, 447);
             label15.Name = "label15";
             label15.Size = new Size(84, 20);
             label15.TabIndex = 25;
@@ -678,7 +678,7 @@
             label14.BackColor = Color.FromArgb(235, 239, 244);
             label14.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label14.ForeColor = Color.Black;
-            label14.Location = new Point(66, 369);
+            label14.Location = new Point(74, 388);
             label14.Name = "label14";
             label14.Size = new Size(124, 20);
             label14.TabIndex = 23;
@@ -689,7 +689,7 @@
             cmbSex.FormattingEnabled = true;
             cmbSex.ItemHeight = 24;
             cmbSex.Items.AddRange(new object[] { "Male", "Female" });
-            cmbSex.Location = new Point(509, 308);
+            cmbSex.Location = new Point(519, 322);
             cmbSex.Name = "cmbSex";
             cmbSex.Size = new Size(268, 30);
             cmbSex.TabIndex = 22;
@@ -701,7 +701,7 @@
             label13.BackColor = Color.FromArgb(235, 239, 244);
             label13.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.Black;
-            label13.Location = new Point(453, 315);
+            label13.Location = new Point(463, 329);
             label13.Name = "label13";
             label13.Size = new Size(46, 20);
             label13.TabIndex = 21;
@@ -722,7 +722,7 @@
             txtAge.CustomButton.UseSelectable = true;
             txtAge.CustomButton.Visible = false;
             txtAge.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtAge.Location = new Point(189, 307);
+            txtAge.Location = new Point(199, 321);
             txtAge.MaxLength = 32767;
             txtAge.Name = "txtAge";
             txtAge.PasswordChar = '\0';
@@ -743,7 +743,7 @@
             label12.BackColor = Color.FromArgb(235, 239, 244);
             label12.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label12.ForeColor = Color.Black;
-            label12.Location = new Point(136, 315);
+            label12.Location = new Point(146, 329);
             label12.Name = "label12";
             label12.Size = new Size(53, 20);
             label12.TabIndex = 19;
@@ -764,7 +764,7 @@
             txtMI.CustomButton.UseSelectable = true;
             txtMI.CustomButton.Visible = false;
             txtMI.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtMI.Location = new Point(182, 249);
+            txtMI.Location = new Point(192, 263);
             txtMI.MaxLength = 32767;
             txtMI.Name = "txtMI";
             txtMI.PasswordChar = '\0';
@@ -785,7 +785,7 @@
             label11.BackColor = Color.FromArgb(235, 239, 244);
             label11.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.Black;
-            label11.Location = new Point(67, 259);
+            label11.Location = new Point(77, 273);
             label11.Name = "label11";
             label11.Size = new Size(122, 20);
             label11.TabIndex = 17;
@@ -806,7 +806,7 @@
             txtLastName.CustomButton.UseSelectable = true;
             txtLastName.CustomButton.Visible = false;
             txtLastName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtLastName.Location = new Point(182, 196);
+            txtLastName.Location = new Point(192, 210);
             txtLastName.MaxLength = 32767;
             txtLastName.Name = "txtLastName";
             txtLastName.PasswordChar = '\0';
@@ -827,7 +827,7 @@
             label10.BackColor = Color.FromArgb(235, 239, 244);
             label10.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(77, 207);
+            label10.Location = new Point(87, 221);
             label10.Name = "label10";
             label10.Size = new Size(106, 20);
             label10.TabIndex = 15;
@@ -848,7 +848,7 @@
             txtFirstName.CustomButton.UseSelectable = true;
             txtFirstName.CustomButton.Visible = false;
             txtFirstName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtFirstName.Location = new Point(182, 145);
+            txtFirstName.Location = new Point(192, 159);
             txtFirstName.MaxLength = 32767;
             txtFirstName.Name = "txtFirstName";
             txtFirstName.PasswordChar = '\0';
@@ -869,7 +869,7 @@
             label9.BackColor = Color.FromArgb(235, 239, 244);
             label9.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(77, 155);
+            label9.Location = new Point(87, 169);
             label9.Name = "label9";
             label9.Size = new Size(108, 20);
             label9.TabIndex = 13;
@@ -890,7 +890,7 @@
             txtPatientID.CustomButton.UseSelectable = true;
             txtPatientID.CustomButton.Visible = false;
             txtPatientID.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtPatientID.Location = new Point(182, 97);
+            txtPatientID.Location = new Point(192, 111);
             txtPatientID.MaxLength = 32767;
             txtPatientID.Name = "txtPatientID";
             txtPatientID.PasswordChar = '\0';
@@ -913,7 +913,7 @@
             label8.BackColor = Color.FromArgb(235, 239, 244);
             label8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(75, 107);
+            label8.Location = new Point(85, 121);
             label8.Name = "label8";
             label8.Size = new Size(93, 20);
             label8.TabIndex = 11;
@@ -921,29 +921,18 @@
             // 
             // Step2
             // 
-            Step2.Controls.Add(logo);
             Step2.Controls.Add(panel1);
             Step2.Dock = DockStyle.Fill;
             Step2.Location = new Point(0, 0);
             Step2.Name = "Step2";
-            Step2.Size = new Size(850, 801);
+            Step2.Size = new Size(875, 837);
             Step2.TabIndex = 0;
-            // 
-            // logo
-            // 
-            logo.BackColor = Color.Transparent;
-            logo.BackgroundImage = (Image)resources.GetObject("logo.BackgroundImage");
-            logo.BackgroundImageLayout = ImageLayout.Stretch;
-            logo.Location = new Point(704, 0);
-            logo.Name = "logo";
-            logo.Size = new Size(96, 91);
-            logo.TabIndex = 33;
-            logo.TabStop = false;
             // 
             // panel1
             // 
             panel1.BackgroundImage = Properties.Resources._21;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(logo);
             panel1.Controls.Add(ChiefComplaint);
             panel1.Controls.Add(ReferredBy);
             panel1.Controls.Add(TypeOfVisitPanel);
@@ -955,8 +944,19 @@
             panel1.Controls.Add(label19);
             panel1.Location = new Point(-1, 35);
             panel1.Name = "panel1";
-            panel1.Size = new Size(848, 796);
+            panel1.Size = new Size(877, 839);
             panel1.TabIndex = 13;
+            // 
+            // logo
+            // 
+            logo.BackColor = Color.Transparent;
+            logo.BackgroundImage = (Image)resources.GetObject("logo.BackgroundImage");
+            logo.BackgroundImageLayout = ImageLayout.Stretch;
+            logo.Location = new Point(746, -29);
+            logo.Name = "logo";
+            logo.Size = new Size(127, 109);
+            logo.TabIndex = 33;
+            logo.TabStop = false;
             // 
             // ChiefComplaint
             // 
@@ -972,9 +972,9 @@
             ChiefComplaint.Controls.Add(rbFever);
             ChiefComplaint.Controls.Add(rbHeadache);
             ChiefComplaint.Controls.Add(label52);
-            ChiefComplaint.Location = new Point(82, 308);
+            ChiefComplaint.Location = new Point(91, 319);
             ChiefComplaint.Name = "ChiefComplaint";
-            ChiefComplaint.Size = new Size(674, 188);
+            ChiefComplaint.Size = new Size(690, 203);
             ChiefComplaint.TabIndex = 56;
             // 
             // rbCold
@@ -1019,15 +1019,15 @@
             // 
             // 
             txtComplaintOther.CustomButton.Image = null;
-            txtComplaintOther.CustomButton.Location = new Point(217, 2);
+            txtComplaintOther.CustomButton.Location = new Point(219, 1);
             txtComplaintOther.CustomButton.Name = "";
-            txtComplaintOther.CustomButton.Size = new Size(29, 29);
+            txtComplaintOther.CustomButton.Size = new Size(39, 39);
             txtComplaintOther.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
             txtComplaintOther.CustomButton.TabIndex = 1;
             txtComplaintOther.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtComplaintOther.CustomButton.UseSelectable = true;
             txtComplaintOther.CustomButton.Visible = false;
-            txtComplaintOther.Location = new Point(415, 149);
+            txtComplaintOther.Location = new Point(418, 156);
             txtComplaintOther.MaxLength = 32767;
             txtComplaintOther.Name = "txtComplaintOther";
             txtComplaintOther.PasswordChar = '\0';
@@ -1036,7 +1036,7 @@
             txtComplaintOther.SelectionLength = 0;
             txtComplaintOther.SelectionStart = 0;
             txtComplaintOther.ShortcutsEnabled = true;
-            txtComplaintOther.Size = new Size(249, 34);
+            txtComplaintOther.Size = new Size(259, 41);
             txtComplaintOther.TabIndex = 58;
             txtComplaintOther.UseSelectable = true;
             txtComplaintOther.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -1183,9 +1183,9 @@
             ReferredBy.Controls.Add(rbRefSelf);
             ReferredBy.Controls.Add(rbRefTeacher);
             ReferredBy.Controls.Add(txtRefOtherDetails);
-            ReferredBy.Location = new Point(405, 77);
+            ReferredBy.Location = new Point(413, 88);
             ReferredBy.Name = "ReferredBy";
-            ReferredBy.Size = new Size(352, 221);
+            ReferredBy.Size = new Size(367, 221);
             ReferredBy.TabIndex = 55;
             // 
             // label20
@@ -1271,7 +1271,7 @@
             // 
             // 
             txtRefOtherDetails.CustomButton.Image = null;
-            txtRefOtherDetails.CustomButton.Location = new Point(213, 1);
+            txtRefOtherDetails.CustomButton.Location = new Point(230, 1);
             txtRefOtherDetails.CustomButton.Name = "";
             txtRefOtherDetails.CustomButton.Size = new Size(35, 35);
             txtRefOtherDetails.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -1288,7 +1288,7 @@
             txtRefOtherDetails.SelectionLength = 0;
             txtRefOtherDetails.SelectionStart = 0;
             txtRefOtherDetails.ShortcutsEnabled = true;
-            txtRefOtherDetails.Size = new Size(249, 37);
+            txtRefOtherDetails.Size = new Size(266, 37);
             txtRefOtherDetails.TabIndex = 39;
             txtRefOtherDetails.UseSelectable = true;
             txtRefOtherDetails.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -1302,7 +1302,7 @@
             TypeOfVisitPanel.Controls.Add(rbConsultation);
             TypeOfVisitPanel.Controls.Add(rbFollowUp);
             TypeOfVisitPanel.Controls.Add(rbEmergency);
-            TypeOfVisitPanel.Location = new Point(80, 77);
+            TypeOfVisitPanel.Location = new Point(88, 88);
             TypeOfVisitPanel.Name = "TypeOfVisitPanel";
             TypeOfVisitPanel.Size = new Size(318, 221);
             TypeOfVisitPanel.TabIndex = 54;
@@ -1400,7 +1400,7 @@
             PrevS2Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PrevS2Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
             PrevS2Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            PrevS2Btn.Location = new Point(427, 659);
+            PrevS2Btn.Location = new Point(435, 679);
             PrevS2Btn.Name = "PrevS2Btn";
             PrevS2Btn.PrimaryColor = Color.LimeGreen;
             PrevS2Btn.Size = new Size(149, 49);
@@ -1420,7 +1420,7 @@
             NextS2Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NextS2Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
             NextS2Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            NextS2Btn.Location = new Point(607, 659);
+            NextS2Btn.Location = new Point(615, 680);
             NextS2Btn.Name = "NextS2Btn";
             NextS2Btn.PrimaryColor = Color.FromArgb(11, 45, 114);
             NextS2Btn.Size = new Size(149, 49);
@@ -1438,7 +1438,7 @@
             rtbSymptomsDescription.CharacterCasing = CharacterCasing.Normal;
             rtbSymptomsDescription.Depth = 0;
             rtbSymptomsDescription.HideSelection = true;
-            rtbSymptomsDescription.Location = new Point(261, 537);
+            rtbSymptomsDescription.Location = new Point(269, 568);
             rtbSymptomsDescription.MaxLength = 32767;
             rtbSymptomsDescription.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             rtbSymptomsDescription.Name = "rtbSymptomsDescription";
@@ -1461,7 +1461,7 @@
             label26.BackColor = Color.FromArgb(235, 239, 244);
             label26.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label26.ForeColor = Color.Black;
-            label26.Location = new Point(94, 572);
+            label26.Location = new Point(102, 588);
             label26.Name = "label26";
             label26.Size = new Size(164, 20);
             label26.TabIndex = 11;
@@ -1473,7 +1473,7 @@
             label25.BackColor = Color.FromArgb(235, 239, 244);
             label25.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label25.ForeColor = Color.Black;
-            label25.Location = new Point(83, 507);
+            label25.Location = new Point(91, 530);
             label25.Name = "label25";
             label25.Size = new Size(227, 25);
             label25.TabIndex = 50;
@@ -1483,11 +1483,11 @@
             // 
             label19.AutoSize = true;
             label19.BackColor = Color.White;
-            label19.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label19.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label19.ForeColor = Color.Black;
-            label19.Location = new Point(18, -5);
+            label19.Location = new Point(18, -2);
             label19.Name = "label19";
-            label19.Size = new Size(184, 36);
+            label19.Size = new Size(178, 37);
             label19.TabIndex = 11;
             label19.Text = "Visit Details";
             // 
@@ -1497,34 +1497,23 @@
             Step3.Dock = DockStyle.Fill;
             Step3.Location = new Point(0, 0);
             Step3.Name = "Step3";
-            Step3.Size = new Size(850, 801);
+            Step3.Size = new Size(875, 837);
             Step3.TabIndex = 0;
             // 
             // panel2
             // 
-            panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(panel3);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(850, 801);
+            panel2.Size = new Size(875, 837);
             panel2.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(709, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(96, 91);
-            pictureBox1.TabIndex = 33;
-            pictureBox1.TabStop = false;
             // 
             // panel3
             // 
             panel3.BackgroundImage = Properties.Resources._21;
             panel3.BackgroundImageLayout = ImageLayout.Stretch;
+            panel3.Controls.Add(pictureBox1);
             panel3.Controls.Add(txtNumOxygenSaturation);
             panel3.Controls.Add(txtNumRespiratoryRate);
             panel3.Controls.Add(txtNumPulseRate);
@@ -1546,8 +1535,19 @@
             panel3.Controls.Add(label33);
             panel3.Location = new Point(-1, 35);
             panel3.Name = "panel3";
-            panel3.Size = new Size(851, 796);
+            panel3.Size = new Size(888, 839);
             panel3.TabIndex = 13;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(748, -29);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(131, 116);
+            pictureBox1.TabIndex = 33;
+            pictureBox1.TabStop = false;
             // 
             // txtNumOxygenSaturation
             // 
@@ -1555,7 +1555,7 @@
             // 
             // 
             txtNumOxygenSaturation.CustomButton.Image = null;
-            txtNumOxygenSaturation.CustomButton.Location = new Point(350, 1);
+            txtNumOxygenSaturation.CustomButton.Location = new Point(380, 1);
             txtNumOxygenSaturation.CustomButton.Name = "";
             txtNumOxygenSaturation.CustomButton.Size = new Size(35, 35);
             txtNumOxygenSaturation.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -1564,7 +1564,7 @@
             txtNumOxygenSaturation.CustomButton.UseSelectable = true;
             txtNumOxygenSaturation.CustomButton.Visible = false;
             txtNumOxygenSaturation.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtNumOxygenSaturation.Location = new Point(365, 318);
+            txtNumOxygenSaturation.Location = new Point(366, 346);
             txtNumOxygenSaturation.MaxLength = 32767;
             txtNumOxygenSaturation.Name = "txtNumOxygenSaturation";
             txtNumOxygenSaturation.PasswordChar = '\0';
@@ -1573,7 +1573,7 @@
             txtNumOxygenSaturation.SelectionLength = 0;
             txtNumOxygenSaturation.SelectionStart = 0;
             txtNumOxygenSaturation.ShortcutsEnabled = true;
-            txtNumOxygenSaturation.Size = new Size(386, 37);
+            txtNumOxygenSaturation.Size = new Size(416, 37);
             txtNumOxygenSaturation.TabIndex = 72;
             txtNumOxygenSaturation.UseSelectable = true;
             txtNumOxygenSaturation.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -1585,7 +1585,7 @@
             // 
             // 
             txtNumRespiratoryRate.CustomButton.Image = null;
-            txtNumRespiratoryRate.CustomButton.Location = new Point(465, 1);
+            txtNumRespiratoryRate.CustomButton.Location = new Point(491, 1);
             txtNumRespiratoryRate.CustomButton.Name = "";
             txtNumRespiratoryRate.CustomButton.Size = new Size(35, 35);
             txtNumRespiratoryRate.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -1594,7 +1594,7 @@
             txtNumRespiratoryRate.CustomButton.UseSelectable = true;
             txtNumRespiratoryRate.CustomButton.Visible = false;
             txtNumRespiratoryRate.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtNumRespiratoryRate.Location = new Point(250, 267);
+            txtNumRespiratoryRate.Location = new Point(251, 289);
             txtNumRespiratoryRate.MaxLength = 32767;
             txtNumRespiratoryRate.Name = "txtNumRespiratoryRate";
             txtNumRespiratoryRate.PasswordChar = '\0';
@@ -1603,7 +1603,7 @@
             txtNumRespiratoryRate.SelectionLength = 0;
             txtNumRespiratoryRate.SelectionStart = 0;
             txtNumRespiratoryRate.ShortcutsEnabled = true;
-            txtNumRespiratoryRate.Size = new Size(501, 37);
+            txtNumRespiratoryRate.Size = new Size(527, 37);
             txtNumRespiratoryRate.TabIndex = 71;
             txtNumRespiratoryRate.UseSelectable = true;
             txtNumRespiratoryRate.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -1615,7 +1615,7 @@
             // 
             // 
             txtNumPulseRate.CustomButton.Image = null;
-            txtNumPulseRate.CustomButton.Location = new Point(481, 1);
+            txtNumPulseRate.CustomButton.Location = new Point(509, 1);
             txtNumPulseRate.CustomButton.Name = "";
             txtNumPulseRate.CustomButton.Size = new Size(35, 35);
             txtNumPulseRate.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -1624,7 +1624,7 @@
             txtNumPulseRate.CustomButton.UseSelectable = true;
             txtNumPulseRate.CustomButton.Visible = false;
             txtNumPulseRate.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtNumPulseRate.Location = new Point(232, 217);
+            txtNumPulseRate.Location = new Point(233, 237);
             txtNumPulseRate.MaxLength = 32767;
             txtNumPulseRate.Name = "txtNumPulseRate";
             txtNumPulseRate.PasswordChar = '\0';
@@ -1633,7 +1633,7 @@
             txtNumPulseRate.SelectionLength = 0;
             txtNumPulseRate.SelectionStart = 0;
             txtNumPulseRate.ShortcutsEnabled = true;
-            txtNumPulseRate.Size = new Size(517, 37);
+            txtNumPulseRate.Size = new Size(545, 37);
             txtNumPulseRate.TabIndex = 70;
             txtNumPulseRate.UseSelectable = true;
             txtNumPulseRate.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -1647,7 +1647,7 @@
             rtbInjuryDescription.Depth = 0;
             rtbInjuryDescription.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rtbInjuryDescription.HideSelection = true;
-            rtbInjuryDescription.Location = new Point(86, 491);
+            rtbInjuryDescription.Location = new Point(92, 521);
             rtbInjuryDescription.MaxLength = 32767;
             rtbInjuryDescription.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             rtbInjuryDescription.Name = "rtbInjuryDescription";
@@ -1663,6 +1663,7 @@
             rtbInjuryDescription.TabStop = false;
             rtbInjuryDescription.TextAlign = HorizontalAlignment.Left;
             rtbInjuryDescription.UseSystemPasswordChar = false;
+            rtbInjuryDescription.Click += rtbInjuryDescription_Click;
             // 
             // txtPhysicalFindings
             // 
@@ -1670,7 +1671,7 @@
             // 
             // 
             txtPhysicalFindings.CustomButton.Image = null;
-            txtPhysicalFindings.CustomButton.Location = new Point(467, 1);
+            txtPhysicalFindings.CustomButton.Location = new Point(487, 1);
             txtPhysicalFindings.CustomButton.Name = "";
             txtPhysicalFindings.CustomButton.Size = new Size(35, 35);
             txtPhysicalFindings.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -1679,7 +1680,7 @@
             txtPhysicalFindings.CustomButton.UseSelectable = true;
             txtPhysicalFindings.CustomButton.Visible = false;
             txtPhysicalFindings.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtPhysicalFindings.Location = new Point(248, 371);
+            txtPhysicalFindings.Location = new Point(262, 408);
             txtPhysicalFindings.MaxLength = 32767;
             txtPhysicalFindings.Name = "txtPhysicalFindings";
             txtPhysicalFindings.PasswordChar = '\0';
@@ -1688,7 +1689,7 @@
             txtPhysicalFindings.SelectionLength = 0;
             txtPhysicalFindings.SelectionStart = 0;
             txtPhysicalFindings.ShortcutsEnabled = true;
-            txtPhysicalFindings.Size = new Size(503, 37);
+            txtPhysicalFindings.Size = new Size(523, 37);
             txtPhysicalFindings.TabIndex = 68;
             txtPhysicalFindings.UseSelectable = true;
             txtPhysicalFindings.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -1708,7 +1709,7 @@
             txtBloodPressure.HideSelection = true;
             txtBloodPressure.InsertKeyMode = InsertKeyMode.Default;
             txtBloodPressure.LeadingIcon = null;
-            txtBloodPressure.Location = new Point(232, 149);
+            txtBloodPressure.Location = new Point(233, 167);
             txtBloodPressure.Mask = "";
             txtBloodPressure.MaxLength = 32767;
             txtBloodPressure.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
@@ -1725,7 +1726,7 @@
             txtBloodPressure.SelectionLength = 0;
             txtBloodPressure.SelectionStart = 0;
             txtBloodPressure.ShortcutsEnabled = true;
-            txtBloodPressure.Size = new Size(517, 48);
+            txtBloodPressure.Size = new Size(545, 48);
             txtBloodPressure.SkipLiterals = true;
             txtBloodPressure.TabIndex = 66;
             txtBloodPressure.TabStop = false;
@@ -1741,7 +1742,7 @@
             label29.BackColor = Color.FromArgb(235, 239, 244);
             label29.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label29.ForeColor = Color.Black;
-            label29.Location = new Point(427, 455);
+            label29.Location = new Point(452, 476);
             label29.Name = "label29";
             label29.Size = new Size(223, 22);
             label29.TabIndex = 64;
@@ -1753,7 +1754,7 @@
             label37.BackColor = Color.FromArgb(235, 239, 244);
             label37.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label37.ForeColor = Color.Black;
-            label37.Location = new Point(83, 323);
+            label37.Location = new Point(84, 356);
             label37.Name = "label37";
             label37.Size = new Size(277, 22);
             label37.TabIndex = 63;
@@ -1765,7 +1766,7 @@
             label36.BackColor = Color.FromArgb(235, 239, 244);
             label36.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label36.ForeColor = Color.Black;
-            label36.Location = new Point(83, 379);
+            label36.Location = new Point(84, 416);
             label36.Name = "label36";
             label36.Size = new Size(173, 22);
             label36.TabIndex = 62;
@@ -1777,7 +1778,7 @@
             label30.BackColor = Color.FromArgb(235, 239, 244);
             label30.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label30.ForeColor = Color.Black;
-            label30.Location = new Point(83, 445);
+            label30.Location = new Point(92, 472);
             label30.Name = "label30";
             label30.Size = new Size(172, 22);
             label30.TabIndex = 61;
@@ -1789,7 +1790,7 @@
             label35.BackColor = Color.FromArgb(235, 239, 244);
             label35.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label35.ForeColor = Color.Black;
-            label35.Location = new Point(86, 217);
+            label35.Location = new Point(87, 246);
             label35.Name = "label35";
             label35.Size = new Size(120, 22);
             label35.TabIndex = 56;
@@ -1801,7 +1802,7 @@
             label34.BackColor = Color.FromArgb(235, 239, 244);
             label34.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label34.ForeColor = Color.Black;
-            label34.Location = new Point(85, 269);
+            label34.Location = new Point(86, 299);
             label34.Name = "label34";
             label34.Size = new Size(167, 22);
             label34.TabIndex = 55;
@@ -1813,7 +1814,7 @@
             label32.BackColor = Color.FromArgb(235, 239, 244);
             label32.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label32.ForeColor = Color.Black;
-            label32.Location = new Point(85, 163);
+            label32.Location = new Point(83, 185);
             label32.Name = "label32";
             label32.Size = new Size(153, 22);
             label32.TabIndex = 54;
@@ -1828,7 +1829,7 @@
             PrevS3Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PrevS3Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
             PrevS3Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            PrevS3Btn.Location = new Point(427, 645);
+            PrevS3Btn.Location = new Point(461, 665);
             PrevS3Btn.Name = "PrevS3Btn";
             PrevS3Btn.PrimaryColor = Color.LimeGreen;
             PrevS3Btn.Size = new Size(149, 49);
@@ -1848,7 +1849,7 @@
             NextS3Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NextS3Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
             NextS3Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            NextS3Btn.Location = new Point(607, 645);
+            NextS3Btn.Location = new Point(641, 665);
             NextS3Btn.Name = "NextS3Btn";
             NextS3Btn.PrimaryColor = Color.FromArgb(11, 45, 114);
             NextS3Btn.Size = new Size(149, 49);
@@ -1867,7 +1868,7 @@
             rtbNurseNotes.Depth = 0;
             rtbNurseNotes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rtbNurseNotes.HideSelection = true;
-            rtbNurseNotes.Location = new Point(427, 495);
+            rtbNurseNotes.Location = new Point(458, 520);
             rtbNurseNotes.MaxLength = 32767;
             rtbNurseNotes.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             rtbNurseNotes.Name = "rtbNurseNotes";
@@ -1888,11 +1889,11 @@
             // 
             label31.AutoSize = true;
             label31.BackColor = Color.White;
-            label31.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label31.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label31.ForeColor = Color.Black;
-            label31.Location = new Point(18, -5);
+            label31.Location = new Point(18, 2);
             label31.Name = "label31";
-            label31.Size = new Size(358, 36);
+            label31.Size = new Size(346, 37);
             label31.TabIndex = 11;
             label31.Text = "Vital Signs & Assessment";
             // 
@@ -1902,7 +1903,7 @@
             // 
             // 
             txtTemperature.CustomButton.Image = null;
-            txtTemperature.CustomButton.Location = new Point(481, 1);
+            txtTemperature.CustomButton.Location = new Point(513, 1);
             txtTemperature.CustomButton.Name = "";
             txtTemperature.CustomButton.Size = new Size(35, 35);
             txtTemperature.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -1911,7 +1912,7 @@
             txtTemperature.CustomButton.UseSelectable = true;
             txtTemperature.CustomButton.Visible = false;
             txtTemperature.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtTemperature.Location = new Point(231, 99);
+            txtTemperature.Location = new Point(232, 116);
             txtTemperature.MaxLength = 32767;
             txtTemperature.Name = "txtTemperature";
             txtTemperature.PasswordChar = '\0';
@@ -1920,7 +1921,7 @@
             txtTemperature.SelectionLength = 0;
             txtTemperature.SelectionStart = 0;
             txtTemperature.ShortcutsEnabled = true;
-            txtTemperature.Size = new Size(517, 37);
+            txtTemperature.Size = new Size(549, 37);
             txtTemperature.TabIndex = 39;
             txtTemperature.UseSelectable = true;
             txtTemperature.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -1933,7 +1934,7 @@
             label33.BackColor = Color.FromArgb(235, 239, 244);
             label33.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label33.ForeColor = Color.Black;
-            label33.Location = new Point(85, 108);
+            label33.Location = new Point(86, 127);
             label33.Name = "label33";
             label33.Size = new Size(130, 22);
             label33.TabIndex = 28;
@@ -1945,7 +1946,7 @@
             Step4.Dock = DockStyle.Fill;
             Step4.Location = new Point(0, 0);
             Step4.Name = "Step4";
-            Step4.Size = new Size(850, 801);
+            Step4.Size = new Size(875, 837);
             Step4.TabIndex = 0;
             // 
             // panel4
@@ -1955,7 +1956,7 @@
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(850, 801);
+            panel4.Size = new Size(875, 837);
             panel4.TabIndex = 2;
             // 
             // pictureBox2
@@ -1963,9 +1964,9 @@
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox2.Location = new Point(707, 0);
+            pictureBox2.Location = new Point(753, -7);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(96, 91);
+            pictureBox2.Size = new Size(122, 107);
             pictureBox2.TabIndex = 33;
             pictureBox2.TabStop = false;
             // 
@@ -1997,7 +1998,7 @@
             panel6.Controls.Add(label43);
             panel6.Location = new Point(-1, 35);
             panel6.Name = "panel6";
-            panel6.Size = new Size(848, 796);
+            panel6.Size = new Size(877, 839);
             panel6.TabIndex = 13;
             // 
             // txtNumMedQuantity
@@ -2006,7 +2007,7 @@
             // 
             // 
             txtNumMedQuantity.CustomButton.Image = null;
-            txtNumMedQuantity.CustomButton.Location = new Point(437, 1);
+            txtNumMedQuantity.CustomButton.Location = new Point(477, 1);
             txtNumMedQuantity.CustomButton.Name = "";
             txtNumMedQuantity.CustomButton.Size = new Size(33, 33);
             txtNumMedQuantity.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -2015,7 +2016,7 @@
             txtNumMedQuantity.CustomButton.UseSelectable = true;
             txtNumMedQuantity.CustomButton.Visible = false;
             txtNumMedQuantity.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtNumMedQuantity.Location = new Point(267, 409);
+            txtNumMedQuantity.Location = new Point(263, 424);
             txtNumMedQuantity.MaxLength = 32767;
             txtNumMedQuantity.Name = "txtNumMedQuantity";
             txtNumMedQuantity.PasswordChar = '\0';
@@ -2024,7 +2025,7 @@
             txtNumMedQuantity.SelectionLength = 0;
             txtNumMedQuantity.SelectionStart = 0;
             txtNumMedQuantity.ShortcutsEnabled = true;
-            txtNumMedQuantity.Size = new Size(471, 35);
+            txtNumMedQuantity.Size = new Size(511, 35);
             txtNumMedQuantity.TabIndex = 94;
             txtNumMedQuantity.UseSelectable = true;
             txtNumMedQuantity.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -2038,19 +2039,19 @@
             cmbMedicineName.FormattingEnabled = true;
             cmbMedicineName.ItemHeight = 29;
             cmbMedicineName.Items.AddRange(new object[] { "Paracetamol", "Bioflu", "Biogesic", "Neozep", "Symdex", "Cetirizine", "Salbutamol", "Captopril", "Kremil-S", "Mefenamic", "Loperamide", "Bisacodyl", "Dicycloverine", "Omeprazole", "Hyoscine", "Ibuprofen", "Salicylic Acid", "Benzocaine", "Carbocisteine", "Calmoseptine", "Eye Mo", "Bactidol", "Advil", "Alaxan FR", "Saridon" });
-            cmbMedicineName.Location = new Point(267, 360);
+            cmbMedicineName.Location = new Point(263, 375);
             cmbMedicineName.Name = "cmbMedicineName";
-            cmbMedicineName.Size = new Size(471, 35);
+            cmbMedicineName.Size = new Size(511, 35);
             cmbMedicineName.TabIndex = 93;
             cmbMedicineName.UseSelectable = true;
             // 
             // dtpExpiration
             // 
             dtpExpiration.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dtpExpiration.Location = new Point(266, 512);
+            dtpExpiration.Location = new Point(262, 527);
             dtpExpiration.MinimumSize = new Size(0, 30);
             dtpExpiration.Name = "dtpExpiration";
-            dtpExpiration.Size = new Size(473, 30);
+            dtpExpiration.Size = new Size(512, 30);
             dtpExpiration.TabIndex = 92;
             // 
             // txtDosage
@@ -2059,7 +2060,7 @@
             // 
             // 
             txtDosage.CustomButton.Image = null;
-            txtDosage.CustomButton.Location = new Point(437, 1);
+            txtDosage.CustomButton.Location = new Point(477, 1);
             txtDosage.CustomButton.Name = "";
             txtDosage.CustomButton.Size = new Size(33, 33);
             txtDosage.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -2068,7 +2069,7 @@
             txtDosage.CustomButton.UseSelectable = true;
             txtDosage.CustomButton.Visible = false;
             txtDosage.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtDosage.Location = new Point(267, 457);
+            txtDosage.Location = new Point(263, 472);
             txtDosage.MaxLength = 32767;
             txtDosage.Name = "txtDosage";
             txtDosage.PasswordChar = '\0';
@@ -2077,7 +2078,7 @@
             txtDosage.SelectionLength = 0;
             txtDosage.SelectionStart = 0;
             txtDosage.ShortcutsEnabled = true;
-            txtDosage.Size = new Size(471, 35);
+            txtDosage.Size = new Size(511, 35);
             txtDosage.TabIndex = 91;
             txtDosage.UseSelectable = true;
             txtDosage.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -2089,7 +2090,7 @@
             label44.BackColor = Color.FromArgb(235, 239, 244);
             label44.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label44.ForeColor = Color.Black;
-            label44.Location = new Point(101, 576);
+            label44.Location = new Point(97, 591);
             label44.Name = "label44";
             label44.Size = new Size(149, 22);
             label44.TabIndex = 90;
@@ -2101,7 +2102,7 @@
             label41.BackColor = Color.FromArgb(235, 239, 244);
             label41.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label41.ForeColor = Color.Black;
-            label41.Location = new Point(102, 467);
+            label41.Location = new Point(98, 482);
             label41.Name = "label41";
             label41.Size = new Size(77, 22);
             label41.TabIndex = 88;
@@ -2113,7 +2114,7 @@
             label40.BackColor = Color.FromArgb(235, 239, 244);
             label40.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label40.ForeColor = Color.Black;
-            label40.Location = new Point(101, 519);
+            label40.Location = new Point(97, 534);
             label40.Name = "label40";
             label40.Size = new Size(151, 22);
             label40.TabIndex = 87;
@@ -2125,7 +2126,7 @@
             label39.BackColor = Color.FromArgb(235, 239, 244);
             label39.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label39.ForeColor = Color.Black;
-            label39.Location = new Point(101, 416);
+            label39.Location = new Point(97, 431);
             label39.Name = "label39";
             label39.Size = new Size(87, 22);
             label39.TabIndex = 85;
@@ -2137,7 +2138,7 @@
             label38.BackColor = Color.FromArgb(235, 239, 244);
             label38.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label38.ForeColor = Color.Black;
-            label38.Location = new Point(101, 371);
+            label38.Location = new Point(97, 386);
             label38.Name = "label38";
             label38.Size = new Size(138, 22);
             label38.TabIndex = 83;
@@ -2149,7 +2150,7 @@
             label28.BackColor = Color.FromArgb(235, 239, 244);
             label28.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label28.ForeColor = Color.Black;
-            label28.Location = new Point(85, 323);
+            label28.Location = new Point(81, 338);
             label28.Name = "label28";
             label28.Size = new Size(155, 25);
             label28.TabIndex = 82;
@@ -2168,7 +2169,7 @@
             chkBandage.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
             chkBandage.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             chkBandage.ForeColor = Color.FromArgb(48, 49, 51);
-            chkBandage.Location = new Point(448, 177);
+            chkBandage.Location = new Point(444, 192);
             chkBandage.Name = "chkBandage";
             chkBandage.Size = new Size(160, 20);
             chkBandage.TabIndex = 81;
@@ -2188,7 +2189,7 @@
             chkWoundCleaning.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
             chkWoundCleaning.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             chkWoundCleaning.ForeColor = Color.FromArgb(48, 49, 51);
-            chkWoundCleaning.Location = new Point(447, 135);
+            chkWoundCleaning.Location = new Point(443, 150);
             chkWoundCleaning.Name = "chkWoundCleaning";
             chkWoundCleaning.Size = new Size(156, 20);
             chkWoundCleaning.TabIndex = 80;
@@ -2208,7 +2209,7 @@
             chkColdCompress.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
             chkColdCompress.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             chkColdCompress.ForeColor = Color.FromArgb(48, 49, 51);
-            chkColdCompress.Location = new Point(88, 224);
+            chkColdCompress.Location = new Point(84, 239);
             chkColdCompress.Name = "chkColdCompress";
             chkColdCompress.Size = new Size(150, 20);
             chkColdCompress.TabIndex = 79;
@@ -2228,7 +2229,7 @@
             chkRest.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
             chkRest.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             chkRest.ForeColor = Color.FromArgb(48, 49, 51);
-            chkRest.Location = new Point(88, 181);
+            chkRest.Location = new Point(84, 196);
             chkRest.Name = "chkRest";
             chkRest.Size = new Size(135, 20);
             chkRest.TabIndex = 78;
@@ -2248,7 +2249,7 @@
             chkMedication.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
             chkMedication.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             chkMedication.ForeColor = Color.FromArgb(48, 49, 51);
-            chkMedication.Location = new Point(88, 140);
+            chkMedication.Location = new Point(84, 155);
             chkMedication.Name = "chkMedication";
             chkMedication.Size = new Size(218, 20);
             chkMedication.TabIndex = 77;
@@ -2261,7 +2262,7 @@
             label45.BackColor = Color.FromArgb(235, 239, 244);
             label45.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label45.ForeColor = Color.Black;
-            label45.Location = new Point(85, 91);
+            label45.Location = new Point(81, 106);
             label45.Name = "label45";
             label45.Size = new Size(154, 25);
             label45.TabIndex = 70;
@@ -2273,7 +2274,7 @@
             // 
             // 
             txtFirstAidOther.CustomButton.Image = null;
-            txtFirstAidOther.CustomButton.Location = new Point(213, 1);
+            txtFirstAidOther.CustomButton.Location = new Point(253, 1);
             txtFirstAidOther.CustomButton.Name = "";
             txtFirstAidOther.CustomButton.Size = new Size(67, 67);
             txtFirstAidOther.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -2281,7 +2282,7 @@
             txtFirstAidOther.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtFirstAidOther.CustomButton.UseSelectable = true;
             txtFirstAidOther.CustomButton.Visible = false;
-            txtFirstAidOther.Location = new Point(457, 247);
+            txtFirstAidOther.Location = new Point(453, 262);
             txtFirstAidOther.MaxLength = 32767;
             txtFirstAidOther.Name = "txtFirstAidOther";
             txtFirstAidOther.PasswordChar = '\0';
@@ -2290,7 +2291,7 @@
             txtFirstAidOther.SelectionLength = 0;
             txtFirstAidOther.SelectionStart = 0;
             txtFirstAidOther.ShortcutsEnabled = true;
-            txtFirstAidOther.Size = new Size(281, 69);
+            txtFirstAidOther.Size = new Size(321, 69);
             txtFirstAidOther.TabIndex = 68;
             txtFirstAidOther.UseSelectable = true;
             txtFirstAidOther.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -2302,7 +2303,7 @@
             label27.BackColor = Color.FromArgb(235, 239, 244);
             label27.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label27.ForeColor = Color.Black;
-            label27.Location = new Point(448, 213);
+            label27.Location = new Point(444, 228);
             label27.Name = "label27";
             label27.Size = new Size(60, 22);
             label27.TabIndex = 64;
@@ -2317,7 +2318,7 @@
             PrevS4Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PrevS4Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
             PrevS4Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            PrevS4Btn.Location = new Point(407, 645);
+            PrevS4Btn.Location = new Point(439, 660);
             PrevS4Btn.Name = "PrevS4Btn";
             PrevS4Btn.PrimaryColor = Color.LimeGreen;
             PrevS4Btn.Size = new Size(149, 49);
@@ -2337,7 +2338,7 @@
             NextS4Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NextS4Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
             NextS4Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            NextS4Btn.Location = new Point(586, 645);
+            NextS4Btn.Location = new Point(625, 662);
             NextS4Btn.Name = "NextS4Btn";
             NextS4Btn.PrimaryColor = Color.FromArgb(11, 45, 114);
             NextS4Btn.Size = new Size(149, 49);
@@ -2356,7 +2357,7 @@
             rtbTreatmentNotes.Depth = 0;
             rtbTreatmentNotes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rtbTreatmentNotes.HideSelection = true;
-            rtbTreatmentNotes.Location = new Point(267, 560);
+            rtbTreatmentNotes.Location = new Point(263, 575);
             rtbTreatmentNotes.MaxLength = 32767;
             rtbTreatmentNotes.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             rtbTreatmentNotes.Name = "rtbTreatmentNotes";
@@ -2367,7 +2368,7 @@
             rtbTreatmentNotes.SelectionLength = 0;
             rtbTreatmentNotes.SelectionStart = 0;
             rtbTreatmentNotes.ShortcutsEnabled = true;
-            rtbTreatmentNotes.Size = new Size(471, 57);
+            rtbTreatmentNotes.Size = new Size(511, 57);
             rtbTreatmentNotes.TabIndex = 52;
             rtbTreatmentNotes.TabStop = false;
             rtbTreatmentNotes.TextAlign = HorizontalAlignment.Left;
@@ -2377,11 +2378,11 @@
             // 
             label43.AutoSize = true;
             label43.BackColor = Color.White;
-            label43.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label43.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label43.ForeColor = Color.Black;
             label43.Location = new Point(21, 0);
             label43.Name = "label43";
-            label43.Size = new Size(302, 36);
+            label43.Size = new Size(314, 37);
             label43.TabIndex = 11;
             label43.Text = "Treatment & Medicine";
             // 
@@ -2391,7 +2392,7 @@
             Step5.Dock = DockStyle.Fill;
             Step5.Location = new Point(0, 0);
             Step5.Name = "Step5";
-            Step5.Size = new Size(850, 801);
+            Step5.Size = new Size(875, 837);
             Step5.TabIndex = 0;
             // 
             // panel7
@@ -2401,7 +2402,7 @@
             panel7.Dock = DockStyle.Fill;
             panel7.Location = new Point(0, 0);
             panel7.Name = "panel7";
-            panel7.Size = new Size(850, 801);
+            panel7.Size = new Size(875, 837);
             panel7.TabIndex = 3;
             // 
             // pictureBox3
@@ -2409,9 +2410,9 @@
             pictureBox3.BackColor = Color.Transparent;
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox3.Location = new Point(702, 0);
+            pictureBox3.Location = new Point(753, -9);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(96, 91);
+            pictureBox3.Size = new Size(117, 107);
             pictureBox3.TabIndex = 33;
             pictureBox3.TabStop = false;
             // 
@@ -2439,7 +2440,7 @@
             panel8.Controls.Add(label53);
             panel8.Location = new Point(-1, 35);
             panel8.Name = "panel8";
-            panel8.Size = new Size(848, 796);
+            panel8.Size = new Size(893, 836);
             panel8.TabIndex = 13;
             // 
             // rtbFinalNotes
@@ -2449,7 +2450,7 @@
             rtbFinalNotes.CharacterCasing = CharacterCasing.Normal;
             rtbFinalNotes.Depth = 0;
             rtbFinalNotes.HideSelection = true;
-            rtbFinalNotes.Location = new Point(261, 564);
+            rtbFinalNotes.Location = new Point(262, 587);
             rtbFinalNotes.MaxLength = 32767;
             rtbFinalNotes.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             rtbFinalNotes.Name = "rtbFinalNotes";
@@ -2460,7 +2461,7 @@
             rtbFinalNotes.SelectionLength = 0;
             rtbFinalNotes.SelectionStart = 0;
             rtbFinalNotes.ShortcutsEnabled = true;
-            rtbFinalNotes.Size = new Size(474, 61);
+            rtbFinalNotes.Size = new Size(521, 61);
             rtbFinalNotes.TabIndex = 104;
             rtbFinalNotes.TabStop = false;
             rtbFinalNotes.TextAlign = HorizontalAlignment.Left;
@@ -2472,7 +2473,7 @@
             label49.BackColor = Color.FromArgb(235, 239, 244);
             label49.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label49.ForeColor = Color.Black;
-            label49.Location = new Point(111, 580);
+            label49.Location = new Point(112, 603);
             label49.Name = "label49";
             label49.Size = new Size(106, 22);
             label49.TabIndex = 102;
@@ -2484,7 +2485,7 @@
             // 
             // 
             txtStaffID.CustomButton.Image = null;
-            txtStaffID.CustomButton.Location = new Point(440, 1);
+            txtStaffID.CustomButton.Location = new Point(487, 1);
             txtStaffID.CustomButton.Name = "";
             txtStaffID.CustomButton.Size = new Size(33, 33);
             txtStaffID.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -2493,7 +2494,7 @@
             txtStaffID.CustomButton.UseSelectable = true;
             txtStaffID.CustomButton.Visible = false;
             txtStaffID.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtStaffID.Location = new Point(261, 517);
+            txtStaffID.Location = new Point(262, 534);
             txtStaffID.MaxLength = 32767;
             txtStaffID.Name = "txtStaffID";
             txtStaffID.PasswordChar = '\0';
@@ -2502,7 +2503,7 @@
             txtStaffID.SelectionLength = 0;
             txtStaffID.SelectionStart = 0;
             txtStaffID.ShortcutsEnabled = true;
-            txtStaffID.Size = new Size(474, 35);
+            txtStaffID.Size = new Size(521, 35);
             txtStaffID.TabIndex = 100;
             txtStaffID.UseSelectable = true;
             txtStaffID.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -2515,7 +2516,7 @@
             // 
             // 
             txtClinicIncharge.CustomButton.Image = null;
-            txtClinicIncharge.CustomButton.Location = new Point(440, 1);
+            txtClinicIncharge.CustomButton.Location = new Point(485, 1);
             txtClinicIncharge.CustomButton.Name = "";
             txtClinicIncharge.CustomButton.Size = new Size(33, 33);
             txtClinicIncharge.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -2524,7 +2525,7 @@
             txtClinicIncharge.CustomButton.UseSelectable = true;
             txtClinicIncharge.CustomButton.Visible = false;
             txtClinicIncharge.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtClinicIncharge.Location = new Point(261, 465);
+            txtClinicIncharge.Location = new Point(262, 478);
             txtClinicIncharge.MaxLength = 32767;
             txtClinicIncharge.Name = "txtClinicIncharge";
             txtClinicIncharge.PasswordChar = '\0';
@@ -2533,7 +2534,7 @@
             txtClinicIncharge.SelectionLength = 0;
             txtClinicIncharge.SelectionStart = 0;
             txtClinicIncharge.ShortcutsEnabled = true;
-            txtClinicIncharge.Size = new Size(474, 35);
+            txtClinicIncharge.Size = new Size(519, 35);
             txtClinicIncharge.TabIndex = 99;
             txtClinicIncharge.UseSelectable = true;
             txtClinicIncharge.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -2545,7 +2546,7 @@
             label46.BackColor = Color.FromArgb(235, 239, 244);
             label46.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label46.ForeColor = Color.Black;
-            label46.Location = new Point(88, 427);
+            label46.Location = new Point(89, 440);
             label46.Name = "label46";
             label46.Size = new Size(189, 25);
             label46.TabIndex = 98;
@@ -2557,7 +2558,7 @@
             rbGuardianNotified.Checked = false;
             rbGuardianNotified.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbGuardianNotified.ForeColor = Color.Black;
-            rbGuardianNotified.Location = new Point(446, 171);
+            rbGuardianNotified.Location = new Point(447, 179);
             rbGuardianNotified.Name = "rbGuardianNotified";
             rbGuardianNotified.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             rbGuardianNotified.RadioColor = Color.FromArgb(0, 162, 250);
@@ -2575,7 +2576,7 @@
             rbFollowUpRequired.Checked = false;
             rbFollowUpRequired.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbFollowUpRequired.ForeColor = Color.Black;
-            rbFollowUpRequired.Location = new Point(446, 129);
+            rbFollowUpRequired.Location = new Point(447, 137);
             rbFollowUpRequired.Name = "rbFollowUpRequired";
             rbFollowUpRequired.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             rbFollowUpRequired.RadioColor = Color.FromArgb(0, 162, 250);
@@ -2593,7 +2594,7 @@
             rbReferredHospital.Checked = false;
             rbReferredHospital.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbReferredHospital.ForeColor = Color.Black;
-            rbReferredHospital.Location = new Point(101, 221);
+            rbReferredHospital.Location = new Point(102, 229);
             rbReferredHospital.Name = "rbReferredHospital";
             rbReferredHospital.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             rbReferredHospital.RadioColor = Color.FromArgb(0, 162, 250);
@@ -2611,7 +2612,7 @@
             rbSentHome.Checked = false;
             rbSentHome.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbSentHome.ForeColor = Color.Black;
-            rbSentHome.Location = new Point(101, 179);
+            rbSentHome.Location = new Point(102, 187);
             rbSentHome.Name = "rbSentHome";
             rbSentHome.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             rbSentHome.RadioColor = Color.FromArgb(0, 162, 250);
@@ -2629,7 +2630,7 @@
             rbNormalActivity.Checked = false;
             rbNormalActivity.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rbNormalActivity.ForeColor = Color.Black;
-            rbNormalActivity.Location = new Point(101, 135);
+            rbNormalActivity.Location = new Point(102, 143);
             rbNormalActivity.Name = "rbNormalActivity";
             rbNormalActivity.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             rbNormalActivity.RadioColor = Color.FromArgb(0, 162, 250);
@@ -2647,7 +2648,7 @@
             label42.BackColor = Color.FromArgb(235, 239, 244);
             label42.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label42.ForeColor = Color.Black;
-            label42.Location = new Point(112, 528);
+            label42.Location = new Point(113, 545);
             label42.Name = "label42";
             label42.Size = new Size(74, 22);
             label42.TabIndex = 90;
@@ -2659,7 +2660,7 @@
             label47.BackColor = Color.FromArgb(235, 239, 244);
             label47.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label47.ForeColor = Color.Black;
-            label47.Location = new Point(107, 476);
+            label47.Location = new Point(108, 489);
             label47.Name = "label47";
             label47.Size = new Size(133, 22);
             label47.TabIndex = 87;
@@ -2671,7 +2672,7 @@
             label50.BackColor = Color.FromArgb(235, 239, 244);
             label50.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label50.ForeColor = Color.Black;
-            label50.Location = new Point(83, 276);
+            label50.Location = new Point(84, 287);
             label50.Name = "label50";
             label50.Size = new Size(226, 25);
             label50.TabIndex = 82;
@@ -2683,7 +2684,7 @@
             label51.BackColor = Color.FromArgb(235, 239, 244);
             label51.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label51.ForeColor = Color.Black;
-            label51.Location = new Point(80, 91);
+            label51.Location = new Point(81, 99);
             label51.Name = "label51";
             label51.Size = new Size(99, 25);
             label51.TabIndex = 70;
@@ -2695,7 +2696,7 @@
             // 
             // 
             rtbRemarksInstructions.CustomButton.Image = null;
-            rtbRemarksInstructions.CustomButton.Location = new Point(555, 2);
+            rtbRemarksInstructions.CustomButton.Location = new Point(600, 2);
             rtbRemarksInstructions.CustomButton.Name = "";
             rtbRemarksInstructions.CustomButton.Size = new Size(87, 87);
             rtbRemarksInstructions.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -2704,7 +2705,7 @@
             rtbRemarksInstructions.CustomButton.UseSelectable = true;
             rtbRemarksInstructions.CustomButton.Visible = false;
             rtbRemarksInstructions.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            rtbRemarksInstructions.Location = new Point(88, 315);
+            rtbRemarksInstructions.Location = new Point(89, 328);
             rtbRemarksInstructions.MaxLength = 32767;
             rtbRemarksInstructions.Name = "rtbRemarksInstructions";
             rtbRemarksInstructions.PasswordChar = '\0';
@@ -2713,7 +2714,7 @@
             rtbRemarksInstructions.SelectionLength = 0;
             rtbRemarksInstructions.SelectionStart = 0;
             rtbRemarksInstructions.ShortcutsEnabled = true;
-            rtbRemarksInstructions.Size = new Size(645, 92);
+            rtbRemarksInstructions.Size = new Size(690, 92);
             rtbRemarksInstructions.TabIndex = 68;
             rtbRemarksInstructions.UseSelectable = true;
             rtbRemarksInstructions.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -2728,7 +2729,7 @@
             PrevS5Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PrevS5Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
             PrevS5Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            PrevS5Btn.Location = new Point(405, 645);
+            PrevS5Btn.Location = new Point(452, 678);
             PrevS5Btn.Name = "PrevS5Btn";
             PrevS5Btn.PrimaryColor = Color.LightSlateGray;
             PrevS5Btn.Size = new Size(149, 49);
@@ -2748,7 +2749,7 @@
             SaveBtns5.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SaveBtns5.HoverTextColor = Color.FromArgb(48, 49, 51);
             SaveBtns5.InfoColor = Color.FromArgb(144, 147, 153);
-            SaveBtns5.Location = new Point(584, 645);
+            SaveBtns5.Location = new Point(631, 678);
             SaveBtns5.Name = "SaveBtns5";
             SaveBtns5.PrimaryColor = Color.LimeGreen;
             SaveBtns5.Size = new Size(149, 49);
@@ -2763,11 +2764,11 @@
             // 
             label53.AutoSize = true;
             label53.BackColor = Color.White;
-            label53.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label53.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label53.ForeColor = Color.Black;
             label53.Location = new Point(21, 0);
             label53.Name = "label53";
-            label53.Size = new Size(338, 36);
+            label53.Size = new Size(356, 37);
             label53.TabIndex = 11;
             label53.Text = "Outcome & Confirmation";
             // 
@@ -2783,7 +2784,7 @@
             Controls.Add(StagePanel);
             Controls.Add(WizardStep);
             Name = "UC_ConsultationWizard";
-            Size = new Size(1192, 801);
+            Size = new Size(1217, 837);
             WizardStep.ResumeLayout(false);
             WizardStep.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbStep1).EndInit();
@@ -2793,13 +2794,13 @@
             ((System.ComponentModel.ISupportInitialize)pbStep2).EndInit();
             StagePanel.ResumeLayout(false);
             Step1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)logo1).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)logo1).EndInit();
             Step2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)logo).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)logo).EndInit();
             ChiefComplaint.ResumeLayout(false);
             ChiefComplaint.PerformLayout();
             ReferredBy.ResumeLayout(false);
@@ -2808,9 +2809,9 @@
             TypeOfVisitPanel.PerformLayout();
             Step3.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             Step4.ResumeLayout(false);
             panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

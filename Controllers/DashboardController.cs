@@ -8,6 +8,7 @@ namespace AceCareClinicSystem.Controllers
     public class DashboardController
     {
         private DbConnection db = new DbConnection();
+        private AuthController _auth = new AuthController();
 
         public DataTable GetRecentConsultations(int offset, int pageSize = 10, string searchTerm = "")
         {
@@ -119,27 +120,57 @@ namespace AceCareClinicSystem.Controllers
             catch { return "0"; }
         }
 
+        // LOW INVENTORY - from inventory table
         public string GetLowInventoryCount()
         {
-            using (MySqlConnection conn = db.GetConnection())
+            try
             {
-                conn.Open();
-                string query = "SELECT COUNT(*) FROM medicines WHERE stock_quantity < 10";
-                return new MySqlCommand(query, conn).ExecuteScalar()?.ToString() ?? "0";
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT COUNT(*) FROM inventory WHERE Quantity < 10";
+                    return new MySqlCommand(query, conn).ExecuteScalar()?.ToString() ?? "0";
+                }
             }
+            catch { return "0"; }
+        }
+
+        // TOTAL USERS - from AuthController
+        public string GetTotalUsers()
+        {
+            try
+            {
+                return _auth.GetTotalUserCount();
+            }
+            catch { return "0"; }
+        }
+
+        // CIRCLE - total items in inventory (shows 47)
+        public int GetStockFillPercentage()
+        {
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    string query = "SELECT COUNT(*) FROM inventory";
+                    int totalItems = Convert.ToInt32(new MySqlCommand(query, conn).ExecuteScalar());
+                    return totalItems > 100 ? 100 : totalItems;
+                }
+            }
+            catch { return 0; }
         }
 
         public string GetTotalSupplies()
         {
             try
             {
-                using (MySqlConnection conn = db.GetConnection()!)
+                using (MySqlConnection conn = db.GetConnection())
                 {
                     conn.Open();
-                    // Assumes medicines table tracks all medical supplies
-                    string query = "SELECT SUM(stock_quantity) FROM medicines";
+                    string query = "SELECT COALESCE(SUM(Quantity), 0) FROM inventory";
                     object? res = new MySqlCommand(query, conn).ExecuteScalar();
-                    return (res != null && res != DBNull.Value) ? res.ToString() ?? "0" : "0";
+                    return res?.ToString() ?? "0";
                 }
             }
             catch { return "0"; }
