@@ -588,7 +588,8 @@
             // 
             // btnPrev
             // 
-            btnPrev.BorderColor = Color.Transparent;
+            btnPrev.BackColor = Color.White;
+            btnPrev.BorderColor = Color.White;
             btnPrev.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
             btnPrev.DangerColor = Color.FromArgb(245, 108, 108);
             btnPrev.DefaultColor = Color.FromArgb(255, 255, 255);
@@ -609,7 +610,8 @@
             // 
             // btnNext
             // 
-            btnNext.BorderColor = Color.FromArgb(220, 223, 230);
+            btnNext.BackColor = Color.White;
+            btnNext.BorderColor = Color.White;
             btnNext.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
             btnNext.DangerColor = Color.FromArgb(245, 108, 108);
             btnNext.DefaultColor = Color.FromArgb(255, 255, 255);
