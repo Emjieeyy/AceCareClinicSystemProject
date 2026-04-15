@@ -102,5 +102,25 @@ namespace AceCareClinicSystem.Forms
         {
             addUserControl(new UC_UserManagement());
         }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+
+            DialogResult dialog = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialog == DialogResult.Yes)
+            {
+                // 1. Create a new instance of your Login Form
+                Login login = new Login();
+
+                // 2. Show the Login Form
+                login.Show();
+
+                // 3. Close the current Dashboard Form
+                // Use this.Hide() if you want to keep the process alive in the background
+                // Use this.Close() if the Login form is the 'Main' entry point of the app
+                this.Hide();
+            }
+        }
     }
 }

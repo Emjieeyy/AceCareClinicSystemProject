@@ -35,5 +35,12 @@ namespace AceCareClinicSystem.Services
             dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgv.GridColor = Color.FromArgb(230, 230, 230);
         }
+        public static void FormatHeaders(DataGridView dgv)
+        {
+            if (dgv.Columns.Contains("Name")) dgv.Columns["Name"].HeaderText = "Item Name";
+            if (dgv.Columns.Contains("Quantity")) dgv.Columns["Quantity"].HeaderText = "In Stock";
+            if (dgv.Columns.Contains("WeeklyUsage")) dgv.Columns["WeeklyUsage"].HeaderText = "Weekly Usage";
+            if (dgv.Columns.Contains("ExpiryDate")) dgv.Columns["ExpiryDate"].HeaderText = "Expiration";
+        }
     }
 }

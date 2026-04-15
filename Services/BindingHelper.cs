@@ -17,6 +17,8 @@ namespace AceCareClinicSystem.Services
                 bs = new BindingSource();
                 bs.DataSource = dt;
                 dgv.DataSource = bs;
+
+                dgv.Refresh();
             }
             else
             {
