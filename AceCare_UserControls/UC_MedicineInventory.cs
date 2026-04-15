@@ -1,58 +1,66 @@
 ﻿using AceCareClinicSystem.Controllers;
 using Microsoft.VisualBasic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using AceCareClinicSystem.Services;
-using AceCareClinicSystem.Controllers;
 
 namespace AceCareClinicSystem.AceCare_UserControls
 {
     public partial class UC_MedicineInventory : UserControl
     {
         private InventoryController _controller = new InventoryController();
-        private string _originalName = ""; // Required to find the correct record in MySQL when the name changes
+        private string _originalName = "";
+
+        // ========== PAGINATION VARIABLES ==========
+        private int _medicinePage = 1;
+        private int _suppliesPage = 1;
+        private int _totalMedicinePages = 1;
+        private int _totalSuppliesPages = 1;
+        private const int ITEMS_PER_PAGE = 10;
 
         public UC_MedicineInventory()
         {
             InitializeComponent();
             dgvMedicineRecords.AutoGenerateColumns = true;
             dgvSuppliesRecords.AutoGenerateColumns = true;
-            // Apply Modern Design
             DataGridViewStyle.ApplyModernDesign(dgvMedicineRecords);
             DataGridViewStyle.ApplyModernDesign(dgvSuppliesRecords);
             dgvMedicineRecords.DataError += dgv_DataError;
             dgvSuppliesRecords.DataError += dgv_DataError;
             RefreshDashboard();
         }
+
         private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            // This stops the dialog popup
             e.ThrowException = false;
         }
+
+        // ========== REFRESH DASHBOARD WITH PAGINATION ==========
         private void RefreshDashboard()
         {
             try
             {
-                // 1. Medicine Grid
-                DataTable medData = _controller.GetRecords("Medicine", txtSearchInventory.Text);
+                string searchText = txtSearchInventory.Text.Trim();
+
+                // 1. Medicine Grid (with pagination)
+                DataTable medData = _controller.GetRecordsPaginated("Medicine", searchText, _medicinePage, ITEMS_PER_PAGE);
                 BindingHelper.BindToGrid(dgvMedicineRecords, medData);
-
-                // --- CALL THE METHOD HERE ---
                 DataGridViewStyle.FormatHeaders(dgvMedicineRecords);
+                _totalMedicinePages = _controller.GetTotalPages("Medicine", searchText, ITEMS_PER_PAGE);
 
-                // 2. Supplies Grid
-                DataTable supData = _controller.GetRecords("Supply", txtSearchInventory.Text);
+                // 2. Supplies Grid (with pagination)
+                DataTable supData = _controller.GetRecordsPaginated("Supply", searchText, _suppliesPage, ITEMS_PER_PAGE);
                 BindingHelper.BindToGrid(dgvSuppliesRecords, supData);
-
-                // --- CALL THE METHOD HERE ---
                 DataGridViewStyle.FormatHeaders(dgvSuppliesRecords);
+                _totalSuppliesPages = _controller.GetTotalPages("Supply", searchText, ITEMS_PER_PAGE);
 
-                // 3. Update the Dashboard stats
+                // 3. Update Pagination Display for both tabs
+                UpdateMedicinePaginationDisplay();
+                UpdateSuppliesPaginationDisplay();
+
+                // 4. Update Dashboard stats
                 var stats = _controller.GetDashboardStats();
                 lblCountTotalMedicine.Text = stats.med;
                 lblCountTotalSupplies.Text = stats.sup;
@@ -65,10 +73,91 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
         }
 
+        // ========== UPDATE MEDICINE PAGINATION UI ==========
+        private void UpdateMedicinePaginationDisplay()
+        {
+            // Medicine tab buttons
+            btnPrev.Enabled = _medicinePage > 1;
+            btnNext.Enabled = _medicinePage < _totalMedicinePages;
+        }
 
+        // ========== UPDATE SUPPLIES PAGINATION UI ==========
+        private void UpdateSuppliesPaginationDisplay()
+        {
+            // Supplies tab buttons
+            btnPrevSuppliesRecord.Enabled = _suppliesPage > 1;
+            btnNextSuppliesRecord.Enabled = _suppliesPage < _totalSuppliesPages;
+        }
 
-        private void btnSearch_Click(object sender, EventArgs e) => RefreshDashboard();
+        // ========== MEDICINE TAB BUTTONS ==========
 
+        // 🔄 RELOAD BUTTON (Medicine)
+        private void ReloadPix_Click(object sender, EventArgs e)
+        {
+            txtSearchInventory.Text = "";
+            _medicinePage = 1;
+            RefreshDashboard();
+        }
+
+        // << PREVIOUS BUTTON (Medicine)
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            if (_medicinePage > 1)
+            {
+                _medicinePage--;
+                RefreshDashboard();
+            }
+        }
+
+        // >> NEXT BUTTON (Medicine)
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (_medicinePage < _totalMedicinePages)
+            {
+                _medicinePage++;
+                RefreshDashboard();
+            }
+        }
+
+        // ========== SUPPLIES TAB BUTTONS ==========
+
+        // 🔄 RELOAD BUTTON (Supplies)
+        private void ReloadPixSuppliesRecord_Click(object sender, EventArgs e)
+        {
+            txtSearchInventory.Text = "";
+            _suppliesPage = 1;
+            RefreshDashboard();
+        }
+
+        // << PREVIOUS BUTTON (Supplies)
+        private void btnPrevSuppliesRecord_Click(object sender, EventArgs e)
+        {
+            if (_suppliesPage > 1)
+            {
+                _suppliesPage--;
+                RefreshDashboard();
+            }
+        }
+
+        // >> NEXT BUTTON (Supplies)
+        private void btnNextSuppliesRecord_Click(object sender, EventArgs e)
+        {
+            if (_suppliesPage < _totalSuppliesPages)
+            {
+                _suppliesPage++;
+                RefreshDashboard();
+            }
+        }
+
+        // ========== SEARCH BUTTON ==========
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            _medicinePage = 1;
+            _suppliesPage = 1;
+            RefreshDashboard();
+        }
+
+        // ========== ADD METHODS ==========
         private void btnAddMedicine_Click(object sender, EventArgs e)
         {
             AddInventoryItem("Medicine");
@@ -78,6 +167,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             AddInventoryItem("Supply");
         }
+
         private void AddInventoryItem(string category)
         {
             string name = Interaction.InputBox($"Enter {category} Name:", "New Record");
@@ -92,7 +182,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             if (_controller.AddItem(name, qty, category, expiry))
             {
                 MessageBox.Show($"{category} added successfully!");
-                RefreshDashboard(); // This forces the grid to reload from DB
+                RefreshDashboard();
             }
             else
             {
@@ -100,9 +190,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
         }
 
+        // ========== EDIT METHOD ==========
         private void btnEditItem_Click(object sender, EventArgs e)
         {
-            // 1. Identify the active grid
             bool isMedicine = dgvMedicineRecords.Visible;
             DataGridView activeGrid = isMedicine ? dgvMedicineRecords : dgvSuppliesRecords;
 
@@ -113,7 +203,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     var row = activeGrid.SelectedRows[0];
                     string oldName, currentQty, currentUsage, currentExpiry;
 
-                    // 2. Map names based on which grid is active
                     if (isMedicine)
                     {
                         oldName = row.Cells["MedicineName"].Value?.ToString() ?? "";
@@ -129,7 +218,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                         currentExpiry = row.Cells["colSupExpiry"].Value?.ToString() ?? "";
                     }
 
-                    // 3. Prompt for updates
                     string newName = Interaction.InputBox("Edit Item Name:", "AceCare Editor", oldName);
                     if (string.IsNullOrWhiteSpace(newName)) return;
 
@@ -142,7 +230,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     string newExpiryStr = Interaction.InputBox("Update Expiry (MM-DD-YYYY):", "AceCare Editor", currentExpiry);
                     if (!DateTime.TryParse(newExpiryStr, out DateTime expiryDate)) return;
 
-                    // 4. Update Database
                     if (_controller.UpdateFullItem(oldName, newName, qty, usage, expiryDate))
                     {
                         MessageBox.Show("Item successfully updated!");
@@ -160,25 +247,22 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
         }
 
+        // ========== DELETE METHOD ==========
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
             DataGridView activeGrid = dgvMedicineRecords.Visible ? dgvMedicineRecords : dgvSuppliesRecords;
 
             if (activeGrid.SelectedRows.Count > 0)
             {
-                // 1. Get the name safely
                 string itemName = activeGrid.SelectedRows[0].Cells[0].Value?.ToString();
 
                 if (string.IsNullOrEmpty(itemName)) return;
 
                 if (MessageBox.Show($"Delete {itemName}?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    // 2. Perform the delete
                     if (_controller.DeleteItem(itemName))
                     {
-                        // 3. IMPORTANT: Clear selection BEFORE refreshing to avoid "ghost row" errors
                         activeGrid.ClearSelection();
-
                         RefreshDashboard();
                         MessageBox.Show("Item deleted successfully.");
                     }
