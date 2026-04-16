@@ -13,18 +13,40 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private int currentOffset = 0;
         private int totalRecords = 0;
         private const int PageSize = 10;
+        private string _userRole = "Admin"; // Store role, default to Admin
 
+        // Default constructor for Admin/Designer
         public UC_Home()
         {
             InitializeComponent();
             dgvRecent.AutoGenerateColumns = false;
         }
 
+        // Constructor with role parameter for Clinic Staff
+        public UC_Home(string userRole) : this()
+        {
+            _userRole = userRole;
+        }
+
         private void UC_Home_Load(object sender, EventArgs e)
         {
             DataGridViewStyle.ApplyModernDesign(dgvRecent);
             SetupColumns();
+            ConfigureUIBasedOnRole(); // Configure UI based on role
             RefreshDashboard();
+        }
+
+        // NEW: Configure UI elements based on user role
+        private void ConfigureUIBasedOnRole()
+        {
+            if (_userRole == "Clinic Staff")
+            {
+                CreateUserBtn.Text = "About"; // Change to About for Clinic Staff
+            }
+            else
+            {
+                CreateUserBtn.Text = "Create User"; // Admin sees original
+            }
         }
 
         private void SetupColumns()
@@ -107,12 +129,25 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             if (this.ParentForm is AdminDashboard main)
                 main.addUserControl(new UC_ConsultationWizard());
+            else if (this.ParentForm is ClinicStaffDashboard staffMain)
+                staffMain.addUserControl(new UC_ConsultationWizard());
         }
 
+        // MODIFIED: Handle role-based navigation
         private void CreateUserBtn_Click(object sender, EventArgs e)
         {
-            if (this.ParentForm is AdminDashboard main)
-                main.addUserControl(new UC_UserManagement());
+            if (_userRole == "Clinic Staff")
+            {
+                // Clinic Staff navigates to About
+                if (this.ParentForm is ClinicStaffDashboard staffMain)
+                    staffMain.addUserControl(new UC_About());
+            }
+            else
+            {
+                // Admin navigates to User Management
+                if (this.ParentForm is AdminDashboard main)
+                    main.addUserControl(new UC_UserManagement());
+            }
         }
     }
 }

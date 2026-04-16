@@ -83,6 +83,16 @@ namespace AceCareClinicSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _12 {
+            get {
+                object obj = ResourceManager.GetObject("12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _2 {
             get {
                 object obj = ResourceManager.GetObject("2", resourceCulture);
@@ -103,6 +113,16 @@ namespace AceCareClinicSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _22 {
+            get {
+                object obj = ResourceManager.GetObject("22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _3 {
             get {
                 object obj = ResourceManager.GetObject("3", resourceCulture);
@@ -113,9 +133,29 @@ namespace AceCareClinicSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _31 {
+            get {
+                object obj = ResourceManager.GetObject("31", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _4 {
             get {
                 object obj = ResourceManager.GetObject("4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _41 {
+            get {
+                object obj = ResourceManager.GetObject("41", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +186,16 @@ namespace AceCareClinicSystem.Properties {
         internal static System.Drawing.Bitmap _646378810_910016875123051_9142573013095368996_n__1__removebg_preview1 {
             get {
                 object obj = ResourceManager.GetObject("646378810_910016875123051_9142573013095368996_n__1_-removebg-preview1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ace1 {
+            get {
+                object obj = ResourceManager.GetObject("ace1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +266,16 @@ namespace AceCareClinicSystem.Properties {
         internal static System.Drawing.Bitmap calendar {
             get {
                 object obj = ResourceManager.GetObject("calendar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap centralizedhub_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("centralizedhub-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,6 +373,56 @@ namespace AceCareClinicSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap healthcare {
+            get {
+                object obj = ResourceManager.GetObject("healthcare", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap information_button {
+            get {
+                object obj = ResourceManager.GetObject("information-button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap information_button__1_ {
+            get {
+                object obj = ResourceManager.GetObject("information-button (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inventorycotrol_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("inventorycotrol-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap isis {
+            get {
+                object obj = ResourceManager.GetObject("isis", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap k {
             get {
                 object obj = ResourceManager.GetObject("k", resourceCulture);
@@ -326,6 +436,26 @@ namespace AceCareClinicSystem.Properties {
         internal static System.Drawing.Bitmap loading_arrow {
             get {
                 object obj = ResourceManager.GetObject("loading-arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MaamPic {
+            get {
+                object obj = ResourceManager.GetObject("MaamPic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap manual_book {
+            get {
+                object obj = ResourceManager.GetObject("manual-book", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -363,6 +493,16 @@ namespace AceCareClinicSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap patient_monitoring_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("patient_monitoring-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pen__1_ {
             get {
                 object obj = ResourceManager.GetObject("pen (1)", resourceCulture);
@@ -376,6 +516,46 @@ namespace AceCareClinicSystem.Properties {
         internal static System.Drawing.Bitmap prepared {
             get {
                 object obj = ResourceManager.GetObject("prepared", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Slide1 {
+            get {
+                object obj = ResourceManager.GetObject("Slide1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Slide2 {
+            get {
+                object obj = ResourceManager.GetObject("Slide2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Slide3 {
+            get {
+                object obj = ResourceManager.GetObject("Slide3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Slide4 {
+            get {
+                object obj = ResourceManager.GetObject("Slide4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

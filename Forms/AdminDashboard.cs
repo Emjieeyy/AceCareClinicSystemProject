@@ -66,18 +66,11 @@ namespace AceCareClinicSystem.Forms
         {
         }
 
-        // CHANGED: Store reference and wire up event
+        // MODIFIED: Removed event wiring - navigation now handled inside UC_PatientRecords
         private void PatientRecordsBtn_Click(object sender, EventArgs e)
         {
-            ucPatientRecords = new UC_PatientRecords();
-
-            // NEW: Wire up double-click event
-            ucPatientRecords.PatientSelectedForConsultation += (patient) =>
-            {
-                OpenConsultationWithPatient(patient);
-            };
-
-            addUserControl(ucPatientRecords);
+            // Just create and show - double-click navigation is handled internally
+            addUserControl(new UC_PatientRecords());
         }
 
         private void ConsultationBtn_Click(object sender, EventArgs e)
@@ -122,6 +115,11 @@ namespace AceCareClinicSystem.Forms
                 // Use this.Close() if the Login form is the 'Main' entry point of the app
                 this.Hide();
             }
+        }
+
+        private void btnAboutAd_Click(object sender, EventArgs e)
+        {
+            addUserControl(new UC_About());
         }
     }
 }

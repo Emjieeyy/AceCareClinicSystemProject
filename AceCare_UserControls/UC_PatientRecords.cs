@@ -1,4 +1,5 @@
 ﻿using AceCareClinicSystem.Controllers;
+using AceCareClinicSystem.Forms;
 using AceCareClinicSystem.Services;
 using System;
 using System.Data;
@@ -13,8 +14,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private int patientOffset = 0;
         private const int PageSize = 10;
         private bool _isProcessing = false;
-
-        public event Action<DataRow> PatientSelectedForConsultation;
 
         public UC_PatientRecords()
         {
@@ -176,13 +175,41 @@ namespace AceCareClinicSystem.AceCare_UserControls
             LoadPatientIntoForm(e.RowIndex);
         }
 
+        // MODIFIED: Direct navigation to ConsultationWizard for both Admin and Clinic Staff
         private void dgvPatients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex < 0) return;
+
+            string id = dgvPatients.Rows[e.RowIndex].Cells["IDNumber"]?.Value?.ToString();
+            DataRow p = _patientController.GetPatientById(id);
+            if (p == null) return;
+
+            // Create wizard and load patient data
+            UC_ConsultationWizard wizard = new UC_ConsultationWizard();
+
+            // Load patient data into wizard
+            wizard.LoadPatientData(
+                patientID: p["patient_number"].ToString(),
+                firstName: p["first_name"].ToString(),
+                lastName: p["last_name"].ToString(),
+                middleInitial: p["middle_initial"].ToString(),
+                category: p["category"].ToString(),
+                department: p["department"]?.ToString() ?? "",
+                dateOfBirth: p["date_of_birth"] != DBNull.Value ? Convert.ToDateTime(p["date_of_birth"]) : DateTime.Now,
+                contact: p["contact_number"].ToString(),
+                emergencyContactNumber: p["emergency_contact_number"].ToString(),
+                emergencyContactName: p["emergency_contact_name"].ToString(),
+                yearLevel: p["year_level"]?.ToString() ?? ""
+            );
+
+            // Navigate based on which dashboard is parent
+            if (this.ParentForm is AdminDashboard adminMain)
             {
-                string id = dgvPatients.Rows[e.RowIndex].Cells["IDNumber"]?.Value?.ToString();
-                DataRow p = _patientController.GetPatientById(id);
-                if (p != null) PatientSelectedForConsultation?.Invoke(p);
+                adminMain.addUserControl(wizard);
+            }
+            else if (this.ParentForm is ClinicStaffDashboard staffMain)
+            {
+                staffMain.addUserControl(wizard);
             }
         }
 

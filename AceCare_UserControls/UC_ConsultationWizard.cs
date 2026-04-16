@@ -64,6 +64,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
             // Address - leave blank for input
             txtAddress.Text = "";
+            txtContactNo.Text = contact ?? "";
 
             // CHANGED: Use renamed controls
             txtEmergencyContactName.Text = emergencyContactName ?? "";

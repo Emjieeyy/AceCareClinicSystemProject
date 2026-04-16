@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using AceCareClinicSystem.AceCare_UserControls;
+using AceCareClinicSystem.Services;
+using System;
 using System.Windows.Forms;
 
 namespace AceCareClinicSystem.Forms
@@ -15,9 +12,60 @@ namespace AceCareClinicSystem.Forms
             InitializeComponent();
         }
 
-        private void parrotSlidingPanel1_Paint(object sender, PaintEventArgs e)
+        // CHANGED: private -> public so UC_Home can access it
+        public void addUserControl(UserControl userControl)
         {
+            userControl.Dock = DockStyle.Fill;
+            HomemainPanel.Controls.Clear();
+            HomemainPanel.Controls.Add(userControl);
+            userControl.BringToFront();
+        }
 
+        private void ClinicStaffDashboard_Load(object sender, EventArgs e)
+        {
+            addUserControl(new UC_Home("Clinic Staff"));
+        }
+
+        private void Homebtn_Click(object sender, EventArgs e)
+        {
+            addUserControl(new UC_Home("Clinic Staff"));
+        }
+
+        private void PatientRecordsBtn_Click(object sender, EventArgs e)
+        {
+            addUserControl(new UC_PatientRecords());
+        }
+
+        private void InventoryBtn_Click(object sender, EventArgs e)
+        {
+            addUserControl(new UC_MedicineInventory());
+        }
+
+        private void ReportBtn_Click(object sender, EventArgs e)
+        {
+            addUserControl(new UC_Reportscs());
+        }
+
+        private void hopeButton6_Click(object sender, EventArgs e)
+        {
+            addUserControl(new UC_About());
+        }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                Login login = new Login();
+                login.Show();
+            }
+        }
+
+        private void ConsultationBtn_Click(object sender, EventArgs e)
+        {
+            addUserControl(new UC_ConsultationWizard());
         }
     }
 }

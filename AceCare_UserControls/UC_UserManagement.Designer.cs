@@ -28,17 +28,18 @@ namespace AceCareClinicSystem.AceCare_UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel4 = new Panel();
             lblRecentLog0 = new Label();
             pictureBox1 = new PictureBox();
             label2 = new Label();
             panel2 = new Panel();
+            label1 = new Label();
             pictureBox2 = new PictureBox();
             label7 = new Label();
             panel5 = new Panel();
@@ -72,7 +73,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             Email = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
             UserManagementTable = new TabControl();
-            label1 = new Label();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -147,6 +147,17 @@ namespace AceCareClinicSystem.AceCare_UserControls
             panel2.Size = new Size(1215, 397);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.Location = new Point(22, 75);
+            label1.Name = "label1";
+            label1.Size = new Size(349, 20);
+            label1.TabIndex = 54;
+            label1.Text = "Monitor system access and manage staff permissions.";
             // 
             // pictureBox2
             // 
@@ -345,39 +356,39 @@ namespace AceCareClinicSystem.AceCare_UserControls
             dgvAuditLogs.BorderStyle = BorderStyle.None;
             dgvAuditLogs.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvAuditLogs.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.DarkBlue;
-            dataGridViewCellStyle7.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle7.Padding = new Padding(7);
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvAuditLogs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle1.Padding = new Padding(7);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvAuditLogs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvAuditLogs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAuditLogs.Columns.AddRange(new DataGridViewColumn[] { Timestamp, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgvAuditLogs.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvAuditLogs.DefaultCellStyle = dataGridViewCellStyle2;
             dgvAuditLogs.EnableHeadersVisualStyles = false;
             dgvAuditLogs.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvAuditLogs.GridColor = Color.FromArgb(255, 255, 255);
             dgvAuditLogs.Location = new Point(12, 60);
             dgvAuditLogs.Name = "dgvAuditLogs";
             dgvAuditLogs.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dgvAuditLogs.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvAuditLogs.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvAuditLogs.RowHeadersWidth = 51;
             dgvAuditLogs.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvAuditLogs.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -580,43 +591,43 @@ namespace AceCareClinicSystem.AceCare_UserControls
             dgvUserManagemend.BorderStyle = BorderStyle.None;
             dgvUserManagemend.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvUserManagemend.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = Color.DarkBlue;
-            dataGridViewCellStyle10.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle10.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle10.Padding = new Padding(7);
-            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle10.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dgvUserManagemend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle4.Padding = new Padding(7);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvUserManagemend.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvUserManagemend.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUserManagemend.Columns.AddRange(new DataGridViewColumn[] { ID, ColFullName, Role, Email, Status });
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle11.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
-            dgvUserManagemend.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvUserManagemend.DefaultCellStyle = dataGridViewCellStyle5;
             dgvUserManagemend.EnableHeadersVisualStyles = false;
             dgvUserManagemend.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvUserManagemend.GridColor = Color.FromArgb(255, 255, 255);
             dgvUserManagemend.Location = new Point(12, 36);
             dgvUserManagemend.Name = "dgvUserManagemend";
             dgvUserManagemend.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            dgvUserManagemend.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvUserManagemend.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvUserManagemend.RowHeadersWidth = 51;
             dgvUserManagemend.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvUserManagemend.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUserManagemend.Size = new Size(756, 507);
+            dgvUserManagemend.Size = new Size(792, 507);
             dgvUserManagemend.TabIndex = 0;
             dgvUserManagemend.CellContentClick += poisonDataGridView1_CellContentClick;
             // 
@@ -670,17 +681,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             UserManagementTable.SelectedIndex = 0;
             UserManagementTable.Size = new Size(1215, 548);
             UserManagementTable.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(22, 75);
-            label1.Name = "label1";
-            label1.Size = new Size(349, 20);
-            label1.TabIndex = 54;
-            label1.Text = "Monitor system access and manage staff permissions.";
             // 
             // UC_UserManagement
             // 
