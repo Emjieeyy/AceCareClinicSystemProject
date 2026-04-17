@@ -65,7 +65,7 @@ namespace AceCareClinicSystem.Controllers
                             WHEN (SELECT COUNT(*) FROM consultations c WHERE c.patient_id = p.patient_id) = 0 
                             THEN 'New Patient'
                             ELSE COALESCE(
-                                DATE_FORMAT((SELECT MAX(visit_date) FROM consultations WHERE patient_id = p.patient_id), '%b %d, %Y %h:%i %p'),
+                                DATE_FORMAT((SELECT MAX(visit_date) FROM consultations WHERE patient_id = p.patient_id), '%m/%d/%Y %h:%i %p'),
                                 'New Patient'
                             )
                         END AS LastVisit,
@@ -181,7 +181,7 @@ namespace AceCareClinicSystem.Controllers
                 {
                     conn.Open();
                     string query = @"SELECT 
-                        DATE_FORMAT(c.visit_date, '%b %d, %Y %h:%i %p') AS LastVisit,
+                        DATE_FORMAT(c.visit_date, '%d-%b-%y %H:%i') AS LastVisit,
                         p.patient_number AS IDNumber, 
                         CONCAT(p.first_name, ' ', p.last_name) AS PatientName, 
                         p.category AS PatientType, 

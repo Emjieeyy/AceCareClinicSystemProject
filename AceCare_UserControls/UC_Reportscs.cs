@@ -54,7 +54,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             };
 
             // Wire up Export button
-            hopeRoundButton2.Click += (s, e) => ExportToPdf();
+            hopeRoundButton2.Click += (s, e) => HandleExport();
 
             // Initial load
             LoadData();
@@ -206,6 +206,88 @@ namespace AceCareClinicSystem.AceCare_UserControls
             catch (Exception ex)
             {
                 MessageBox.Show("Error generating PDF: " + ex.ToString(), "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void HandleExport()
+        {
+            int index = poisonComboBox1.SelectedIndex;
+            if (index == 0) // PDF
+            {
+                ExportToPdf();
+            }
+            else // Excel or CSV (both handled via CSV for now)
+            {
+                ExportToCsv(index == 1 ? ".csv" : ".csv"); // Using .csv for both to ensure compatibility
+            }
+        }
+
+        private void ExportToCsv(string extension)
+        {
+            try
+            {
+                // check if there is data to export
+                if (poisonDataGridView1.Rows.Count == 0 || (poisonDataGridView1.Rows.Count == 1 && poisonDataGridView1.Rows[0].IsNewRow))
+                {
+                    MessageBox.Show("No data available to export for the selected date range.", "Export Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                using (SaveFileDialog sfd = new SaveFileDialog())
+                {
+                    sfd.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
+                    sfd.FileName = $"AceCare_Report_{DateTime.Now:yyyyMMdd_HHmm}{extension}";
+
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        StringBuilder sb = new StringBuilder();
+
+                        // Header Info (Optional for CSV but helpful)
+                        sb.AppendLine("AceCare Clinic Management System");
+                        sb.AppendLine("Clinic Activity Report");
+                        sb.AppendLine($"Period: {dtpFrom.Value:MMM dd, yyyy} - {dtpTo.Value:MMM dd, yyyy}");
+                        sb.AppendLine($"Category: {cbDataViewFilter.SelectedItem?.ToString() ?? "All"}");
+                        sb.AppendLine($"Generated: {DateTime.Now:MMMM dd, yyyy HH:mm}");
+                        sb.AppendLine();
+
+                        // Table Headers
+                        string[] columnNames = { "Last Visit", "ID No.", "Patient Name", "Category", "Description", "Qty / Dosage", "Personnel" };
+                        sb.AppendLine(string.Join(",", columnNames));
+
+                        // Table Data
+                        foreach (DataGridViewRow row in poisonDataGridView1.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+
+                            string[] cells = new string[7];
+                            for (int i = 0; i < 7; i++)
+                            {
+                                string val = row.Cells[i].Value?.ToString() ?? "N/A";
+
+                                // FIX: Prevent Scientific Notation and "########" in Excel
+                                // Column 0: Last Visit | Column 1: ID No.
+                                if ((i == 0 || i == 1) && val != "N/A" && val != "New Patient")
+                                {
+                                    val = "=\"" + val + "\"";
+                                }
+                                // Escape for CSV (wrap in quotes if contains comma, newline or quotes)
+                                else if (val.Contains(",") || val.Contains("\"") || val.Contains("\n") || val.Contains("\r"))
+                                {
+                                    val = "\"" + val.Replace("\"", "\"\"") + "\"";
+                                }
+                                cells[i] = val;
+                            }
+                            sb.AppendLine(string.Join(",", cells));
+                        }
+
+                        File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
+                        MessageBox.Show("Report exported successfully!", "Export CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error generating CSV: " + ex.ToString(), "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
