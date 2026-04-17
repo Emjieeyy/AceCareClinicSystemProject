@@ -1,7 +1,6 @@
-﻿using System;
+﻿using System;  // ADD THIS LINE
 using System.Data;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
 
 namespace AceCareClinicSystem.Controllers
 {
@@ -9,115 +8,134 @@ namespace AceCareClinicSystem.Controllers
     {
         private DbConnection db = new DbConnection();
 
-        // ========== PAGINATION METHODS ==========
-
         public DataTable GetRecordsPaginated(string category, string search, int page, int itemsPerPage)
         {
             int offset = (page - 1) * itemsPerPage;
 
-            string query = @"SELECT Name, Quantity, WeeklyUsage, ExpiryDate 
+            string query = @"SELECT ItemID, Name, Quantity, WeeklyUsage, ExpiryDate 
                            FROM inventory 
                            WHERE Category = @cat";
 
-            var param = new Dictionary<string, object> { { "@cat", category } };
+            var parameters = new Dictionary<string, object>
+            {
+                { "@cat", category }
+            };
 
-            if (!string.IsNullOrEmpty(search))
+            if (!string.IsNullOrWhiteSpace(search))
             {
                 query += " AND Name LIKE @search";
-                param.Add("@search", "%" + search + "%");
+                parameters.Add("@search", "%" + search + "%");
             }
 
             query += " ORDER BY Name LIMIT @limit OFFSET @offset";
-            param.Add("@limit", itemsPerPage);
-            param.Add("@offset", offset);
+            parameters.Add("@limit", itemsPerPage);
+            parameters.Add("@offset", offset);
 
-            return db.ExecuteRead(query, param);
+            return db.ExecuteRead(query, parameters);
         }
 
-        public int GetTotalCount(string category, string search)
+        public bool UpdateFullItem(int id, string name, int qty, double usage, DateTime expiry)
         {
-            string query = "SELECT COUNT(*) FROM inventory WHERE Category = @cat";
-            var param = new Dictionary<string, object> { { "@cat", category } };
+            string query = @"UPDATE inventory 
+                           SET Name = @name, 
+                               Quantity = @qty, 
+                               WeeklyUsage = @usage, 
+                               ExpiryDate = @expiry 
+                           WHERE ItemID = @id";
 
-            if (!string.IsNullOrEmpty(search))
+            var parameters = new Dictionary<string, object>
             {
-                query += " AND Name LIKE @search";
-                param.Add("@search", "%" + search + "%");
-            }
-
-            DataTable dt = db.ExecuteRead(query, param);
-            return Convert.ToInt32(dt.Rows[0][0]);
-        }
-
-        public int GetTotalPages(string category, string search, int itemsPerPage)
-        {
-            int totalCount = GetTotalCount(category, search);
-            return (int)Math.Ceiling((double)totalCount / itemsPerPage);
-        }
-
-        // ========== ORIGINAL METHODS (Keep for compatibility) ==========
-
-        public DataTable GetRecords(string category, string search = "")
-        {
-            return GetRecordsPaginated(category, search, 1, 1000); // Return all for backward compatibility
-        }
-
-        // ========== CRUD OPERATIONS ==========
-
-        public bool UpdateFullItem(string oldName, string newName, int qty, double usage, DateTime expiry)
-        {
-            string query = "UPDATE inventory SET Name=@n, Quantity=@q, WeeklyUsage=@u, ExpiryDate=@e WHERE Name=@old";
-            var param = new Dictionary<string, object> {
-                { "@n", newName },
-                { "@q", qty },
-                { "@u", usage },
-                { "@e", expiry },
-                { "@old", oldName }
+                { "@id", id },
+                { "@name", name },
+                { "@qty", qty },
+                { "@usage", usage },
+                { "@expiry", expiry }
             };
-            return db.ExecuteWrite(query, param) > 0;
-        }
 
-        public bool AddItem(string name, int qty, string cat, DateTime expiry)
-        {
-            string query = "INSERT INTO inventory (Name, Quantity, Category, ExpiryDate) VALUES (@n, @q, @c, @e)";
-            var param = new Dictionary<string, object> {
-                { "@n", name },
-                { "@q", qty },
-                { "@c", cat },
-                { "@e", expiry }
-            };
-            return db.ExecuteWrite(query, param) > 0;
+            int rowsAffected = db.ExecuteWrite(query, parameters);
+            return rowsAffected > 0;
         }
-
-        public bool DeleteItem(string name)
-        {
-            string query = "DELETE FROM inventory WHERE Name = @n";
-            var param = new Dictionary<string, object> { { "@n", name } };
-            return db.ExecuteWrite(query, param) > 0;
-        }
-
-        // ========== DASHBOARD STATS ==========
 
         public (string med, string sup, string low, string exp) GetDashboardStats()
         {
             string query = @"SELECT 
-                (SELECT COUNT(*) FROM inventory WHERE Category = 'Medicine') as M,
-                (SELECT COUNT(*) FROM inventory WHERE Category = 'Supply') as S,
-                (SELECT COUNT(*) FROM inventory WHERE Quantity < 10) as L,
-                (SELECT COUNT(*) FROM inventory WHERE ExpiryDate <= DATE_ADD(CURDATE(), INTERVAL 30 DAY)) as E";
+                (SELECT IFNULL(SUM(Quantity), 0) FROM inventory WHERE Category = 'Medicine') as MedicineTotalQty,
+                (SELECT IFNULL(SUM(Quantity), 0) FROM inventory WHERE Category = 'Supply') as SupplyTotalQty,
+                (SELECT COUNT(*) FROM inventory WHERE Quantity < 10) as LowStockCount,
+                (SELECT COUNT(*) FROM inventory WHERE ExpiryDate <= DATE_ADD(CURDATE(), INTERVAL 30 DAY)) as ExpiringCount";
 
-            DataTable dt = db.ExecuteRead(query);
+            DataTable dt = db.ExecuteRead(query, null);
 
-            if (dt.Rows.Count > 0)
+            if (dt != null && dt.Rows.Count > 0)
             {
+                DataRow row = dt.Rows[0];
+
+                System.Diagnostics.Debug.WriteLine($"Medicine Sum: {row["MedicineTotalQty"]}");
+                System.Diagnostics.Debug.WriteLine($"Supply Sum: {row["SupplyTotalQty"]}");
+
                 return (
-                    dt.Rows[0]["M"].ToString(),
-                    dt.Rows[0]["S"].ToString(),
-                    dt.Rows[0]["L"].ToString(),
-                    dt.Rows[0]["E"].ToString()
+                    row["MedicineTotalQty"].ToString(),
+                    row["SupplyTotalQty"].ToString(),
+                    row["LowStockCount"].ToString(),
+                    row["ExpiringCount"].ToString()
                 );
             }
+
             return ("0", "0", "0", "0");
+        }
+
+        public int GetTotalPages(string category, string search, int itemsPerPage)
+        {
+            string query = "SELECT COUNT(*) FROM inventory WHERE Category = @cat";
+            var parameters = new Dictionary<string, object>
+            {
+                { "@cat", category }
+            };
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query += " AND Name LIKE @search";
+                parameters.Add("@search", "%" + search + "%");
+            }
+
+            DataTable dt = db.ExecuteRead(query, parameters);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                int totalRecords = Convert.ToInt32(dt.Rows[0][0]);
+                return (int)Math.Ceiling((double)totalRecords / itemsPerPage);
+            }
+
+            return 1;
+        }
+
+        public bool AddItem(string name, int qty, string category, DateTime expiry)
+        {
+            string query = @"INSERT INTO inventory (Name, Quantity, Category, ExpiryDate, WeeklyUsage) 
+                           VALUES (@name, @qty, @cat, @expiry, 0)";
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "@name", name },
+                { "@qty", qty },
+                { "@cat", category },
+                { "@expiry", expiry }
+            };
+
+            int rowsAffected = db.ExecuteWrite(query, parameters);
+            return rowsAffected > 0;
+        }
+
+        public bool DeleteItem(int id)
+        {
+            string query = "DELETE FROM inventory WHERE ItemID = @id";
+            var parameters = new Dictionary<string, object>
+            {
+                { "@id", id }
+            };
+
+            int rowsAffected = db.ExecuteWrite(query, parameters);
+            return rowsAffected > 0;
         }
     }
 }

@@ -273,6 +273,16 @@ namespace AceCareClinicSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calendar__2__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("calendar__2_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap centralizedhub_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("centralizedhub-removebg-preview", resourceCulture);

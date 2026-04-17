@@ -3,6 +3,7 @@ using AceCareClinicSystem.Forms;
 using AceCareClinicSystem.Services;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace AceCareClinicSystem.AceCare_UserControls
@@ -13,16 +14,14 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private int currentOffset = 0;
         private int totalRecords = 0;
         private const int PageSize = 10;
-        private string _userRole = "Admin"; // Store role, default to Admin
+        private string _userRole = "Admin";
 
-        // Default constructor for Admin/Designer
         public UC_Home()
         {
             InitializeComponent();
             dgvRecent.AutoGenerateColumns = false;
         }
 
-        // Constructor with role parameter for Clinic Staff
         public UC_Home(string userRole) : this()
         {
             _userRole = userRole;
@@ -32,20 +31,19 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             DataGridViewStyle.ApplyModernDesign(dgvRecent);
             SetupColumns();
-            ConfigureUIBasedOnRole(); // Configure UI based on role
+            ConfigureUIBasedOnRole();
             RefreshDashboard();
         }
 
-        // NEW: Configure UI elements based on user role
         private void ConfigureUIBasedOnRole()
         {
             if (_userRole == "Clinic Staff")
             {
-                CreateUserBtn.Text = "About"; // Change to About for Clinic Staff
+                CreateUserBtn.Text = "About";
             }
             else
             {
-                CreateUserBtn.Text = "Create User"; // Admin sees original
+                CreateUserBtn.Text = "Create User";
             }
         }
 
@@ -62,17 +60,36 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         public void RefreshDashboard()
         {
-            // Update Top Stats
             lblTotalPatients.Text = _dashboard.GetTotalPatients();
             lblTodaysVisit.Text = _dashboard.GetTodaysVisits();
             lblLowInventory_0.Text = _dashboard.GetLowInventoryCount();
-            lbTotalUser_0.Text = _dashboard.GetTotalUsers();
 
-            // Fetch Table Data
+            if (_userRole == "Clinic Staff")
+            {
+                lblTotalUserTItle.Text = "Expiring Soon";
+                lbTotalUser_0.Text = _dashboard.GetExpiringSoonCount();
+                ChangeToExpiringSoonIcon();
+            }
+            else
+            {
+                lblTotalUserTItle.Text = "Total User";
+                lbTotalUser_0.Text = _dashboard.GetTotalUsers();
+                ChangeToTotalUserIcon();
+            }
+
+            int capacityPercent = _dashboard.GetStockFillPercentage();
+            medicineCircle.ValueNumber = capacityPercent;
+
+            if (capacityPercent < 50)
+                medicineCircle.ForeColor = Color.Green;
+            else if (capacityPercent < 80)
+                medicineCircle.ForeColor = Color.Orange;
+            else
+                medicineCircle.ForeColor = Color.Red;
+
             DataTable dt = _dashboard.GetRecentConsultations(currentOffset, PageSize, txtSearch.Text.Trim());
             totalRecords = _dashboard.GetTotalConsultations(txtSearch.Text.Trim());
 
-            // Pagination Safety
             if (dt.Rows.Count == 0 && currentOffset > 0)
             {
                 currentOffset -= PageSize;
@@ -82,10 +99,95 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
             BindingHelper.BindToGrid(dgvRecent, dt);
             UpdatePaginationButtons();
+        }
 
-            // Update Medicine Inventory Circle
-            int stockPercentage = _dashboard.GetStockFillPercentage();
-            medicineCircle.ValueNumber = stockPercentage;
+        private void ChangeToExpiringSoonIcon()
+        {
+            try
+            {
+                // Suspend layout to prevent flickering
+                this.SuspendLayout();
+
+                // Store old image reference for disposal
+                Image oldImage = picTotal.Image;
+
+                // Completely clear the picture box
+                picTotal.Image = null;
+                picTotal.BackgroundImage = null;
+
+                // Dispose old image to free resources and ensure it's gone
+                if (oldImage != null)
+                {
+                    oldImage.Dispose();
+                }
+
+                // Force complete visual clear
+                picTotal.Invalidate();
+                picTotal.Update();
+                Application.DoEvents();
+
+                // Set new properties
+                picTotal.SizeMode = PictureBoxSizeMode.Zoom;
+                picTotal.BackColor = Color.Transparent;
+
+                // Load new calendar icon
+                picTotal.Image = Properties.Resources.calendar__2__removebg_preview;
+
+                // Resume and refresh
+                this.ResumeLayout(true);
+                picTotal.Refresh();
+            }
+            catch
+            {
+                picTotal.Image = null;
+                picTotal.BackColor = Color.Transparent;
+            }
+        }
+
+        private void ChangeToTotalUserIcon()
+        {
+            try
+            {
+                // Suspend layout to prevent flickering
+                this.SuspendLayout();
+
+                // Store old image reference for disposal
+                Image oldImage = picTotal.Image;
+
+                // Completely clear the picture box
+                picTotal.Image = null;
+                picTotal.BackgroundImage = null;
+
+                // Dispose old image to free resources
+                if (oldImage != null)
+                {
+                    oldImage.Dispose();
+                }
+
+                // Force complete visual clear
+                picTotal.Invalidate();
+                picTotal.Update();
+                Application.DoEvents();
+
+                // Set new properties
+                picTotal.SizeMode = PictureBoxSizeMode.Zoom;
+                picTotal.BackColor = Color.Transparent;
+
+                // Load group icon
+                picTotal.Image = Properties.Resources.group;
+
+                // Resume and refresh
+                this.ResumeLayout(true);
+                picTotal.Refresh();
+            }
+            catch
+            {
+                picTotal.Image = null;
+                picTotal.BackColor = Color.Transparent;
+            }
+
+            lblTotalUserTItle.ForeColor = Color.Black;
+            lbTotalUser_0.ForeColor = Color.Black;
         }
 
         private void UpdatePaginationButtons()
@@ -133,18 +235,15 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 staffMain.addUserControl(new UC_ConsultationWizard());
         }
 
-        // MODIFIED: Handle role-based navigation
         private void CreateUserBtn_Click(object sender, EventArgs e)
         {
             if (_userRole == "Clinic Staff")
             {
-                // Clinic Staff navigates to About
                 if (this.ParentForm is ClinicStaffDashboard staffMain)
                     staffMain.addUserControl(new UC_About());
             }
             else
             {
-                // Admin navigates to User Management
                 if (this.ParentForm is AdminDashboard main)
                     main.addUserControl(new UC_UserManagement());
             }

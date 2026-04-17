@@ -10,58 +10,86 @@ namespace AceCareClinicSystem.AceCare_UserControls
 {
     public partial class UC_MedicineInventory : UserControl
     {
-        private InventoryController _controller = new InventoryController();
-        private string _originalName = "";
 
-        // ========== PAGINATION VARIABLES ==========
+        private InventoryController _controller = new InventoryController();
+        private bool _isEditMode = false;
+        private bool _isAddingNew = false;
         private int _medicinePage = 1;
         private int _suppliesPage = 1;
         private int _totalMedicinePages = 1;
         private int _totalSuppliesPages = 1;
         private const int ITEMS_PER_PAGE = 10;
 
+        private DataTable _medicineTable;
+        private DataTable _suppliesTable;
         public UC_MedicineInventory()
         {
+
             InitializeComponent();
-            dgvMedicineRecords.AutoGenerateColumns = true;
-            dgvSuppliesRecords.AutoGenerateColumns = true;
-            DataGridViewStyle.ApplyModernDesign(dgvMedicineRecords);
-            DataGridViewStyle.ApplyModernDesign(dgvSuppliesRecords);
-            dgvMedicineRecords.DataError += dgv_DataError;
-            dgvSuppliesRecords.DataError += dgv_DataError;
-            RefreshDashboard();
+
+            SetupGrid(dgvMedicineRecords);
+            SetupGrid(dgvSuppliesRecords);
         }
 
-        private void dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        private void SetupGrid(DataGridView grid)
         {
-            e.ThrowException = false;
+            grid.ReadOnly = true;
+            grid.AutoGenerateColumns = true;
+            grid.AllowUserToAddRows = false;
+            DataGridViewStyle.ApplyModernDesign(grid);
+            grid.DataError += (s, e) => { e.ThrowException = false; e.Cancel = true; };
+            grid.CellEndEdit += Grid_CellEndEdit;
+            grid.RowValidated += Grid_RowValidated;
         }
 
-        // ========== REFRESH DASHBOARD WITH PAGINATION ==========
+        private void Grid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (_isAddingNew) return;
+            DataGridView grid = sender as DataGridView;
+            SaveSingleRow(grid, e.RowIndex);
+        }
+
+        private void Grid_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = sender as DataGridView;
+            int lastIndex = grid.Rows.Count - 1;
+            if (!_isAddingNew || e.RowIndex != lastIndex) return;
+            if (SaveNewRow(grid))
+            {
+                _isAddingNew = false;
+                this.BeginInvoke(new Action(() => RefreshDashboard()));
+            }
+        }
+
+        // FIXED: Removed nested try-catch, added proper closing brace
         private void RefreshDashboard()
         {
             try
             {
-                string searchText = txtSearchInventory.Text.Trim();
+                string search = txtSearchInventory.Text.Trim();
 
-                // 1. Medicine Grid (with pagination)
-                DataTable medData = _controller.GetRecordsPaginated("Medicine", searchText, _medicinePage, ITEMS_PER_PAGE);
-                BindingHelper.BindToGrid(dgvMedicineRecords, medData);
-                DataGridViewStyle.FormatHeaders(dgvMedicineRecords);
-                _totalMedicinePages = _controller.GetTotalPages("Medicine", searchText, ITEMS_PER_PAGE);
+                // DEBUG: Check what values we're getting
+                var stats = _controller.GetDashboardStats();
+                System.Diagnostics.Debug.WriteLine($"MEDICINE QTY: {stats.med}");
+                System.Diagnostics.Debug.WriteLine($"SUPPLY QTY: {stats.sup}");
 
-                // 2. Supplies Grid (with pagination)
-                DataTable supData = _controller.GetRecordsPaginated("Supply", searchText, _suppliesPage, ITEMS_PER_PAGE);
-                BindingHelper.BindToGrid(dgvSuppliesRecords, supData);
-                DataGridViewStyle.FormatHeaders(dgvSuppliesRecords);
-                _totalSuppliesPages = _controller.GetTotalPages("Supply", searchText, ITEMS_PER_PAGE);
+                _medicineTable = _controller.GetRecordsPaginated("Medicine", search, _medicinePage, ITEMS_PER_PAGE);
+                _totalMedicinePages = _controller.GetTotalPages("Medicine", search, ITEMS_PER_PAGE);
 
-                // 3. Update Pagination Display for both tabs
+                dgvMedicineRecords.DataSource = null;
+                dgvMedicineRecords.DataSource = _medicineTable;
+                HideIdColumn(dgvMedicineRecords);
+
+                _suppliesTable = _controller.GetRecordsPaginated("Supply", search, _suppliesPage, ITEMS_PER_PAGE);
+                _totalSuppliesPages = _controller.GetTotalPages("Supply", search, ITEMS_PER_PAGE);
+
+                dgvSuppliesRecords.DataSource = null;
+                dgvSuppliesRecords.DataSource = _suppliesTable;
+                HideIdColumn(dgvSuppliesRecords);
+
                 UpdateMedicinePaginationDisplay();
                 UpdateSuppliesPaginationDisplay();
 
-                // 4. Update Dashboard stats
-                var stats = _controller.GetDashboardStats();
                 lblCountTotalMedicine.Text = stats.med;
                 lblCountTotalSupplies.Text = stats.sup;
                 lblCountLowStock.Text = stats.low;
@@ -69,9 +97,18 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error refreshing data: " + ex.Message);
+                MessageBox.Show("Error refreshing dashboard: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        private void HideIdColumn(DataGridView dgv)
+        {
+            if (dgv.Columns["ItemID"] != null)
+                dgv.Columns["ItemID"].Visible = false;
+        }
+
 
         // ========== UPDATE MEDICINE PAGINATION UI ==========
         private void UpdateMedicinePaginationDisplay()
@@ -96,9 +133,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             txtSearchInventory.Text = "";
             _medicinePage = 1;
+            _suppliesPage = 1;
+            _isAddingNew = false;
             RefreshDashboard();
         }
-
         // << PREVIOUS BUTTON (Medicine)
         private void btnPrev_Click(object sender, EventArgs e)
         {
@@ -108,7 +146,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 RefreshDashboard();
             }
         }
-
         // >> NEXT BUTTON (Medicine)
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -128,7 +165,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             _suppliesPage = 1;
             RefreshDashboard();
         }
-
         // << PREVIOUS BUTTON (Supplies)
         private void btnPrevSuppliesRecord_Click(object sender, EventArgs e)
         {
@@ -138,7 +174,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 RefreshDashboard();
             }
         }
-
         // >> NEXT BUTTON (Supplies)
         private void btnNextSuppliesRecord_Click(object sender, EventArgs e)
         {
@@ -148,7 +183,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 RefreshDashboard();
             }
         }
-
         // ========== SEARCH BUTTON ==========
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -158,93 +192,95 @@ namespace AceCareClinicSystem.AceCare_UserControls
         }
 
         // ========== ADD METHODS ==========
-        private void btnAddMedicine_Click(object sender, EventArgs e)
+        private void btnAddMedicine_Click(object sender, EventArgs e) => AddNewRow(dgvMedicineRecords, _medicineTable);
+
+
+        private void btnAddSupply_Click(object sender, EventArgs e) => AddNewRow(dgvSuppliesRecords, _suppliesTable);
+
+
+        private void AddNewRow(DataGridView grid, DataTable table)
         {
-            AddInventoryItem("Medicine");
+            if (table == null) { MessageBox.Show("Please wait for data to load."); return; }
+            if (_isAddingNew) { FocusLastCell(grid); return; }
+
+            DataRow row = table.NewRow();
+            row["ItemID"] = 0;
+            row["Name"] = "";
+            row["Quantity"] = 0;
+            row["WeeklyUsage"] = 0;
+            row["ExpiryDate"] = DateTime.Now.AddYears(1);
+            table.Rows.Add(row);
+
+            _isAddingNew = true;
+            grid.ReadOnly = false;
+            if (grid.Columns["ItemID"] != null) grid.Columns["ItemID"].ReadOnly = true;
+
+            FocusLastCell(grid);
         }
 
-        private void btnAddSupply_Click(object sender, EventArgs e)
+        private void FocusLastCell(DataGridView grid)
         {
-            AddInventoryItem("Supply");
-        }
+            if (grid.Rows.Count == 0) return;
+            int lastIndex = grid.Rows.Count - 1;
+            grid.ClearSelection();
+            grid.Rows[lastIndex].Selected = true;
 
-        private void AddInventoryItem(string category)
-        {
-            string name = Interaction.InputBox($"Enter {category} Name:", "New Record");
-            if (string.IsNullOrWhiteSpace(name)) return;
-
-            string qtyStr = Interaction.InputBox("Quantity:", "New Record", "0");
-            if (!int.TryParse(qtyStr, out int qty)) return;
-
-            string expiryStr = Interaction.InputBox("Expiry (yyyy-MM-dd):", "New Record", DateTime.Now.ToString("yyyy-MM-dd"));
-            if (!DateTime.TryParse(expiryStr, out DateTime expiry)) return;
-
-            if (_controller.AddItem(name, qty, category, expiry))
+            foreach (DataGridViewColumn col in grid.Columns)
             {
-                MessageBox.Show($"{category} added successfully!");
-                RefreshDashboard();
-            }
-            else
-            {
-                MessageBox.Show("Failed to add item. Check database connection or field constraints.");
-            }
-        }
-
-        // ========== EDIT METHOD ==========
-        private void btnEditItem_Click(object sender, EventArgs e)
-        {
-            bool isMedicine = dgvMedicineRecords.Visible;
-            DataGridView activeGrid = isMedicine ? dgvMedicineRecords : dgvSuppliesRecords;
-
-            if (activeGrid.SelectedRows.Count > 0)
-            {
-                try
+                if (col.Visible && col.DataPropertyName != "ItemID")
                 {
-                    var row = activeGrid.SelectedRows[0];
-                    string oldName, currentQty, currentUsage, currentExpiry;
-
-                    if (isMedicine)
-                    {
-                        oldName = row.Cells["MedicineName"].Value?.ToString() ?? "";
-                        currentQty = row.Cells["InStock"].Value?.ToString() ?? "0";
-                        currentUsage = row.Cells["UsedWk"].Value?.ToString() ?? "0";
-                        currentExpiry = row.Cells["Expiry"].Value?.ToString() ?? "";
-                    }
-                    else
-                    {
-                        oldName = row.Cells["colSupName"].Value?.ToString() ?? "";
-                        currentQty = row.Cells["colSupQty"].Value?.ToString() ?? "0";
-                        currentUsage = row.Cells["colSupUsage"].Value?.ToString() ?? "0";
-                        currentExpiry = row.Cells["colSupExpiry"].Value?.ToString() ?? "";
-                    }
-
-                    string newName = Interaction.InputBox("Edit Item Name:", "AceCare Editor", oldName);
-                    if (string.IsNullOrWhiteSpace(newName)) return;
-
-                    string newQtyStr = Interaction.InputBox("Update Quantity:", "AceCare Editor", currentQty);
-                    if (!int.TryParse(newQtyStr, out int qty)) return;
-
-                    string newUsageStr = Interaction.InputBox("Update Weekly Usage:", "AceCare Editor", currentUsage);
-                    if (!double.TryParse(newUsageStr, out double usage)) return;
-
-                    string newExpiryStr = Interaction.InputBox("Update Expiry (MM-DD-YYYY):", "AceCare Editor", currentExpiry);
-                    if (!DateTime.TryParse(newExpiryStr, out DateTime expiryDate)) return;
-
-                    if (_controller.UpdateFullItem(oldName, newName, qty, usage, expiryDate))
-                    {
-                        MessageBox.Show("Item successfully updated!");
-                        RefreshDashboard();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error mapping columns: " + ex.Message);
+                    grid.CurrentCell = grid.Rows[lastIndex].Cells[col.Index];
+                    grid.BeginEdit(true);
+                    return;
                 }
             }
-            else
+        }
+
+        private bool SaveNewRow(DataGridView grid)
+        {
+            if (!(grid.DataSource is DataTable table) || table.Rows.Count == 0) return false;
+            int lastIndex = table.Rows.Count - 1;
+            DataRow row = table.Rows[lastIndex];
+            if (row.RowState != DataRowState.Added) return false;
+
+            try
             {
-                MessageBox.Show("Please select a full row (click the arrow on the left).");
+                string name = row["Name"]?.ToString() ?? "";
+                if (string.IsNullOrWhiteSpace(name)) { MessageBox.Show("Name cannot be empty.", "Validation Error"); return false; }
+
+                int qty = Convert.ToInt32(row["Quantity"] ?? 0);
+                DateTime expiry = Convert.ToDateTime(row["ExpiryDate"] ?? DateTime.Now);
+                string category = grid == dgvMedicineRecords ? "Medicine" : "Supply";
+
+                if (_controller.AddItem(name, qty, category, expiry))
+                {
+                    row.AcceptChanges();
+                    return true;
+                }
+                MessageBox.Show("Failed to save to database.", "Error");
+                return false;
             }
+            catch (Exception ex) { MessageBox.Show("Error saving: " + ex.Message, "Error"); return false; }
+        }
+
+        private void SaveSingleRow(DataGridView grid, int rowIndex)
+        {
+            if (!(grid.DataSource is DataTable table) || rowIndex < 0 || rowIndex >= table.Rows.Count) return;
+            DataRow row = table.Rows[rowIndex];
+            if (row.RowState != DataRowState.Modified || row["ItemID"] == DBNull.Value) return;
+
+            try
+            {
+                int id = Convert.ToInt32(row["ItemID"]);
+                if (id == 0) return;
+                string name = row["Name"]?.ToString() ?? "";
+                int qty = Convert.ToInt32(row["Quantity"] ?? 0);
+                double usage = Convert.ToDouble(row["WeeklyUsage"] ?? 0);
+                DateTime expiry = Convert.ToDateTime(row["ExpiryDate"] ?? DateTime.Now);
+
+                if (_controller.UpdateFullItem(id, name, qty, usage, expiry)) row.AcceptChanges();
+            }
+            catch (Exception ex) { Console.WriteLine($"Auto-save error: {ex.Message}"); }
         }
 
         // ========== DELETE METHOD ==========
@@ -252,25 +288,39 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             DataGridView activeGrid = dgvMedicineRecords.Visible ? dgvMedicineRecords : dgvSuppliesRecords;
 
-            if (activeGrid.SelectedRows.Count > 0)
+            if (activeGrid.SelectedRows.Count == 0)
             {
-                string itemName = activeGrid.SelectedRows[0].Cells[0].Value?.ToString();
-
-                if (string.IsNullOrEmpty(itemName)) return;
-
-                if (MessageBox.Show($"Delete {itemName}?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    if (_controller.DeleteItem(itemName))
-                    {
-                        activeGrid.ClearSelection();
-                        RefreshDashboard();
-                        MessageBox.Show("Item deleted successfully.");
-                    }
-                }
+                MessageBox.Show("Please select a row to delete.");
+                return;
             }
-            else
+
+            int id = Convert.ToInt32(activeGrid.SelectedRows[0].Cells["ItemID"].Value);
+
+            if (id == 0)
             {
-                MessageBox.Show("Please select a row first.");
+                DataRowView drv = activeGrid.SelectedRows[0].DataBoundItem as DataRowView;
+                if (drv != null)
+                {
+                    drv.Row.Delete();
+                    MessageBox.Show("Unsaved row removed.");
+                    _isAddingNew = false;
+                    activeGrid.ReadOnly = true;
+                }
+                return;
+            }
+
+            if (MessageBox.Show("Delete this item permanently?", "Confirm",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (_controller.DeleteItem(id))
+                {
+                    MessageBox.Show("Item deleted successfully!");
+                    RefreshDashboard();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to delete item.");
+                }
             }
         }
 
@@ -278,5 +328,152 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             RefreshDashboard();
         }
+
+        // ========== EDIT ==========
+        private void btnEditItem_Click(object sender, EventArgs e)
+        {
+            DataGridView activeGrid = dgvMedicineRecords.Visible ? dgvMedicineRecords : dgvSuppliesRecords;
+            DataTable activeTable = dgvMedicineRecords.Visible ? _medicineTable : _suppliesTable;
+
+            if (!_isEditMode)
+            {
+                if (activeTable == null || activeTable.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to edit.");
+                    return;
+                }
+
+                _isEditMode = true;
+                btnEditItem.Text = "Save Changes";
+                btnEditItem.BackColor = Color.LightGreen;
+
+                activeGrid.ReadOnly = false;
+                if (activeGrid.Columns["ItemID"] != null)
+                    activeGrid.Columns["ItemID"].ReadOnly = true;
+
+                activeGrid.Focus();
+            }
+            else
+            {
+                try
+                {
+                    bool saved = SaveGridChanges(activeGrid, activeTable);
+
+                    _isEditMode = false;
+                    btnEditItem.Text = "Edit";
+                    btnEditItem.BackColor = SystemColors.Control;
+                    activeGrid.ReadOnly = true;
+
+                    if (saved)
+                    {
+                        MessageBox.Show("Successfully updated records!", "AceCare",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _isAddingNew = false;
+                        RefreshDashboard();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No changes were saved. Did you edit any rows?", "AceCare Notice",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error saving changes: " + ex.Message, "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    _isEditMode = false;
+                    btnEditItem.Text = "Edit";
+                    btnEditItem.BackColor = SystemColors.Control;
+                    activeGrid.ReadOnly = true;
+                }
+            }
+        }
+
+        private bool SaveGridChanges(DataGridView grid, DataTable table)
+        {
+            if (grid.CurrentCell != null && grid.IsCurrentCellInEditMode)
+            {
+                grid.EndEdit();
+            }
+
+            grid.CurrentCell = null;
+
+            if (grid.BindingContext[table] != null)
+            {
+                grid.BindingContext[table].EndCurrentEdit();
+            }
+
+            if (table == null) return false;
+
+            int updateCount = 0;
+            int insertCount = 0;
+
+            foreach (DataRow row in table.Rows)
+            {
+                if (row.RowState == DataRowState.Deleted)
+                    continue;
+
+                if (row.RowState == DataRowState.Added)
+                {
+                    try
+                    {
+                        string name = row["Name"].ToString();
+                        if (string.IsNullOrWhiteSpace(name))
+                        {
+                            MessageBox.Show("Name cannot be empty.");
+                            continue;
+                        }
+
+                        int qty = Convert.ToInt32(row["Quantity"]);
+                        DateTime expiry = (row["ExpiryDate"] == DBNull.Value) ?
+                            DateTime.Now : Convert.ToDateTime(row["ExpiryDate"]);
+
+                        string category = (grid == dgvMedicineRecords) ? "Medicine" : "Supply";
+
+                        if (_controller.AddItem(name, qty, category, expiry))
+                        {
+                            insertCount++;
+                            row.AcceptChanges();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error inserting row: {ex.Message}");
+                    }
+                }
+                else if (row.RowState == DataRowState.Modified)
+                {
+                    if (row["ItemID"] == DBNull.Value)
+                        continue;
+
+                    try
+                    {
+                        int id = Convert.ToInt32(row["ItemID"]);
+                        if (id == 0) continue;
+
+                        string name = row["Name"].ToString();
+                        int qty = Convert.ToInt32(row["Quantity"]);
+                        double usage = (row["WeeklyUsage"] == DBNull.Value) ?
+                            0 : Convert.ToDouble(row["WeeklyUsage"]);
+                        DateTime expiry = (row["ExpiryDate"] == DBNull.Value) ?
+                            DateTime.Now : Convert.ToDateTime(row["ExpiryDate"]);
+
+                        if (_controller.UpdateFullItem(id, name, qty, usage, expiry))
+                        {
+                            updateCount++;
+                            row.AcceptChanges();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error updating row {row["ItemID"]}: {ex.Message}");
+                    }
+                }
+            }
+
+            return (updateCount + insertCount) > 0;
+        }
     }
 }
+
