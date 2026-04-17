@@ -25,24 +25,39 @@ namespace AceCareClinicSystem.AceCare_UserControls
         public UC_Reportscs()
         {
             InitializeComponent();
-            LoadData();
+            
+            // Set Default Filters: Showing Today by default
+            dtpFrom.Value = DateTime.Today;
+            dtpTo.Value = DateTime.Today;
+            cbDataViewFilter.SelectedIndex = 0; // All Records
 
-            // Wire up search buttons
-            //    SearchBtn.Click += (s, e) => LoadPatientsTable(poisonTextBox1.Text);
-            //   poisonTextBox1.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) LoadPatientsTable(poisonTextBox1.Text); };
+            // Wire up filters to reload table
+            // We can reload on change or on button click
+            dtpFrom.ValueChanged += (s, e) => LoadPatientsTable();
+            dtpTo.ValueChanged += (s, e) => LoadPatientsTable();
+            cbDataViewFilter.SelectedIndexChanged += (s, e) => LoadPatientsTable();
+            
+            // Search text reload
+            poisonTextBox1.TextChanged += (s, e) => {
+                if (poisonTextBox1.Text != "Search") LoadPatientsTable();
+            };
+            poisonTextBox1.Click += (s, e) => {
+                if (poisonTextBox1.Text == "Search") poisonTextBox1.Text = "";
+            };
 
-            // Panel 5 Search (Right side) - wire it to the same patient search for simplicity or general report filter
-            //  hopeRoundButton1.Click += (s, e) => LoadPatientsTable(poisonTextBox2.Text);
-            // poisonTextBox2.KeyDown += (s, e) => { if (e.KeyCode == Keys.Enter) LoadPatientsTable(poisonTextBox2.Text); };
+            // Search text reload
+            poisonTextBox1.TextChanged += (s, e) => {
+                if (poisonTextBox1.Text != "Search") LoadPatientsTable();
+            };
+            poisonTextBox1.Click += (s, e) => {
+                if (poisonTextBox1.Text == "Search") poisonTextBox1.Text = "";
+            };
 
             // Wire up Export button
             hopeRoundButton2.Click += (s, e) => ExportToPdf();
 
-            // Wire up Edit button (hopeRoundButton3)
-            hopeRoundButton3.Click += (s, e) => EditSelectedPatient();
-
-            // Wire up Delete button (hopeRoundButton4)
-            hopeRoundButton4.Click += (s, e) => DeleteSelectedPatient();
+            // Initial load
+            LoadData();
 
             // Ensure grid row height is set
             poisonDataGridView1.RowTemplate.Height = 45;
@@ -54,81 +69,46 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label1.Text = dashboardController.GetTotalConsultations().ToString();
             label3.Text = dashboardController.GetTotalSupplies();
             label5.Text = dashboardController.GetLowInventoryCount();
+            label10.Text = dashboardController.GetTotalPatients();
 
-            // Load patients table
+            // Load patients table with default filters
             LoadPatientsTable();
         }
 
         private void LoadPatientsTable(string search = "")
         {
-            DataTable dt = patientController.GetPatients(search);
-            poisonDataGridView1.Rows.Clear();
+            try {
+                // Use DT from controls if search isn't explicitly passed
+                string searchTerm = string.IsNullOrEmpty(search) ? poisonTextBox1.Text : search;
+                if (searchTerm == "Search") searchTerm = "";
 
-            foreach (DataRow row in dt.Rows)
-            {
-                // UPDATED: Aligning with the new 7-column design
-                poisonDataGridView1.Rows.Add(
-                    row["LastVisit"],
-                    row["IDNumber"],
-                    row["PatientName"],
-                    row["PatientType"],
-                    row["Description"] ?? "N/A",
-                    row["QtyDosage"] ?? "N/A",
-                    row["Personnel"] ?? "N/A"
-                );
-            }
-        }
+                string categoryFilter = cbDataViewFilter.SelectedItem?.ToString() ?? "All Records";
 
-        private string GetSelectedPatientId()
-        {
-            if (poisonDataGridView1.SelectedRows.Count > 0)
-            {
-                return poisonDataGridView1.SelectedRows[0].Cells[1].Value?.ToString(); // Column 1 is ID No.
-            }
-            return null;
-        }
+                // Get data from controller
+                DataTable dt = patientController.GetReportData(dtpFrom.Value, dtpTo.Value, searchTerm, categoryFilter);
+                
+                poisonDataGridView1.Rows.Clear();
 
-        private void EditSelectedPatient()
-        {
-            string id = GetSelectedPatientId();
-            if (string.IsNullOrEmpty(id))
-            {
-                MessageBox.Show("Please select a patient from the list to edit.", "Selection Required");
-                return;
-            }
-
-            FormPatientEdit editForm = new FormPatientEdit(id);
-            editForm.ShowDialog();
-
-            if (editForm.IsSuccess)
-            {
-                LoadData();
-            }
-        }
-
-        private void DeleteSelectedPatient()
-        {
-            string id = GetSelectedPatientId();
-            if (string.IsNullOrEmpty(id))
-            {
-                MessageBox.Show("Please select a patient from the list to delete.", "Selection Required");
-                return;
-            }
-
-            DialogResult result = MessageBox.Show($"Are you sure you want to delete patient record {id}? This action cannot be undone.",
-                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                if (patientController.DeletePatient(id))
+                if (dt != null && dt.Rows.Count > 0)
                 {
-                    MessageBox.Show("Patient record deleted successfully.");
-                    LoadData();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        poisonDataGridView1.Rows.Add(
+                            row["LastVisit"],
+                            row["IDNumber"],
+                            row["PatientName"],
+                            row["PatientType"],
+                            row["Description"] ?? "N/A",
+                            row["QtyDosage"] ?? "N/A",
+                            row["Personnel"] ?? "N/A"
+                        );
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Failed to delete patient record.");
-                }
+            } 
+            catch (Exception ex)
+            {
+                // Silently log or handle. Often happens during initialization.
+                System.Diagnostics.Debug.WriteLine("LoadPatientsTable Error: " + ex.Message);
             }
         }
 
@@ -136,6 +116,13 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             try
             {
+                // check if there is data to export
+                if (poisonDataGridView1.Rows.Count == 0 || (poisonDataGridView1.Rows.Count == 1 && poisonDataGridView1.Rows[0].IsNewRow))
+                {
+                    MessageBox.Show("No data available to export for the selected date range.", "Export Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 using (SaveFileDialog sfd = new SaveFileDialog())
                 {
                     sfd.Filter = "PDF Files (*.pdf)|*.pdf";
@@ -165,13 +152,17 @@ namespace AceCareClinicSystem.AceCare_UserControls
                                     .SetFontSize(14)
                                     .SetFont(italicFont));
 
+                                document.Add(new Paragraph($"Period: {dtpFrom.Value:MMM dd, yyyy} - {dtpTo.Value:MMM dd, yyyy}")
+                                    .SetTextAlignment(TextAlignment.CENTER)
+                                    .SetFontSize(10));
+
                                 document.Add(new Paragraph("\n"));
 
                                 // Summary Section
-                                document.Add(new Paragraph("Dashboard Summary").SetFont(boldFont).SetFontSize(12));
-                                document.Add(new Paragraph($"Total Consultations: {label1.Text}"));
-                                document.Add(new Paragraph($"Total Supplies: {label3.Text}"));
-                                document.Add(new Paragraph($"Inventory Alerts: {label5.Text}"));
+                                document.Add(new Paragraph("Report Details").SetFont(boldFont).SetFontSize(12));
+                                document.Add(new Paragraph($"Category Filter: {cbDataViewFilter.SelectedItem?.ToString() ?? "All"}"));
+                                document.Add(new Paragraph($"Search Filter: {(string.IsNullOrEmpty(poisonTextBox1.Text) || poisonTextBox1.Text == "Search" ? "None" : poisonTextBox1.Text)}"));
+                                document.Add(new Paragraph($"Total Records Found: {poisonDataGridView1.Rows.Count - (poisonDataGridView1.AllowUserToAddRows ? 1 : 0)}"));
                                 document.Add(new Paragraph($"Date Generated: {DateTime.Now:MMMM dd, yyyy HH:mm}"));
 
                                 document.Add(new Paragraph("\n"));
@@ -199,7 +190,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
                                     for (int i = 0; i < 7; i++)
                                     {
-                                        table.AddCell(new Paragraph(row.Cells[i].Value?.ToString() ?? "N/A").SetFontSize(9));
+                                        table.AddCell(new Paragraph(row.Cells[i].Value?.ToString() ?? "N/A").SetFontSize(8));
                                     }
                                 }
 
