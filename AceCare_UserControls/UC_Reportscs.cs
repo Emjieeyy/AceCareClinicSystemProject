@@ -66,11 +66,15 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
             foreach (DataRow row in dt.Rows)
             {
+                // UPDATED: Aligning with the new 7-column design
                 poisonDataGridView1.Rows.Add(
-                    row["PatientName"],
+                    row["LastVisit"],
                     row["IDNumber"],
+                    row["PatientName"],
                     row["PatientType"],
-                    row["LastVisit"]
+                    row["Description"] ?? "N/A",
+                    row["QtyDosage"] ?? "N/A",
+                    row["Personnel"] ?? "N/A"
                 );
             }
         }
@@ -143,6 +147,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
                         {
                             using (PdfDocument pdf = new PdfDocument(writer))
                             {
+                                pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4.Rotate());
                                 Document document = new Document(pdf);
 
                                 // Create Fonts
@@ -172,25 +177,30 @@ namespace AceCareClinicSystem.AceCare_UserControls
                                 document.Add(new Paragraph("\n"));
 
                                 // Table Section
-                                document.Add(new Paragraph("Patient Records List").SetFont(boldFont).SetFontSize(12));
+                                document.Add(new Paragraph("Clinic Activity Log").SetFont(boldFont).SetFontSize(12));
 
-                                Table table = new Table(4).UseAllAvailableWidth();
+                                // UPDATED: 7 columns matching the new design
+                                float[] columnWidths = { 15, 10, 15, 10, 20, 15, 15 };
+                                Table table = new Table(UnitValue.CreatePercentArray(columnWidths)).UseAllAvailableWidth();
 
                                 // Table Headers
-                                table.AddHeaderCell(new Cell().Add(new Paragraph("Patient Name").SetFont(boldFont)));
-                                table.AddHeaderCell(new Cell().Add(new Paragraph("ID Number").SetFont(boldFont)));
-                                table.AddHeaderCell(new Cell().Add(new Paragraph("Patient Type").SetFont(boldFont)));
                                 table.AddHeaderCell(new Cell().Add(new Paragraph("Last Visit").SetFont(boldFont)));
+                                table.AddHeaderCell(new Cell().Add(new Paragraph("ID No.").SetFont(boldFont)));
+                                table.AddHeaderCell(new Cell().Add(new Paragraph("Patient Name").SetFont(boldFont)));
+                                table.AddHeaderCell(new Cell().Add(new Paragraph("Category").SetFont(boldFont)));
+                                table.AddHeaderCell(new Cell().Add(new Paragraph("Description").SetFont(boldFont)));
+                                table.AddHeaderCell(new Cell().Add(new Paragraph("Qty / Dosage").SetFont(boldFont)));
+                                table.AddHeaderCell(new Cell().Add(new Paragraph("Personnel").SetFont(boldFont)));
 
                                 // Table Data
                                 foreach (DataGridViewRow row in poisonDataGridView1.Rows)
                                 {
                                     if (row.IsNewRow) continue;
 
-                                    table.AddCell(new Paragraph(row.Cells[0].Value?.ToString() ?? ""));
-                                    table.AddCell(new Paragraph(row.Cells[1].Value?.ToString() ?? ""));
-                                    table.AddCell(new Paragraph(row.Cells[2].Value?.ToString() ?? ""));
-                                    table.AddCell(new Paragraph(row.Cells[3].Value?.ToString() ?? ""));
+                                    for (int i = 0; i < 7; i++)
+                                    {
+                                        table.AddCell(new Paragraph(row.Cells[i].Value?.ToString() ?? "N/A").SetFontSize(9));
+                                    }
                                 }
 
                                 document.Add(table);

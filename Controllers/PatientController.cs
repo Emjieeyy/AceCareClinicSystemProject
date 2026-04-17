@@ -55,7 +55,7 @@ namespace AceCareClinicSystem.Controllers
                 try
                 {
                     conn.Open();
-                    // 🔥 FIXED: Properly shows "New Patient" when no consultations exist
+                    // UPDATED: Now fetches details from the latest consultation for the reports table
                     string query = @"SELECT 
                         CONCAT(p.first_name, ' ', p.last_name) AS PatientName, 
                         p.patient_number AS IDNumber, 
@@ -68,7 +68,10 @@ namespace AceCareClinicSystem.Controllers
                                 DATE_FORMAT((SELECT MAX(visit_date) FROM consultations WHERE patient_id = p.patient_id), '%b %d, %Y %h:%i %p'),
                                 'New Patient'
                             )
-                        END AS LastVisit
+                        END AS LastVisit,
+                        (SELECT chief_complaint FROM consultations WHERE patient_id = p.patient_id ORDER BY visit_date DESC LIMIT 1) AS Description,
+                        (SELECT CONCAT(medicine_quantity, ' (', dosage, ')') FROM consultations WHERE patient_id = p.patient_id ORDER BY visit_date DESC LIMIT 1) AS QtyDosage,
+                        (SELECT clinic_incharge FROM consultations WHERE patient_id = p.patient_id ORDER BY visit_date DESC LIMIT 1) AS Personnel
                         FROM patients p 
                         WHERE p.first_name LIKE @s OR p.last_name LIKE @s OR p.patient_number LIKE @s
                         ORDER BY p.last_name ASC 
