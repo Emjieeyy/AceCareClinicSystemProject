@@ -9,7 +9,124 @@ namespace AceCareClinicSystem.Controllers
     {
         private DbConnection db = new DbConnection();
         private AuthController _auth = new AuthController();
+        private InventoryController _inventory = new InventoryController();
 
+        // ============================================
+        // Get Expiring Soon Count
+        // ============================================
+        public string GetExpiringSoonCount()
+        {
+            try
+            {
+                var stats = _inventory.GetDashboardStats();
+                return stats.exp;
+            }
+            catch { return "0"; }
+        }
+
+        // ============================================
+        // Get Low Inventory Count
+        // ============================================
+        public string GetLowInventoryCount()
+        {
+            try
+            {
+                var stats = _inventory.GetDashboardStats();
+                return stats.low;
+            }
+            catch { return "0"; }
+        }
+
+        // ============================================
+        // Get Total Users (for Admin)
+        // ============================================
+        public string GetTotalUsers()
+        {
+            try
+            {
+                return _auth.GetTotalUserCount();
+            }
+            catch { return "0"; }
+        }
+
+        // ============================================
+        // Get Total Patients
+        // ============================================
+        public string GetTotalPatients()
+        {
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    return new MySqlCommand("SELECT COUNT(*) FROM patients", conn)
+                        .ExecuteScalar()?.ToString() ?? "0";
+                }
+            }
+            catch { return "0"; }
+        }
+
+        // ============================================
+        // Get Today's Visits
+        // ============================================
+        public string GetTodaysVisits()
+        {
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    DateTime today = DateTime.Today;
+                    DateTime tomorrow = today.AddDays(1);
+
+                    string query = @"SELECT COUNT(*) FROM consultations 
+                                    WHERE visit_date >= @today AND visit_date < @tomorrow";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@today", today);
+                        cmd.Parameters.AddWithValue("@tomorrow", tomorrow);
+                        return cmd.ExecuteScalar()?.ToString() ?? "0";
+                    }
+                }
+            }
+            catch { return "0"; }
+        }
+
+        // ============================================
+        // CAPACITY PERCENTAGE (NEW)
+        // ============================================
+        public int GetStockFillPercentage()
+        {
+            try
+            {
+                var stats = _inventory.GetDashboardStats();
+                int currentStock = int.Parse(stats.med) + int.Parse(stats.sup); // 119 + 19 = 138
+
+                int maxCapacity = 200; // ADJUST THIS to your clinic's max capacity!
+
+                int percentage = (int)((currentStock / (double)maxCapacity) * 100);
+                return percentage > 100 ? 100 : percentage;
+            }
+            catch { return 0; }
+        }
+
+        // ============================================
+        // Get Total Supplies (for Reports)
+        // ============================================
+        public string GetTotalSupplies()
+        {
+            try
+            {
+                var stats = _inventory.GetDashboardStats();
+                return stats.sup;
+            }
+            catch { return "0"; }
+        }
+
+        // ============================================
+        // Get Recent Consultations Table
+        // ============================================
         public DataTable GetRecentConsultations(int offset, int pageSize = 10, string searchTerm = "")
         {
             DataTable dt = new DataTable();
@@ -20,40 +137,41 @@ namespace AceCareClinicSystem.Controllers
                     conn.Open();
 
                     string query;
-                    using (MySqlCommand cmd = new MySqlCommand("", conn))
+                    if (string.IsNullOrEmpty(searchTerm))
                     {
-                        if (string.IsNullOrEmpty(searchTerm))
-                        {
-                            query = @"SELECT 
-                                CONCAT(COALESCE(p.first_name, ''), ' ', COALESCE(p.last_name, '')) AS 'Patients Name', 
-                                c.chief_complaint AS 'Chief Complaint', 
-                                DATE_FORMAT(c.visit_date, '%h:%i:%s %p') AS 'Time of Visit', 
-                                c.outcome AS 'Outcome' 
-                             FROM consultations c 
-                             INNER JOIN patients p ON c.patient_id = p.patient_id 
-                             ORDER BY c.visit_date DESC 
-                             LIMIT @pageSize OFFSET @offset";
-                        }
-                        else
-                        {
-                            query = @"SELECT 
-                                CONCAT(COALESCE(p.first_name, ''), ' ', COALESCE(p.last_name, '')) AS 'Patients Name', 
-                                c.chief_complaint AS 'Chief Complaint', 
-                                DATE_FORMAT(c.visit_date, '%h:%i:%s %p') AS 'Time of Visit', 
-                                c.outcome AS 'Outcome' 
-                             FROM consultations c 
-                             INNER JOIN patients p ON c.patient_id = p.patient_id 
-                             WHERE CONCAT(COALESCE(p.first_name, ''), ' ', COALESCE(p.last_name, '')) LIKE @search 
-                                OR c.chief_complaint LIKE @search
-                                OR p.patient_number LIKE @search
-                             ORDER BY c.visit_date DESC 
-                             LIMIT @pageSize OFFSET @offset";
-                            cmd.Parameters.AddWithValue("@search", "%" + searchTerm + "%");
-                        }
+                        query = @"SELECT 
+                            CONCAT(COALESCE(p.first_name, ''), ' ', COALESCE(p.last_name, '')) AS 'Patients Name', 
+                            c.chief_complaint AS 'Chief Complaint', 
+                            DATE_FORMAT(c.visit_date, '%h:%i:%s %p') AS 'Time of Visit', 
+                            c.outcome AS 'Outcome' 
+                         FROM consultations c 
+                         INNER JOIN patients p ON c.patient_id = p.patient_id 
+                         ORDER BY c.visit_date DESC 
+                         LIMIT @pageSize OFFSET @offset";
+                    }
+                    else
+                    {
+                        query = @"SELECT 
+                            CONCAT(COALESCE(p.first_name, ''), ' ', COALESCE(p.last_name, '')) AS 'Patients Name', 
+                            c.chief_complaint AS 'Chief Complaint', 
+                            DATE_FORMAT(c.visit_date, '%h:%i:%s %p') AS 'Time of Visit', 
+                            c.outcome AS 'Outcome' 
+                         FROM consultations c 
+                         INNER JOIN patients p ON c.patient_id = p.patient_id 
+                         WHERE CONCAT(COALESCE(p.first_name, ''), ' ', COALESCE(p.last_name, '')) LIKE @search 
+                            OR c.chief_complaint LIKE @search
+                            OR p.patient_number LIKE @search
+                         ORDER BY c.visit_date DESC 
+                         LIMIT @pageSize OFFSET @offset";
+                    }
 
-                        cmd.CommandText = query;
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
                         cmd.Parameters.AddWithValue("@pageSize", pageSize);
                         cmd.Parameters.AddWithValue("@offset", offset);
+
+                        if (!string.IsNullOrEmpty(searchTerm))
+                            cmd.Parameters.AddWithValue("@search", "%" + searchTerm + "%");
 
                         MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                         adapter.Fill(dt);
@@ -62,11 +180,14 @@ namespace AceCareClinicSystem.Controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Controller Error: " + ex.Message);
+                MessageBox.Show("Error loading consultations: " + ex.Message);
             }
             return dt;
         }
 
+        // ============================================
+        // Get Total Consultations Count
+        // ============================================
         public int GetTotalConsultations(string searchTerm = "")
         {
             try
@@ -75,8 +196,7 @@ namespace AceCareClinicSystem.Controllers
                 {
                     conn.Open();
                     string query = string.IsNullOrEmpty(searchTerm)
-                        ? @"SELECT COUNT(*) FROM consultations c 
-                            INNER JOIN patients p ON c.patient_id = p.patient_id"
+                        ? @"SELECT COUNT(*) FROM consultations"
                         : @"SELECT COUNT(*) FROM consultations c 
                             INNER JOIN patients p ON c.patient_id = p.patient_id 
                             WHERE CONCAT(COALESCE(p.first_name, ''), ' ', COALESCE(p.last_name, '')) LIKE @search 
@@ -93,113 +213,6 @@ namespace AceCareClinicSystem.Controllers
                 }
             }
             catch { return 0; }
-        }
-
-        public string GetTotalPatients()
-        {
-            using (MySqlConnection conn = db.GetConnection())
-            {
-                conn.Open();
-                return new MySqlCommand("SELECT COUNT(*) FROM patients", conn).ExecuteScalar()?.ToString() ?? "0";
-            }
-        }
-
-        public string GetTodaysVisits()
-        {
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-
-                    // ============================================
-                    // FIX: Changed from MySQL CURDATE() to C# DateTime.Today
-                    // to fix timezone mismatch causing 0 results
-                    // ============================================
-
-                    // OLD CODE (commented out):
-                    // string query = @"SELECT COUNT(*) FROM consultations c
-                    //                 INNER JOIN patients p ON c.patient_id = p.patient_id
-                    //                 WHERE DATE(c.visit_date) = CURDATE()";
-                    // return new MySqlCommand(query, conn).ExecuteScalar()?.ToString() ?? "0";
-
-                    // NEW CODE:
-                    // Use C# DateTime.Today to match local system date instead of MySQL server date
-                    DateTime today = DateTime.Today;
-                    DateTime tomorrow = today.AddDays(1);
-
-                    // Use date range comparison to handle time components in visit_date
-                    // Removed unnecessary JOIN to patients table since we only need count
-                    string query = @"SELECT COUNT(*) FROM consultations 
-                                    WHERE visit_date >= @today AND visit_date < @tomorrow";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        // Use parameterized query for safety
-                        cmd.Parameters.AddWithValue("@today", today);
-                        cmd.Parameters.AddWithValue("@tomorrow", tomorrow);
-
-                        return cmd.ExecuteScalar()?.ToString() ?? "0";
-                    }
-                }
-            }
-            catch { return "0"; }
-        }
-
-        // LOW INVENTORY - from inventory table
-        public string GetLowInventoryCount()
-        {
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-                    string query = "SELECT COUNT(*) FROM inventory WHERE Quantity < 10";
-                    return new MySqlCommand(query, conn).ExecuteScalar()?.ToString() ?? "0";
-                }
-            }
-            catch { return "0"; }
-        }
-
-        // TOTAL USERS - from AuthController
-        public string GetTotalUsers()
-        {
-            try
-            {
-                return _auth.GetTotalUserCount();
-            }
-            catch { return "0"; }
-        }
-
-        // CIRCLE - total items in inventory (shows 47)
-        public int GetStockFillPercentage()
-        {
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-                    string query = "SELECT COUNT(*) FROM inventory";
-                    int totalItems = Convert.ToInt32(new MySqlCommand(query, conn).ExecuteScalar());
-                    return totalItems > 100 ? 100 : totalItems;
-                }
-            }
-            catch { return 0; }
-        }
-
-        public string GetTotalSupplies()
-        {
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
-                    string query = "SELECT COALESCE(SUM(Quantity), 0) FROM inventory";
-                    object? res = new MySqlCommand(query, conn).ExecuteScalar();
-                    return res?.ToString() ?? "0";
-                }
-            }
-            catch { return "0"; }
         }
     }
 }

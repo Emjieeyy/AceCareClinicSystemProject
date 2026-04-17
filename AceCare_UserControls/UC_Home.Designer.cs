@@ -30,10 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel3 = new Panel();
             lblTotalPatients = new Label();
             label2 = new Label();
@@ -73,8 +73,8 @@
             btnNext = new ReaLTaiizor.Controls.HopeRoundButton();
             panel6 = new Panel();
             lbTotalUser_0 = new Label();
-            label4 = new Label();
-            pictureBox14 = new PictureBox();
+            lblTotalUserTItle = new Label();
+            picTotal = new PictureBox();
             pictureBox5 = new PictureBox();
             pictureBox6 = new PictureBox();
             pictureBox13 = new PictureBox();
@@ -98,7 +98,7 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picTotal).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).BeginInit();
@@ -247,39 +247,39 @@
             dgvRecent.BorderStyle = BorderStyle.None;
             dgvRecent.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
             dgvRecent.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle9.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle9.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dgvRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvRecent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecent.Columns.AddRange(new DataGridViewColumn[] { Patient, Column1, Column3, Column4 });
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle11.Padding = new Padding(7);
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(192, 255, 255);
-            dataGridViewCellStyle11.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dgvRecent.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle3.Padding = new Padding(7);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(192, 255, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvRecent.DefaultCellStyle = dataGridViewCellStyle3;
             dgvRecent.EnableHeadersVisualStyles = false;
             dgvRecent.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvRecent.GridColor = Color.FromArgb(11, 45, 114);
             dgvRecent.Location = new Point(29, 333);
             dgvRecent.Name = "dgvRecent";
             dgvRecent.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            dgvRecent.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvRecent.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvRecent.RowHeadersWidth = 51;
             dgvRecent.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvRecent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -289,9 +289,9 @@
             // Patient
             // 
             Patient.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            Patient.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            Patient.DefaultCellStyle = dataGridViewCellStyle2;
             Patient.HeaderText = "Patients Name";
             Patient.MinimumWidth = 6;
             Patient.Name = "Patient";
@@ -580,8 +580,8 @@
             // 
             panel6.BackColor = Color.FromArgb(235, 239, 244);
             panel6.Controls.Add(lbTotalUser_0);
-            panel6.Controls.Add(label4);
-            panel6.Controls.Add(pictureBox14);
+            panel6.Controls.Add(lblTotalUserTItle);
+            panel6.Controls.Add(picTotal);
             panel6.Location = new Point(944, 119);
             panel6.Name = "panel6";
             panel6.Size = new Size(232, 100);
@@ -597,25 +597,26 @@
             lbTotalUser_0.TabIndex = 4;
             lbTotalUser_0.Text = "0";
             // 
-            // label4
+            // lblTotalUserTItle
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(99, 6);
-            label4.Name = "label4";
-            label4.Size = new Size(94, 22);
-            label4.TabIndex = 3;
-            label4.Text = "Total User";
+            lblTotalUserTItle.AutoSize = true;
+            lblTotalUserTItle.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotalUserTItle.Location = new Point(99, 6);
+            lblTotalUserTItle.Name = "lblTotalUserTItle";
+            lblTotalUserTItle.Size = new Size(94, 22);
+            lblTotalUserTItle.TabIndex = 3;
+            lblTotalUserTItle.Text = "Total User";
             // 
-            // pictureBox14
+            // picTotal
             // 
-            pictureBox14.BackgroundImage = Properties.Resources.group;
-            pictureBox14.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox14.Location = new Point(31, 17);
-            pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(67, 62);
-            pictureBox14.TabIndex = 0;
-            pictureBox14.TabStop = false;
+            picTotal.BackColor = Color.Transparent;
+            picTotal.BackgroundImage = Properties.Resources.group;
+            picTotal.BackgroundImageLayout = ImageLayout.Zoom;
+            picTotal.Location = new Point(31, 17);
+            picTotal.Name = "picTotal";
+            picTotal.Size = new Size(67, 62);
+            picTotal.TabIndex = 0;
+            picTotal.TabStop = false;
             // 
             // pictureBox5
             // 
@@ -716,7 +717,7 @@
             panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox14).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picTotal).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox13).EndInit();
@@ -766,8 +767,8 @@
         private ReaLTaiizor.Controls.HopeRoundButton btnNext;
         private Panel panel6;
         private Label lbTotalUser_0;
-        private Label label4;
-        private PictureBox pictureBox14;
+        private Label lblTotalUserTItle;
+        private PictureBox picTotal;
         private PictureBox pictureBox5;
         private PictureBox pictureBox6;
         private PictureBox pictureBox13;

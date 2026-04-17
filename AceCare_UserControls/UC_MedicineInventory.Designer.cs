@@ -73,19 +73,21 @@
             btnPrev = new ReaLTaiizor.Controls.HopeRoundButton();
             btnNext = new ReaLTaiizor.Controls.HopeRoundButton();
             dgvMedicineRecords = new ReaLTaiizor.Controls.PoisonDataGridView();
-            MedicineName = new DataGridViewTextBoxColumn();
-            InStock = new DataGridViewTextBoxColumn();
-            UsedWk = new DataGridViewTextBoxColumn();
-            Expiry = new DataGridViewTextBoxColumn();
             tabPage2 = new TabPage();
             ReloadPixSuppliesRecord = new PictureBox();
             btnPrevSuppliesRecord = new ReaLTaiizor.Controls.HopeRoundButton();
             btnNextSuppliesRecord = new ReaLTaiizor.Controls.HopeRoundButton();
             dgvSuppliesRecords = new ReaLTaiizor.Controls.PoisonDataGridView();
+            MedicineName = new DataGridViewTextBoxColumn();
+            InStock = new DataGridViewTextBoxColumn();
+            UsedWk = new DataGridViewTextBoxColumn();
+            Expiry = new DataGridViewTextBoxColumn();
+            colMedItemID = new DataGridViewTextBoxColumn();
             colSupName = new DataGridViewTextBoxColumn();
             colSupQty = new DataGridViewTextBoxColumn();
             colSupUsage = new DataGridViewTextBoxColumn();
             colSupExpiry = new DataGridViewTextBoxColumn();
+            colSupItemID = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -639,7 +641,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvMedicineRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvMedicineRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMedicineRecords.Columns.AddRange(new DataGridViewColumn[] { MedicineName, InStock, UsedWk, Expiry });
+            dgvMedicineRecords.Columns.AddRange(new DataGridViewColumn[] { MedicineName, InStock, UsedWk, Expiry, colMedItemID });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 255, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -676,34 +678,6 @@
             dgvMedicineRecords.Size = new Size(840, 500);
             dgvMedicineRecords.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
             dgvMedicineRecords.TabIndex = 0;
-            // 
-            // MedicineName
-            // 
-            MedicineName.DataPropertyName = "Name";
-            MedicineName.HeaderText = "Medicine Name";
-            MedicineName.MinimumWidth = 6;
-            MedicineName.Name = "MedicineName";
-            // 
-            // InStock
-            // 
-            InStock.DataPropertyName = "Quantity";
-            InStock.HeaderText = "In Stock";
-            InStock.MinimumWidth = 6;
-            InStock.Name = "InStock";
-            // 
-            // UsedWk
-            // 
-            UsedWk.DataPropertyName = "WeeklyUsage";
-            UsedWk.HeaderText = "Used (Wk)";
-            UsedWk.MinimumWidth = 6;
-            UsedWk.Name = "UsedWk";
-            // 
-            // Expiry
-            // 
-            Expiry.DataPropertyName = "ExpiryDate";
-            Expiry.HeaderText = "Expiry";
-            Expiry.MinimumWidth = 6;
-            Expiry.Name = "Expiry";
             // 
             // tabPage2
             // 
@@ -793,7 +767,7 @@
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             dgvSuppliesRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvSuppliesRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSuppliesRecords.Columns.AddRange(new DataGridViewColumn[] { colSupName, colSupQty, colSupUsage, colSupExpiry });
+            dgvSuppliesRecords.Columns.AddRange(new DataGridViewColumn[] { colSupName, colSupQty, colSupUsage, colSupExpiry, colSupItemID });
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = Color.FromArgb(255, 255, 255);
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -831,6 +805,42 @@
             dgvSuppliesRecords.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
             dgvSuppliesRecords.TabIndex = 1;
             // 
+            // MedicineName
+            // 
+            MedicineName.DataPropertyName = "Name";
+            MedicineName.HeaderText = "Medicine Name";
+            MedicineName.MinimumWidth = 6;
+            MedicineName.Name = "MedicineName";
+            // 
+            // InStock
+            // 
+            InStock.DataPropertyName = "Quantity";
+            InStock.HeaderText = "In Stock";
+            InStock.MinimumWidth = 6;
+            InStock.Name = "InStock";
+            // 
+            // UsedWk
+            // 
+            UsedWk.DataPropertyName = "WeeklyUsage";
+            UsedWk.HeaderText = "Used (Wk)";
+            UsedWk.MinimumWidth = 6;
+            UsedWk.Name = "UsedWk";
+            // 
+            // Expiry
+            // 
+            Expiry.DataPropertyName = "ExpiryDate";
+            Expiry.HeaderText = "Expiry";
+            Expiry.MinimumWidth = 6;
+            Expiry.Name = "Expiry";
+            // 
+            // colMedItemID
+            // 
+            colMedItemID.DataPropertyName = "ItemID";
+            colMedItemID.HeaderText = "ItemId";
+            colMedItemID.MinimumWidth = 6;
+            colMedItemID.Name = "colMedItemID";
+            colMedItemID.Visible = false;
+            // 
             // colSupName
             // 
             colSupName.DataPropertyName = "Name";
@@ -858,6 +868,14 @@
             colSupExpiry.HeaderText = "Expiry";
             colSupExpiry.MinimumWidth = 6;
             colSupExpiry.Name = "colSupExpiry";
+            // 
+            // colSupItemID
+            // 
+            colSupItemID.DataPropertyName = "ItemID";
+            colSupItemID.HeaderText = "ItemId";
+            colSupItemID.MinimumWidth = 6;
+            colSupItemID.Name = "colSupItemID";
+            colSupItemID.Visible = false;
             // 
             // UC_MedicineInventory
             // 
@@ -939,19 +957,21 @@
         private ReaLTaiizor.Controls.HopeRoundButton btnEditItem;
         private ReaLTaiizor.Controls.HopeRoundButton btnDeleteItem;
         private PictureBox pictureBox5;
-        private DataGridViewTextBoxColumn MedicineName;
-        private DataGridViewTextBoxColumn InStock;
-        private DataGridViewTextBoxColumn UsedWk;
-        private DataGridViewTextBoxColumn Expiry;
-        private DataGridViewTextBoxColumn colSupName;
-        private DataGridViewTextBoxColumn colSupQty;
-        private DataGridViewTextBoxColumn colSupUsage;
-        private DataGridViewTextBoxColumn colSupExpiry;
         private PictureBox ReloadPix;
         private ReaLTaiizor.Controls.HopeRoundButton btnPrev;
         private ReaLTaiizor.Controls.HopeRoundButton btnNext;
         private PictureBox ReloadPixSuppliesRecord;
         private ReaLTaiizor.Controls.HopeRoundButton btnPrevSuppliesRecord;
         private ReaLTaiizor.Controls.HopeRoundButton btnNextSuppliesRecord;
+        private DataGridViewTextBoxColumn MedicineName;
+        private DataGridViewTextBoxColumn InStock;
+        private DataGridViewTextBoxColumn UsedWk;
+        private DataGridViewTextBoxColumn Expiry;
+        private DataGridViewTextBoxColumn colMedItemID;
+        private DataGridViewTextBoxColumn colSupName;
+        private DataGridViewTextBoxColumn colSupQty;
+        private DataGridViewTextBoxColumn colSupUsage;
+        private DataGridViewTextBoxColumn colSupExpiry;
+        private DataGridViewTextBoxColumn colSupItemID;
     }
 }
