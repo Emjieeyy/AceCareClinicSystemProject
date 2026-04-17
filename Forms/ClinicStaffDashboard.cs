@@ -12,7 +12,6 @@ namespace AceCareClinicSystem.Forms
             InitializeComponent();
         }
 
-        // CHANGED: private -> public so UC_Home can access it
         public void addUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
