@@ -137,5 +137,39 @@ namespace AceCareClinicSystem.Controllers
             int rowsAffected = db.ExecuteWrite(query, parameters);
             return rowsAffected > 0;
         }
+    
+    // Add this method to InventoryController
+public DataTable GetInventoryReport(DateTime? fromDate = null, DateTime? toDate = null, string search = "")
+        {
+            string query = @"SELECT 
+        DATE_FORMAT(ExpiryDate, '%d-%b-%y') AS LastVisit,
+        CONCAT('ITEM-', ItemID) AS IDNumber,
+        Name AS PatientName,
+        Category AS PatientType,
+        CONCAT('Stock: ', Quantity, ' units') AS Description,
+        CONCAT(Quantity, ' (', WeeklyUsage, '/week)') AS QtyDosage,
+        'Inventory System' AS Personnel
+        FROM inventory 
+        WHERE 1=1";
+
+            var parameters = new Dictionary<string, object>();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query += " AND Name LIKE @search";
+                parameters.Add("@search", "%" + search + "%");
+            }
+
+            if (fromDate.HasValue && toDate.HasValue)
+            {
+                query += " AND ExpiryDate >= @from AND ExpiryDate <= @to";
+                parameters.Add("@from", fromDate.Value.Date);
+                parameters.Add("@to", toDate.Value.Date.AddDays(1).AddTicks(-1));
+            }
+
+            query += " ORDER BY ExpiryDate DESC";
+
+            return db.ExecuteRead(query, parameters);
+        }
     }
 }

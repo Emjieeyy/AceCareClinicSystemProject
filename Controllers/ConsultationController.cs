@@ -1,5 +1,6 @@
 using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace AceCareClinicSystem.Controllers
@@ -177,5 +178,47 @@ namespace AceCareClinicSystem.Controllers
                 return false;
             }
         }
+        
+            // Add this method to ConsultationController
+public DataTable GetConsultationReport(DateTime fromDate, DateTime toDate, string search = "")
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+                    string query = @"SELECT 
+                DATE_FORMAT(c.visit_date, '%d-%b-%y %H:%i') AS LastVisit,
+                p.patient_number AS IDNumber, 
+                CONCAT(p.first_name, ' ', p.last_name) AS PatientName, 
+                'Consultation' AS PatientType, 
+                c.chief_complaint AS Description,
+                CONCAT(c.medicine_quantity, ' (', COALESCE(c.dosage, 'N/A'), ')') AS QtyDosage,
+                c.clinic_incharge AS Personnel
+                FROM consultations c
+                INNER JOIN patients p ON c.patient_id = p.patient_id
+                WHERE (c.visit_date >= @from AND c.visit_date <= @to)
+                AND (p.first_name LIKE @s OR p.last_name LIKE @s OR p.patient_number LIKE @s OR c.chief_complaint LIKE @s)
+                ORDER BY c.visit_date DESC";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@from", fromDate.Date);
+                        cmd.Parameters.AddWithValue("@to", toDate.Date.AddDays(1).AddTicks(-1));
+                        cmd.Parameters.AddWithValue("@s", "%" + search.Trim() + "%");
+
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("GetConsultationReport Error: " + ex.Message);
+                return new DataTable();
+            }
+        }
     }
-}
+  }
