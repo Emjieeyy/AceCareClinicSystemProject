@@ -40,10 +40,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
             if (_userRole == "Clinic Staff")
             {
                 CreateUserBtn.Text = "About";
+                ChangeToAboutIcon();
             }
             else
             {
                 CreateUserBtn.Text = "Create User";
+                ChangeToCreateUserIcon();
             }
         }
 
@@ -105,35 +107,24 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             try
             {
-                // Suspend layout to prevent flickering
                 this.SuspendLayout();
-
-                // Store old image reference for disposal
                 Image oldImage = picTotal.Image;
-
-                // Completely clear the picture box
                 picTotal.Image = null;
                 picTotal.BackgroundImage = null;
 
-                // Dispose old image to free resources and ensure it's gone
                 if (oldImage != null)
                 {
                     oldImage.Dispose();
                 }
 
-                // Force complete visual clear
                 picTotal.Invalidate();
                 picTotal.Update();
                 Application.DoEvents();
 
-                // Set new properties
                 picTotal.SizeMode = PictureBoxSizeMode.Zoom;
                 picTotal.BackColor = Color.Transparent;
-
-                // Load new calendar icon
                 picTotal.Image = Properties.Resources.calendar__2__removebg_preview;
 
-                // Resume and refresh
                 this.ResumeLayout(true);
                 picTotal.Refresh();
             }
@@ -148,35 +139,24 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             try
             {
-                // Suspend layout to prevent flickering
                 this.SuspendLayout();
-
-                // Store old image reference for disposal
                 Image oldImage = picTotal.Image;
-
-                // Completely clear the picture box
                 picTotal.Image = null;
                 picTotal.BackgroundImage = null;
 
-                // Dispose old image to free resources
                 if (oldImage != null)
                 {
                     oldImage.Dispose();
                 }
 
-                // Force complete visual clear
                 picTotal.Invalidate();
                 picTotal.Update();
                 Application.DoEvents();
 
-                // Set new properties
                 picTotal.SizeMode = PictureBoxSizeMode.Zoom;
                 picTotal.BackColor = Color.Transparent;
-
-                // Load group icon
                 picTotal.Image = Properties.Resources.group;
 
-                // Resume and refresh
                 this.ResumeLayout(true);
                 picTotal.Refresh();
             }
@@ -188,6 +168,74 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
             lblTotalUserTItle.ForeColor = Color.Black;
             lbTotalUser_0.ForeColor = Color.Black;
+        }
+
+        private void ChangeToAboutIcon()
+        {
+            try
+            {
+                this.SuspendLayout();
+                Image oldImage = PicCreateUser.Image;
+                PicCreateUser.Image = null;
+                PicCreateUser.BackgroundImage = null;
+
+                if (oldImage != null)
+                {
+                    oldImage.Dispose();
+                }
+
+                PicCreateUser.Invalidate();
+                PicCreateUser.Update();
+                Application.DoEvents();
+
+                PicCreateUser.SizeMode = PictureBoxSizeMode.Zoom;
+                PicCreateUser.BackColor = Color.Transparent;
+
+                // Use the about/info icon - change this to your actual resource name
+                PicCreateUser.Image = Properties.Resources.information_button__1_;
+
+                this.ResumeLayout(true);
+                PicCreateUser.Refresh();
+            }
+            catch
+            {
+                PicCreateUser.Image = null;
+                PicCreateUser.BackColor = Color.Transparent;
+            }
+        }
+
+        private void ChangeToCreateUserIcon()
+        {
+            try
+            {
+                this.SuspendLayout();
+                Image oldImage = PicCreateUser.Image;
+                PicCreateUser.Image = null;
+                PicCreateUser.BackgroundImage = null;
+
+                if (oldImage != null)
+                {
+                    oldImage.Dispose();
+                }
+
+                PicCreateUser.Invalidate();
+                PicCreateUser.Update();
+                Application.DoEvents();
+
+                PicCreateUser.SizeMode = PictureBoxSizeMode.Zoom;
+                PicCreateUser.BackColor = Color.Transparent;
+
+                // Use the user/group icon for Create User
+                PicCreateUser.Image = Properties.Resources.group;
+
+                this.ResumeLayout(true);
+                PicCreateUser.Refresh();
+            }
+            catch
+            {
+                PicCreateUser.Image = null;
+                PicCreateUser.BackColor = Color.Transparent;
+            }
         }
 
         private void UpdatePaginationButtons()

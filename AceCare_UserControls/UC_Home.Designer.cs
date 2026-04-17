@@ -61,7 +61,7 @@
             pictureBox7 = new PictureBox();
             NewConsultBtn = new ReaLTaiizor.Controls.HopeButton();
             CreateUserBtn = new ReaLTaiizor.Controls.HopeButton();
-            pictureBox8 = new PictureBox();
+            PicCreateUser = new PictureBox();
             pictureBox4 = new PictureBox();
             pictureBox9 = new PictureBox();
             pictureBox10 = new PictureBox();
@@ -89,7 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvRecent).BeginInit();
             parrotWidgetPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PicCreateUser).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
@@ -443,7 +443,7 @@
             CreateUserBtn.ForeColor = Color.Black;
             CreateUserBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             CreateUserBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            CreateUserBtn.Location = new Point(72, 33);
+            CreateUserBtn.Location = new Point(71, 31);
             CreateUserBtn.Name = "CreateUserBtn";
             CreateUserBtn.PrimaryColor = Color.FromArgb(235, 239, 244);
             CreateUserBtn.Size = new Size(129, 35);
@@ -454,16 +454,16 @@
             CreateUserBtn.WarningColor = Color.FromArgb(230, 162, 60);
             CreateUserBtn.Click += CreateUserBtn_Click;
             // 
-            // pictureBox8
+            // PicCreateUser
             // 
-            pictureBox8.BackColor = Color.FromArgb(235, 239, 244);
-            pictureBox8.BackgroundImage = (Image)resources.GetObject("pictureBox8.BackgroundImage");
-            pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox8.Location = new Point(25, 22);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(47, 51);
-            pictureBox8.TabIndex = 5;
-            pictureBox8.TabStop = false;
+            PicCreateUser.BackColor = Color.FromArgb(235, 239, 244);
+            PicCreateUser.BackgroundImage = (Image)resources.GetObject("PicCreateUser.BackgroundImage");
+            PicCreateUser.BackgroundImageLayout = ImageLayout.Zoom;
+            PicCreateUser.Location = new Point(27, 18);
+            PicCreateUser.Name = "PicCreateUser";
+            PicCreateUser.Size = new Size(47, 51);
+            PicCreateUser.TabIndex = 5;
+            PicCreateUser.TabStop = false;
             // 
             // pictureBox4
             // 
@@ -529,7 +529,7 @@
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(235, 239, 244);
-            panel5.Controls.Add(pictureBox8);
+            panel5.Controls.Add(PicCreateUser);
             panel5.Controls.Add(CreateUserBtn);
             panel5.Location = new Point(948, 720);
             panel5.Name = "panel5";
@@ -707,7 +707,7 @@
             parrotWidgetPanel1.ResumeLayout(false);
             parrotWidgetPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PicCreateUser).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
@@ -753,7 +753,7 @@
         private ReaLTaiizor.Controls.HopeRoundProgressBar medicineCircle;
         private Label label9;
         private PictureBox pictureBox7;
-        private PictureBox pictureBox8;
+        private PictureBox PicCreateUser;
         private PictureBox pictureBox4;
         private PictureBox pictureBox9;
         private PictureBox pictureBox10;
