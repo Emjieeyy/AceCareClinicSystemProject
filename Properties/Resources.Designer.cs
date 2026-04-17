@@ -343,6 +343,26 @@ namespace AceCareClinicSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_ug75z7ug75z7ug75 {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_ug75z7ug75z7ug75", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_ug75z7ug75z7ug75_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_ug75z7ug75z7ug75-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gray {
             get {
                 object obj = ResourceManager.GetObject("gray", resourceCulture);
