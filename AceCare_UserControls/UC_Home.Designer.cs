@@ -80,6 +80,7 @@
             pictureBox13 = new PictureBox();
             ReloadPix = new PictureBox();
             toolTip1 = new ToolTip(components);
+            label13 = new Label();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -111,7 +112,7 @@
             panel3.Controls.Add(lblTotalPatients);
             panel3.Controls.Add(label2);
             panel3.Controls.Add(pictureBox1);
-            panel3.Location = new Point(29, 119);
+            panel3.Location = new Point(29, 132);
             panel3.Name = "panel3";
             panel3.Size = new Size(242, 101);
             panel3.TabIndex = 4;
@@ -132,15 +133,15 @@
             label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(106, 12);
             label2.Name = "label2";
-            label2.Size = new Size(127, 22);
+            label2.Size = new Size(123, 22);
             label2.TabIndex = 3;
-            label2.Text = "Total Patient's";
+            label2.Text = "Total Patients";
             // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(35, 16);
+            pictureBox1.Location = new Point(35, 20);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(67, 62);
             pictureBox1.TabIndex = 0;
@@ -150,7 +151,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(21, 25);
+            label1.Location = new Point(13, 26);
             label1.Name = "label1";
             label1.Size = new Size(389, 51);
             label1.TabIndex = 3;
@@ -162,7 +163,7 @@
             panel1.Controls.Add(lblTodaysVisit);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(pictureBox2);
-            panel1.Location = new Point(335, 118);
+            panel1.Location = new Point(335, 131);
             panel1.Name = "panel1";
             panel1.Size = new Size(236, 103);
             panel1.TabIndex = 5;
@@ -204,7 +205,7 @@
             panel2.Controls.Add(lblLowInventory_0);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(pictureBox3);
-            panel2.Location = new Point(628, 120);
+            panel2.Location = new Point(628, 133);
             panel2.Name = "panel2";
             panel2.Size = new Size(246, 101);
             panel2.TabIndex = 6;
@@ -321,7 +322,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(19, 266);
+            label8.Location = new Point(19, 274);
             label8.Name = "label8";
             label8.Size = new Size(319, 37);
             label8.TabIndex = 11;
@@ -398,6 +399,7 @@
             medicineCircle.TabIndex = 18;
             medicineCircle.Text = "hopeRoundProgressBar1";
             medicineCircle.ValueNumber = 0;
+            medicineCircle.Click += medicineCircle_Click;
             // 
             // pictureBox7
             // 
@@ -469,7 +471,7 @@
             // 
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Location = new Point(9, 93);
+            pictureBox4.Location = new Point(9, 107);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(289, 152);
             pictureBox4.TabIndex = 20;
@@ -582,7 +584,7 @@
             panel6.Controls.Add(lbTotalUser_0);
             panel6.Controls.Add(lblTotalUserTItle);
             panel6.Controls.Add(picTotal);
-            panel6.Location = new Point(944, 119);
+            panel6.Location = new Point(944, 132);
             panel6.Name = "panel6";
             panel6.Size = new Size(232, 100);
             panel6.TabIndex = 7;
@@ -622,7 +624,7 @@
             // 
             pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
             pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox5.Location = new Point(311, 94);
+            pictureBox5.Location = new Point(311, 108);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(289, 152);
             pictureBox5.TabIndex = 31;
@@ -632,7 +634,7 @@
             // 
             pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
             pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox6.Location = new Point(612, 94);
+            pictureBox6.Location = new Point(612, 108);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(289, 152);
             pictureBox6.TabIndex = 21;
@@ -642,7 +644,7 @@
             // 
             pictureBox13.BackgroundImage = (Image)resources.GetObject("pictureBox13.BackgroundImage");
             pictureBox13.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox13.Location = new Point(917, 93);
+            pictureBox13.Location = new Point(917, 107);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(289, 152);
             pictureBox13.TabIndex = 32;
@@ -662,11 +664,24 @@
             toolTip1.SetToolTip(ReloadPix, "Refresh Records");
             ReloadPix.Click += ReloadPix_Click;
             // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.Transparent;
+            label13.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label13.ForeColor = Color.Gray;
+            label13.Location = new Point(20, 81);
+            label13.Name = "label13";
+            label13.Size = new Size(480, 20);
+            label13.TabIndex = 50;
+            label13.Text = "Manage real-time clinic operations and track recent patient consultations.\r\n";
+            // 
             // UC_Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(label13);
             Controls.Add(ReloadPix);
             Controls.Add(panel1);
             Controls.Add(panel6);
@@ -774,5 +789,6 @@
         private PictureBox pictureBox13;
         private PictureBox ReloadPix;
         private ToolTip toolTip1;
+        private Label label13;
     }
 }

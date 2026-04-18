@@ -170,6 +170,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label3.Text = stats.TotalInventory.ToString();
             label5.Text = stats.LowInventory.ToString();
             label10.Text = stats.TotalPatients.ToString();
+
+            UpdateStockCircle();
         }
 
         // Get accurate counts directly from database
@@ -814,6 +816,32 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
+        }
+        private void UpdateStockCircle()
+        {
+            try
+            {
+                // Get stock fill percentage from dashboard controller (0-100)
+                int capacityPercent = dashboardController.GetStockFillPercentage();
+
+                // Update the circle percentage
+                medicineCircle.Percentage = capacityPercent;
+
+                // Apply color logic - use ProgressColor for the fill
+                if (capacityPercent < 50)
+                    medicineCircle.FilledColor = Color.Green;
+                else if (capacityPercent < 80)
+                    medicineCircle.FilledColor = Color.Orange;
+                else
+                    medicineCircle.FilledColor = Color.Red;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("UpdateStockCircle Error: " + ex.Message);
+                // Fallback values
+                medicineCircle.Percentage = 0;
+                medicineCircle.FilledColor = Color.Gray;
+            }
         }
     }
 }

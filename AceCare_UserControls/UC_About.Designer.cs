@@ -39,9 +39,9 @@
             logo = new PictureBox();
             InfoPanel = new Panel();
             panel3 = new Panel();
-            label7 = new Label();
             label6 = new Label();
             pictureBox3 = new PictureBox();
+            label7 = new Label();
             label5 = new Label();
             label4 = new Label();
             pictureBox2 = new PictureBox();
@@ -159,9 +159,9 @@
             // 
             panel3.BackgroundImage = Properties.Resources._21;
             panel3.BackgroundImageLayout = ImageLayout.Stretch;
-            panel3.Controls.Add(label7);
             panel3.Controls.Add(label6);
             panel3.Controls.Add(pictureBox3);
+            panel3.Controls.Add(label7);
             panel3.Controls.Add(label5);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(pictureBox2);
@@ -175,22 +175,12 @@
             panel3.TabIndex = 6;
             panel3.Paint += panel3_Paint;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.Transparent;
-            label7.Location = new Point(61, 425);
-            label7.Name = "label7";
-            label7.Size = new Size(587, 80);
-            label7.TabIndex = 16;
-            label7.Text = resources.GetString("label7.Text");
-            // 
             // label6
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(93, 385);
+            label6.Location = new Point(97, 383);
             label6.Name = "label6";
             label6.Size = new Size(262, 23);
             label6.TabIndex = 14;
@@ -201,17 +191,27 @@
             pictureBox3.BackColor = Color.Transparent;
             pictureBox3.BackgroundImage = Properties.Resources.manual_book;
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox3.Location = new Point(52, 376);
+            pictureBox3.Location = new Point(56, 376);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(48, 32);
             pictureBox3.TabIndex = 15;
             pictureBox3.TabStop = false;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
+            label7.Location = new Point(62, 423);
+            label7.Name = "label7";
+            label7.Size = new Size(587, 80);
+            label7.TabIndex = 16;
+            label7.Text = resources.GetString("label7.Text");
+            // 
             // label5
             // 
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
-            label5.Location = new Point(61, 270);
+            label5.Location = new Point(61, 269);
             label5.Name = "label5";
             label5.Size = new Size(578, 80);
             label5.TabIndex = 13;
@@ -222,7 +222,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(93, 229);
+            label4.Location = new Point(93, 228);
             label4.Name = "label4";
             label4.Size = new Size(231, 23);
             label4.TabIndex = 11;

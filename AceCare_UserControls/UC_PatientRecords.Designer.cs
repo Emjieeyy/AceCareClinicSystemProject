@@ -36,6 +36,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_PatientRecords));
             label1 = new Label();
             panel1 = new Panel();
+            label15 = new Label();
             txtSearch = new ReaLTaiizor.Controls.PoisonTextBox();
             btnPrev = new ReaLTaiizor.Controls.HopeRoundButton();
             btnNext = new ReaLTaiizor.Controls.HopeRoundButton();
@@ -51,6 +52,7 @@
             pictureBox4 = new PictureBox();
             ReloadPix = new PictureBox();
             panel2 = new Panel();
+            label16 = new Label();
             pictureBox12 = new PictureBox();
             label14 = new Label();
             txtEmergencyContactNo = new TextBox();
@@ -93,7 +95,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(11, 26);
+            label1.Location = new Point(6, 31);
             label1.Name = "label1";
             label1.Size = new Size(351, 51);
             label1.TabIndex = 4;
@@ -101,6 +103,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label15);
             panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(btnPrev);
             panel1.Controls.Add(btnNext);
@@ -116,6 +119,18 @@
             panel1.Size = new Size(657, 845);
             panel1.TabIndex = 5;
             // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.BackColor = Color.Transparent;
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label15.ForeColor = Color.Gray;
+            label15.Location = new Point(14, 89);
+            label15.Name = "label15";
+            label15.Size = new Size(462, 20);
+            label15.TabIndex = 51;
+            label15.Text = "Keep medical records safe and organized for students, faculty, and staff.\r\n";
+            // 
             // txtSearch
             // 
             txtSearch.BackColor = Color.FromArgb(235, 239, 244);
@@ -123,7 +138,7 @@
             // 
             // 
             txtSearch.CustomButton.Image = null;
-            txtSearch.CustomButton.Location = new Point(461, 1);
+            txtSearch.CustomButton.Location = new Point(454, 1);
             txtSearch.CustomButton.Name = "";
             txtSearch.CustomButton.Size = new Size(37, 37);
             txtSearch.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -132,7 +147,7 @@
             txtSearch.CustomButton.UseSelectable = true;
             txtSearch.CustomButton.Visible = false;
             txtSearch.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
-            txtSearch.Location = new Point(37, 120);
+            txtSearch.Location = new Point(37, 142);
             txtSearch.MaxLength = 32767;
             txtSearch.Name = "txtSearch";
             txtSearch.PasswordChar = '\0';
@@ -141,7 +156,7 @@
             txtSearch.SelectionLength = 0;
             txtSearch.SelectionStart = 0;
             txtSearch.ShortcutsEnabled = true;
-            txtSearch.Size = new Size(499, 39);
+            txtSearch.Size = new Size(492, 39);
             txtSearch.TabIndex = 30;
             txtSearch.UseCustomBackColor = true;
             txtSearch.UseSelectable = true;
@@ -192,7 +207,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(14, 204);
+            label2.Location = new Point(14, 210);
             label2.Name = "label2";
             label2.Size = new Size(274, 40);
             label2.TabIndex = 26;
@@ -315,7 +330,7 @@
             btnSearch.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnSearch.InfoColor = Color.FromArgb(144, 147, 153);
-            btnSearch.Location = new Point(542, 124);
+            btnSearch.Location = new Point(535, 146);
             btnSearch.Name = "btnSearch";
             btnSearch.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnSearch.Size = new Size(109, 35);
@@ -330,7 +345,7 @@
             // 
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Location = new Point(-8, 101);
+            pictureBox4.Location = new Point(-15, 123);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(698, 80);
             pictureBox4.TabIndex = 21;
@@ -354,6 +369,7 @@
             // 
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
             panel2.BackgroundImageLayout = ImageLayout.Zoom;
+            panel2.Controls.Add(label16);
             panel2.Controls.Add(pictureBox12);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(txtEmergencyContactNo);
@@ -388,14 +404,26 @@
             panel2.Size = new Size(568, 845);
             panel2.TabIndex = 6;
             // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.BackColor = Color.Transparent;
+            label16.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label16.ForeColor = Color.Gray;
+            label16.Location = new Point(30, 56);
+            label16.Name = "label16";
+            label16.Size = new Size(320, 20);
+            label16.TabIndex = 52;
+            label16.Text = "Fill in required details to add or update a patient.";
+            // 
             // pictureBox12
             // 
             pictureBox12.BackColor = Color.Transparent;
             pictureBox12.BackgroundImage = (Image)resources.GetObject("pictureBox12.BackgroundImage");
             pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox12.Location = new Point(450, -3);
+            pictureBox12.Location = new Point(450, -14);
             pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(113, 105);
+            pictureBox12.Size = new Size(118, 117);
             pictureBox12.TabIndex = 59;
             pictureBox12.TabStop = false;
             // 
@@ -424,7 +452,7 @@
             pictureBox2.BackgroundImage = Properties.Resources.add__1_;
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(190, 123);
+            pictureBox2.Location = new Point(190, 128);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(57, 29);
             pictureBox2.TabIndex = 54;
@@ -439,7 +467,7 @@
             btnAddNewPatient.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddNewPatient.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnAddNewPatient.InfoColor = Color.FromArgb(144, 147, 153);
-            btnAddNewPatient.Location = new Point(66, 116);
+            btnAddNewPatient.Location = new Point(66, 120);
             btnAddNewPatient.Name = "btnAddNewPatient";
             btnAddNewPatient.PrimaryColor = Color.White;
             btnAddNewPatient.Size = new Size(431, 45);
@@ -500,7 +528,7 @@
             btnClear.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnClear.InfoColor = Color.FromArgb(144, 147, 153);
-            btnClear.Location = new Point(146, 710);
+            btnClear.Location = new Point(145, 707);
             btnClear.Name = "btnClear";
             btnClear.PrimaryColor = Color.DarkRed;
             btnClear.Size = new Size(160, 59);
@@ -520,7 +548,7 @@
             btnSave.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnSave.InfoColor = Color.FromArgb(144, 147, 153);
-            btnSave.Location = new Point(333, 710);
+            btnSave.Location = new Point(329, 707);
             btnSave.Name = "btnSave";
             btnSave.PrimaryColor = Color.LimeGreen;
             btnSave.Size = new Size(172, 59);
@@ -685,7 +713,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.FromArgb(235, 239, 244);
             label4.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(63, 184);
+            label4.Location = new Point(63, 186);
             label4.Name = "label4";
             label4.Size = new Size(157, 22);
             label4.TabIndex = 30;
@@ -694,10 +722,10 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(19, 19);
+            label3.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(25, 21);
             label3.Name = "label3";
-            label3.Size = new Size(325, 40);
+            label3.Size = new Size(269, 34);
             label3.TabIndex = 29;
             label3.Text = "Patient Information";
             // 
@@ -771,5 +799,7 @@
         private Label label14;
         private TextBox txtEmergencyContactNo;
         private PictureBox pictureBox12;
+        private Label label15;
+        private Label label16;
     }
 }

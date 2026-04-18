@@ -133,6 +133,10 @@ namespace AceCareClinicSystem.Controllers
             }
         }
 
+        // ============================================
+        // FIXED DELETE USER METHOD
+        // Deletes audit logs first, then deletes user
+        // ============================================
         public bool DeleteUser(int userId)
         {
             try
@@ -140,13 +144,50 @@ namespace AceCareClinicSystem.Controllers
                 using (MySqlConnection conn = db.GetConnection())
                 {
                     conn.Open();
-                    string query = "DELETE FROM users WHERE user_id = @id";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+
+                    // Start a transaction to ensure both operations succeed or both fail
+                    using (var transaction = conn.BeginTransaction())
                     {
-                        cmd.Parameters.AddWithValue("@id", userId);
-                        bool success = cmd.ExecuteNonQuery() > 0;
-                        if (success) LogActivity(0, "User Deleted", $"Deleted user ID: {userId}");
-                        return success;
+                        try
+                        {
+                            // Step 1: Delete all audit logs for this user
+                            string deleteLogsQuery = "DELETE FROM audit_logs WHERE user_id = @id";
+                            using (MySqlCommand deleteLogsCmd = new MySqlCommand(deleteLogsQuery, conn, transaction))
+                            {
+                                deleteLogsCmd.Parameters.AddWithValue("@id", userId);
+                                deleteLogsCmd.ExecuteNonQuery();
+                            }
+
+                            // Step 2: Delete the user
+                            string deleteUserQuery = "DELETE FROM users WHERE user_id = @id";
+                            using (MySqlCommand deleteUserCmd = new MySqlCommand(deleteUserQuery, conn, transaction))
+                            {
+                                deleteUserCmd.Parameters.AddWithValue("@id", userId);
+                                int rowsAffected = deleteUserCmd.ExecuteNonQuery();
+
+                                if (rowsAffected > 0)
+                                {
+                                    // Commit the transaction
+                                    transaction.Commit();
+
+                                    // Log the deletion (using system user since user is now deleted)
+                                    LogActivity(0, "User Deleted", $"Deleted user ID: {userId}");
+                                    return true;
+                                }
+                                else
+                                {
+                                    // Rollback if user wasn't found
+                                    transaction.Rollback();
+                                    return false;
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            // Rollback on any error
+                            transaction.Rollback();
+                            throw;
+                        }
                     }
                 }
             }

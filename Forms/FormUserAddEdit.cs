@@ -7,7 +7,7 @@ namespace AceCareClinicSystem.Forms
     public partial class FormUserAddEdit : Form
     {
         private AuthController auth = new AuthController();
-        
+
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int UserId { get; set; } = -1; // -1 means Add Mode
@@ -39,7 +39,7 @@ namespace AceCareClinicSystem.Forms
             txtEmail.Text = row["email"].ToString();
             cmbRole.SelectedValue = row["role_id"];
             cmbStatus.SelectedItem = row["status"].ToString();
-            
+
             lblTitle.Text = "Update User";
             btnSave.Text = "Update";
             txtPassword.PlaceholderText = "(Leave blank to keep current)";
@@ -98,5 +98,11 @@ namespace AceCareClinicSystem.Forms
         {
             this.Close();
         }
+
+        private void cbshowpass_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = !cbshowpass.Checked;
+        }
     }
-}
+  }
+

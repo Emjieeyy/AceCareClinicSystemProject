@@ -363,6 +363,16 @@ namespace AceCareClinicSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_ug75z7ug75z7ug75_removebg_preview1 {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_ug75z7ug75z7ug75-removebg-preview1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gray {
             get {
                 object obj = ResourceManager.GetObject("gray", resourceCulture);
@@ -473,6 +483,16 @@ namespace AceCareClinicSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap log_data {
+            get {
+                object obj = ResourceManager.GetObject("log-data", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MaamPic {
             get {
                 object obj = ResourceManager.GetObject("MaamPic", resourceCulture);
@@ -516,6 +536,16 @@ namespace AceCareClinicSystem.Properties {
         internal static System.Drawing.Bitmap medical_supplies__1_ {
             get {
                 object obj = ResourceManager.GetObject("medical-supplies (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap patient {
+            get {
+                object obj = ResourceManager.GetObject("patient", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

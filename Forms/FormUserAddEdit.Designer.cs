@@ -15,133 +15,187 @@ namespace AceCareClinicSystem.Forms
 
         private void InitializeComponent()
         {
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtFullName = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.cmbRole = new System.Windows.Forms.ComboBox();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            txtUsername = new TextBox();
+            txtPassword = new TextBox();
+            txtFullName = new TextBox();
+            txtEmail = new TextBox();
+            cmbRole = new ComboBox();
+            cmbStatus = new ComboBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            lblTitle = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            cbshowpass = new CheckBox();
+            SuspendLayout();
             // 
-            // lblTitle
+            // txtUsername
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(20, 20);
-            this.lblTitle.Text = "Add New User";
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(25, 70);
-            this.label2.Text = "Username:";
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(25, 90);
-            this.txtUsername.Size = new System.Drawing.Size(330, 25);
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(25, 130);
-            this.label3.Text = "Password:";
+            txtUsername.Location = new Point(25, 90);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(330, 27);
+            txtUsername.TabIndex = 2;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(25, 150);
-            this.txtPassword.Size = new System.Drawing.Size(330, 25);
-            this.txtPassword.UseSystemPasswordChar = true;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(25, 190);
-            this.label4.Text = "Full Name:";
+            txtPassword.Location = new Point(25, 150);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(264, 27);
+            txtPassword.TabIndex = 4;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // txtFullName
             // 
-            this.txtFullName.Location = new System.Drawing.Point(25, 210);
-            this.txtFullName.Size = new System.Drawing.Size(330, 25);
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(25, 250);
-            this.label5.Text = "Email:";
+            txtFullName.Location = new Point(25, 210);
+            txtFullName.Name = "txtFullName";
+            txtFullName.Size = new Size(330, 27);
+            txtFullName.TabIndex = 6;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(25, 270);
-            this.txtEmail.Size = new System.Drawing.Size(330, 25);
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(25, 310);
-            this.label6.Text = "Role:";
+            txtEmail.Location = new Point(25, 270);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(330, 27);
+            txtEmail.TabIndex = 8;
             // 
             // cmbRole
             // 
-            this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRole.Location = new System.Drawing.Point(25, 330);
-            this.cmbRole.Size = new System.Drawing.Size(330, 25);
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(25, 370);
-            this.label7.Text = "Status:";
+            cmbRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbRole.Location = new Point(25, 330);
+            cmbRole.Name = "cmbRole";
+            cmbRole.Size = new Size(330, 28);
+            cmbRole.TabIndex = 10;
             // 
             // cmbStatus
             // 
-            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStatus.Items.AddRange(new object[] { "Active", "Inactive" });
-            this.cmbStatus.Location = new System.Drawing.Point(25, 390);
-            this.cmbStatus.Size = new System.Drawing.Size(330, 25);
+            cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatus.Items.AddRange(new object[] { "Active", "Inactive" });
+            cmbStatus.Location = new Point(25, 390);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(330, 28);
+            cmbStatus.TabIndex = 12;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(150, 440);
-            this.btnSave.Size = new System.Drawing.Size(100, 40);
-            this.btnSave.Text = "Save";
-            this.btnSave.BackColor = System.Drawing.Color.DarkBlue;
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.BackColor = Color.DarkBlue;
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(150, 440);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(100, 40);
+            btnSave.TabIndex = 13;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(255, 440);
-            this.btnCancel.Size = new System.Drawing.Size(100, 40);
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(255, 440);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(100, 40);
+            btnCancel.TabIndex = 14;
+            btnCancel.Text = "Cancel";
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTitle.Location = new Point(20, 20);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(200, 37);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Add New User";
+            // 
+            // label2
+            // 
+            label2.Location = new Point(25, 70);
+            label2.Name = "label2";
+            label2.Size = new Size(100, 23);
+            label2.TabIndex = 1;
+            label2.Text = "Username:";
+            // 
+            // label3
+            // 
+            label3.Location = new Point(25, 130);
+            label3.Name = "label3";
+            label3.Size = new Size(100, 23);
+            label3.TabIndex = 3;
+            label3.Text = "Password:";
+            // 
+            // label4
+            // 
+            label4.Location = new Point(25, 190);
+            label4.Name = "label4";
+            label4.Size = new Size(100, 23);
+            label4.TabIndex = 5;
+            label4.Text = "Full Name:";
+            // 
+            // label5
+            // 
+            label5.Location = new Point(25, 250);
+            label5.Name = "label5";
+            label5.Size = new Size(100, 23);
+            label5.TabIndex = 7;
+            label5.Text = "Email:";
+            // 
+            // label6
+            // 
+            label6.Location = new Point(25, 310);
+            label6.Name = "label6";
+            label6.Size = new Size(100, 23);
+            label6.TabIndex = 9;
+            label6.Text = "Role:";
+            // 
+            // label7
+            // 
+            label7.Location = new Point(25, 370);
+            label7.Name = "label7";
+            label7.Size = new Size(100, 23);
+            label7.TabIndex = 11;
+            label7.Text = "Status:";
+            // 
+            // cbshowpass
+            // 
+            cbshowpass.AutoSize = true;
+            cbshowpass.Location = new Point(295, 153);
+            cbshowpass.Name = "cbshowpass";
+            cbshowpass.Size = new Size(67, 24);
+            cbshowpass.TabIndex = 15;
+            cbshowpass.Text = "Show";
+            cbshowpass.UseVisualStyleBackColor = true;
+            cbshowpass.CheckedChanged += cbshowpass_CheckedChanged;
             // 
             // FormUserAddEdit
             // 
-            this.ClientSize = new System.Drawing.Size(380, 500);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtFullName);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.cmbRole);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.cmbStatus);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "User Details";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            ClientSize = new Size(380, 500);
+            Controls.Add(cbshowpass);
+            Controls.Add(lblTitle);
+            Controls.Add(label2);
+            Controls.Add(txtUsername);
+            Controls.Add(label3);
+            Controls.Add(txtPassword);
+            Controls.Add(label4);
+            Controls.Add(txtFullName);
+            Controls.Add(label5);
+            Controls.Add(txtEmail);
+            Controls.Add(label6);
+            Controls.Add(cmbRole);
+            Controls.Add(label7);
+            Controls.Add(cmbStatus);
+            Controls.Add(btnSave);
+            Controls.Add(btnCancel);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FormUserAddEdit";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "User Details";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private System.Windows.Forms.TextBox txtUsername;
@@ -159,5 +213,6 @@ namespace AceCareClinicSystem.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private CheckBox cbshowpass;
     }
 }

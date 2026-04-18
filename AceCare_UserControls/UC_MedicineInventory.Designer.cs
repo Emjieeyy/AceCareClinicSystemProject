@@ -37,6 +37,7 @@
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            label13 = new Label();
             label9 = new Label();
             panel6 = new Panel();
             lblCountExpiring = new Label();
@@ -44,8 +45,8 @@
             label8 = new Label();
             panel5 = new Panel();
             lblCountLowStock = new Label();
-            pictureBox3 = new PictureBox();
             label6 = new Label();
+            pictureBox3 = new PictureBox();
             panel3 = new Panel();
             lblCountTotalSupplies = new Label();
             pictureBox2 = new PictureBox();
@@ -56,6 +57,7 @@
             label2 = new Label();
             pictureBox5 = new PictureBox();
             panel2 = new Panel();
+            label1 = new Label();
             pictureBox9 = new PictureBox();
             pictureBox8 = new PictureBox();
             pictureBox7 = new PictureBox();
@@ -73,16 +75,16 @@
             btnPrev = new ReaLTaiizor.Controls.HopeRoundButton();
             btnNext = new ReaLTaiizor.Controls.HopeRoundButton();
             dgvMedicineRecords = new ReaLTaiizor.Controls.PoisonDataGridView();
-            tabPage2 = new TabPage();
-            ReloadPixSuppliesRecord = new PictureBox();
-            btnPrevSuppliesRecord = new ReaLTaiizor.Controls.HopeRoundButton();
-            btnNextSuppliesRecord = new ReaLTaiizor.Controls.HopeRoundButton();
-            dgvSuppliesRecords = new ReaLTaiizor.Controls.PoisonDataGridView();
             MedicineName = new DataGridViewTextBoxColumn();
             InStock = new DataGridViewTextBoxColumn();
             UsedWk = new DataGridViewTextBoxColumn();
             Expiry = new DataGridViewTextBoxColumn();
             colMedItemID = new DataGridViewTextBoxColumn();
+            tabPage2 = new TabPage();
+            ReloadPixSuppliesRecord = new PictureBox();
+            btnPrevSuppliesRecord = new ReaLTaiizor.Controls.HopeRoundButton();
+            btnNextSuppliesRecord = new ReaLTaiizor.Controls.HopeRoundButton();
+            dgvSuppliesRecords = new ReaLTaiizor.Controls.PoisonDataGridView();
             colSupName = new DataGridViewTextBoxColumn();
             colSupQty = new DataGridViewTextBoxColumn();
             colSupUsage = new DataGridViewTextBoxColumn();
@@ -114,6 +116,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label13);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(panel6);
             panel1.Controls.Add(panel5);
@@ -126,13 +129,25 @@
             panel1.Size = new Size(1228, 248);
             panel1.TabIndex = 0;
             // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.Transparent;
+            label13.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label13.ForeColor = Color.Gray;
+            label13.Location = new Point(18, 74);
+            label13.Name = "label13";
+            label13.Size = new Size(475, 20);
+            label13.TabIndex = 37;
+            label13.Text = "Keep track of supplies, monitor stock, and check items nearing expiration.";
+            // 
             // label9
             // 
             label9.AutoSize = true;
             label9.BackColor = Color.White;
             label9.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(11, 26);
+            label9.Location = new Point(10, 26);
             label9.Name = "label9";
             label9.Size = new Size(298, 44);
             label9.TabIndex = 12;
@@ -145,7 +160,7 @@
             panel6.Controls.Add(lblCountExpiring);
             panel6.Controls.Add(pictureBox4);
             panel6.Controls.Add(label8);
-            panel6.Location = new Point(897, 88);
+            panel6.Location = new Point(897, 96);
             panel6.Name = "panel6";
             panel6.Size = new Size(296, 136);
             panel6.TabIndex = 11;
@@ -188,9 +203,9 @@
             panel5.BackgroundImage = Properties.Resources._21;
             panel5.BackgroundImageLayout = ImageLayout.Stretch;
             panel5.Controls.Add(lblCountLowStock);
-            panel5.Controls.Add(pictureBox3);
             panel5.Controls.Add(label6);
-            panel5.Location = new Point(595, 91);
+            panel5.Controls.Add(pictureBox3);
+            panel5.Location = new Point(595, 99);
             panel5.Name = "panel5";
             panel5.Size = new Size(280, 136);
             panel5.TabIndex = 10;
@@ -206,17 +221,6 @@
             lblCountLowStock.TabIndex = 7;
             lblCountLowStock.Text = "0";
             // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = Color.FromArgb(235, 239, 244);
-            pictureBox3.BackgroundImage = Properties.Resources.warning__1_;
-            pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox3.Location = new Point(48, 43);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(56, 61);
-            pictureBox3.TabIndex = 5;
-            pictureBox3.TabStop = false;
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -228,6 +232,17 @@
             label6.TabIndex = 6;
             label6.Text = "Low Inventory";
             // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = Color.FromArgb(235, 239, 244);
+            pictureBox3.BackgroundImage = Properties.Resources.warning__1_;
+            pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox3.Location = new Point(48, 43);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(56, 61);
+            pictureBox3.TabIndex = 5;
+            pictureBox3.TabStop = false;
+            // 
             // panel3
             // 
             panel3.BackgroundImage = Properties.Resources._21;
@@ -235,7 +250,7 @@
             panel3.Controls.Add(lblCountTotalSupplies);
             panel3.Controls.Add(pictureBox2);
             panel3.Controls.Add(label4);
-            panel3.Location = new Point(304, 91);
+            panel3.Location = new Point(304, 99);
             panel3.Name = "panel3";
             panel3.Size = new Size(272, 136);
             panel3.TabIndex = 9;
@@ -267,7 +282,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.FromArgb(235, 239, 244);
             label4.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(85, 26);
+            label4.Location = new Point(88, 27);
             label4.Name = "label4";
             label4.Size = new Size(128, 22);
             label4.TabIndex = 6;
@@ -280,7 +295,7 @@
             panel4.Controls.Add(lblCountTotalMedicine);
             panel4.Controls.Add(pictureBox1);
             panel4.Controls.Add(label2);
-            panel4.Location = new Point(18, 91);
+            panel4.Location = new Point(18, 99);
             panel4.Name = "panel4";
             panel4.Size = new Size(267, 136);
             panel4.TabIndex = 8;
@@ -290,7 +305,7 @@
             lblCountTotalMedicine.AutoSize = true;
             lblCountTotalMedicine.BackColor = Color.FromArgb(235, 239, 244);
             lblCountTotalMedicine.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCountTotalMedicine.Location = new Point(125, 59);
+            lblCountTotalMedicine.Location = new Point(112, 60);
             lblCountTotalMedicine.Name = "lblCountTotalMedicine";
             lblCountTotalMedicine.Size = new Size(40, 44);
             lblCountTotalMedicine.TabIndex = 7;
@@ -312,7 +327,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(235, 239, 244);
             label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(76, 27);
+            label2.Location = new Point(80, 27);
             label2.Name = "label2";
             label2.Size = new Size(139, 22);
             label2.TabIndex = 6;
@@ -331,6 +346,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(label1);
             panel2.Controls.Add(pictureBox9);
             panel2.Controls.Add(pictureBox8);
             panel2.Controls.Add(pictureBox7);
@@ -348,12 +364,24 @@
             panel2.Size = new Size(377, 613);
             panel2.TabIndex = 1;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Gray;
+            label1.Location = new Point(32, 87);
+            label1.Name = "label1";
+            label1.Size = new Size(259, 20);
+            label1.TabIndex = 38;
+            label1.Text = "Update stock, add items, or edit details.";
+            // 
             // pictureBox9
             // 
             pictureBox9.BackColor = Color.FromArgb(180, 50, 70);
             pictureBox9.BackgroundImage = Properties.Resources.folder;
             pictureBox9.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox9.Location = new Point(103, 502);
+            pictureBox9.Location = new Point(98, 488);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(49, 33);
             pictureBox9.TabIndex = 39;
@@ -364,7 +392,7 @@
             pictureBox8.BackColor = Color.FromArgb(230, 160, 50);
             pictureBox8.BackgroundImage = Properties.Resources.edit;
             pictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox8.Location = new Point(104, 408);
+            pictureBox8.Location = new Point(106, 394);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(47, 36);
             pictureBox8.TabIndex = 38;
@@ -375,7 +403,7 @@
             pictureBox7.BackColor = Color.FromArgb(75, 175, 80);
             pictureBox7.BackgroundImage = Properties.Resources.add_product;
             pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox7.Location = new Point(107, 313);
+            pictureBox7.Location = new Point(102, 305);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(45, 37);
             pictureBox7.TabIndex = 37;
@@ -386,7 +414,7 @@
             pictureBox6.BackColor = Color.FromArgb(45, 150, 140);
             pictureBox6.BackgroundImage = Properties.Resources.add;
             pictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox6.Location = new Point(103, 218);
+            pictureBox6.Location = new Point(100, 215);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(45, 37);
             pictureBox6.TabIndex = 8;
@@ -398,7 +426,7 @@
             label10.BackColor = Color.White;
             label10.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(32, 34);
+            label10.Location = new Point(31, 37);
             label10.Name = "label10";
             label10.Size = new Size(315, 37);
             label10.TabIndex = 13;
@@ -411,7 +439,7 @@
             // 
             // 
             txtSearchInventory.CustomButton.Image = null;
-            txtSearchInventory.CustomButton.Location = new Point(194, 1);
+            txtSearchInventory.CustomButton.Location = new Point(184, 1);
             txtSearchInventory.CustomButton.Name = "";
             txtSearchInventory.CustomButton.Size = new Size(37, 37);
             txtSearchInventory.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
@@ -419,7 +447,7 @@
             txtSearchInventory.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtSearchInventory.CustomButton.UseSelectable = true;
             txtSearchInventory.CustomButton.Visible = false;
-            txtSearchInventory.Location = new Point(32, 117);
+            txtSearchInventory.Location = new Point(42, 134);
             txtSearchInventory.MaxLength = 32767;
             txtSearchInventory.Name = "txtSearchInventory";
             txtSearchInventory.PasswordChar = '\0';
@@ -428,7 +456,7 @@
             txtSearchInventory.SelectionLength = 0;
             txtSearchInventory.SelectionStart = 0;
             txtSearchInventory.ShortcutsEnabled = true;
-            txtSearchInventory.Size = new Size(232, 39);
+            txtSearchInventory.Size = new Size(222, 39);
             txtSearchInventory.TabIndex = 32;
             txtSearchInventory.UseSelectable = true;
             txtSearchInventory.WaterMarkColor = Color.FromArgb(109, 109, 109);
@@ -445,10 +473,10 @@
             btnSearch.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSearch.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnSearch.InfoColor = Color.FromArgb(144, 147, 153);
-            btnSearch.Location = new Point(274, 121);
+            btnSearch.Location = new Point(268, 136);
             btnSearch.Name = "btnSearch";
             btnSearch.PrimaryColor = Color.FromArgb(11, 45, 114);
-            btnSearch.Size = new Size(91, 35);
+            btnSearch.Size = new Size(85, 35);
             btnSearch.SuccessColor = Color.FromArgb(103, 194, 58);
             btnSearch.TabIndex = 31;
             btnSearch.Text = "Search";
@@ -465,7 +493,7 @@
             btnAddMedicine.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddMedicine.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnAddMedicine.InfoColor = Color.FromArgb(144, 147, 153);
-            btnAddMedicine.Location = new Point(42, 207);
+            btnAddMedicine.Location = new Point(42, 204);
             btnAddMedicine.Name = "btnAddMedicine";
             btnAddMedicine.PrimaryColor = Color.FromArgb(45, 150, 140);
             btnAddMedicine.Size = new Size(302, 62);
@@ -485,7 +513,7 @@
             btnAddSupply.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddSupply.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnAddSupply.InfoColor = Color.FromArgb(144, 147, 153);
-            btnAddSupply.Location = new Point(42, 301);
+            btnAddSupply.Location = new Point(42, 293);
             btnAddSupply.Name = "btnAddSupply";
             btnAddSupply.PrimaryColor = Color.FromArgb(75, 175, 80);
             btnAddSupply.Size = new Size(303, 60);
@@ -505,7 +533,7 @@
             btnEditItem.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditItem.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnEditItem.InfoColor = Color.FromArgb(144, 147, 153);
-            btnEditItem.Location = new Point(37, 395);
+            btnEditItem.Location = new Point(41, 382);
             btnEditItem.Name = "btnEditItem";
             btnEditItem.PrimaryColor = Color.FromArgb(230, 160, 50);
             btnEditItem.Size = new Size(303, 60);
@@ -525,7 +553,7 @@
             btnDeleteItem.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDeleteItem.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnDeleteItem.InfoColor = Color.FromArgb(144, 147, 153);
-            btnDeleteItem.Location = new Point(42, 489);
+            btnDeleteItem.Location = new Point(40, 475);
             btnDeleteItem.Name = "btnDeleteItem";
             btnDeleteItem.PrimaryColor = Color.FromArgb(180, 50, 70);
             btnDeleteItem.Size = new Size(303, 60);
@@ -679,6 +707,42 @@
             dgvMedicineRecords.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
             dgvMedicineRecords.TabIndex = 0;
             // 
+            // MedicineName
+            // 
+            MedicineName.DataPropertyName = "Name";
+            MedicineName.HeaderText = "Medicine Name";
+            MedicineName.MinimumWidth = 6;
+            MedicineName.Name = "MedicineName";
+            // 
+            // InStock
+            // 
+            InStock.DataPropertyName = "Quantity";
+            InStock.HeaderText = "In Stock";
+            InStock.MinimumWidth = 6;
+            InStock.Name = "InStock";
+            // 
+            // UsedWk
+            // 
+            UsedWk.DataPropertyName = "WeeklyUsage";
+            UsedWk.HeaderText = "Used (Wk)";
+            UsedWk.MinimumWidth = 6;
+            UsedWk.Name = "UsedWk";
+            // 
+            // Expiry
+            // 
+            Expiry.DataPropertyName = "ExpiryDate";
+            Expiry.HeaderText = "Expiry";
+            Expiry.MinimumWidth = 6;
+            Expiry.Name = "Expiry";
+            // 
+            // colMedItemID
+            // 
+            colMedItemID.DataPropertyName = "ItemID";
+            colMedItemID.HeaderText = "ItemId";
+            colMedItemID.MinimumWidth = 6;
+            colMedItemID.Name = "colMedItemID";
+            colMedItemID.Visible = false;
+            // 
             // tabPage2
             // 
             tabPage2.BackColor = Color.White;
@@ -804,42 +868,6 @@
             dgvSuppliesRecords.Size = new Size(840, 503);
             dgvSuppliesRecords.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
             dgvSuppliesRecords.TabIndex = 1;
-            // 
-            // MedicineName
-            // 
-            MedicineName.DataPropertyName = "Name";
-            MedicineName.HeaderText = "Medicine Name";
-            MedicineName.MinimumWidth = 6;
-            MedicineName.Name = "MedicineName";
-            // 
-            // InStock
-            // 
-            InStock.DataPropertyName = "Quantity";
-            InStock.HeaderText = "In Stock";
-            InStock.MinimumWidth = 6;
-            InStock.Name = "InStock";
-            // 
-            // UsedWk
-            // 
-            UsedWk.DataPropertyName = "WeeklyUsage";
-            UsedWk.HeaderText = "Used (Wk)";
-            UsedWk.MinimumWidth = 6;
-            UsedWk.Name = "UsedWk";
-            // 
-            // Expiry
-            // 
-            Expiry.DataPropertyName = "ExpiryDate";
-            Expiry.HeaderText = "Expiry";
-            Expiry.MinimumWidth = 6;
-            Expiry.Name = "Expiry";
-            // 
-            // colMedItemID
-            // 
-            colMedItemID.DataPropertyName = "ItemID";
-            colMedItemID.HeaderText = "ItemId";
-            colMedItemID.MinimumWidth = 6;
-            colMedItemID.Name = "colMedItemID";
-            colMedItemID.Visible = false;
             // 
             // colSupName
             // 
@@ -973,5 +1001,7 @@
         private DataGridViewTextBoxColumn colSupUsage;
         private DataGridViewTextBoxColumn colSupExpiry;
         private DataGridViewTextBoxColumn colSupItemID;
+        private Label label13;
+        private Label label1;
     }
 }

@@ -519,7 +519,7 @@
             txtEmergencyContactNumber.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtEmergencyContactNumber.CustomButton.UseSelectable = true;
             txtEmergencyContactNumber.CustomButton.Visible = false;
-            txtEmergencyContactNumber.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtEmergencyContactNumber.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtEmergencyContactNumber.Location = new Point(341, 615);
             txtEmergencyContactNumber.MaxLength = 32767;
             txtEmergencyContactNumber.Name = "txtEmergencyContactNumber";
@@ -549,6 +549,7 @@
             txtEmergencyContactName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtEmergencyContactName.CustomButton.UseSelectable = true;
             txtEmergencyContactName.CustomButton.Visible = false;
+            txtEmergencyContactName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtEmergencyContactName.Location = new Point(323, 553);
             txtEmergencyContactName.MaxLength = 32767;
             txtEmergencyContactName.Name = "txtEmergencyContactName";
@@ -578,7 +579,7 @@
             txtContactNo.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtContactNo.CustomButton.UseSelectable = true;
             txtContactNo.CustomButton.Visible = false;
-            txtContactNo.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtContactNo.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtContactNo.Location = new Point(241, 493);
             txtContactNo.MaxLength = 32767;
             txtContactNo.Name = "txtContactNo";
@@ -644,7 +645,7 @@
             txtAddress.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtAddress.CustomButton.UseSelectable = true;
             txtAddress.CustomButton.Visible = false;
-            txtAddress.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtAddress.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtAddress.Location = new Point(201, 435);
             txtAddress.MaxLength = 32767;
             txtAddress.Name = "txtAddress";
@@ -721,7 +722,7 @@
             txtAge.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtAge.CustomButton.UseSelectable = true;
             txtAge.CustomButton.Visible = false;
-            txtAge.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtAge.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtAge.Location = new Point(199, 321);
             txtAge.MaxLength = 32767;
             txtAge.Name = "txtAge";
@@ -763,7 +764,7 @@
             txtMI.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtMI.CustomButton.UseSelectable = true;
             txtMI.CustomButton.Visible = false;
-            txtMI.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtMI.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtMI.Location = new Point(192, 263);
             txtMI.MaxLength = 32767;
             txtMI.Name = "txtMI";
@@ -805,7 +806,7 @@
             txtLastName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtLastName.CustomButton.UseSelectable = true;
             txtLastName.CustomButton.Visible = false;
-            txtLastName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtLastName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtLastName.Location = new Point(192, 210);
             txtLastName.MaxLength = 32767;
             txtLastName.Name = "txtLastName";
@@ -847,7 +848,7 @@
             txtFirstName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtFirstName.CustomButton.UseSelectable = true;
             txtFirstName.CustomButton.Visible = false;
-            txtFirstName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtFirstName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtFirstName.Location = new Point(192, 159);
             txtFirstName.MaxLength = 32767;
             txtFirstName.Name = "txtFirstName";
@@ -889,7 +890,7 @@
             txtPatientID.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtPatientID.CustomButton.UseSelectable = true;
             txtPatientID.CustomButton.Visible = false;
-            txtPatientID.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtPatientID.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtPatientID.Location = new Point(192, 111);
             txtPatientID.MaxLength = 32767;
             txtPatientID.Name = "txtPatientID";
@@ -1027,6 +1028,7 @@
             txtComplaintOther.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtComplaintOther.CustomButton.UseSelectable = true;
             txtComplaintOther.CustomButton.Visible = false;
+            txtComplaintOther.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtComplaintOther.Location = new Point(418, 156);
             txtComplaintOther.MaxLength = 32767;
             txtComplaintOther.Name = "txtComplaintOther";
@@ -1279,6 +1281,7 @@
             txtRefOtherDetails.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtRefOtherDetails.CustomButton.UseSelectable = true;
             txtRefOtherDetails.CustomButton.Visible = false;
+            txtRefOtherDetails.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtRefOtherDetails.Location = new Point(88, 175);
             txtRefOtherDetails.MaxLength = 32767;
             txtRefOtherDetails.Name = "txtRefOtherDetails";
@@ -1563,7 +1566,7 @@
             txtNumOxygenSaturation.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtNumOxygenSaturation.CustomButton.UseSelectable = true;
             txtNumOxygenSaturation.CustomButton.Visible = false;
-            txtNumOxygenSaturation.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtNumOxygenSaturation.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtNumOxygenSaturation.Location = new Point(366, 346);
             txtNumOxygenSaturation.MaxLength = 32767;
             txtNumOxygenSaturation.Name = "txtNumOxygenSaturation";
@@ -1593,7 +1596,7 @@
             txtNumRespiratoryRate.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtNumRespiratoryRate.CustomButton.UseSelectable = true;
             txtNumRespiratoryRate.CustomButton.Visible = false;
-            txtNumRespiratoryRate.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtNumRespiratoryRate.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtNumRespiratoryRate.Location = new Point(251, 289);
             txtNumRespiratoryRate.MaxLength = 32767;
             txtNumRespiratoryRate.Name = "txtNumRespiratoryRate";
@@ -1623,7 +1626,7 @@
             txtNumPulseRate.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtNumPulseRate.CustomButton.UseSelectable = true;
             txtNumPulseRate.CustomButton.Visible = false;
-            txtNumPulseRate.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtNumPulseRate.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtNumPulseRate.Location = new Point(233, 237);
             txtNumPulseRate.MaxLength = 32767;
             txtNumPulseRate.Name = "txtNumPulseRate";
@@ -1679,7 +1682,7 @@
             txtPhysicalFindings.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtPhysicalFindings.CustomButton.UseSelectable = true;
             txtPhysicalFindings.CustomButton.Visible = false;
-            txtPhysicalFindings.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtPhysicalFindings.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtPhysicalFindings.Location = new Point(262, 408);
             txtPhysicalFindings.MaxLength = 32767;
             txtPhysicalFindings.Name = "txtPhysicalFindings";
@@ -1911,7 +1914,7 @@
             txtTemperature.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtTemperature.CustomButton.UseSelectable = true;
             txtTemperature.CustomButton.Visible = false;
-            txtTemperature.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtTemperature.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtTemperature.Location = new Point(232, 116);
             txtTemperature.MaxLength = 32767;
             txtTemperature.Name = "txtTemperature";
@@ -2015,7 +2018,7 @@
             txtNumMedQuantity.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtNumMedQuantity.CustomButton.UseSelectable = true;
             txtNumMedQuantity.CustomButton.Visible = false;
-            txtNumMedQuantity.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtNumMedQuantity.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtNumMedQuantity.Location = new Point(263, 424);
             txtNumMedQuantity.MaxLength = 32767;
             txtNumMedQuantity.Name = "txtNumMedQuantity";
@@ -2068,7 +2071,7 @@
             txtDosage.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtDosage.CustomButton.UseSelectable = true;
             txtDosage.CustomButton.Visible = false;
-            txtDosage.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtDosage.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtDosage.Location = new Point(263, 472);
             txtDosage.MaxLength = 32767;
             txtDosage.Name = "txtDosage";
@@ -2282,6 +2285,7 @@
             txtFirstAidOther.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtFirstAidOther.CustomButton.UseSelectable = true;
             txtFirstAidOther.CustomButton.Visible = false;
+            txtFirstAidOther.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtFirstAidOther.Location = new Point(453, 262);
             txtFirstAidOther.MaxLength = 32767;
             txtFirstAidOther.Name = "txtFirstAidOther";
@@ -2493,7 +2497,7 @@
             txtStaffID.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtStaffID.CustomButton.UseSelectable = true;
             txtStaffID.CustomButton.Visible = false;
-            txtStaffID.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtStaffID.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtStaffID.Location = new Point(262, 534);
             txtStaffID.MaxLength = 32767;
             txtStaffID.Name = "txtStaffID";
@@ -2524,7 +2528,7 @@
             txtClinicIncharge.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             txtClinicIncharge.CustomButton.UseSelectable = true;
             txtClinicIncharge.CustomButton.Visible = false;
-            txtClinicIncharge.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            txtClinicIncharge.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             txtClinicIncharge.Location = new Point(262, 478);
             txtClinicIncharge.MaxLength = 32767;
             txtClinicIncharge.Name = "txtClinicIncharge";
@@ -2704,7 +2708,7 @@
             rtbRemarksInstructions.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
             rtbRemarksInstructions.CustomButton.UseSelectable = true;
             rtbRemarksInstructions.CustomButton.Visible = false;
-            rtbRemarksInstructions.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Medium;
+            rtbRemarksInstructions.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
             rtbRemarksInstructions.Location = new Point(89, 328);
             rtbRemarksInstructions.MaxLength = 32767;
             rtbRemarksInstructions.Name = "rtbRemarksInstructions";

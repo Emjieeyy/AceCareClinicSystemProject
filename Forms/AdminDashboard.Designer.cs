@@ -93,7 +93,7 @@
             pictureBox9.BackgroundImage = Properties.Resources.information_button;
             pictureBox9.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox9.InitialImage = (Image)resources.GetObject("pictureBox9.InitialImage");
-            pictureBox9.Location = new Point(25, 564);
+            pictureBox9.Location = new Point(25, 571);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(43, 35);
             pictureBox9.TabIndex = 19;
@@ -108,7 +108,7 @@
             btnAboutAd.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAboutAd.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnAboutAd.InfoColor = Color.FromArgb(144, 147, 153);
-            btnAboutAd.Location = new Point(-41, 560);
+            btnAboutAd.Location = new Point(-41, 566);
             btnAboutAd.Name = "btnAboutAd";
             btnAboutAd.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnAboutAd.Size = new Size(297, 51);
@@ -124,7 +124,7 @@
             pictureBox7.BackgroundImage = (Image)resources.GetObject("pictureBox7.BackgroundImage");
             pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox7.InitialImage = (Image)resources.GetObject("pictureBox7.InitialImage");
-            pictureBox7.Location = new Point(24, 806);
+            pictureBox7.Location = new Point(26, 809);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(53, 29);
             pictureBox7.TabIndex = 17;
@@ -139,7 +139,7 @@
             LogoutBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LogoutBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             LogoutBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            LogoutBtn.Location = new Point(-32, 800);
+            LogoutBtn.Location = new Point(-32, 799);
             LogoutBtn.Name = "LogoutBtn";
             LogoutBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             LogoutBtn.Size = new Size(313, 51);
@@ -155,7 +155,7 @@
             pictureBox6.BackgroundImage = (Image)resources.GetObject("pictureBox6.BackgroundImage");
             pictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox6.InitialImage = (Image)resources.GetObject("pictureBox6.InitialImage");
-            pictureBox6.Location = new Point(24, 497);
+            pictureBox6.Location = new Point(24, 503);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(43, 35);
             pictureBox6.TabIndex = 15;
@@ -166,7 +166,7 @@
             pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
             pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox5.InitialImage = (Image)resources.GetObject("pictureBox5.InitialImage");
-            pictureBox5.Location = new Point(22, 430);
+            pictureBox5.Location = new Point(24, 435);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(43, 35);
             pictureBox5.TabIndex = 14;
@@ -177,7 +177,7 @@
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox4.InitialImage = (Image)resources.GetObject("pictureBox4.InitialImage");
-            pictureBox4.Location = new Point(23, 356);
+            pictureBox4.Location = new Point(24, 364);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(43, 35);
             pictureBox4.TabIndex = 13;
@@ -188,7 +188,7 @@
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox3.InitialImage = (Image)resources.GetObject("pictureBox3.InitialImage");
-            pictureBox3.Location = new Point(22, 286);
+            pictureBox3.Location = new Point(24, 294);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(43, 35);
             pictureBox3.TabIndex = 12;
@@ -199,7 +199,7 @@
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(21, 223);
+            pictureBox2.Location = new Point(22, 228);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(43, 35);
             pictureBox2.TabIndex = 11;
@@ -210,7 +210,7 @@
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(21, 156);
+            pictureBox1.Location = new Point(23, 162);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(43, 35);
             pictureBox1.TabIndex = 0;
@@ -225,7 +225,7 @@
             hopeButton6.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             hopeButton6.HoverTextColor = Color.FromArgb(48, 49, 51);
             hopeButton6.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeButton6.Location = new Point(-21, 497);
+            hopeButton6.Location = new Point(-21, 498);
             hopeButton6.Name = "hopeButton6";
             hopeButton6.PrimaryColor = Color.FromArgb(11, 45, 114);
             hopeButton6.Size = new Size(297, 51);
@@ -245,7 +245,7 @@
             ReportBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ReportBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             ReportBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            ReportBtn.Location = new Point(-50, 427);
+            ReportBtn.Location = new Point(-50, 431);
             ReportBtn.Name = "ReportBtn";
             ReportBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             ReportBtn.Size = new Size(299, 51);
@@ -265,7 +265,7 @@
             InventoryBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             InventoryBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             InventoryBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            InventoryBtn.Location = new Point(-14, 352);
+            InventoryBtn.Location = new Point(-14, 360);
             InventoryBtn.Name = "InventoryBtn";
             InventoryBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             InventoryBtn.Size = new Size(283, 51);
@@ -285,7 +285,7 @@
             ConsultationBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ConsultationBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             ConsultationBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            ConsultationBtn.Location = new Point(-17, 283);
+            ConsultationBtn.Location = new Point(-17, 291);
             ConsultationBtn.Name = "ConsultationBtn";
             ConsultationBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             ConsultationBtn.Size = new Size(267, 51);
@@ -305,7 +305,7 @@
             PatientRecordsBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PatientRecordsBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             PatientRecordsBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            PatientRecordsBtn.Location = new Point(-14, 217);
+            PatientRecordsBtn.Location = new Point(-14, 222);
             PatientRecordsBtn.Name = "PatientRecordsBtn";
             PatientRecordsBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             PatientRecordsBtn.Size = new Size(257, 51);
@@ -343,7 +343,7 @@
             Homebtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Homebtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             Homebtn.InfoColor = Color.FromArgb(144, 147, 153);
-            Homebtn.Location = new Point(-32, 150);
+            Homebtn.Location = new Point(-32, 155);
             Homebtn.Name = "Homebtn";
             Homebtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             Homebtn.Size = new Size(275, 51);

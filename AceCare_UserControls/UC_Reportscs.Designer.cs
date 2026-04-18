@@ -53,14 +53,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             pictureBox8 = new PictureBox();
             label7 = new Label();
             poisonTextBox1 = new ReaLTaiizor.Controls.PoisonTextBox();
-            panel5 = new Panel();
-            pictureBox4 = new PictureBox();
-            poisonComboBox1 = new ReaLTaiizor.Controls.PoisonComboBox();
-            label14 = new Label();
-            label11 = new Label();
-            pictureBox7 = new PictureBox();
-            hopeRoundButton2 = new ReaLTaiizor.Controls.HopeRoundButton();
-            label8 = new Label();
             poisonDataGridView1 = new ReaLTaiizor.Controls.PoisonDataGridView();
             Column4 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
@@ -78,6 +70,15 @@ namespace AceCareClinicSystem.AceCare_UserControls
             btnNext = new ReaLTaiizor.Controls.HopeRoundButton();
             label17 = new Label();
             cbDateFilter = new ReaLTaiizor.Controls.PoisonComboBox();
+            label8 = new Label();
+            hopeRoundButton2 = new ReaLTaiizor.Controls.HopeRoundButton();
+            pictureBox7 = new PictureBox();
+            label11 = new Label();
+            label14 = new Label();
+            poisonComboBox1 = new ReaLTaiizor.Controls.PoisonComboBox();
+            panel5 = new Panel();
+            label15 = new Label();
+            medicineCircle = new ReaLTaiizor.Controls.ParrotCircleProgressBar();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -88,11 +89,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)poisonDataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ReloadPix).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            panel5.SuspendLayout();
             SuspendLayout();
             // 
             // panel4
@@ -112,7 +112,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(235, 239, 244);
             label1.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(141, 62);
+            label1.Location = new Point(139, 60);
             label1.Name = "label1";
             label1.Size = new Size(40, 44);
             label1.TabIndex = 7;
@@ -134,7 +134,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label2.AutoSize = true;
             label2.BackColor = Color.FromArgb(235, 239, 244);
             label2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(85, 30);
+            label2.Location = new Point(70, 29);
             label2.Name = "label2";
             label2.Size = new Size(173, 22);
             label2.TabIndex = 6;
@@ -157,7 +157,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label3.AutoSize = true;
             label3.BackColor = Color.FromArgb(235, 239, 244);
             label3.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(121, 60);
+            label3.Location = new Point(119, 59);
             label3.Name = "label3";
             label3.Size = new Size(40, 44);
             label3.TabIndex = 7;
@@ -202,7 +202,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label5.AutoSize = true;
             label5.BackColor = Color.FromArgb(235, 239, 244);
             label5.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(136, 60);
+            label5.Location = new Point(125, 60);
             label5.Name = "label5";
             label5.Size = new Size(40, 44);
             label5.TabIndex = 7;
@@ -261,7 +261,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label10.AutoSize = true;
             label10.BackColor = Color.FromArgb(235, 239, 244);
             label10.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(140, 62);
+            label10.Location = new Point(133, 58);
             label10.Name = "label10";
             label10.Size = new Size(40, 44);
             label10.TabIndex = 7;
@@ -272,7 +272,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             pictureBox5.BackColor = Color.FromArgb(235, 239, 244);
             pictureBox5.BackgroundImage = Properties.Resources.group;
             pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox5.Location = new Point(30, 49);
+            pictureBox5.Location = new Point(33, 49);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(53, 54);
             pictureBox5.TabIndex = 5;
@@ -315,7 +315,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(11, 223);
+            label7.Location = new Point(11, 226);
             label7.Name = "label7";
             label7.Size = new Size(349, 40);
             label7.TabIndex = 27;
@@ -342,7 +342,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
     {
     "Search"
     };
-            poisonTextBox1.Location = new Point(334, 313);
+            poisonTextBox1.Location = new Point(334, 310);
             poisonTextBox1.MaxLength = 32767;
             poisonTextBox1.Name = "poisonTextBox1";
             poisonTextBox1.PasswordChar = '\0';
@@ -357,112 +357,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             poisonTextBox1.UseSelectable = true;
             poisonTextBox1.WaterMarkColor = Color.FromArgb(109, 109, 109);
             poisonTextBox1.WaterMarkFont = new Font("Segoe UI", 11F, FontStyle.Italic);
-            // 
-            // panel5
-            // 
-            panel5.BackgroundImage = Properties.Resources._21;
-            panel5.BackgroundImageLayout = ImageLayout.Stretch;
-            panel5.Controls.Add(pictureBox4);
-            panel5.Controls.Add(poisonComboBox1);
-            panel5.Controls.Add(label14);
-            panel5.Controls.Add(label11);
-            panel5.Controls.Add(pictureBox7);
-            panel5.Controls.Add(hopeRoundButton2);
-            panel5.Controls.Add(label8);
-            panel5.Dock = DockStyle.Right;
-            panel5.Location = new Point(843, 243);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(395, 620);
-            panel5.TabIndex = 13;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackColor = Color.Transparent;
-            pictureBox4.BackgroundImage = Properties.Resources.Gemini_Generated_Image_ug75z7ug75z7ug75_removebg_preview;
-            pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox4.Location = new Point(42, 178);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(313, 123);
-            pictureBox4.TabIndex = 46;
-            pictureBox4.TabStop = false;
-            // 
-            // poisonComboBox1
-            // 
-            poisonComboBox1.FormattingEnabled = true;
-            poisonComboBox1.ItemHeight = 24;
-            poisonComboBox1.Items.AddRange(new object[] { "Portable Document Format (*.pdf)", "Microsoft Excel (*.xlsx)", "Comma Separated Values (*.csv)" });
-            poisonComboBox1.Location = new Point(49, 380);
-            poisonComboBox1.Name = "poisonComboBox1";
-            poisonComboBox1.PromptText = "Portable Document Format (*.pdf)";
-            poisonComboBox1.Size = new Size(307, 30);
-            poisonComboBox1.TabIndex = 38;
-            poisonComboBox1.Text = "Portable Document Format (*.pdf)";
-            poisonComboBox1.UseSelectable = true;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.BackColor = Color.FromArgb(235, 239, 244);
-            label14.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.Location = new Point(52, 336);
-            label14.Name = "label14";
-            label14.Size = new Size(135, 22);
-            label14.TabIndex = 8;
-            label14.Text = "Export Format:";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label11.ForeColor = SystemColors.GrayText;
-            label11.Location = new Point(46, 135);
-            label11.Name = "label11";
-            label11.Size = new Size(255, 20);
-            label11.TabIndex = 45;
-            label11.Text = "Format and export unified system logs.";
-            // 
-            // pictureBox7
-            // 
-            pictureBox7.BackColor = Color.FromArgb(45, 150, 140);
-            pictureBox7.BackgroundImage = Properties.Resources.export;
-            pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox7.Location = new Point(103, 439);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(35, 49);
-            pictureBox7.TabIndex = 43;
-            pictureBox7.TabStop = false;
-            // 
-            // hopeRoundButton2
-            // 
-            hopeRoundButton2.BackColor = Color.Transparent;
-            hopeRoundButton2.BorderColor = Color.FromArgb(220, 223, 230);
-            hopeRoundButton2.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            hopeRoundButton2.DangerColor = Color.FromArgb(245, 108, 108);
-            hopeRoundButton2.DefaultColor = Color.FromArgb(235, 239, 244);
-            hopeRoundButton2.Font = new Font("Century Gothic", 10F, FontStyle.Bold);
-            hopeRoundButton2.HoverTextColor = Color.FromArgb(48, 49, 51);
-            hopeRoundButton2.InfoColor = Color.FromArgb(144, 147, 153);
-            hopeRoundButton2.Location = new Point(52, 435);
-            hopeRoundButton2.Name = "hopeRoundButton2";
-            hopeRoundButton2.PrimaryColor = Color.FromArgb(45, 150, 140);
-            hopeRoundButton2.Size = new Size(307, 55);
-            hopeRoundButton2.SuccessColor = Color.FromArgb(103, 194, 58);
-            hopeRoundButton2.TabIndex = 44;
-            hopeRoundButton2.Text = "      Generate Report";
-            hopeRoundButton2.TextColor = Color.White;
-            hopeRoundButton2.WarningColor = Color.FromArgb(230, 162, 60);
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.FromArgb(235, 239, 244);
-            label8.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(44, 89);
-            label8.Name = "label8";
-            label8.Size = new Size(228, 34);
-            label8.TabIndex = 35;
-            label8.Text = "Clinic Summary";
             // 
             // poisonDataGridView1
             // 
@@ -494,7 +388,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             poisonDataGridView1.EnableHeadersVisualStyles = false;
             poisonDataGridView1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             poisonDataGridView1.GridColor = Color.FromArgb(11, 45, 114);
-            poisonDataGridView1.Location = new Point(12, 357);
+            poisonDataGridView1.Location = new Point(12, 352);
             poisonDataGridView1.Name = "poisonDataGridView1";
             poisonDataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -571,7 +465,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label16.BackColor = Color.Transparent;
             label16.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label16.ForeColor = Color.Black;
-            label16.Location = new Point(687, 292);
+            label16.Location = new Point(685, 289);
             label16.Name = "label16";
             label16.Size = new Size(85, 17);
             label16.TabIndex = 51;
@@ -583,7 +477,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label13.BackColor = Color.Transparent;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.Gray;
-            label13.Location = new Point(17, 275);
+            label13.Location = new Point(17, 274);
             label13.Name = "label13";
             label13.Size = new Size(390, 20);
             label13.TabIndex = 36;
@@ -594,7 +488,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             cbDataViewFilter.FormattingEnabled = true;
             cbDataViewFilter.ItemHeight = 24;
             cbDataViewFilter.Items.AddRange(new object[] { "All Records", "Student", "Faculty", "Teaching Staff", "Non-Teaching Staff", "Employee", "JDVP", "Visitor" });
-            cbDataViewFilter.Location = new Point(522, 314);
+            cbDataViewFilter.Location = new Point(522, 311);
             cbDataViewFilter.Name = "cbDataViewFilter";
             cbDataViewFilter.Size = new Size(149, 30);
             cbDataViewFilter.TabIndex = 37;
@@ -668,7 +562,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             label17.BackColor = Color.Transparent;
             label17.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.Black;
-            label17.Location = new Point(521, 292);
+            label17.Location = new Point(520, 289);
             label17.Name = "label17";
             label17.Size = new Size(129, 17);
             label17.TabIndex = 55;
@@ -679,11 +573,143 @@ namespace AceCareClinicSystem.AceCare_UserControls
             cbDateFilter.FormattingEnabled = true;
             cbDateFilter.ItemHeight = 24;
             cbDateFilter.Items.AddRange(new object[] { "All Records", "Student", "Faculty", "Teaching Staff", "Non-Teaching Staff", "Employee", "JDVP", "Visitor" });
-            cbDateFilter.Location = new Point(688, 314);
+            cbDateFilter.Location = new Point(688, 311);
             cbDateFilter.Name = "cbDateFilter";
             cbDateFilter.Size = new Size(149, 30);
             cbDateFilter.TabIndex = 56;
             cbDateFilter.UseSelectable = true;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.FromArgb(235, 239, 244);
+            label8.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(41, 66);
+            label8.Name = "label8";
+            label8.Size = new Size(228, 34);
+            label8.TabIndex = 35;
+            label8.Text = "Clinic Summary";
+            // 
+            // hopeRoundButton2
+            // 
+            hopeRoundButton2.BackColor = Color.Transparent;
+            hopeRoundButton2.BorderColor = Color.FromArgb(220, 223, 230);
+            hopeRoundButton2.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            hopeRoundButton2.DangerColor = Color.FromArgb(245, 108, 108);
+            hopeRoundButton2.DefaultColor = Color.FromArgb(235, 239, 244);
+            hopeRoundButton2.Font = new Font("Century Gothic", 10F, FontStyle.Bold);
+            hopeRoundButton2.HoverTextColor = Color.FromArgb(48, 49, 51);
+            hopeRoundButton2.InfoColor = Color.FromArgb(144, 147, 153);
+            hopeRoundButton2.Location = new Point(52, 468);
+            hopeRoundButton2.Name = "hopeRoundButton2";
+            hopeRoundButton2.PrimaryColor = Color.FromArgb(45, 150, 140);
+            hopeRoundButton2.Size = new Size(307, 55);
+            hopeRoundButton2.SuccessColor = Color.FromArgb(103, 194, 58);
+            hopeRoundButton2.TabIndex = 44;
+            hopeRoundButton2.Text = "      Generate Report";
+            hopeRoundButton2.TextColor = Color.White;
+            hopeRoundButton2.WarningColor = Color.FromArgb(230, 162, 60);
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.BackColor = Color.FromArgb(45, 150, 140);
+            pictureBox7.BackgroundImage = Properties.Resources.export;
+            pictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox7.Location = new Point(103, 469);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(35, 49);
+            pictureBox7.TabIndex = 43;
+            pictureBox7.TabStop = false;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label11.ForeColor = SystemColors.GrayText;
+            label11.Location = new Point(46, 105);
+            label11.Name = "label11";
+            label11.Size = new Size(255, 20);
+            label11.TabIndex = 45;
+            label11.Text = "Format and export unified system logs.";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.BackColor = Color.FromArgb(235, 239, 244);
+            label14.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.Location = new Point(52, 392);
+            label14.Name = "label14";
+            label14.Size = new Size(124, 19);
+            label14.TabIndex = 8;
+            label14.Text = "Export Format:";
+            // 
+            // poisonComboBox1
+            // 
+            poisonComboBox1.FormattingEnabled = true;
+            poisonComboBox1.ItemHeight = 24;
+            poisonComboBox1.Items.AddRange(new object[] { "Portable Document Format (*.pdf)", "Microsoft Excel (*.xlsx)", "Comma Separated Values (*.csv)" });
+            poisonComboBox1.Location = new Point(49, 422);
+            poisonComboBox1.Name = "poisonComboBox1";
+            poisonComboBox1.PromptText = "Portable Document Format (*.pdf)";
+            poisonComboBox1.Size = new Size(307, 30);
+            poisonComboBox1.TabIndex = 38;
+            poisonComboBox1.Text = "Portable Document Format (*.pdf)";
+            poisonComboBox1.UseSelectable = true;
+            // 
+            // panel5
+            // 
+            panel5.BackgroundImage = Properties.Resources._21;
+            panel5.BackgroundImageLayout = ImageLayout.Stretch;
+            panel5.Controls.Add(label15);
+            panel5.Controls.Add(medicineCircle);
+            panel5.Controls.Add(poisonComboBox1);
+            panel5.Controls.Add(label14);
+            panel5.Controls.Add(label11);
+            panel5.Controls.Add(pictureBox7);
+            panel5.Controls.Add(hopeRoundButton2);
+            panel5.Controls.Add(label8);
+            panel5.Dock = DockStyle.Right;
+            panel5.Location = new Point(843, 243);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(395, 620);
+            panel5.TabIndex = 13;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.BackColor = Color.FromArgb(235, 239, 244);
+            label15.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label15.Location = new Point(108, 332);
+            label15.Name = "label15";
+            label15.Size = new Size(180, 22);
+            label15.TabIndex = 47;
+            label15.Text = "Medicine Inventory";
+            // 
+            // medicineCircle
+            // 
+            medicineCircle.AnimationSpeed = 5;
+            medicineCircle.BackColor = Color.FromArgb(235, 239, 244);
+            medicineCircle.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            medicineCircle.FilledColor = Color.FromArgb(60, 220, 210);
+            medicineCircle.FilledColorAlpha = 130;
+            medicineCircle.FilledThickness = 40;
+            medicineCircle.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            medicineCircle.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+            medicineCircle.IsAnimated = false;
+            medicineCircle.Location = new Point(114, 155);
+            medicineCircle.Name = "medicineCircle";
+            medicineCircle.Percentage = 50;
+            medicineCircle.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            medicineCircle.ShowText = true;
+            medicineCircle.Size = new Size(161, 159);
+            medicineCircle.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            medicineCircle.TabIndex = 46;
+            medicineCircle.TextColor = Color.Gray;
+            medicineCircle.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            medicineCircle.TextSize = 15;
+            medicineCircle.UnFilledColor = Color.FromArgb(114, 114, 114);
+            medicineCircle.UnfilledThickness = 24;
             // 
             // UC_Reportscs
             // 
@@ -721,12 +747,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
             panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)poisonDataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)ReloadPix).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -748,23 +773,16 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private Panel panel3;
         private ReaLTaiizor.Controls.PoisonDataGridView poisonDataGridView1;
         private Label label7;
-        private Label label8;
         private ReaLTaiizor.Controls.PoisonTextBox poisonTextBox1;
-        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton2;
         private Label label9;
         private Panel panel6;
         private Label label10;
         private PictureBox pictureBox5;
         private Label label12;
-        private Panel panel5;
-        private Label label11;
         private ReaLTaiizor.Controls.PoisonComboBox cbDateRangeFilter;
         private Label label13;
         private ReaLTaiizor.Controls.PoisonComboBox cbDataViewFilter;
-        private ReaLTaiizor.Controls.PoisonComboBox poisonComboBox1;
-        private Label label14;
         private Label label16;
-        private PictureBox pictureBox7;
         private PictureBox pictureBox8;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column1;
@@ -777,7 +795,15 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private ReaLTaiizor.Controls.HopeRoundButton btnPrev;
         private ReaLTaiizor.Controls.HopeRoundButton btnNext;
         private Label label17;
-        private PictureBox pictureBox4;
         private ReaLTaiizor.Controls.PoisonComboBox cbDateFilter;
+        private Label label8;
+        private ReaLTaiizor.Controls.HopeRoundButton hopeRoundButton2;
+        private PictureBox pictureBox7;
+        private Label label11;
+        private Label label14;
+        private ReaLTaiizor.Controls.PoisonComboBox poisonComboBox1;
+        private Panel panel5;
+        private Label label15;
+        private ReaLTaiizor.Controls.ParrotCircleProgressBar medicineCircle;
     }
 }

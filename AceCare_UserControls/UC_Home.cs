@@ -226,7 +226,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 PicCreateUser.BackColor = Color.Transparent;
 
                 // Use the user/group icon for Create User
-                PicCreateUser.Image = Properties.Resources.group;
+                PicCreateUser.Image = Properties.Resources.patient;
 
                 this.ResumeLayout(true);
                 PicCreateUser.Refresh();
@@ -295,6 +295,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 if (this.ParentForm is AdminDashboard main)
                     main.addUserControl(new UC_UserManagement());
             }
+        }
+
+        private void medicineCircle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
