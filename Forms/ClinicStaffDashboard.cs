@@ -56,9 +56,12 @@ namespace AceCareClinicSystem.Forms
 
             if (result == DialogResult.Yes)
             {
+                
+                // Open your Landing Page
+                AceCareLanding landing = new AceCareLanding();
+                landing.Show();
                 this.Hide();
-                Login login = new Login();
-                login.Show();
+
             }
         }
 

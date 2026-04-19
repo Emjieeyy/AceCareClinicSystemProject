@@ -17,6 +17,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
         // Store loaded patient ID
         private string loadedPatientID = "";
 
+        // Track if we're in edit mode
+        private bool _isEditMode = false;
+        private int? _existingConsultationId = null;
+
         public UC_ConsultationWizard()
         {
             InitializeComponent();
@@ -36,7 +40,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             WizardMethods.ShowStep(1, StagePanel, stepIcons, stepLines);
         }
 
-        // CHANGED: Renamed parameters for clarity
         public void LoadPatientData(string patientID, string firstName, string lastName,
             string middleInitial, string category, string department,
             DateTime dateOfBirth, string contact, string emergencyContactNumber,
@@ -66,14 +69,120 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtAddress.Text = "";
             txtContactNo.Text = contact ?? "";
 
-            // CHANGED: Use renamed controls
             txtEmergencyContactName.Text = emergencyContactName ?? "";
             txtEmergencyContactNumber.Text = emergencyContactNumber ?? "";
 
+            // CHECK IF PATIENT HAS EXISTING CONSULTATION
+            LoadExistingConsultationIfExists(patientID);
+
             // Show confirmation
             string patientName = $"{firstName} {middleInitial} {lastName}".Trim();
-            MessageBox.Show($"Patient loaded: {patientName}\nCategory: {category}\nDepartment: {department}",
-                "Patient Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string message = _isEditMode
+                ? $"Patient loaded: {patientName}\nExisting consultation found! You can now edit the record."
+                : $"Patient loaded: {patientName}\nCategory: {category}\nDepartment: {department}";
+
+            MessageBox.Show(message, "Patient Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Check if patient has existing consultation and load it
+        /// </summary>
+        private void LoadExistingConsultationIfExists(string patientNumber)
+        {
+            DataRow consultation = _conController.GetLatestConsultation(patientNumber);
+
+            if (consultation != null)
+            {
+                _isEditMode = true;
+                _existingConsultationId = Convert.ToInt32(consultation["id"]);
+
+                // Change Save button text
+                SaveBtns5.Text = "Update Record";
+                SaveBtns5.BackColor = Color.DodgerBlue;
+
+                // Load Step 1 data (Patient Info)
+                txtAge.Text = consultation["age"]?.ToString() ?? txtAge.Text;
+                cmbSex.Text = consultation["sex"]?.ToString() ?? cmbSex.Text;
+                txtAddress.Text = consultation["address"]?.ToString() ?? "";
+
+                // Load Step 2 data (Visit Details)
+                string visitType = consultation["visit_type"]?.ToString();
+                if (visitType == "Consultation") rbConsultation.Checked = true;
+                else if (visitType == "First Aid") rbFirstAid.Checked = true;
+                else if (visitType == "Emergency") rbEmergency.Checked = true;
+
+                string referredBy = consultation["referred_by"]?.ToString();
+                if (referredBy == "Teacher") rbRefTeacher.Checked = true;
+                else if (referredBy == "Self") rbRefSelf.Checked = true;
+                else if (!string.IsNullOrWhiteSpace(referredBy))
+                {
+                    rbRefFriend.Checked = true;
+                    txtRefOtherDetails.Text = consultation["ref_details"]?.ToString() ?? "";
+                }
+
+                string chiefComplaint = consultation["chief_complaint"]?.ToString();
+                if (chiefComplaint == "Headache") rbHeadache.Checked = true;
+                else if (chiefComplaint == "Fever") rbFever.Checked = true;
+                else if (chiefComplaint == "Cough") rbCough.Checked = true;
+                else if (chiefComplaint == "Cold") rbCold.Checked = true;
+                else if (chiefComplaint == "Stomachache") rbStomachache.Checked = true;
+                else if (chiefComplaint == "Dizziness") rbDizziness.Checked = true;
+                else if (chiefComplaint == "Injury") rbInjury.Checked = true;
+                else if (chiefComplaint == "Menstrual Pain") rbMenstrual.Checked = true;
+                else if (!string.IsNullOrWhiteSpace(chiefComplaint))
+                {
+                    rbStomachache.Checked = true;
+                }
+
+                rtbSymptomsDescription.Text = consultation["symptoms_description"]?.ToString() ?? "";
+
+                // Load Step 3 data (Vital Signs & Assessment)
+                txtTemperature.Text = consultation["temperature"]?.ToString() ?? "";
+                txtBloodPressure.Text = consultation["blood_pressure"]?.ToString() ?? "";
+                txtNumPulseRate.Text = consultation["pulse_rate"]?.ToString() ?? "";
+                txtNumRespiratoryRate.Text = consultation["respiratory_rate"]?.ToString() ?? "";
+                txtNumOxygenSaturation.Text = consultation["oxygen_saturation"]?.ToString() ?? "";
+                txtPhysicalFindings.Text = consultation["physical_findings"]?.ToString() ?? "";
+                rtbInjuryDescription.Text = consultation["injury_description"]?.ToString() ?? "";
+                rtbNurseNotes.Text = consultation["nurse_notes"]?.ToString() ?? "";
+
+                // Load Step 4 data (Treatment & Medicine)
+                string treatmentChecklist = consultation["treatment_checklist"]?.ToString() ?? "";
+                chkMedication.Checked = treatmentChecklist.Contains("Medication");
+                chkRest.Checked = treatmentChecklist.Contains("Rest");
+                if (!string.IsNullOrWhiteSpace(treatmentChecklist) && !chkMedication.Checked && !chkRest.Checked)
+                {
+                    txtFirstAidOther.Text = consultation["treatment_other"]?.ToString() ?? "";
+                }
+
+                cmbMedicineName.Text = consultation["medicine_name"]?.ToString() ?? "";
+                txtNumMedQuantity.Text = consultation["medicine_quantity"]?.ToString() ?? "";
+                txtDosage.Text = consultation["dosage"]?.ToString() ?? "";
+
+                if (consultation["medicine_expiry"] != DBNull.Value)
+                    dtpExpiration.Value = Convert.ToDateTime(consultation["medicine_expiry"]);
+
+                rtbTreatmentNotes.Text = consultation["treatment_notes"]?.ToString() ?? "";
+
+                // Load Step 5 data (Outcome & Confirmation)
+                string outcome = consultation["outcome"]?.ToString();
+                if (outcome == "Returned to Normal Activity") rbNormalActivity.Checked = true;
+                else if (outcome == "Sent Home") rbSentHome.Checked = true;
+                else if (outcome == "Referred to Hospital") rbReferredHospital.Checked = true;
+
+                rtbRemarksInstructions.Text = consultation["remarks_instructions"]?.ToString() ?? "";
+                txtClinicIncharge.Text = consultation["clinic_incharge"]?.ToString() ?? "";
+                rtbFinalNotes.Text = consultation["final_notes"]?.ToString() ?? "";
+                txtStaffID.Text = consultation["user_id"]?.ToString() ?? "";
+            }
+            else
+            {
+                // New consultation - reset button
+                _isEditMode = false;
+                _existingConsultationId = null;
+                SaveBtns5.Text = "Save";
+                SaveBtns5.BackColor = Color.LimeGreen;
+            }
         }
 
         // Helper to calculate age
@@ -163,7 +272,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 return;
             }
 
-            if (MessageBox.Show("Finalize and save this consultation?", "Confirm Save",
+            string confirmText = _isEditMode ? "Update this consultation record?" : "Finalize and save this consultation?";
+            if (MessageBox.Show(confirmText, "Confirm",
                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
             {
                 return;
@@ -176,14 +286,18 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
                 string refBy = rbRefTeacher.Checked ? "Teacher" :
                                rbRefSelf.Checked ? "Self" :
+                               rbRefFriend.Checked ? "Friend / Relative" :
                                txtRefOtherDetails.Text;
 
-                // CHANGED: Added rbCough and rbCold options
                 string complaint = rbHeadache.Checked ? "Headache" :
                                    rbFever.Checked ? "Fever" :
                                    rbCough.Checked ? "Cough" :
                                    rbCold.Checked ? "Cold" :
-                                   txtComplaintOther.Text;
+                                   rbStomachache.Checked ? "Stomachache" :
+                                   rbDizziness.Checked ? "Dizziness" :
+                                   rbInjury.Checked ? "Injury" :
+                                   rbMenstrual.Checked ? "Menstrual Pain" :
+                                   "Other";
 
                 decimal temp = 0;
                 decimal.TryParse(txtTemperature.Text, out temp);
@@ -200,46 +314,92 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     ? txtDosage.Text.Trim()
                     : "N/A";
 
-                // CHANGED: Use renamed controls
-                bool success = _conController.SaveFullConsultation(
-                    patientNumber,
-                    vType,
-                    refBy,
-                    complaint,
-                    rtbSymptomsDescription.Text,
-                    temp,
-                    txtBloodPressure.Text,
-                    pulseRate,
-                    respiratoryRate,
-                    oxygenSat,
-                    txtPhysicalFindings.Text,
-                    rtbInjuryDescription.Text,
-                    rtbNurseNotes.Text,
-                    treatment,
-                    cmbMedicineName.Text,
-                    medQty,
-                    safeDosage,
-                    dtpExpiration.Value,
-                    rtbTreatmentNotes.Text,
-                    outcome,
-                    rtbRemarksInstructions.Text,
-                    txtClinicIncharge.Text,
-                    sId,
-                    rtbFinalNotes.Text,
-                    txtAge.Text,
-                    cmbSex.Text,
-                    txtAddress.Text,
-                    txtEmergencyContactName.Text,   // CHANGED: Renamed from txtGuardian
-                    txtEmergencyContactNumber.Text, // CHANGED: Renamed from txtEmergencyContact
-                    txtFirstName.Text,
-                    txtLastName.Text,
-                    "Student",
-                    "Unknown"
-                );
+                bool success;
+
+                if (_isEditMode && _existingConsultationId.HasValue)
+                {
+                    // UPDATE existing consultation
+                    success = _conController.UpdateConsultation(
+                        _existingConsultationId.Value,
+                        patientNumber,
+                        vType,
+                        refBy,
+                        complaint,
+                        rtbSymptomsDescription.Text,
+                        temp,
+                        txtBloodPressure.Text,
+                        pulseRate,
+                        respiratoryRate,
+                        oxygenSat,
+                        txtPhysicalFindings.Text,
+                        rtbInjuryDescription.Text,
+                        rtbNurseNotes.Text,
+                        treatment,
+                        cmbMedicineName.Text,
+                        medQty,
+                        safeDosage,
+                        dtpExpiration.Value,
+                        rtbTreatmentNotes.Text,
+                        outcome,
+                        rtbRemarksInstructions.Text,
+                        txtClinicIncharge.Text,
+                        sId,
+                        rtbFinalNotes.Text,
+                        txtAge.Text,
+                        cmbSex.Text,
+                        txtAddress.Text,
+                        txtEmergencyContactName.Text,
+                        txtEmergencyContactNumber.Text,
+                        txtFirstName.Text,
+                        txtLastName.Text,
+                        "Student",
+                        "Unknown"
+                    );
+                }
+                else
+                {
+                    // SAVE new consultation
+                    success = _conController.SaveFullConsultation(
+                        patientNumber,
+                        vType,
+                        refBy,
+                        complaint,
+                        rtbSymptomsDescription.Text,
+                        temp,
+                        txtBloodPressure.Text,
+                        pulseRate,
+                        respiratoryRate,
+                        oxygenSat,
+                        txtPhysicalFindings.Text,
+                        rtbInjuryDescription.Text,
+                        rtbNurseNotes.Text,
+                        treatment,
+                        cmbMedicineName.Text,
+                        medQty,
+                        safeDosage,
+                        dtpExpiration.Value,
+                        rtbTreatmentNotes.Text,
+                        outcome,
+                        rtbRemarksInstructions.Text,
+                        txtClinicIncharge.Text,
+                        sId,
+                        rtbFinalNotes.Text,
+                        txtAge.Text,
+                        cmbSex.Text,
+                        txtAddress.Text,
+                        txtEmergencyContactName.Text,
+                        txtEmergencyContactNumber.Text,
+                        txtFirstName.Text,
+                        txtLastName.Text,
+                        "Student",
+                        "Unknown"
+                    );
+                }
 
                 if (success)
                 {
-                    MessageBox.Show("Consultation Saved Successfully! ✅", "Success");
+                    string successMsg = _isEditMode ? "Consultation Updated Successfully! ✅" : "Consultation Saved Successfully! ✅";
+                    MessageBox.Show(successMsg, "Success");
                     WizardMethods.ShowStep(1, StagePanel, stepIcons, stepLines);
                     ClearForm();
                 }
@@ -273,7 +433,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtBloodPressure.Clear();
             txtPhysicalFindings.Clear();
 
-            // CHANGED: Clear renamed textbox fields
+            // Reset edit mode
+            _isEditMode = false;
+            _existingConsultationId = null;
+            SaveBtns5.Text = "Save";
+            SaveBtns5.BackColor = Color.LimeGreen;
+
             txtNumPulseRate.Clear();
             txtNumRespiratoryRate.Clear();
             txtNumOxygenSaturation.Clear();
@@ -289,12 +454,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtAge.Clear();
             txtAddress.Clear();
 
-            // CHANGED: Clear renamed emergency contact fields
             txtEmergencyContactName.Clear();
             txtEmergencyContactNumber.Clear();
 
             txtRefOtherDetails.Clear();
-            txtComplaintOther.Text = "";
             txtFirstAidOther.Clear();
             txtDosage.Clear();
             cmbMedicineName.SelectedIndex = -1;
@@ -308,22 +471,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
             chkRest.Checked = false;
         }
 
-        private void txtPatientID_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void pictureBox12_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label52_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rtbInjuryDescription_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void txtPatientID_Click(object sender, EventArgs e) { }
+        private void pictureBox12_Click(object sender, EventArgs e) { }
+        private void label52_Click(object sender, EventArgs e) { }
+        private void rtbInjuryDescription_Click(object sender, EventArgs e) { }
     }
 }

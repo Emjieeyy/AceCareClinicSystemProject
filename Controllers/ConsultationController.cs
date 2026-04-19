@@ -37,11 +37,45 @@ namespace AceCareClinicSystem.Controllers
         }
 
         /// <summary>
+        /// Get latest consultation for a patient by patient_number
+        /// </summary>
+        public DataRow GetLatestConsultation(string patientNumber)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+                    string query = @"SELECT c.* 
+                                   FROM consultations c
+                                   INNER JOIN patients p ON c.patient_id = p.patient_id
+                                   WHERE p.patient_number = @pNum
+                                   ORDER BY c.visit_date DESC
+                                   LIMIT 1";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@pNum", patientNumber);
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("GetLatestConsultation Error: " + ex.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Auto-create patient if not exists
         /// </summary>
         public int EnsurePatientExists(string patientNumber, string firstName, string lastName,
             string age, string sex, string address, string guardianName, string emergencyContactNumber,
-            string emergencyContactName,  // ADDED: Separate parameter for emergency contact name
+            string emergencyContactName,
             string category = "Student", string department = "Unknown")
         {
             // Try to find existing patient
@@ -55,7 +89,6 @@ namespace AceCareClinicSystem.Controllers
                 using (MySqlConnection conn = new MySqlConnection(connStr))
                 {
                     conn.Open();
-                    // CHANGED: Added emergency_contact_name to INSERT
                     string query = @"INSERT INTO patients 
                         (patient_number, first_name, last_name, age, sex, address, 
                          guardian_name, emergency_contact, emergency_contact_name, category, department, created_at) 
@@ -97,7 +130,7 @@ namespace AceCareClinicSystem.Controllers
             string physical, string injury, string nurseNotes,
             string treatment, string medName, int medQty, string dosage, DateTime expiry, string treatNotes,
             string outcome, string remarks, string incharge, int sId, string finalNotes,
-            string age, string sex, string address, string guardianName, string emergencyContactNumber,  // CHANGED: Separate parameters
+            string age, string sex, string address, string guardianName, string emergencyContactNumber,
             string firstName = "", string lastName = "", string category = "Student", string department = "Unknown")
         {
             try
@@ -107,7 +140,6 @@ namespace AceCareClinicSystem.Controllers
                     conn.Open();
 
                     // AUTO-CREATE PATIENT IF NOT EXISTS
-                    // CHANGED: Pass both emergency contact name and number
                     int pId = EnsurePatientExists(patientNumber, firstName, lastName, age, sex,
                         address, guardianName, emergencyContactNumber, guardianName, category, department);
 
@@ -118,7 +150,6 @@ namespace AceCareClinicSystem.Controllers
                     }
 
                     // SAVE CONSULTATION
-                    // CHANGED: Added dosage to INSERT query
                     string query = @"INSERT INTO consultations 
                         (patient_id, age, sex, address, guardian_name, emergency_contact,
                          visit_type, referred_by, chief_complaint, symptoms_description,
@@ -140,8 +171,8 @@ namespace AceCareClinicSystem.Controllers
                         cmd.Parameters.AddWithValue("@age", age ?? "");
                         cmd.Parameters.AddWithValue("@sex", sex ?? "");
                         cmd.Parameters.AddWithValue("@addr", address ?? "");
-                        cmd.Parameters.AddWithValue("@guard", guardianName ?? "");      // CHANGED: guardian_name gets the name
-                        cmd.Parameters.AddWithValue("@emerg", emergencyContactNumber ?? "");  // CHANGED: emergency_contact gets the number
+                        cmd.Parameters.AddWithValue("@guard", guardianName ?? "");
+                        cmd.Parameters.AddWithValue("@emerg", emergencyContactNumber ?? "");
                         cmd.Parameters.AddWithValue("@vType", vType);
                         cmd.Parameters.AddWithValue("@refBy", refBy);
                         cmd.Parameters.AddWithValue("@comp", complaint);
@@ -157,7 +188,7 @@ namespace AceCareClinicSystem.Controllers
                         cmd.Parameters.AddWithValue("@tCheck", treatment ?? "");
                         cmd.Parameters.AddWithValue("@mName", medName ?? "");
                         cmd.Parameters.AddWithValue("@mQty", medQty);
-                        cmd.Parameters.AddWithValue("@dos", dosage ?? "N/A");  // CHANGED: Added dosage parameter
+                        cmd.Parameters.AddWithValue("@dos", dosage ?? "N/A");
                         cmd.Parameters.AddWithValue("@exp", expiry.Date);
                         cmd.Parameters.AddWithValue("@tNote", treatNotes ?? "");
                         cmd.Parameters.AddWithValue("@out", outcome);
@@ -178,9 +209,114 @@ namespace AceCareClinicSystem.Controllers
                 return false;
             }
         }
-        
-            // Add this method to ConsultationController
-public DataTable GetConsultationReport(DateTime fromDate, DateTime toDate, string search = "")
+
+        /// <summary>
+        /// Update existing consultation
+        /// </summary>
+        public bool UpdateConsultation(
+            int consultationId,
+            string patientNumber,
+            string vType, string refBy, string complaint, string symptoms,
+            decimal temp, string bp, int pulse, int resp, decimal oxygen,
+            string physical, string injury, string nurseNotes,
+            string treatment, string medName, int medQty, string dosage, DateTime expiry, string treatNotes,
+            string outcome, string remarks, string incharge, int sId, string finalNotes,
+            string age, string sex, string address, string guardianName, string emergencyContactNumber,
+            string firstName = "", string lastName = "", string category = "Student", string department = "Unknown")
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    // Get patient_id
+                    int? pId = GetPatientIdByNumber(patientNumber);
+                    if (!pId.HasValue)
+                    {
+                        MessageBox.Show("Patient not found.", "Error");
+                        return false;
+                    }
+
+                    // UPDATE existing consultation
+                    string query = @"UPDATE consultations SET 
+                        age = @age,
+                        sex = @sex,
+                        address = @addr,
+                        guardian_name = @guard,
+                        emergency_contact = @emerg,
+                        visit_type = @vType,
+                        referred_by = @refBy,
+                        chief_complaint = @comp,
+                        symptoms_description = @symp,
+                        temperature = @temp,
+                        blood_pressure = @bp,
+                        pulse_rate = @pulse,
+                        respiratory_rate = @resp,
+                        oxygen_saturation = @oxy,
+                        physical_findings = @phys,
+                        injury_description = @inj,
+                        nurse_notes = @nNote,
+                        treatment_checklist = @tCheck,
+                        medicine_name = @mName,
+                        medicine_quantity = @mQty,
+                        dosage = @dos,
+                        medicine_expiry = @exp,
+                        treatment_notes = @tNote,
+                        outcome = @out,
+                        remarks_instructions = @rem,
+                        clinic_incharge = @inch,
+                        user_id = @uId,
+                        final_notes = @fNote,
+                        visit_date = NOW()
+                        WHERE id = @conId";  // <-- FIXED: changed from consultation_id to id
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@conId", consultationId);
+                        cmd.Parameters.AddWithValue("@age", age ?? "");
+                        cmd.Parameters.AddWithValue("@sex", sex ?? "");
+                        cmd.Parameters.AddWithValue("@addr", address ?? "");
+                        cmd.Parameters.AddWithValue("@guard", guardianName ?? "");
+                        cmd.Parameters.AddWithValue("@emerg", emergencyContactNumber ?? "");
+                        cmd.Parameters.AddWithValue("@vType", vType);
+                        cmd.Parameters.AddWithValue("@refBy", refBy);
+                        cmd.Parameters.AddWithValue("@comp", complaint);
+                        cmd.Parameters.AddWithValue("@symp", symptoms ?? "");
+                        cmd.Parameters.AddWithValue("@temp", temp);
+                        cmd.Parameters.AddWithValue("@bp", bp ?? "");
+                        cmd.Parameters.AddWithValue("@pulse", pulse);
+                        cmd.Parameters.AddWithValue("@resp", resp);
+                        cmd.Parameters.AddWithValue("@oxy", oxygen);
+                        cmd.Parameters.AddWithValue("@phys", physical ?? "");
+                        cmd.Parameters.AddWithValue("@inj", injury ?? "");
+                        cmd.Parameters.AddWithValue("@nNote", nurseNotes ?? "");
+                        cmd.Parameters.AddWithValue("@tCheck", treatment ?? "");
+                        cmd.Parameters.AddWithValue("@mName", medName ?? "");
+                        cmd.Parameters.AddWithValue("@mQty", medQty);
+                        cmd.Parameters.AddWithValue("@dos", dosage ?? "N/A");
+                        cmd.Parameters.AddWithValue("@exp", expiry.Date);
+                        cmd.Parameters.AddWithValue("@tNote", treatNotes ?? "");
+                        cmd.Parameters.AddWithValue("@out", outcome);
+                        cmd.Parameters.AddWithValue("@rem", remarks ?? "");
+                        cmd.Parameters.AddWithValue("@inch", incharge ?? "");
+                        cmd.Parameters.AddWithValue("@uId", sId);
+                        cmd.Parameters.AddWithValue("@fNote", finalNotes ?? "");
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0) new AuthController().LogActivity(0, "Consultation Updated", $"Updated consultation ID: {consultationId}");
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Update Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public DataTable GetConsultationReport(DateTime fromDate, DateTime toDate, string search = "")
         {
             try
             {
@@ -221,4 +357,4 @@ public DataTable GetConsultationReport(DateTime fromDate, DateTime toDate, strin
             }
         }
     }
-  }
+}

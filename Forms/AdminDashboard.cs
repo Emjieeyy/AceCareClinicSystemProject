@@ -104,11 +104,9 @@ namespace AceCareClinicSystem.Forms
 
             if (dialog == DialogResult.Yes)
             {
-                // 1. Create a new instance of your Login Form
-                Login login = new Login();
-
-                // 2. Show the Login Form
-                login.Show();
+                // Open your Landing Page
+                AceCareLanding landing = new AceCareLanding();
+                landing.Show();
 
                 // 3. Close the current Dashboard Form
                 // Use this.Hide() if you want to keep the process alive in the background

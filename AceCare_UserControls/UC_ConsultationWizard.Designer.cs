@@ -47,33 +47,55 @@
             StepLine2 = new Panel();
             label4 = new Label();
             StagePanel = new Panel();
-            Step1 = new Panel();
-            panel5 = new Panel();
-            logo1 = new PictureBox();
-            Next1Btn = new ReaLTaiizor.Controls.HopeButton();
-            dtpDateofBirth = new ReaLTaiizor.Controls.PoisonDateTime();
-            label7 = new Label();
-            txtEmergencyContactNumber = new ReaLTaiizor.Controls.PoisonTextBox();
-            txtEmergencyContactName = new ReaLTaiizor.Controls.PoisonTextBox();
-            txtContactNo = new ReaLTaiizor.Controls.PoisonTextBox();
-            label18 = new Label();
-            label17 = new Label();
-            label16 = new Label();
-            txtAddress = new ReaLTaiizor.Controls.PoisonTextBox();
-            label15 = new Label();
-            label14 = new Label();
-            cmbSex = new ReaLTaiizor.Controls.PoisonComboBox();
-            label13 = new Label();
-            txtAge = new ReaLTaiizor.Controls.PoisonTextBox();
-            label12 = new Label();
-            txtMI = new ReaLTaiizor.Controls.PoisonTextBox();
-            label11 = new Label();
-            txtLastName = new ReaLTaiizor.Controls.PoisonTextBox();
-            label10 = new Label();
-            txtFirstName = new ReaLTaiizor.Controls.PoisonTextBox();
-            label9 = new Label();
-            txtPatientID = new ReaLTaiizor.Controls.PoisonTextBox();
-            label8 = new Label();
+            Step4 = new Panel();
+            panel4 = new Panel();
+            pictureBox2 = new PictureBox();
+            panel6 = new Panel();
+            txtNumMedQuantity = new ReaLTaiizor.Controls.PoisonTextBox();
+            cmbMedicineName = new ReaLTaiizor.Controls.PoisonComboBox();
+            dtpExpiration = new ReaLTaiizor.Controls.PoisonDateTime();
+            txtDosage = new ReaLTaiizor.Controls.PoisonTextBox();
+            label44 = new Label();
+            label41 = new Label();
+            label40 = new Label();
+            label39 = new Label();
+            label38 = new Label();
+            label28 = new Label();
+            chkBandage = new ReaLTaiizor.Controls.HopeCheckBox();
+            chkWoundCleaning = new ReaLTaiizor.Controls.HopeCheckBox();
+            chkColdCompress = new ReaLTaiizor.Controls.HopeCheckBox();
+            chkRest = new ReaLTaiizor.Controls.HopeCheckBox();
+            chkMedication = new ReaLTaiizor.Controls.HopeCheckBox();
+            label45 = new Label();
+            txtFirstAidOther = new ReaLTaiizor.Controls.PoisonTextBox();
+            label27 = new Label();
+            PrevS4Btn = new ReaLTaiizor.Controls.HopeButton();
+            NextS4Btn = new ReaLTaiizor.Controls.HopeButton();
+            rtbTreatmentNotes = new ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit();
+            label43 = new Label();
+            Step3 = new Panel();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            pictureBox1 = new PictureBox();
+            txtNumOxygenSaturation = new ReaLTaiizor.Controls.PoisonTextBox();
+            txtNumRespiratoryRate = new ReaLTaiizor.Controls.PoisonTextBox();
+            txtNumPulseRate = new ReaLTaiizor.Controls.PoisonTextBox();
+            rtbInjuryDescription = new ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit();
+            txtPhysicalFindings = new ReaLTaiizor.Controls.PoisonTextBox();
+            txtBloodPressure = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
+            label29 = new Label();
+            label37 = new Label();
+            label36 = new Label();
+            label30 = new Label();
+            label35 = new Label();
+            label34 = new Label();
+            label32 = new Label();
+            PrevS3Btn = new ReaLTaiizor.Controls.HopeButton();
+            NextS3Btn = new ReaLTaiizor.Controls.HopeButton();
+            rtbNurseNotes = new ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit();
+            label31 = new Label();
+            txtTemperature = new ReaLTaiizor.Controls.PoisonTextBox();
+            label33 = new Label();
             Step2 = new Panel();
             panel1 = new Panel();
             logo = new PictureBox();
@@ -108,55 +130,33 @@
             label26 = new Label();
             label25 = new Label();
             label19 = new Label();
-            Step3 = new Panel();
-            panel2 = new Panel();
-            panel3 = new Panel();
-            pictureBox1 = new PictureBox();
-            txtNumOxygenSaturation = new ReaLTaiizor.Controls.PoisonTextBox();
-            txtNumRespiratoryRate = new ReaLTaiizor.Controls.PoisonTextBox();
-            txtNumPulseRate = new ReaLTaiizor.Controls.PoisonTextBox();
-            rtbInjuryDescription = new ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit();
-            txtPhysicalFindings = new ReaLTaiizor.Controls.PoisonTextBox();
-            txtBloodPressure = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
-            label29 = new Label();
-            label37 = new Label();
-            label36 = new Label();
-            label30 = new Label();
-            label35 = new Label();
-            label34 = new Label();
-            label32 = new Label();
-            PrevS3Btn = new ReaLTaiizor.Controls.HopeButton();
-            NextS3Btn = new ReaLTaiizor.Controls.HopeButton();
-            rtbNurseNotes = new ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit();
-            label31 = new Label();
-            txtTemperature = new ReaLTaiizor.Controls.PoisonTextBox();
-            label33 = new Label();
-            Step4 = new Panel();
-            panel4 = new Panel();
-            pictureBox2 = new PictureBox();
-            panel6 = new Panel();
-            txtNumMedQuantity = new ReaLTaiizor.Controls.PoisonTextBox();
-            cmbMedicineName = new ReaLTaiizor.Controls.PoisonComboBox();
-            dtpExpiration = new ReaLTaiizor.Controls.PoisonDateTime();
-            txtDosage = new ReaLTaiizor.Controls.PoisonTextBox();
-            label44 = new Label();
-            label41 = new Label();
-            label40 = new Label();
-            label39 = new Label();
-            label38 = new Label();
-            label28 = new Label();
-            chkBandage = new ReaLTaiizor.Controls.HopeCheckBox();
-            chkWoundCleaning = new ReaLTaiizor.Controls.HopeCheckBox();
-            chkColdCompress = new ReaLTaiizor.Controls.HopeCheckBox();
-            chkRest = new ReaLTaiizor.Controls.HopeCheckBox();
-            chkMedication = new ReaLTaiizor.Controls.HopeCheckBox();
-            label45 = new Label();
-            txtFirstAidOther = new ReaLTaiizor.Controls.PoisonTextBox();
-            label27 = new Label();
-            PrevS4Btn = new ReaLTaiizor.Controls.HopeButton();
-            NextS4Btn = new ReaLTaiizor.Controls.HopeButton();
-            rtbTreatmentNotes = new ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit();
-            label43 = new Label();
+            Step1 = new Panel();
+            panel5 = new Panel();
+            logo1 = new PictureBox();
+            Next1Btn = new ReaLTaiizor.Controls.HopeButton();
+            dtpDateofBirth = new ReaLTaiizor.Controls.PoisonDateTime();
+            label7 = new Label();
+            txtEmergencyContactNumber = new ReaLTaiizor.Controls.PoisonTextBox();
+            txtEmergencyContactName = new ReaLTaiizor.Controls.PoisonTextBox();
+            txtContactNo = new ReaLTaiizor.Controls.PoisonTextBox();
+            label18 = new Label();
+            label17 = new Label();
+            label16 = new Label();
+            txtAddress = new ReaLTaiizor.Controls.PoisonTextBox();
+            label15 = new Label();
+            label14 = new Label();
+            cmbSex = new ReaLTaiizor.Controls.PoisonComboBox();
+            label13 = new Label();
+            txtAge = new ReaLTaiizor.Controls.PoisonTextBox();
+            label12 = new Label();
+            txtMI = new ReaLTaiizor.Controls.PoisonTextBox();
+            label11 = new Label();
+            txtLastName = new ReaLTaiizor.Controls.PoisonTextBox();
+            label10 = new Label();
+            txtFirstName = new ReaLTaiizor.Controls.PoisonTextBox();
+            label9 = new Label();
+            txtPatientID = new ReaLTaiizor.Controls.PoisonTextBox();
+            label8 = new Label();
             Step5 = new Panel();
             panel7 = new Panel();
             pictureBox3 = new PictureBox();
@@ -187,23 +187,23 @@
             ((System.ComponentModel.ISupportInitialize)pbStep4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbStep2).BeginInit();
             StagePanel.SuspendLayout();
-            Step1.SuspendLayout();
-            panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)logo1).BeginInit();
+            Step4.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel6.SuspendLayout();
+            Step3.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             Step2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
             ChiefComplaint.SuspendLayout();
             ReferredBy.SuspendLayout();
             TypeOfVisitPanel.SuspendLayout();
-            Step3.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            Step4.SuspendLayout();
-            panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel6.SuspendLayout();
+            Step1.SuspendLayout();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)logo1).BeginInit();
             Step5.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -409,516 +409,901 @@
             StagePanel.Size = new Size(875, 837);
             StagePanel.TabIndex = 1;
             // 
-            // Step1
-            // 
-            Step1.Controls.Add(panel5);
-            Step1.Dock = DockStyle.Fill;
-            Step1.Location = new Point(0, 0);
-            Step1.Name = "Step1";
-            Step1.Size = new Size(875, 837);
-            Step1.TabIndex = 0;
-            // 
-            // panel5
-            // 
-            panel5.BackgroundImage = Properties.Resources._21;
-            panel5.BackgroundImageLayout = ImageLayout.Stretch;
-            panel5.Controls.Add(logo1);
-            panel5.Controls.Add(Next1Btn);
-            panel5.Controls.Add(dtpDateofBirth);
-            panel5.Controls.Add(label7);
-            panel5.Controls.Add(txtEmergencyContactNumber);
-            panel5.Controls.Add(txtEmergencyContactName);
-            panel5.Controls.Add(txtContactNo);
-            panel5.Controls.Add(label18);
-            panel5.Controls.Add(label17);
-            panel5.Controls.Add(label16);
-            panel5.Controls.Add(txtAddress);
-            panel5.Controls.Add(label15);
-            panel5.Controls.Add(label14);
-            panel5.Controls.Add(cmbSex);
-            panel5.Controls.Add(label13);
-            panel5.Controls.Add(txtAge);
-            panel5.Controls.Add(label12);
-            panel5.Controls.Add(txtMI);
-            panel5.Controls.Add(label11);
-            panel5.Controls.Add(txtLastName);
-            panel5.Controls.Add(label10);
-            panel5.Controls.Add(txtFirstName);
-            panel5.Controls.Add(label9);
-            panel5.Controls.Add(txtPatientID);
-            panel5.Controls.Add(label8);
-            panel5.Location = new Point(0, 23);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(875, 851);
-            panel5.TabIndex = 12;
-            // 
-            // logo1
-            // 
-            logo1.BackColor = Color.Transparent;
-            logo1.BackgroundImage = (Image)resources.GetObject("logo1.BackgroundImage");
-            logo1.BackgroundImageLayout = ImageLayout.Stretch;
-            logo1.Location = new Point(751, -30);
-            logo1.Name = "logo1";
-            logo1.Size = new Size(123, 124);
-            logo1.TabIndex = 32;
-            logo1.TabStop = false;
-            logo1.Click += pictureBox12_Click;
-            // 
-            // Next1Btn
-            // 
-            Next1Btn.BorderColor = Color.FromArgb(220, 223, 230);
-            Next1Btn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            Next1Btn.DangerColor = Color.FromArgb(245, 108, 108);
-            Next1Btn.DefaultColor = Color.FromArgb(255, 255, 255);
-            Next1Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Next1Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
-            Next1Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            Next1Btn.Location = new Point(639, 674);
-            Next1Btn.Name = "Next1Btn";
-            Next1Btn.PrimaryColor = Color.FromArgb(11, 45, 114);
-            Next1Btn.Size = new Size(149, 49);
-            Next1Btn.SuccessColor = Color.FromArgb(103, 194, 58);
-            Next1Btn.TabIndex = 31;
-            Next1Btn.Text = "Next";
-            Next1Btn.TextColor = Color.White;
-            Next1Btn.WarningColor = Color.FromArgb(230, 162, 60);
-            Next1Btn.Click += Next1Btn_Click;
-            // 
-            // dtpDateofBirth
-            // 
-            dtpDateofBirth.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dtpDateofBirth.Location = new Point(199, 380);
-            dtpDateofBirth.MinimumSize = new Size(0, 30);
-            dtpDateofBirth.Name = "dtpDateofBirth";
-            dtpDateofBirth.Size = new Size(588, 30);
-            dtpDateofBirth.TabIndex = 33;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.BackColor = Color.White;
-            label7.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.Black;
-            label7.Location = new Point(17, 2);
-            label7.Name = "label7";
-            label7.Size = new Size(335, 40);
-            label7.TabIndex = 11;
-            label7.Text = " Patient Information";
-            // 
-            // txtEmergencyContactNumber
-            // 
-            // 
-            // 
-            // 
-            txtEmergencyContactNumber.CustomButton.Image = null;
-            txtEmergencyContactNumber.CustomButton.Location = new Point(415, 1);
-            txtEmergencyContactNumber.CustomButton.Name = "";
-            txtEmergencyContactNumber.CustomButton.Size = new Size(29, 29);
-            txtEmergencyContactNumber.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtEmergencyContactNumber.CustomButton.TabIndex = 1;
-            txtEmergencyContactNumber.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtEmergencyContactNumber.CustomButton.UseSelectable = true;
-            txtEmergencyContactNumber.CustomButton.Visible = false;
-            txtEmergencyContactNumber.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtEmergencyContactNumber.Location = new Point(341, 615);
-            txtEmergencyContactNumber.MaxLength = 32767;
-            txtEmergencyContactNumber.Name = "txtEmergencyContactNumber";
-            txtEmergencyContactNumber.PasswordChar = '\0';
-            txtEmergencyContactNumber.ScrollBars = ScrollBars.None;
-            txtEmergencyContactNumber.SelectedText = "";
-            txtEmergencyContactNumber.SelectionLength = 0;
-            txtEmergencyContactNumber.SelectionStart = 0;
-            txtEmergencyContactNumber.ShortcutsEnabled = true;
-            txtEmergencyContactNumber.Size = new Size(445, 31);
-            txtEmergencyContactNumber.TabIndex = 32;
-            txtEmergencyContactNumber.UseSelectable = true;
-            txtEmergencyContactNumber.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtEmergencyContactNumber.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // txtEmergencyContactName
-            // 
-            // 
-            // 
-            // 
-            txtEmergencyContactName.CustomButton.Image = null;
-            txtEmergencyContactName.CustomButton.Location = new Point(434, 1);
-            txtEmergencyContactName.CustomButton.Name = "";
-            txtEmergencyContactName.CustomButton.Size = new Size(29, 29);
-            txtEmergencyContactName.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtEmergencyContactName.CustomButton.TabIndex = 1;
-            txtEmergencyContactName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtEmergencyContactName.CustomButton.UseSelectable = true;
-            txtEmergencyContactName.CustomButton.Visible = false;
-            txtEmergencyContactName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtEmergencyContactName.Location = new Point(323, 553);
-            txtEmergencyContactName.MaxLength = 32767;
-            txtEmergencyContactName.Name = "txtEmergencyContactName";
-            txtEmergencyContactName.PasswordChar = '\0';
-            txtEmergencyContactName.ScrollBars = ScrollBars.None;
-            txtEmergencyContactName.SelectedText = "";
-            txtEmergencyContactName.SelectionLength = 0;
-            txtEmergencyContactName.SelectionStart = 0;
-            txtEmergencyContactName.ShortcutsEnabled = true;
-            txtEmergencyContactName.Size = new Size(464, 31);
-            txtEmergencyContactName.TabIndex = 31;
-            txtEmergencyContactName.UseSelectable = true;
-            txtEmergencyContactName.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtEmergencyContactName.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // txtContactNo
-            // 
-            // 
-            // 
-            // 
-            txtContactNo.CustomButton.Image = null;
-            txtContactNo.CustomButton.Location = new Point(519, 1);
-            txtContactNo.CustomButton.Name = "";
-            txtContactNo.CustomButton.Size = new Size(29, 29);
-            txtContactNo.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtContactNo.CustomButton.TabIndex = 1;
-            txtContactNo.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtContactNo.CustomButton.UseSelectable = true;
-            txtContactNo.CustomButton.Visible = false;
-            txtContactNo.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtContactNo.Location = new Point(241, 493);
-            txtContactNo.MaxLength = 32767;
-            txtContactNo.Name = "txtContactNo";
-            txtContactNo.PasswordChar = '\0';
-            txtContactNo.ScrollBars = ScrollBars.None;
-            txtContactNo.SelectedText = "";
-            txtContactNo.SelectionLength = 0;
-            txtContactNo.SelectionStart = 0;
-            txtContactNo.ShortcutsEnabled = true;
-            txtContactNo.Size = new Size(549, 31);
-            txtContactNo.TabIndex = 30;
-            txtContactNo.UseSelectable = true;
-            txtContactNo.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtContactNo.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.BackColor = Color.FromArgb(235, 239, 244);
-            label18.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label18.ForeColor = Color.Black;
-            label18.Location = new Point(85, 621);
-            label18.Name = "label18";
-            label18.Size = new Size(250, 20);
-            label18.TabIndex = 29;
-            label18.Text = "Emergency Contact Number:";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.BackColor = Color.FromArgb(235, 239, 244);
-            label17.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label17.ForeColor = Color.Black;
-            label17.Location = new Point(85, 505);
-            label17.Name = "label17";
-            label17.Size = new Size(151, 20);
-            label17.TabIndex = 28;
-            label17.Text = "Contact Number:";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.BackColor = Color.FromArgb(235, 239, 244);
-            label16.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.ForeColor = Color.Black;
-            label16.Location = new Point(84, 563);
-            label16.Name = "label16";
-            label16.Size = new Size(233, 20);
-            label16.TabIndex = 27;
-            label16.Text = "Emergency Contact Name:";
-            // 
-            // txtAddress
-            // 
-            // 
-            // 
-            // 
-            txtAddress.CustomButton.Image = null;
-            txtAddress.CustomButton.Location = new Point(557, 1);
-            txtAddress.CustomButton.Name = "";
-            txtAddress.CustomButton.Size = new Size(29, 29);
-            txtAddress.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtAddress.CustomButton.TabIndex = 1;
-            txtAddress.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtAddress.CustomButton.UseSelectable = true;
-            txtAddress.CustomButton.Visible = false;
-            txtAddress.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtAddress.Location = new Point(201, 435);
-            txtAddress.MaxLength = 32767;
-            txtAddress.Name = "txtAddress";
-            txtAddress.PasswordChar = '\0';
-            txtAddress.ScrollBars = ScrollBars.None;
-            txtAddress.SelectedText = "";
-            txtAddress.SelectionLength = 0;
-            txtAddress.SelectionStart = 0;
-            txtAddress.ShortcutsEnabled = true;
-            txtAddress.Size = new Size(587, 31);
-            txtAddress.TabIndex = 26;
-            txtAddress.UseSelectable = true;
-            txtAddress.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtAddress.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.BackColor = Color.FromArgb(235, 239, 244);
-            label15.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.ForeColor = Color.Black;
-            label15.Location = new Point(95, 447);
-            label15.Name = "label15";
-            label15.Size = new Size(84, 20);
-            label15.TabIndex = 25;
-            label15.Text = "Address:";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.BackColor = Color.FromArgb(235, 239, 244);
-            label14.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.ForeColor = Color.Black;
-            label14.Location = new Point(74, 388);
-            label14.Name = "label14";
-            label14.Size = new Size(124, 20);
-            label14.TabIndex = 23;
-            label14.Text = "Date of Birth:";
-            // 
-            // cmbSex
-            // 
-            cmbSex.FormattingEnabled = true;
-            cmbSex.ItemHeight = 24;
-            cmbSex.Items.AddRange(new object[] { "Male", "Female" });
-            cmbSex.Location = new Point(519, 322);
-            cmbSex.Name = "cmbSex";
-            cmbSex.Size = new Size(268, 30);
-            cmbSex.TabIndex = 22;
-            cmbSex.UseSelectable = true;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.BackColor = Color.FromArgb(235, 239, 244);
-            label13.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.Black;
-            label13.Location = new Point(463, 329);
-            label13.Name = "label13";
-            label13.Size = new Size(46, 20);
-            label13.TabIndex = 21;
-            label13.Text = "Sex:";
-            // 
-            // txtAge
-            // 
-            // 
-            // 
-            // 
-            txtAge.CustomButton.Image = null;
-            txtAge.CustomButton.Location = new Point(231, 1);
-            txtAge.CustomButton.Name = "";
-            txtAge.CustomButton.Size = new Size(29, 29);
-            txtAge.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtAge.CustomButton.TabIndex = 1;
-            txtAge.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtAge.CustomButton.UseSelectable = true;
-            txtAge.CustomButton.Visible = false;
-            txtAge.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtAge.Location = new Point(199, 321);
-            txtAge.MaxLength = 32767;
-            txtAge.Name = "txtAge";
-            txtAge.PasswordChar = '\0';
-            txtAge.ScrollBars = ScrollBars.None;
-            txtAge.SelectedText = "";
-            txtAge.SelectionLength = 0;
-            txtAge.SelectionStart = 0;
-            txtAge.ShortcutsEnabled = true;
-            txtAge.Size = new Size(261, 31);
-            txtAge.TabIndex = 20;
-            txtAge.UseSelectable = true;
-            txtAge.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtAge.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.BackColor = Color.FromArgb(235, 239, 244);
-            label12.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.Black;
-            label12.Location = new Point(146, 329);
-            label12.Name = "label12";
-            label12.Size = new Size(53, 20);
-            label12.TabIndex = 19;
-            label12.Text = "Age: ";
-            // 
-            // txtMI
-            // 
-            // 
-            // 
-            // 
-            txtMI.CustomButton.Image = null;
-            txtMI.CustomButton.Location = new Point(565, 1);
-            txtMI.CustomButton.Name = "";
-            txtMI.CustomButton.Size = new Size(29, 29);
-            txtMI.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtMI.CustomButton.TabIndex = 1;
-            txtMI.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtMI.CustomButton.UseSelectable = true;
-            txtMI.CustomButton.Visible = false;
-            txtMI.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtMI.Location = new Point(192, 263);
-            txtMI.MaxLength = 32767;
-            txtMI.Name = "txtMI";
-            txtMI.PasswordChar = '\0';
-            txtMI.ScrollBars = ScrollBars.None;
-            txtMI.SelectedText = "";
-            txtMI.SelectionLength = 0;
-            txtMI.SelectionStart = 0;
-            txtMI.ShortcutsEnabled = true;
-            txtMI.Size = new Size(595, 31);
-            txtMI.TabIndex = 18;
-            txtMI.UseSelectable = true;
-            txtMI.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtMI.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.FromArgb(235, 239, 244);
-            label11.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.ForeColor = Color.Black;
-            label11.Location = new Point(77, 273);
-            label11.Name = "label11";
-            label11.Size = new Size(122, 20);
-            label11.TabIndex = 17;
-            label11.Text = "Middle Initial:";
-            // 
-            // txtLastName
-            // 
-            // 
-            // 
-            // 
-            txtLastName.CustomButton.Image = null;
-            txtLastName.CustomButton.Location = new Point(565, 1);
-            txtLastName.CustomButton.Name = "";
-            txtLastName.CustomButton.Size = new Size(29, 29);
-            txtLastName.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtLastName.CustomButton.TabIndex = 1;
-            txtLastName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtLastName.CustomButton.UseSelectable = true;
-            txtLastName.CustomButton.Visible = false;
-            txtLastName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtLastName.Location = new Point(192, 210);
-            txtLastName.MaxLength = 32767;
-            txtLastName.Name = "txtLastName";
-            txtLastName.PasswordChar = '\0';
-            txtLastName.ScrollBars = ScrollBars.None;
-            txtLastName.SelectedText = "";
-            txtLastName.SelectionLength = 0;
-            txtLastName.SelectionStart = 0;
-            txtLastName.ShortcutsEnabled = true;
-            txtLastName.Size = new Size(595, 31);
-            txtLastName.TabIndex = 16;
-            txtLastName.UseSelectable = true;
-            txtLastName.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtLastName.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.BackColor = Color.FromArgb(235, 239, 244);
-            label10.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.Black;
-            label10.Location = new Point(87, 221);
-            label10.Name = "label10";
-            label10.Size = new Size(106, 20);
-            label10.TabIndex = 15;
-            label10.Text = "Last Name:";
-            // 
-            // txtFirstName
-            // 
-            // 
-            // 
-            // 
-            txtFirstName.CustomButton.Image = null;
-            txtFirstName.CustomButton.Location = new Point(565, 1);
-            txtFirstName.CustomButton.Name = "";
-            txtFirstName.CustomButton.Size = new Size(29, 29);
-            txtFirstName.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtFirstName.CustomButton.TabIndex = 1;
-            txtFirstName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtFirstName.CustomButton.UseSelectable = true;
-            txtFirstName.CustomButton.Visible = false;
-            txtFirstName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtFirstName.Location = new Point(192, 159);
-            txtFirstName.MaxLength = 32767;
-            txtFirstName.Name = "txtFirstName";
-            txtFirstName.PasswordChar = '\0';
-            txtFirstName.ScrollBars = ScrollBars.None;
-            txtFirstName.SelectedText = "";
-            txtFirstName.SelectionLength = 0;
-            txtFirstName.SelectionStart = 0;
-            txtFirstName.ShortcutsEnabled = true;
-            txtFirstName.Size = new Size(595, 31);
-            txtFirstName.TabIndex = 14;
-            txtFirstName.UseSelectable = true;
-            txtFirstName.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtFirstName.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = Color.FromArgb(235, 239, 244);
-            label9.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Black;
-            label9.Location = new Point(87, 169);
-            label9.Name = "label9";
-            label9.Size = new Size(108, 20);
-            label9.TabIndex = 13;
-            label9.Text = "First Name:";
-            // 
-            // txtPatientID
-            // 
-            // 
-            // 
-            // 
-            txtPatientID.CustomButton.Image = null;
-            txtPatientID.CustomButton.Location = new Point(565, 1);
-            txtPatientID.CustomButton.Name = "";
-            txtPatientID.CustomButton.Size = new Size(29, 29);
-            txtPatientID.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtPatientID.CustomButton.TabIndex = 1;
-            txtPatientID.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtPatientID.CustomButton.UseSelectable = true;
-            txtPatientID.CustomButton.Visible = false;
-            txtPatientID.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtPatientID.Location = new Point(192, 111);
-            txtPatientID.MaxLength = 32767;
-            txtPatientID.Name = "txtPatientID";
-            txtPatientID.PasswordChar = '\0';
-            txtPatientID.ScrollBars = ScrollBars.None;
-            txtPatientID.SelectedText = "";
-            txtPatientID.SelectionLength = 0;
-            txtPatientID.SelectionStart = 0;
-            txtPatientID.ShortcutsEnabled = true;
-            txtPatientID.Size = new Size(595, 31);
-            txtPatientID.TabIndex = 12;
-            txtPatientID.UseSelectable = true;
-            txtPatientID.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtPatientID.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            txtPatientID.Click += txtPatientID_Click;
-            txtPatientID.Validating += txtPatientID_Validating;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.BackColor = Color.FromArgb(235, 239, 244);
-            label8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.Black;
-            label8.Location = new Point(85, 121);
-            label8.Name = "label8";
-            label8.Size = new Size(93, 20);
-            label8.TabIndex = 11;
-            label8.Text = "Patient ID";
+            // Step4
+            // 
+            Step4.Controls.Add(panel4);
+            Step4.Dock = DockStyle.Fill;
+            Step4.Location = new Point(0, 0);
+            Step4.Name = "Step4";
+            Step4.Size = new Size(875, 837);
+            Step4.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(pictureBox2);
+            panel4.Controls.Add(panel6);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(0, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(875, 837);
+            panel4.TabIndex = 2;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
+            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox2.Location = new Point(753, -7);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(122, 107);
+            pictureBox2.TabIndex = 33;
+            pictureBox2.TabStop = false;
+            // 
+            // panel6
+            // 
+            panel6.BackgroundImage = Properties.Resources._21;
+            panel6.BackgroundImageLayout = ImageLayout.Stretch;
+            panel6.Controls.Add(txtNumMedQuantity);
+            panel6.Controls.Add(cmbMedicineName);
+            panel6.Controls.Add(dtpExpiration);
+            panel6.Controls.Add(txtDosage);
+            panel6.Controls.Add(label44);
+            panel6.Controls.Add(label41);
+            panel6.Controls.Add(label40);
+            panel6.Controls.Add(label39);
+            panel6.Controls.Add(label38);
+            panel6.Controls.Add(label28);
+            panel6.Controls.Add(chkBandage);
+            panel6.Controls.Add(chkWoundCleaning);
+            panel6.Controls.Add(chkColdCompress);
+            panel6.Controls.Add(chkRest);
+            panel6.Controls.Add(chkMedication);
+            panel6.Controls.Add(label45);
+            panel6.Controls.Add(txtFirstAidOther);
+            panel6.Controls.Add(label27);
+            panel6.Controls.Add(PrevS4Btn);
+            panel6.Controls.Add(NextS4Btn);
+            panel6.Controls.Add(rtbTreatmentNotes);
+            panel6.Controls.Add(label43);
+            panel6.Location = new Point(-1, 35);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(877, 839);
+            panel6.TabIndex = 13;
+            // 
+            // txtNumMedQuantity
+            // 
+            // 
+            // 
+            // 
+            txtNumMedQuantity.CustomButton.Image = null;
+            txtNumMedQuantity.CustomButton.Location = new Point(477, 1);
+            txtNumMedQuantity.CustomButton.Name = "";
+            txtNumMedQuantity.CustomButton.Size = new Size(33, 33);
+            txtNumMedQuantity.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtNumMedQuantity.CustomButton.TabIndex = 1;
+            txtNumMedQuantity.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtNumMedQuantity.CustomButton.UseSelectable = true;
+            txtNumMedQuantity.CustomButton.Visible = false;
+            txtNumMedQuantity.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtNumMedQuantity.Location = new Point(263, 424);
+            txtNumMedQuantity.MaxLength = 32767;
+            txtNumMedQuantity.Name = "txtNumMedQuantity";
+            txtNumMedQuantity.PasswordChar = '\0';
+            txtNumMedQuantity.ScrollBars = ScrollBars.None;
+            txtNumMedQuantity.SelectedText = "";
+            txtNumMedQuantity.SelectionLength = 0;
+            txtNumMedQuantity.SelectionStart = 0;
+            txtNumMedQuantity.ShortcutsEnabled = true;
+            txtNumMedQuantity.Size = new Size(511, 35);
+            txtNumMedQuantity.TabIndex = 94;
+            txtNumMedQuantity.UseSelectable = true;
+            txtNumMedQuantity.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtNumMedQuantity.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // cmbMedicineName
+            // 
+            cmbMedicineName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbMedicineName.DropDownStyle = ComboBoxStyle.DropDown;
+            cmbMedicineName.FontSize = ReaLTaiizor.Extension.Poison.PoisonComboBoxSize.Tall;
+            cmbMedicineName.FormattingEnabled = true;
+            cmbMedicineName.ItemHeight = 29;
+            cmbMedicineName.Items.AddRange(new object[] { "Paracetamol", "Bioflu", "Biogesic", "Neozep", "Symdex", "Cetirizine", "Salbutamol", "Captopril", "Kremil-S", "Mefenamic", "Loperamide", "Bisacodyl", "Dicycloverine", "Omeprazole", "Hyoscine", "Ibuprofen", "Salicylic Acid", "Benzocaine", "Carbocisteine", "Calmoseptine", "Eye Mo", "Bactidol", "Advil", "Alaxan FR", "Saridon" });
+            cmbMedicineName.Location = new Point(263, 375);
+            cmbMedicineName.Name = "cmbMedicineName";
+            cmbMedicineName.Size = new Size(511, 35);
+            cmbMedicineName.TabIndex = 93;
+            cmbMedicineName.UseSelectable = true;
+            // 
+            // dtpExpiration
+            // 
+            dtpExpiration.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
+            dtpExpiration.Location = new Point(262, 527);
+            dtpExpiration.MinimumSize = new Size(0, 30);
+            dtpExpiration.Name = "dtpExpiration";
+            dtpExpiration.Size = new Size(512, 30);
+            dtpExpiration.TabIndex = 92;
+            // 
+            // txtDosage
+            // 
+            // 
+            // 
+            // 
+            txtDosage.CustomButton.Image = null;
+            txtDosage.CustomButton.Location = new Point(477, 1);
+            txtDosage.CustomButton.Name = "";
+            txtDosage.CustomButton.Size = new Size(33, 33);
+            txtDosage.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtDosage.CustomButton.TabIndex = 1;
+            txtDosage.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtDosage.CustomButton.UseSelectable = true;
+            txtDosage.CustomButton.Visible = false;
+            txtDosage.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtDosage.Location = new Point(263, 472);
+            txtDosage.MaxLength = 32767;
+            txtDosage.Name = "txtDosage";
+            txtDosage.PasswordChar = '\0';
+            txtDosage.ScrollBars = ScrollBars.None;
+            txtDosage.SelectedText = "";
+            txtDosage.SelectionLength = 0;
+            txtDosage.SelectionStart = 0;
+            txtDosage.ShortcutsEnabled = true;
+            txtDosage.Size = new Size(511, 35);
+            txtDosage.TabIndex = 91;
+            txtDosage.UseSelectable = true;
+            txtDosage.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtDosage.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // label44
+            // 
+            label44.AutoSize = true;
+            label44.BackColor = Color.FromArgb(235, 239, 244);
+            label44.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label44.ForeColor = Color.Black;
+            label44.Location = new Point(97, 591);
+            label44.Name = "label44";
+            label44.Size = new Size(149, 22);
+            label44.TabIndex = 90;
+            label44.Text = "Treatment Notes:";
+            // 
+            // label41
+            // 
+            label41.AutoSize = true;
+            label41.BackColor = Color.FromArgb(235, 239, 244);
+            label41.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label41.ForeColor = Color.Black;
+            label41.Location = new Point(98, 482);
+            label41.Name = "label41";
+            label41.Size = new Size(77, 22);
+            label41.TabIndex = 88;
+            label41.Text = "Dosage:";
+            // 
+            // label40
+            // 
+            label40.AutoSize = true;
+            label40.BackColor = Color.FromArgb(235, 239, 244);
+            label40.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label40.ForeColor = Color.Black;
+            label40.Location = new Point(97, 534);
+            label40.Name = "label40";
+            label40.Size = new Size(151, 22);
+            label40.TabIndex = 87;
+            label40.Text = "Expiration Check:";
+            // 
+            // label39
+            // 
+            label39.AutoSize = true;
+            label39.BackColor = Color.FromArgb(235, 239, 244);
+            label39.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label39.ForeColor = Color.Black;
+            label39.Location = new Point(97, 431);
+            label39.Name = "label39";
+            label39.Size = new Size(87, 22);
+            label39.TabIndex = 85;
+            label39.Text = "Quantity: ";
+            // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.BackColor = Color.FromArgb(235, 239, 244);
+            label38.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label38.ForeColor = Color.Black;
+            label38.Location = new Point(97, 386);
+            label38.Name = "label38";
+            label38.Size = new Size(138, 22);
+            label38.TabIndex = 83;
+            label38.Text = "Medicine Name:";
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.BackColor = Color.FromArgb(235, 239, 244);
+            label28.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label28.ForeColor = Color.Black;
+            label28.Location = new Point(81, 338);
+            label28.Name = "label28";
+            label28.Size = new Size(155, 25);
+            label28.TabIndex = 82;
+            label28.Text = "Medicine Used";
+            // 
+            // chkBandage
+            // 
+            chkBandage.AutoSize = true;
+            chkBandage.BackColor = Color.FromArgb(235, 239, 244);
+            chkBandage.CheckedColor = Color.FromArgb(64, 158, 255);
+            chkBandage.DisabledColor = Color.FromArgb(196, 198, 202);
+            chkBandage.DisabledStringColor = Color.FromArgb(186, 187, 189);
+            chkBandage.Enable = true;
+            chkBandage.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
+            chkBandage.EnabledStringColor = Color.FromArgb(153, 153, 153);
+            chkBandage.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
+            chkBandage.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkBandage.ForeColor = Color.FromArgb(48, 49, 51);
+            chkBandage.Location = new Point(444, 192);
+            chkBandage.Name = "chkBandage";
+            chkBandage.Size = new Size(165, 20);
+            chkBandage.TabIndex = 81;
+            chkBandage.Text = "Bandage Applied ";
+            chkBandage.UseVisualStyleBackColor = false;
+            // 
+            // chkWoundCleaning
+            // 
+            chkWoundCleaning.AutoSize = true;
+            chkWoundCleaning.BackColor = Color.FromArgb(235, 239, 244);
+            chkWoundCleaning.CheckedColor = Color.FromArgb(64, 158, 255);
+            chkWoundCleaning.DisabledColor = Color.FromArgb(196, 198, 202);
+            chkWoundCleaning.DisabledStringColor = Color.FromArgb(186, 187, 189);
+            chkWoundCleaning.Enable = true;
+            chkWoundCleaning.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
+            chkWoundCleaning.EnabledStringColor = Color.FromArgb(153, 153, 153);
+            chkWoundCleaning.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
+            chkWoundCleaning.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkWoundCleaning.ForeColor = Color.FromArgb(48, 49, 51);
+            chkWoundCleaning.Location = new Point(443, 150);
+            chkWoundCleaning.Name = "chkWoundCleaning";
+            chkWoundCleaning.Size = new Size(161, 20);
+            chkWoundCleaning.TabIndex = 80;
+            chkWoundCleaning.Text = "Wound Cleaning ";
+            chkWoundCleaning.UseVisualStyleBackColor = false;
+            // 
+            // chkColdCompress
+            // 
+            chkColdCompress.AutoSize = true;
+            chkColdCompress.BackColor = Color.FromArgb(235, 239, 244);
+            chkColdCompress.CheckedColor = Color.FromArgb(64, 158, 255);
+            chkColdCompress.DisabledColor = Color.FromArgb(196, 198, 202);
+            chkColdCompress.DisabledStringColor = Color.FromArgb(186, 187, 189);
+            chkColdCompress.Enable = true;
+            chkColdCompress.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
+            chkColdCompress.EnabledStringColor = Color.FromArgb(153, 153, 153);
+            chkColdCompress.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
+            chkColdCompress.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkColdCompress.ForeColor = Color.FromArgb(48, 49, 51);
+            chkColdCompress.Location = new Point(84, 239);
+            chkColdCompress.Name = "chkColdCompress";
+            chkColdCompress.Size = new Size(150, 20);
+            chkColdCompress.TabIndex = 79;
+            chkColdCompress.Text = "Cold Compress";
+            chkColdCompress.UseVisualStyleBackColor = false;
+            // 
+            // chkRest
+            // 
+            chkRest.AutoSize = true;
+            chkRest.BackColor = Color.FromArgb(235, 239, 244);
+            chkRest.CheckedColor = Color.FromArgb(64, 158, 255);
+            chkRest.DisabledColor = Color.FromArgb(196, 198, 202);
+            chkRest.DisabledStringColor = Color.FromArgb(186, 187, 189);
+            chkRest.Enable = true;
+            chkRest.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
+            chkRest.EnabledStringColor = Color.FromArgb(153, 153, 153);
+            chkRest.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
+            chkRest.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkRest.ForeColor = Color.FromArgb(48, 49, 51);
+            chkRest.Location = new Point(84, 196);
+            chkRest.Name = "chkRest";
+            chkRest.Size = new Size(135, 20);
+            chkRest.TabIndex = 78;
+            chkRest.Text = "Rest at Clinic";
+            chkRest.UseVisualStyleBackColor = false;
+            // 
+            // chkMedication
+            // 
+            chkMedication.AutoSize = true;
+            chkMedication.BackColor = Color.FromArgb(235, 239, 244);
+            chkMedication.CheckedColor = Color.FromArgb(64, 158, 255);
+            chkMedication.DisabledColor = Color.FromArgb(196, 198, 202);
+            chkMedication.DisabledStringColor = Color.FromArgb(186, 187, 189);
+            chkMedication.Enable = true;
+            chkMedication.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
+            chkMedication.EnabledStringColor = Color.FromArgb(153, 153, 153);
+            chkMedication.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
+            chkMedication.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkMedication.ForeColor = Color.FromArgb(48, 49, 51);
+            chkMedication.Location = new Point(84, 155);
+            chkMedication.Name = "chkMedication";
+            chkMedication.Size = new Size(223, 20);
+            chkMedication.TabIndex = 77;
+            chkMedication.Text = "Medication Administered ";
+            chkMedication.UseVisualStyleBackColor = false;
+            // 
+            // label45
+            // 
+            label45.AutoSize = true;
+            label45.BackColor = Color.FromArgb(235, 239, 244);
+            label45.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label45.ForeColor = Color.Black;
+            label45.Location = new Point(81, 106);
+            label45.Name = "label45";
+            label45.Size = new Size(154, 25);
+            label45.TabIndex = 70;
+            label45.Text = "First Aid Given";
+            // 
+            // txtFirstAidOther
+            // 
+            // 
+            // 
+            // 
+            txtFirstAidOther.CustomButton.Image = null;
+            txtFirstAidOther.CustomButton.Location = new Point(253, 1);
+            txtFirstAidOther.CustomButton.Name = "";
+            txtFirstAidOther.CustomButton.Size = new Size(67, 67);
+            txtFirstAidOther.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtFirstAidOther.CustomButton.TabIndex = 1;
+            txtFirstAidOther.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtFirstAidOther.CustomButton.UseSelectable = true;
+            txtFirstAidOther.CustomButton.Visible = false;
+            txtFirstAidOther.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtFirstAidOther.Location = new Point(453, 262);
+            txtFirstAidOther.MaxLength = 32767;
+            txtFirstAidOther.Name = "txtFirstAidOther";
+            txtFirstAidOther.PasswordChar = '\0';
+            txtFirstAidOther.ScrollBars = ScrollBars.None;
+            txtFirstAidOther.SelectedText = "";
+            txtFirstAidOther.SelectionLength = 0;
+            txtFirstAidOther.SelectionStart = 0;
+            txtFirstAidOther.ShortcutsEnabled = true;
+            txtFirstAidOther.Size = new Size(321, 69);
+            txtFirstAidOther.TabIndex = 68;
+            txtFirstAidOther.UseSelectable = true;
+            txtFirstAidOther.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtFirstAidOther.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.BackColor = Color.FromArgb(235, 239, 244);
+            label27.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label27.ForeColor = Color.Black;
+            label27.Location = new Point(444, 228);
+            label27.Name = "label27";
+            label27.Size = new Size(60, 22);
+            label27.TabIndex = 64;
+            label27.Text = "Other:";
+            // 
+            // PrevS4Btn
+            // 
+            PrevS4Btn.BorderColor = Color.FromArgb(220, 223, 230);
+            PrevS4Btn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            PrevS4Btn.DangerColor = Color.FromArgb(245, 108, 108);
+            PrevS4Btn.DefaultColor = Color.FromArgb(255, 255, 255);
+            PrevS4Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            PrevS4Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            PrevS4Btn.InfoColor = Color.FromArgb(144, 147, 153);
+            PrevS4Btn.Location = new Point(439, 660);
+            PrevS4Btn.Name = "PrevS4Btn";
+            PrevS4Btn.PrimaryColor = Color.LimeGreen;
+            PrevS4Btn.Size = new Size(149, 49);
+            PrevS4Btn.SuccessColor = Color.FromArgb(103, 194, 58);
+            PrevS4Btn.TabIndex = 53;
+            PrevS4Btn.Text = "Prev";
+            PrevS4Btn.TextColor = Color.White;
+            PrevS4Btn.WarningColor = Color.FromArgb(230, 162, 60);
+            PrevS4Btn.Click += PrevS4Btn_Click;
+            // 
+            // NextS4Btn
+            // 
+            NextS4Btn.BorderColor = Color.FromArgb(220, 223, 230);
+            NextS4Btn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            NextS4Btn.DangerColor = Color.FromArgb(245, 108, 108);
+            NextS4Btn.DefaultColor = Color.FromArgb(255, 255, 255);
+            NextS4Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NextS4Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            NextS4Btn.InfoColor = Color.FromArgb(144, 147, 153);
+            NextS4Btn.Location = new Point(625, 662);
+            NextS4Btn.Name = "NextS4Btn";
+            NextS4Btn.PrimaryColor = Color.FromArgb(11, 45, 114);
+            NextS4Btn.Size = new Size(149, 49);
+            NextS4Btn.SuccessColor = Color.FromArgb(103, 194, 58);
+            NextS4Btn.TabIndex = 32;
+            NextS4Btn.Text = "Next";
+            NextS4Btn.TextColor = Color.White;
+            NextS4Btn.WarningColor = Color.FromArgb(230, 162, 60);
+            NextS4Btn.Click += NextS4Btn_Click;
+            // 
+            // rtbTreatmentNotes
+            // 
+            rtbTreatmentNotes.AnimateReadOnly = false;
+            rtbTreatmentNotes.BackgroundImageLayout = ImageLayout.None;
+            rtbTreatmentNotes.CharacterCasing = CharacterCasing.Normal;
+            rtbTreatmentNotes.Depth = 0;
+            rtbTreatmentNotes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtbTreatmentNotes.HideSelection = true;
+            rtbTreatmentNotes.Location = new Point(263, 575);
+            rtbTreatmentNotes.MaxLength = 32767;
+            rtbTreatmentNotes.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            rtbTreatmentNotes.Name = "rtbTreatmentNotes";
+            rtbTreatmentNotes.PasswordChar = '\0';
+            rtbTreatmentNotes.ReadOnly = false;
+            rtbTreatmentNotes.ScrollBars = ScrollBars.None;
+            rtbTreatmentNotes.SelectedText = "";
+            rtbTreatmentNotes.SelectionLength = 0;
+            rtbTreatmentNotes.SelectionStart = 0;
+            rtbTreatmentNotes.ShortcutsEnabled = true;
+            rtbTreatmentNotes.Size = new Size(511, 57);
+            rtbTreatmentNotes.TabIndex = 52;
+            rtbTreatmentNotes.TabStop = false;
+            rtbTreatmentNotes.TextAlign = HorizontalAlignment.Left;
+            rtbTreatmentNotes.UseSystemPasswordChar = false;
+            // 
+            // label43
+            // 
+            label43.AutoSize = true;
+            label43.BackColor = Color.White;
+            label43.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label43.ForeColor = Color.Black;
+            label43.Location = new Point(21, 0);
+            label43.Name = "label43";
+            label43.Size = new Size(314, 37);
+            label43.TabIndex = 11;
+            label43.Text = "Treatment & Medicine";
+            // 
+            // Step3
+            // 
+            Step3.Controls.Add(panel2);
+            Step3.Dock = DockStyle.Fill;
+            Step3.Location = new Point(0, 0);
+            Step3.Name = "Step3";
+            Step3.Size = new Size(875, 837);
+            Step3.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(panel3);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(875, 837);
+            panel2.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            panel3.BackgroundImage = Properties.Resources._21;
+            panel3.BackgroundImageLayout = ImageLayout.Stretch;
+            panel3.Controls.Add(pictureBox1);
+            panel3.Controls.Add(txtNumOxygenSaturation);
+            panel3.Controls.Add(txtNumRespiratoryRate);
+            panel3.Controls.Add(txtNumPulseRate);
+            panel3.Controls.Add(rtbInjuryDescription);
+            panel3.Controls.Add(txtPhysicalFindings);
+            panel3.Controls.Add(txtBloodPressure);
+            panel3.Controls.Add(label29);
+            panel3.Controls.Add(label37);
+            panel3.Controls.Add(label36);
+            panel3.Controls.Add(label30);
+            panel3.Controls.Add(label35);
+            panel3.Controls.Add(label34);
+            panel3.Controls.Add(label32);
+            panel3.Controls.Add(PrevS3Btn);
+            panel3.Controls.Add(NextS3Btn);
+            panel3.Controls.Add(rtbNurseNotes);
+            panel3.Controls.Add(label31);
+            panel3.Controls.Add(txtTemperature);
+            panel3.Controls.Add(label33);
+            panel3.Location = new Point(-1, 35);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(888, 839);
+            panel3.TabIndex = 13;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(748, -29);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(131, 116);
+            pictureBox1.TabIndex = 33;
+            pictureBox1.TabStop = false;
+            // 
+            // txtNumOxygenSaturation
+            // 
+            // 
+            // 
+            // 
+            txtNumOxygenSaturation.CustomButton.Image = null;
+            txtNumOxygenSaturation.CustomButton.Location = new Point(380, 1);
+            txtNumOxygenSaturation.CustomButton.Name = "";
+            txtNumOxygenSaturation.CustomButton.Size = new Size(35, 35);
+            txtNumOxygenSaturation.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtNumOxygenSaturation.CustomButton.TabIndex = 1;
+            txtNumOxygenSaturation.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtNumOxygenSaturation.CustomButton.UseSelectable = true;
+            txtNumOxygenSaturation.CustomButton.Visible = false;
+            txtNumOxygenSaturation.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtNumOxygenSaturation.Location = new Point(366, 346);
+            txtNumOxygenSaturation.MaxLength = 32767;
+            txtNumOxygenSaturation.Name = "txtNumOxygenSaturation";
+            txtNumOxygenSaturation.PasswordChar = '\0';
+            txtNumOxygenSaturation.ScrollBars = ScrollBars.None;
+            txtNumOxygenSaturation.SelectedText = "";
+            txtNumOxygenSaturation.SelectionLength = 0;
+            txtNumOxygenSaturation.SelectionStart = 0;
+            txtNumOxygenSaturation.ShortcutsEnabled = true;
+            txtNumOxygenSaturation.Size = new Size(416, 37);
+            txtNumOxygenSaturation.TabIndex = 72;
+            txtNumOxygenSaturation.UseSelectable = true;
+            txtNumOxygenSaturation.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtNumOxygenSaturation.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // txtNumRespiratoryRate
+            // 
+            // 
+            // 
+            // 
+            txtNumRespiratoryRate.CustomButton.Image = null;
+            txtNumRespiratoryRate.CustomButton.Location = new Point(491, 1);
+            txtNumRespiratoryRate.CustomButton.Name = "";
+            txtNumRespiratoryRate.CustomButton.Size = new Size(35, 35);
+            txtNumRespiratoryRate.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtNumRespiratoryRate.CustomButton.TabIndex = 1;
+            txtNumRespiratoryRate.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtNumRespiratoryRate.CustomButton.UseSelectable = true;
+            txtNumRespiratoryRate.CustomButton.Visible = false;
+            txtNumRespiratoryRate.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtNumRespiratoryRate.Location = new Point(251, 289);
+            txtNumRespiratoryRate.MaxLength = 32767;
+            txtNumRespiratoryRate.Name = "txtNumRespiratoryRate";
+            txtNumRespiratoryRate.PasswordChar = '\0';
+            txtNumRespiratoryRate.ScrollBars = ScrollBars.None;
+            txtNumRespiratoryRate.SelectedText = "";
+            txtNumRespiratoryRate.SelectionLength = 0;
+            txtNumRespiratoryRate.SelectionStart = 0;
+            txtNumRespiratoryRate.ShortcutsEnabled = true;
+            txtNumRespiratoryRate.Size = new Size(527, 37);
+            txtNumRespiratoryRate.TabIndex = 71;
+            txtNumRespiratoryRate.UseSelectable = true;
+            txtNumRespiratoryRate.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtNumRespiratoryRate.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // txtNumPulseRate
+            // 
+            // 
+            // 
+            // 
+            txtNumPulseRate.CustomButton.Image = null;
+            txtNumPulseRate.CustomButton.Location = new Point(509, 1);
+            txtNumPulseRate.CustomButton.Name = "";
+            txtNumPulseRate.CustomButton.Size = new Size(35, 35);
+            txtNumPulseRate.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtNumPulseRate.CustomButton.TabIndex = 1;
+            txtNumPulseRate.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtNumPulseRate.CustomButton.UseSelectable = true;
+            txtNumPulseRate.CustomButton.Visible = false;
+            txtNumPulseRate.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtNumPulseRate.Location = new Point(233, 237);
+            txtNumPulseRate.MaxLength = 32767;
+            txtNumPulseRate.Name = "txtNumPulseRate";
+            txtNumPulseRate.PasswordChar = '\0';
+            txtNumPulseRate.ScrollBars = ScrollBars.None;
+            txtNumPulseRate.SelectedText = "";
+            txtNumPulseRate.SelectionLength = 0;
+            txtNumPulseRate.SelectionStart = 0;
+            txtNumPulseRate.ShortcutsEnabled = true;
+            txtNumPulseRate.Size = new Size(545, 37);
+            txtNumPulseRate.TabIndex = 70;
+            txtNumPulseRate.UseSelectable = true;
+            txtNumPulseRate.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtNumPulseRate.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // rtbInjuryDescription
+            // 
+            rtbInjuryDescription.AnimateReadOnly = false;
+            rtbInjuryDescription.BackgroundImageLayout = ImageLayout.None;
+            rtbInjuryDescription.CharacterCasing = CharacterCasing.Normal;
+            rtbInjuryDescription.Depth = 0;
+            rtbInjuryDescription.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtbInjuryDescription.HideSelection = true;
+            rtbInjuryDescription.Location = new Point(92, 521);
+            rtbInjuryDescription.MaxLength = 32767;
+            rtbInjuryDescription.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            rtbInjuryDescription.Name = "rtbInjuryDescription";
+            rtbInjuryDescription.PasswordChar = '\0';
+            rtbInjuryDescription.ReadOnly = false;
+            rtbInjuryDescription.ScrollBars = ScrollBars.None;
+            rtbInjuryDescription.SelectedText = "";
+            rtbInjuryDescription.SelectionLength = 0;
+            rtbInjuryDescription.SelectionStart = 0;
+            rtbInjuryDescription.ShortcutsEnabled = true;
+            rtbInjuryDescription.Size = new Size(312, 121);
+            rtbInjuryDescription.TabIndex = 69;
+            rtbInjuryDescription.TabStop = false;
+            rtbInjuryDescription.TextAlign = HorizontalAlignment.Left;
+            rtbInjuryDescription.UseSystemPasswordChar = false;
+            rtbInjuryDescription.Click += rtbInjuryDescription_Click;
+            // 
+            // txtPhysicalFindings
+            // 
+            // 
+            // 
+            // 
+            txtPhysicalFindings.CustomButton.Image = null;
+            txtPhysicalFindings.CustomButton.Location = new Point(487, 1);
+            txtPhysicalFindings.CustomButton.Name = "";
+            txtPhysicalFindings.CustomButton.Size = new Size(35, 35);
+            txtPhysicalFindings.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtPhysicalFindings.CustomButton.TabIndex = 1;
+            txtPhysicalFindings.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtPhysicalFindings.CustomButton.UseSelectable = true;
+            txtPhysicalFindings.CustomButton.Visible = false;
+            txtPhysicalFindings.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtPhysicalFindings.Location = new Point(262, 408);
+            txtPhysicalFindings.MaxLength = 32767;
+            txtPhysicalFindings.Name = "txtPhysicalFindings";
+            txtPhysicalFindings.PasswordChar = '\0';
+            txtPhysicalFindings.ScrollBars = ScrollBars.None;
+            txtPhysicalFindings.SelectedText = "";
+            txtPhysicalFindings.SelectionLength = 0;
+            txtPhysicalFindings.SelectionStart = 0;
+            txtPhysicalFindings.ShortcutsEnabled = true;
+            txtPhysicalFindings.Size = new Size(523, 37);
+            txtPhysicalFindings.TabIndex = 68;
+            txtPhysicalFindings.UseSelectable = true;
+            txtPhysicalFindings.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtPhysicalFindings.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // txtBloodPressure
+            // 
+            txtBloodPressure.AllowPromptAsInput = true;
+            txtBloodPressure.AnimateReadOnly = false;
+            txtBloodPressure.AsciiOnly = false;
+            txtBloodPressure.BackgroundImageLayout = ImageLayout.None;
+            txtBloodPressure.BeepOnError = false;
+            txtBloodPressure.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            txtBloodPressure.Depth = 0;
+            txtBloodPressure.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtBloodPressure.HidePromptOnLeave = false;
+            txtBloodPressure.HideSelection = true;
+            txtBloodPressure.InsertKeyMode = InsertKeyMode.Default;
+            txtBloodPressure.LeadingIcon = null;
+            txtBloodPressure.Location = new Point(233, 167);
+            txtBloodPressure.Mask = "";
+            txtBloodPressure.MaxLength = 32767;
+            txtBloodPressure.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            txtBloodPressure.Name = "txtBloodPressure";
+            txtBloodPressure.PasswordChar = '\0';
+            txtBloodPressure.PrefixSuffixText = null;
+            txtBloodPressure.PromptChar = '_';
+            txtBloodPressure.ReadOnly = false;
+            txtBloodPressure.RejectInputOnFirstFailure = false;
+            txtBloodPressure.ResetOnPrompt = true;
+            txtBloodPressure.ResetOnSpace = true;
+            txtBloodPressure.RightToLeft = RightToLeft.No;
+            txtBloodPressure.SelectedText = "";
+            txtBloodPressure.SelectionLength = 0;
+            txtBloodPressure.SelectionStart = 0;
+            txtBloodPressure.ShortcutsEnabled = true;
+            txtBloodPressure.Size = new Size(545, 48);
+            txtBloodPressure.SkipLiterals = true;
+            txtBloodPressure.TabIndex = 66;
+            txtBloodPressure.TabStop = false;
+            txtBloodPressure.TextAlign = HorizontalAlignment.Left;
+            txtBloodPressure.TextMaskFormat = MaskFormat.IncludeLiterals;
+            txtBloodPressure.TrailingIcon = null;
+            txtBloodPressure.UseSystemPasswordChar = false;
+            txtBloodPressure.ValidatingType = null;
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.BackColor = Color.FromArgb(235, 239, 244);
+            label29.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label29.ForeColor = Color.Black;
+            label29.Location = new Point(452, 476);
+            label29.Name = "label29";
+            label29.Size = new Size(223, 22);
+            label29.TabIndex = 64;
+            label29.Text = "Nurse Notes / Remarks:";
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.BackColor = Color.FromArgb(235, 239, 244);
+            label37.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label37.ForeColor = Color.Black;
+            label37.Location = new Point(84, 356);
+            label37.Name = "label37";
+            label37.Size = new Size(277, 22);
+            label37.TabIndex = 63;
+            label37.Text = "Oxygen Saturation (Optional):";
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.BackColor = Color.FromArgb(235, 239, 244);
+            label36.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label36.ForeColor = Color.Black;
+            label36.Location = new Point(84, 416);
+            label36.Name = "label36";
+            label36.Size = new Size(173, 22);
+            label36.TabIndex = 62;
+            label36.Text = "Physical Findings:";
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.BackColor = Color.FromArgb(235, 239, 244);
+            label30.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label30.ForeColor = Color.Black;
+            label30.Location = new Point(92, 472);
+            label30.Name = "label30";
+            label30.Size = new Size(172, 22);
+            label30.TabIndex = 61;
+            label30.Text = "Injury Description:";
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.BackColor = Color.FromArgb(235, 239, 244);
+            label35.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label35.ForeColor = Color.Black;
+            label35.Location = new Point(87, 246);
+            label35.Name = "label35";
+            label35.Size = new Size(120, 22);
+            label35.TabIndex = 56;
+            label35.Text = "Pulse Rate: ";
+            // 
+            // label34
+            // 
+            label34.AutoSize = true;
+            label34.BackColor = Color.FromArgb(235, 239, 244);
+            label34.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label34.ForeColor = Color.Black;
+            label34.Location = new Point(86, 299);
+            label34.Name = "label34";
+            label34.Size = new Size(167, 22);
+            label34.TabIndex = 55;
+            label34.Text = "Respiratory Rate:";
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.BackColor = Color.FromArgb(235, 239, 244);
+            label32.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label32.ForeColor = Color.Black;
+            label32.Location = new Point(83, 185);
+            label32.Name = "label32";
+            label32.Size = new Size(153, 22);
+            label32.TabIndex = 54;
+            label32.Text = "Blood Pressure:";
+            // 
+            // PrevS3Btn
+            // 
+            PrevS3Btn.BorderColor = Color.FromArgb(220, 223, 230);
+            PrevS3Btn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            PrevS3Btn.DangerColor = Color.FromArgb(245, 108, 108);
+            PrevS3Btn.DefaultColor = Color.FromArgb(255, 255, 255);
+            PrevS3Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            PrevS3Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            PrevS3Btn.InfoColor = Color.FromArgb(144, 147, 153);
+            PrevS3Btn.Location = new Point(461, 665);
+            PrevS3Btn.Name = "PrevS3Btn";
+            PrevS3Btn.PrimaryColor = Color.LimeGreen;
+            PrevS3Btn.Size = new Size(149, 49);
+            PrevS3Btn.SuccessColor = Color.FromArgb(103, 194, 58);
+            PrevS3Btn.TabIndex = 53;
+            PrevS3Btn.Text = "Prev";
+            PrevS3Btn.TextColor = Color.White;
+            PrevS3Btn.WarningColor = Color.FromArgb(230, 162, 60);
+            PrevS3Btn.Click += PrevS3Btn_Click;
+            // 
+            // NextS3Btn
+            // 
+            NextS3Btn.BorderColor = Color.FromArgb(220, 223, 230);
+            NextS3Btn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            NextS3Btn.DangerColor = Color.FromArgb(245, 108, 108);
+            NextS3Btn.DefaultColor = Color.FromArgb(255, 255, 255);
+            NextS3Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NextS3Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            NextS3Btn.InfoColor = Color.FromArgb(144, 147, 153);
+            NextS3Btn.Location = new Point(641, 665);
+            NextS3Btn.Name = "NextS3Btn";
+            NextS3Btn.PrimaryColor = Color.FromArgb(11, 45, 114);
+            NextS3Btn.Size = new Size(149, 49);
+            NextS3Btn.SuccessColor = Color.FromArgb(103, 194, 58);
+            NextS3Btn.TabIndex = 32;
+            NextS3Btn.Text = "Next";
+            NextS3Btn.TextColor = Color.White;
+            NextS3Btn.WarningColor = Color.FromArgb(230, 162, 60);
+            NextS3Btn.Click += NextS3Btn_Click;
+            // 
+            // rtbNurseNotes
+            // 
+            rtbNurseNotes.AnimateReadOnly = false;
+            rtbNurseNotes.BackgroundImageLayout = ImageLayout.None;
+            rtbNurseNotes.CharacterCasing = CharacterCasing.Normal;
+            rtbNurseNotes.Depth = 0;
+            rtbNurseNotes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtbNurseNotes.HideSelection = true;
+            rtbNurseNotes.Location = new Point(458, 520);
+            rtbNurseNotes.MaxLength = 32767;
+            rtbNurseNotes.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            rtbNurseNotes.Name = "rtbNurseNotes";
+            rtbNurseNotes.PasswordChar = '\0';
+            rtbNurseNotes.ReadOnly = false;
+            rtbNurseNotes.ScrollBars = ScrollBars.None;
+            rtbNurseNotes.SelectedText = "";
+            rtbNurseNotes.SelectionLength = 0;
+            rtbNurseNotes.SelectionStart = 0;
+            rtbNurseNotes.ShortcutsEnabled = true;
+            rtbNurseNotes.Size = new Size(327, 121);
+            rtbNurseNotes.TabIndex = 52;
+            rtbNurseNotes.TabStop = false;
+            rtbNurseNotes.TextAlign = HorizontalAlignment.Left;
+            rtbNurseNotes.UseSystemPasswordChar = false;
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.BackColor = Color.White;
+            label31.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label31.ForeColor = Color.Black;
+            label31.Location = new Point(18, 2);
+            label31.Name = "label31";
+            label31.Size = new Size(346, 37);
+            label31.TabIndex = 11;
+            label31.Text = "Vital Signs & Assessment";
+            // 
+            // txtTemperature
+            // 
+            // 
+            // 
+            // 
+            txtTemperature.CustomButton.Image = null;
+            txtTemperature.CustomButton.Location = new Point(513, 1);
+            txtTemperature.CustomButton.Name = "";
+            txtTemperature.CustomButton.Size = new Size(35, 35);
+            txtTemperature.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtTemperature.CustomButton.TabIndex = 1;
+            txtTemperature.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtTemperature.CustomButton.UseSelectable = true;
+            txtTemperature.CustomButton.Visible = false;
+            txtTemperature.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtTemperature.Location = new Point(232, 116);
+            txtTemperature.MaxLength = 32767;
+            txtTemperature.Name = "txtTemperature";
+            txtTemperature.PasswordChar = '\0';
+            txtTemperature.ScrollBars = ScrollBars.None;
+            txtTemperature.SelectedText = "";
+            txtTemperature.SelectionLength = 0;
+            txtTemperature.SelectionStart = 0;
+            txtTemperature.ShortcutsEnabled = true;
+            txtTemperature.Size = new Size(549, 37);
+            txtTemperature.TabIndex = 39;
+            txtTemperature.UseSelectable = true;
+            txtTemperature.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtTemperature.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            txtTemperature.Validating += txtTemperature_Validating;
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.BackColor = Color.FromArgb(235, 239, 244);
+            label33.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label33.ForeColor = Color.Black;
+            label33.Location = new Point(86, 127);
+            label33.Name = "label33";
+            label33.Size = new Size(130, 22);
+            label33.TabIndex = 28;
+            label33.Text = "Temperature:";
             // 
             // Step2
             // 
@@ -1494,901 +1879,516 @@
             label19.TabIndex = 11;
             label19.Text = "Visit Details";
             // 
-            // Step3
-            // 
-            Step3.Controls.Add(panel2);
-            Step3.Dock = DockStyle.Fill;
-            Step3.Location = new Point(0, 0);
-            Step3.Name = "Step3";
-            Step3.Size = new Size(875, 837);
-            Step3.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(panel3);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(875, 837);
-            panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            panel3.BackgroundImage = Properties.Resources._21;
-            panel3.BackgroundImageLayout = ImageLayout.Stretch;
-            panel3.Controls.Add(pictureBox1);
-            panel3.Controls.Add(txtNumOxygenSaturation);
-            panel3.Controls.Add(txtNumRespiratoryRate);
-            panel3.Controls.Add(txtNumPulseRate);
-            panel3.Controls.Add(rtbInjuryDescription);
-            panel3.Controls.Add(txtPhysicalFindings);
-            panel3.Controls.Add(txtBloodPressure);
-            panel3.Controls.Add(label29);
-            panel3.Controls.Add(label37);
-            panel3.Controls.Add(label36);
-            panel3.Controls.Add(label30);
-            panel3.Controls.Add(label35);
-            panel3.Controls.Add(label34);
-            panel3.Controls.Add(label32);
-            panel3.Controls.Add(PrevS3Btn);
-            panel3.Controls.Add(NextS3Btn);
-            panel3.Controls.Add(rtbNurseNotes);
-            panel3.Controls.Add(label31);
-            panel3.Controls.Add(txtTemperature);
-            panel3.Controls.Add(label33);
-            panel3.Location = new Point(-1, 35);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(888, 839);
-            panel3.TabIndex = 13;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(748, -29);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(131, 116);
-            pictureBox1.TabIndex = 33;
-            pictureBox1.TabStop = false;
-            // 
-            // txtNumOxygenSaturation
-            // 
-            // 
-            // 
-            // 
-            txtNumOxygenSaturation.CustomButton.Image = null;
-            txtNumOxygenSaturation.CustomButton.Location = new Point(380, 1);
-            txtNumOxygenSaturation.CustomButton.Name = "";
-            txtNumOxygenSaturation.CustomButton.Size = new Size(35, 35);
-            txtNumOxygenSaturation.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtNumOxygenSaturation.CustomButton.TabIndex = 1;
-            txtNumOxygenSaturation.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtNumOxygenSaturation.CustomButton.UseSelectable = true;
-            txtNumOxygenSaturation.CustomButton.Visible = false;
-            txtNumOxygenSaturation.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtNumOxygenSaturation.Location = new Point(366, 346);
-            txtNumOxygenSaturation.MaxLength = 32767;
-            txtNumOxygenSaturation.Name = "txtNumOxygenSaturation";
-            txtNumOxygenSaturation.PasswordChar = '\0';
-            txtNumOxygenSaturation.ScrollBars = ScrollBars.None;
-            txtNumOxygenSaturation.SelectedText = "";
-            txtNumOxygenSaturation.SelectionLength = 0;
-            txtNumOxygenSaturation.SelectionStart = 0;
-            txtNumOxygenSaturation.ShortcutsEnabled = true;
-            txtNumOxygenSaturation.Size = new Size(416, 37);
-            txtNumOxygenSaturation.TabIndex = 72;
-            txtNumOxygenSaturation.UseSelectable = true;
-            txtNumOxygenSaturation.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtNumOxygenSaturation.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // txtNumRespiratoryRate
-            // 
-            // 
-            // 
-            // 
-            txtNumRespiratoryRate.CustomButton.Image = null;
-            txtNumRespiratoryRate.CustomButton.Location = new Point(491, 1);
-            txtNumRespiratoryRate.CustomButton.Name = "";
-            txtNumRespiratoryRate.CustomButton.Size = new Size(35, 35);
-            txtNumRespiratoryRate.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtNumRespiratoryRate.CustomButton.TabIndex = 1;
-            txtNumRespiratoryRate.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtNumRespiratoryRate.CustomButton.UseSelectable = true;
-            txtNumRespiratoryRate.CustomButton.Visible = false;
-            txtNumRespiratoryRate.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtNumRespiratoryRate.Location = new Point(251, 289);
-            txtNumRespiratoryRate.MaxLength = 32767;
-            txtNumRespiratoryRate.Name = "txtNumRespiratoryRate";
-            txtNumRespiratoryRate.PasswordChar = '\0';
-            txtNumRespiratoryRate.ScrollBars = ScrollBars.None;
-            txtNumRespiratoryRate.SelectedText = "";
-            txtNumRespiratoryRate.SelectionLength = 0;
-            txtNumRespiratoryRate.SelectionStart = 0;
-            txtNumRespiratoryRate.ShortcutsEnabled = true;
-            txtNumRespiratoryRate.Size = new Size(527, 37);
-            txtNumRespiratoryRate.TabIndex = 71;
-            txtNumRespiratoryRate.UseSelectable = true;
-            txtNumRespiratoryRate.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtNumRespiratoryRate.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // txtNumPulseRate
-            // 
-            // 
-            // 
-            // 
-            txtNumPulseRate.CustomButton.Image = null;
-            txtNumPulseRate.CustomButton.Location = new Point(509, 1);
-            txtNumPulseRate.CustomButton.Name = "";
-            txtNumPulseRate.CustomButton.Size = new Size(35, 35);
-            txtNumPulseRate.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtNumPulseRate.CustomButton.TabIndex = 1;
-            txtNumPulseRate.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtNumPulseRate.CustomButton.UseSelectable = true;
-            txtNumPulseRate.CustomButton.Visible = false;
-            txtNumPulseRate.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtNumPulseRate.Location = new Point(233, 237);
-            txtNumPulseRate.MaxLength = 32767;
-            txtNumPulseRate.Name = "txtNumPulseRate";
-            txtNumPulseRate.PasswordChar = '\0';
-            txtNumPulseRate.ScrollBars = ScrollBars.None;
-            txtNumPulseRate.SelectedText = "";
-            txtNumPulseRate.SelectionLength = 0;
-            txtNumPulseRate.SelectionStart = 0;
-            txtNumPulseRate.ShortcutsEnabled = true;
-            txtNumPulseRate.Size = new Size(545, 37);
-            txtNumPulseRate.TabIndex = 70;
-            txtNumPulseRate.UseSelectable = true;
-            txtNumPulseRate.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtNumPulseRate.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // rtbInjuryDescription
-            // 
-            rtbInjuryDescription.AnimateReadOnly = false;
-            rtbInjuryDescription.BackgroundImageLayout = ImageLayout.None;
-            rtbInjuryDescription.CharacterCasing = CharacterCasing.Normal;
-            rtbInjuryDescription.Depth = 0;
-            rtbInjuryDescription.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rtbInjuryDescription.HideSelection = true;
-            rtbInjuryDescription.Location = new Point(92, 521);
-            rtbInjuryDescription.MaxLength = 32767;
-            rtbInjuryDescription.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            rtbInjuryDescription.Name = "rtbInjuryDescription";
-            rtbInjuryDescription.PasswordChar = '\0';
-            rtbInjuryDescription.ReadOnly = false;
-            rtbInjuryDescription.ScrollBars = ScrollBars.None;
-            rtbInjuryDescription.SelectedText = "";
-            rtbInjuryDescription.SelectionLength = 0;
-            rtbInjuryDescription.SelectionStart = 0;
-            rtbInjuryDescription.ShortcutsEnabled = true;
-            rtbInjuryDescription.Size = new Size(312, 121);
-            rtbInjuryDescription.TabIndex = 69;
-            rtbInjuryDescription.TabStop = false;
-            rtbInjuryDescription.TextAlign = HorizontalAlignment.Left;
-            rtbInjuryDescription.UseSystemPasswordChar = false;
-            rtbInjuryDescription.Click += rtbInjuryDescription_Click;
-            // 
-            // txtPhysicalFindings
-            // 
-            // 
-            // 
-            // 
-            txtPhysicalFindings.CustomButton.Image = null;
-            txtPhysicalFindings.CustomButton.Location = new Point(487, 1);
-            txtPhysicalFindings.CustomButton.Name = "";
-            txtPhysicalFindings.CustomButton.Size = new Size(35, 35);
-            txtPhysicalFindings.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtPhysicalFindings.CustomButton.TabIndex = 1;
-            txtPhysicalFindings.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtPhysicalFindings.CustomButton.UseSelectable = true;
-            txtPhysicalFindings.CustomButton.Visible = false;
-            txtPhysicalFindings.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtPhysicalFindings.Location = new Point(262, 408);
-            txtPhysicalFindings.MaxLength = 32767;
-            txtPhysicalFindings.Name = "txtPhysicalFindings";
-            txtPhysicalFindings.PasswordChar = '\0';
-            txtPhysicalFindings.ScrollBars = ScrollBars.None;
-            txtPhysicalFindings.SelectedText = "";
-            txtPhysicalFindings.SelectionLength = 0;
-            txtPhysicalFindings.SelectionStart = 0;
-            txtPhysicalFindings.ShortcutsEnabled = true;
-            txtPhysicalFindings.Size = new Size(523, 37);
-            txtPhysicalFindings.TabIndex = 68;
-            txtPhysicalFindings.UseSelectable = true;
-            txtPhysicalFindings.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtPhysicalFindings.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // txtBloodPressure
-            // 
-            txtBloodPressure.AllowPromptAsInput = true;
-            txtBloodPressure.AnimateReadOnly = false;
-            txtBloodPressure.AsciiOnly = false;
-            txtBloodPressure.BackgroundImageLayout = ImageLayout.None;
-            txtBloodPressure.BeepOnError = false;
-            txtBloodPressure.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
-            txtBloodPressure.Depth = 0;
-            txtBloodPressure.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            txtBloodPressure.HidePromptOnLeave = false;
-            txtBloodPressure.HideSelection = true;
-            txtBloodPressure.InsertKeyMode = InsertKeyMode.Default;
-            txtBloodPressure.LeadingIcon = null;
-            txtBloodPressure.Location = new Point(233, 167);
-            txtBloodPressure.Mask = "";
-            txtBloodPressure.MaxLength = 32767;
-            txtBloodPressure.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            txtBloodPressure.Name = "txtBloodPressure";
-            txtBloodPressure.PasswordChar = '\0';
-            txtBloodPressure.PrefixSuffixText = null;
-            txtBloodPressure.PromptChar = '_';
-            txtBloodPressure.ReadOnly = false;
-            txtBloodPressure.RejectInputOnFirstFailure = false;
-            txtBloodPressure.ResetOnPrompt = true;
-            txtBloodPressure.ResetOnSpace = true;
-            txtBloodPressure.RightToLeft = RightToLeft.No;
-            txtBloodPressure.SelectedText = "";
-            txtBloodPressure.SelectionLength = 0;
-            txtBloodPressure.SelectionStart = 0;
-            txtBloodPressure.ShortcutsEnabled = true;
-            txtBloodPressure.Size = new Size(545, 48);
-            txtBloodPressure.SkipLiterals = true;
-            txtBloodPressure.TabIndex = 66;
-            txtBloodPressure.TabStop = false;
-            txtBloodPressure.TextAlign = HorizontalAlignment.Left;
-            txtBloodPressure.TextMaskFormat = MaskFormat.IncludeLiterals;
-            txtBloodPressure.TrailingIcon = null;
-            txtBloodPressure.UseSystemPasswordChar = false;
-            txtBloodPressure.ValidatingType = null;
-            // 
-            // label29
-            // 
-            label29.AutoSize = true;
-            label29.BackColor = Color.FromArgb(235, 239, 244);
-            label29.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label29.ForeColor = Color.Black;
-            label29.Location = new Point(452, 476);
-            label29.Name = "label29";
-            label29.Size = new Size(223, 22);
-            label29.TabIndex = 64;
-            label29.Text = "Nurse Notes / Remarks:";
-            // 
-            // label37
-            // 
-            label37.AutoSize = true;
-            label37.BackColor = Color.FromArgb(235, 239, 244);
-            label37.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label37.ForeColor = Color.Black;
-            label37.Location = new Point(84, 356);
-            label37.Name = "label37";
-            label37.Size = new Size(277, 22);
-            label37.TabIndex = 63;
-            label37.Text = "Oxygen Saturation (Optional):";
-            // 
-            // label36
-            // 
-            label36.AutoSize = true;
-            label36.BackColor = Color.FromArgb(235, 239, 244);
-            label36.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label36.ForeColor = Color.Black;
-            label36.Location = new Point(84, 416);
-            label36.Name = "label36";
-            label36.Size = new Size(173, 22);
-            label36.TabIndex = 62;
-            label36.Text = "Physical Findings:";
-            // 
-            // label30
-            // 
-            label30.AutoSize = true;
-            label30.BackColor = Color.FromArgb(235, 239, 244);
-            label30.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label30.ForeColor = Color.Black;
-            label30.Location = new Point(92, 472);
-            label30.Name = "label30";
-            label30.Size = new Size(172, 22);
-            label30.TabIndex = 61;
-            label30.Text = "Injury Description:";
-            // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.BackColor = Color.FromArgb(235, 239, 244);
-            label35.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label35.ForeColor = Color.Black;
-            label35.Location = new Point(87, 246);
-            label35.Name = "label35";
-            label35.Size = new Size(120, 22);
-            label35.TabIndex = 56;
-            label35.Text = "Pulse Rate: ";
-            // 
-            // label34
-            // 
-            label34.AutoSize = true;
-            label34.BackColor = Color.FromArgb(235, 239, 244);
-            label34.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label34.ForeColor = Color.Black;
-            label34.Location = new Point(86, 299);
-            label34.Name = "label34";
-            label34.Size = new Size(167, 22);
-            label34.TabIndex = 55;
-            label34.Text = "Respiratory Rate:";
-            // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.BackColor = Color.FromArgb(235, 239, 244);
-            label32.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label32.ForeColor = Color.Black;
-            label32.Location = new Point(83, 185);
-            label32.Name = "label32";
-            label32.Size = new Size(153, 22);
-            label32.TabIndex = 54;
-            label32.Text = "Blood Pressure:";
-            // 
-            // PrevS3Btn
-            // 
-            PrevS3Btn.BorderColor = Color.FromArgb(220, 223, 230);
-            PrevS3Btn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            PrevS3Btn.DangerColor = Color.FromArgb(245, 108, 108);
-            PrevS3Btn.DefaultColor = Color.FromArgb(255, 255, 255);
-            PrevS3Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            PrevS3Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
-            PrevS3Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            PrevS3Btn.Location = new Point(461, 665);
-            PrevS3Btn.Name = "PrevS3Btn";
-            PrevS3Btn.PrimaryColor = Color.LimeGreen;
-            PrevS3Btn.Size = new Size(149, 49);
-            PrevS3Btn.SuccessColor = Color.FromArgb(103, 194, 58);
-            PrevS3Btn.TabIndex = 53;
-            PrevS3Btn.Text = "Prev";
-            PrevS3Btn.TextColor = Color.White;
-            PrevS3Btn.WarningColor = Color.FromArgb(230, 162, 60);
-            PrevS3Btn.Click += PrevS3Btn_Click;
-            // 
-            // NextS3Btn
-            // 
-            NextS3Btn.BorderColor = Color.FromArgb(220, 223, 230);
-            NextS3Btn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            NextS3Btn.DangerColor = Color.FromArgb(245, 108, 108);
-            NextS3Btn.DefaultColor = Color.FromArgb(255, 255, 255);
-            NextS3Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            NextS3Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
-            NextS3Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            NextS3Btn.Location = new Point(641, 665);
-            NextS3Btn.Name = "NextS3Btn";
-            NextS3Btn.PrimaryColor = Color.FromArgb(11, 45, 114);
-            NextS3Btn.Size = new Size(149, 49);
-            NextS3Btn.SuccessColor = Color.FromArgb(103, 194, 58);
-            NextS3Btn.TabIndex = 32;
-            NextS3Btn.Text = "Next";
-            NextS3Btn.TextColor = Color.White;
-            NextS3Btn.WarningColor = Color.FromArgb(230, 162, 60);
-            NextS3Btn.Click += NextS3Btn_Click;
-            // 
-            // rtbNurseNotes
-            // 
-            rtbNurseNotes.AnimateReadOnly = false;
-            rtbNurseNotes.BackgroundImageLayout = ImageLayout.None;
-            rtbNurseNotes.CharacterCasing = CharacterCasing.Normal;
-            rtbNurseNotes.Depth = 0;
-            rtbNurseNotes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rtbNurseNotes.HideSelection = true;
-            rtbNurseNotes.Location = new Point(458, 520);
-            rtbNurseNotes.MaxLength = 32767;
-            rtbNurseNotes.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            rtbNurseNotes.Name = "rtbNurseNotes";
-            rtbNurseNotes.PasswordChar = '\0';
-            rtbNurseNotes.ReadOnly = false;
-            rtbNurseNotes.ScrollBars = ScrollBars.None;
-            rtbNurseNotes.SelectedText = "";
-            rtbNurseNotes.SelectionLength = 0;
-            rtbNurseNotes.SelectionStart = 0;
-            rtbNurseNotes.ShortcutsEnabled = true;
-            rtbNurseNotes.Size = new Size(327, 121);
-            rtbNurseNotes.TabIndex = 52;
-            rtbNurseNotes.TabStop = false;
-            rtbNurseNotes.TextAlign = HorizontalAlignment.Left;
-            rtbNurseNotes.UseSystemPasswordChar = false;
-            // 
-            // label31
-            // 
-            label31.AutoSize = true;
-            label31.BackColor = Color.White;
-            label31.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label31.ForeColor = Color.Black;
-            label31.Location = new Point(18, 2);
-            label31.Name = "label31";
-            label31.Size = new Size(346, 37);
-            label31.TabIndex = 11;
-            label31.Text = "Vital Signs & Assessment";
-            // 
-            // txtTemperature
-            // 
-            // 
-            // 
-            // 
-            txtTemperature.CustomButton.Image = null;
-            txtTemperature.CustomButton.Location = new Point(513, 1);
-            txtTemperature.CustomButton.Name = "";
-            txtTemperature.CustomButton.Size = new Size(35, 35);
-            txtTemperature.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtTemperature.CustomButton.TabIndex = 1;
-            txtTemperature.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtTemperature.CustomButton.UseSelectable = true;
-            txtTemperature.CustomButton.Visible = false;
-            txtTemperature.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtTemperature.Location = new Point(232, 116);
-            txtTemperature.MaxLength = 32767;
-            txtTemperature.Name = "txtTemperature";
-            txtTemperature.PasswordChar = '\0';
-            txtTemperature.ScrollBars = ScrollBars.None;
-            txtTemperature.SelectedText = "";
-            txtTemperature.SelectionLength = 0;
-            txtTemperature.SelectionStart = 0;
-            txtTemperature.ShortcutsEnabled = true;
-            txtTemperature.Size = new Size(549, 37);
-            txtTemperature.TabIndex = 39;
-            txtTemperature.UseSelectable = true;
-            txtTemperature.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtTemperature.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            txtTemperature.Validating += txtTemperature_Validating;
-            // 
-            // label33
-            // 
-            label33.AutoSize = true;
-            label33.BackColor = Color.FromArgb(235, 239, 244);
-            label33.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label33.ForeColor = Color.Black;
-            label33.Location = new Point(86, 127);
-            label33.Name = "label33";
-            label33.Size = new Size(130, 22);
-            label33.TabIndex = 28;
-            label33.Text = "Temperature:";
-            // 
-            // Step4
-            // 
-            Step4.Controls.Add(panel4);
-            Step4.Dock = DockStyle.Fill;
-            Step4.Location = new Point(0, 0);
-            Step4.Name = "Step4";
-            Step4.Size = new Size(875, 837);
-            Step4.TabIndex = 0;
-            // 
-            // panel4
-            // 
-            panel4.Controls.Add(pictureBox2);
-            panel4.Controls.Add(panel6);
-            panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(0, 0);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(875, 837);
-            panel4.TabIndex = 2;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
-            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox2.Location = new Point(753, -7);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(122, 107);
-            pictureBox2.TabIndex = 33;
-            pictureBox2.TabStop = false;
-            // 
-            // panel6
-            // 
-            panel6.BackgroundImage = Properties.Resources._21;
-            panel6.BackgroundImageLayout = ImageLayout.Stretch;
-            panel6.Controls.Add(txtNumMedQuantity);
-            panel6.Controls.Add(cmbMedicineName);
-            panel6.Controls.Add(dtpExpiration);
-            panel6.Controls.Add(txtDosage);
-            panel6.Controls.Add(label44);
-            panel6.Controls.Add(label41);
-            panel6.Controls.Add(label40);
-            panel6.Controls.Add(label39);
-            panel6.Controls.Add(label38);
-            panel6.Controls.Add(label28);
-            panel6.Controls.Add(chkBandage);
-            panel6.Controls.Add(chkWoundCleaning);
-            panel6.Controls.Add(chkColdCompress);
-            panel6.Controls.Add(chkRest);
-            panel6.Controls.Add(chkMedication);
-            panel6.Controls.Add(label45);
-            panel6.Controls.Add(txtFirstAidOther);
-            panel6.Controls.Add(label27);
-            panel6.Controls.Add(PrevS4Btn);
-            panel6.Controls.Add(NextS4Btn);
-            panel6.Controls.Add(rtbTreatmentNotes);
-            panel6.Controls.Add(label43);
-            panel6.Location = new Point(-1, 35);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(877, 839);
-            panel6.TabIndex = 13;
-            // 
-            // txtNumMedQuantity
-            // 
-            // 
-            // 
-            // 
-            txtNumMedQuantity.CustomButton.Image = null;
-            txtNumMedQuantity.CustomButton.Location = new Point(477, 1);
-            txtNumMedQuantity.CustomButton.Name = "";
-            txtNumMedQuantity.CustomButton.Size = new Size(33, 33);
-            txtNumMedQuantity.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtNumMedQuantity.CustomButton.TabIndex = 1;
-            txtNumMedQuantity.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtNumMedQuantity.CustomButton.UseSelectable = true;
-            txtNumMedQuantity.CustomButton.Visible = false;
-            txtNumMedQuantity.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtNumMedQuantity.Location = new Point(263, 424);
-            txtNumMedQuantity.MaxLength = 32767;
-            txtNumMedQuantity.Name = "txtNumMedQuantity";
-            txtNumMedQuantity.PasswordChar = '\0';
-            txtNumMedQuantity.ScrollBars = ScrollBars.None;
-            txtNumMedQuantity.SelectedText = "";
-            txtNumMedQuantity.SelectionLength = 0;
-            txtNumMedQuantity.SelectionStart = 0;
-            txtNumMedQuantity.ShortcutsEnabled = true;
-            txtNumMedQuantity.Size = new Size(511, 35);
-            txtNumMedQuantity.TabIndex = 94;
-            txtNumMedQuantity.UseSelectable = true;
-            txtNumMedQuantity.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtNumMedQuantity.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // cmbMedicineName
-            // 
-            cmbMedicineName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmbMedicineName.DropDownStyle = ComboBoxStyle.DropDown;
-            cmbMedicineName.FontSize = ReaLTaiizor.Extension.Poison.PoisonComboBoxSize.Tall;
-            cmbMedicineName.FormattingEnabled = true;
-            cmbMedicineName.ItemHeight = 29;
-            cmbMedicineName.Items.AddRange(new object[] { "Paracetamol", "Bioflu", "Biogesic", "Neozep", "Symdex", "Cetirizine", "Salbutamol", "Captopril", "Kremil-S", "Mefenamic", "Loperamide", "Bisacodyl", "Dicycloverine", "Omeprazole", "Hyoscine", "Ibuprofen", "Salicylic Acid", "Benzocaine", "Carbocisteine", "Calmoseptine", "Eye Mo", "Bactidol", "Advil", "Alaxan FR", "Saridon" });
-            cmbMedicineName.Location = new Point(263, 375);
-            cmbMedicineName.Name = "cmbMedicineName";
-            cmbMedicineName.Size = new Size(511, 35);
-            cmbMedicineName.TabIndex = 93;
-            cmbMedicineName.UseSelectable = true;
-            // 
-            // dtpExpiration
-            // 
-            dtpExpiration.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dtpExpiration.Location = new Point(262, 527);
-            dtpExpiration.MinimumSize = new Size(0, 30);
-            dtpExpiration.Name = "dtpExpiration";
-            dtpExpiration.Size = new Size(512, 30);
-            dtpExpiration.TabIndex = 92;
-            // 
-            // txtDosage
-            // 
-            // 
-            // 
-            // 
-            txtDosage.CustomButton.Image = null;
-            txtDosage.CustomButton.Location = new Point(477, 1);
-            txtDosage.CustomButton.Name = "";
-            txtDosage.CustomButton.Size = new Size(33, 33);
-            txtDosage.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtDosage.CustomButton.TabIndex = 1;
-            txtDosage.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtDosage.CustomButton.UseSelectable = true;
-            txtDosage.CustomButton.Visible = false;
-            txtDosage.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtDosage.Location = new Point(263, 472);
-            txtDosage.MaxLength = 32767;
-            txtDosage.Name = "txtDosage";
-            txtDosage.PasswordChar = '\0';
-            txtDosage.ScrollBars = ScrollBars.None;
-            txtDosage.SelectedText = "";
-            txtDosage.SelectionLength = 0;
-            txtDosage.SelectionStart = 0;
-            txtDosage.ShortcutsEnabled = true;
-            txtDosage.Size = new Size(511, 35);
-            txtDosage.TabIndex = 91;
-            txtDosage.UseSelectable = true;
-            txtDosage.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtDosage.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // label44
-            // 
-            label44.AutoSize = true;
-            label44.BackColor = Color.FromArgb(235, 239, 244);
-            label44.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label44.ForeColor = Color.Black;
-            label44.Location = new Point(97, 591);
-            label44.Name = "label44";
-            label44.Size = new Size(149, 22);
-            label44.TabIndex = 90;
-            label44.Text = "Treatment Notes:";
-            // 
-            // label41
-            // 
-            label41.AutoSize = true;
-            label41.BackColor = Color.FromArgb(235, 239, 244);
-            label41.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label41.ForeColor = Color.Black;
-            label41.Location = new Point(98, 482);
-            label41.Name = "label41";
-            label41.Size = new Size(77, 22);
-            label41.TabIndex = 88;
-            label41.Text = "Dosage:";
-            // 
-            // label40
-            // 
-            label40.AutoSize = true;
-            label40.BackColor = Color.FromArgb(235, 239, 244);
-            label40.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label40.ForeColor = Color.Black;
-            label40.Location = new Point(97, 534);
-            label40.Name = "label40";
-            label40.Size = new Size(151, 22);
-            label40.TabIndex = 87;
-            label40.Text = "Expiration Check:";
-            // 
-            // label39
-            // 
-            label39.AutoSize = true;
-            label39.BackColor = Color.FromArgb(235, 239, 244);
-            label39.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label39.ForeColor = Color.Black;
-            label39.Location = new Point(97, 431);
-            label39.Name = "label39";
-            label39.Size = new Size(87, 22);
-            label39.TabIndex = 85;
-            label39.Text = "Quantity: ";
-            // 
-            // label38
-            // 
-            label38.AutoSize = true;
-            label38.BackColor = Color.FromArgb(235, 239, 244);
-            label38.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label38.ForeColor = Color.Black;
-            label38.Location = new Point(97, 386);
-            label38.Name = "label38";
-            label38.Size = new Size(138, 22);
-            label38.TabIndex = 83;
-            label38.Text = "Medicine Name:";
-            // 
-            // label28
-            // 
-            label28.AutoSize = true;
-            label28.BackColor = Color.FromArgb(235, 239, 244);
-            label28.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label28.ForeColor = Color.Black;
-            label28.Location = new Point(81, 338);
-            label28.Name = "label28";
-            label28.Size = new Size(155, 25);
-            label28.TabIndex = 82;
-            label28.Text = "Medicine Used";
-            // 
-            // chkBandage
-            // 
-            chkBandage.AutoSize = true;
-            chkBandage.BackColor = Color.FromArgb(235, 239, 244);
-            chkBandage.CheckedColor = Color.FromArgb(64, 158, 255);
-            chkBandage.DisabledColor = Color.FromArgb(196, 198, 202);
-            chkBandage.DisabledStringColor = Color.FromArgb(186, 187, 189);
-            chkBandage.Enable = true;
-            chkBandage.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
-            chkBandage.EnabledStringColor = Color.FromArgb(153, 153, 153);
-            chkBandage.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
-            chkBandage.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            chkBandage.ForeColor = Color.FromArgb(48, 49, 51);
-            chkBandage.Location = new Point(444, 192);
-            chkBandage.Name = "chkBandage";
-            chkBandage.Size = new Size(160, 20);
-            chkBandage.TabIndex = 81;
-            chkBandage.Text = "Bandage Applied";
-            chkBandage.UseVisualStyleBackColor = false;
-            // 
-            // chkWoundCleaning
-            // 
-            chkWoundCleaning.AutoSize = true;
-            chkWoundCleaning.BackColor = Color.FromArgb(235, 239, 244);
-            chkWoundCleaning.CheckedColor = Color.FromArgb(64, 158, 255);
-            chkWoundCleaning.DisabledColor = Color.FromArgb(196, 198, 202);
-            chkWoundCleaning.DisabledStringColor = Color.FromArgb(186, 187, 189);
-            chkWoundCleaning.Enable = true;
-            chkWoundCleaning.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
-            chkWoundCleaning.EnabledStringColor = Color.FromArgb(153, 153, 153);
-            chkWoundCleaning.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
-            chkWoundCleaning.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            chkWoundCleaning.ForeColor = Color.FromArgb(48, 49, 51);
-            chkWoundCleaning.Location = new Point(443, 150);
-            chkWoundCleaning.Name = "chkWoundCleaning";
-            chkWoundCleaning.Size = new Size(156, 20);
-            chkWoundCleaning.TabIndex = 80;
-            chkWoundCleaning.Text = "Wound Cleaning";
-            chkWoundCleaning.UseVisualStyleBackColor = false;
-            // 
-            // chkColdCompress
-            // 
-            chkColdCompress.AutoSize = true;
-            chkColdCompress.BackColor = Color.FromArgb(235, 239, 244);
-            chkColdCompress.CheckedColor = Color.FromArgb(64, 158, 255);
-            chkColdCompress.DisabledColor = Color.FromArgb(196, 198, 202);
-            chkColdCompress.DisabledStringColor = Color.FromArgb(186, 187, 189);
-            chkColdCompress.Enable = true;
-            chkColdCompress.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
-            chkColdCompress.EnabledStringColor = Color.FromArgb(153, 153, 153);
-            chkColdCompress.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
-            chkColdCompress.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            chkColdCompress.ForeColor = Color.FromArgb(48, 49, 51);
-            chkColdCompress.Location = new Point(84, 239);
-            chkColdCompress.Name = "chkColdCompress";
-            chkColdCompress.Size = new Size(150, 20);
-            chkColdCompress.TabIndex = 79;
-            chkColdCompress.Text = "Cold Compress";
-            chkColdCompress.UseVisualStyleBackColor = false;
-            // 
-            // chkRest
-            // 
-            chkRest.AutoSize = true;
-            chkRest.BackColor = Color.FromArgb(235, 239, 244);
-            chkRest.CheckedColor = Color.FromArgb(64, 158, 255);
-            chkRest.DisabledColor = Color.FromArgb(196, 198, 202);
-            chkRest.DisabledStringColor = Color.FromArgb(186, 187, 189);
-            chkRest.Enable = true;
-            chkRest.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
-            chkRest.EnabledStringColor = Color.FromArgb(153, 153, 153);
-            chkRest.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
-            chkRest.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            chkRest.ForeColor = Color.FromArgb(48, 49, 51);
-            chkRest.Location = new Point(84, 196);
-            chkRest.Name = "chkRest";
-            chkRest.Size = new Size(135, 20);
-            chkRest.TabIndex = 78;
-            chkRest.Text = "Rest at Clinic";
-            chkRest.UseVisualStyleBackColor = false;
-            // 
-            // chkMedication
-            // 
-            chkMedication.AutoSize = true;
-            chkMedication.BackColor = Color.FromArgb(235, 239, 244);
-            chkMedication.CheckedColor = Color.FromArgb(64, 158, 255);
-            chkMedication.DisabledColor = Color.FromArgb(196, 198, 202);
-            chkMedication.DisabledStringColor = Color.FromArgb(186, 187, 189);
-            chkMedication.Enable = true;
-            chkMedication.EnabledCheckedColor = Color.FromArgb(64, 158, 255);
-            chkMedication.EnabledStringColor = Color.FromArgb(153, 153, 153);
-            chkMedication.EnabledUncheckedColor = Color.FromArgb(156, 158, 161);
-            chkMedication.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            chkMedication.ForeColor = Color.FromArgb(48, 49, 51);
-            chkMedication.Location = new Point(84, 155);
-            chkMedication.Name = "chkMedication";
-            chkMedication.Size = new Size(218, 20);
-            chkMedication.TabIndex = 77;
-            chkMedication.Text = "Medication Administered";
-            chkMedication.UseVisualStyleBackColor = false;
-            // 
-            // label45
-            // 
-            label45.AutoSize = true;
-            label45.BackColor = Color.FromArgb(235, 239, 244);
-            label45.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label45.ForeColor = Color.Black;
-            label45.Location = new Point(81, 106);
-            label45.Name = "label45";
-            label45.Size = new Size(154, 25);
-            label45.TabIndex = 70;
-            label45.Text = "First Aid Given";
-            // 
-            // txtFirstAidOther
-            // 
-            // 
-            // 
-            // 
-            txtFirstAidOther.CustomButton.Image = null;
-            txtFirstAidOther.CustomButton.Location = new Point(253, 1);
-            txtFirstAidOther.CustomButton.Name = "";
-            txtFirstAidOther.CustomButton.Size = new Size(67, 67);
-            txtFirstAidOther.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
-            txtFirstAidOther.CustomButton.TabIndex = 1;
-            txtFirstAidOther.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
-            txtFirstAidOther.CustomButton.UseSelectable = true;
-            txtFirstAidOther.CustomButton.Visible = false;
-            txtFirstAidOther.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
-            txtFirstAidOther.Location = new Point(453, 262);
-            txtFirstAidOther.MaxLength = 32767;
-            txtFirstAidOther.Name = "txtFirstAidOther";
-            txtFirstAidOther.PasswordChar = '\0';
-            txtFirstAidOther.ScrollBars = ScrollBars.None;
-            txtFirstAidOther.SelectedText = "";
-            txtFirstAidOther.SelectionLength = 0;
-            txtFirstAidOther.SelectionStart = 0;
-            txtFirstAidOther.ShortcutsEnabled = true;
-            txtFirstAidOther.Size = new Size(321, 69);
-            txtFirstAidOther.TabIndex = 68;
-            txtFirstAidOther.UseSelectable = true;
-            txtFirstAidOther.WaterMarkColor = Color.FromArgb(109, 109, 109);
-            txtFirstAidOther.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.BackColor = Color.FromArgb(235, 239, 244);
-            label27.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label27.ForeColor = Color.Black;
-            label27.Location = new Point(444, 228);
-            label27.Name = "label27";
-            label27.Size = new Size(60, 22);
-            label27.TabIndex = 64;
-            label27.Text = "Other:";
-            // 
-            // PrevS4Btn
-            // 
-            PrevS4Btn.BorderColor = Color.FromArgb(220, 223, 230);
-            PrevS4Btn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            PrevS4Btn.DangerColor = Color.FromArgb(245, 108, 108);
-            PrevS4Btn.DefaultColor = Color.FromArgb(255, 255, 255);
-            PrevS4Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            PrevS4Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
-            PrevS4Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            PrevS4Btn.Location = new Point(439, 660);
-            PrevS4Btn.Name = "PrevS4Btn";
-            PrevS4Btn.PrimaryColor = Color.LimeGreen;
-            PrevS4Btn.Size = new Size(149, 49);
-            PrevS4Btn.SuccessColor = Color.FromArgb(103, 194, 58);
-            PrevS4Btn.TabIndex = 53;
-            PrevS4Btn.Text = "Prev";
-            PrevS4Btn.TextColor = Color.White;
-            PrevS4Btn.WarningColor = Color.FromArgb(230, 162, 60);
-            PrevS4Btn.Click += PrevS4Btn_Click;
-            // 
-            // NextS4Btn
-            // 
-            NextS4Btn.BorderColor = Color.FromArgb(220, 223, 230);
-            NextS4Btn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
-            NextS4Btn.DangerColor = Color.FromArgb(245, 108, 108);
-            NextS4Btn.DefaultColor = Color.FromArgb(255, 255, 255);
-            NextS4Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            NextS4Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
-            NextS4Btn.InfoColor = Color.FromArgb(144, 147, 153);
-            NextS4Btn.Location = new Point(625, 662);
-            NextS4Btn.Name = "NextS4Btn";
-            NextS4Btn.PrimaryColor = Color.FromArgb(11, 45, 114);
-            NextS4Btn.Size = new Size(149, 49);
-            NextS4Btn.SuccessColor = Color.FromArgb(103, 194, 58);
-            NextS4Btn.TabIndex = 32;
-            NextS4Btn.Text = "Next";
-            NextS4Btn.TextColor = Color.White;
-            NextS4Btn.WarningColor = Color.FromArgb(230, 162, 60);
-            NextS4Btn.Click += NextS4Btn_Click;
-            // 
-            // rtbTreatmentNotes
-            // 
-            rtbTreatmentNotes.AnimateReadOnly = false;
-            rtbTreatmentNotes.BackgroundImageLayout = ImageLayout.None;
-            rtbTreatmentNotes.CharacterCasing = CharacterCasing.Normal;
-            rtbTreatmentNotes.Depth = 0;
-            rtbTreatmentNotes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rtbTreatmentNotes.HideSelection = true;
-            rtbTreatmentNotes.Location = new Point(263, 575);
-            rtbTreatmentNotes.MaxLength = 32767;
-            rtbTreatmentNotes.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            rtbTreatmentNotes.Name = "rtbTreatmentNotes";
-            rtbTreatmentNotes.PasswordChar = '\0';
-            rtbTreatmentNotes.ReadOnly = false;
-            rtbTreatmentNotes.ScrollBars = ScrollBars.None;
-            rtbTreatmentNotes.SelectedText = "";
-            rtbTreatmentNotes.SelectionLength = 0;
-            rtbTreatmentNotes.SelectionStart = 0;
-            rtbTreatmentNotes.ShortcutsEnabled = true;
-            rtbTreatmentNotes.Size = new Size(511, 57);
-            rtbTreatmentNotes.TabIndex = 52;
-            rtbTreatmentNotes.TabStop = false;
-            rtbTreatmentNotes.TextAlign = HorizontalAlignment.Left;
-            rtbTreatmentNotes.UseSystemPasswordChar = false;
-            // 
-            // label43
-            // 
-            label43.AutoSize = true;
-            label43.BackColor = Color.White;
-            label43.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label43.ForeColor = Color.Black;
-            label43.Location = new Point(21, 0);
-            label43.Name = "label43";
-            label43.Size = new Size(314, 37);
-            label43.TabIndex = 11;
-            label43.Text = "Treatment & Medicine";
+            // Step1
+            // 
+            Step1.Controls.Add(panel5);
+            Step1.Dock = DockStyle.Fill;
+            Step1.Location = new Point(0, 0);
+            Step1.Name = "Step1";
+            Step1.Size = new Size(875, 837);
+            Step1.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            panel5.BackgroundImage = Properties.Resources._21;
+            panel5.BackgroundImageLayout = ImageLayout.Stretch;
+            panel5.Controls.Add(logo1);
+            panel5.Controls.Add(Next1Btn);
+            panel5.Controls.Add(dtpDateofBirth);
+            panel5.Controls.Add(label7);
+            panel5.Controls.Add(txtEmergencyContactNumber);
+            panel5.Controls.Add(txtEmergencyContactName);
+            panel5.Controls.Add(txtContactNo);
+            panel5.Controls.Add(label18);
+            panel5.Controls.Add(label17);
+            panel5.Controls.Add(label16);
+            panel5.Controls.Add(txtAddress);
+            panel5.Controls.Add(label15);
+            panel5.Controls.Add(label14);
+            panel5.Controls.Add(cmbSex);
+            panel5.Controls.Add(label13);
+            panel5.Controls.Add(txtAge);
+            panel5.Controls.Add(label12);
+            panel5.Controls.Add(txtMI);
+            panel5.Controls.Add(label11);
+            panel5.Controls.Add(txtLastName);
+            panel5.Controls.Add(label10);
+            panel5.Controls.Add(txtFirstName);
+            panel5.Controls.Add(label9);
+            panel5.Controls.Add(txtPatientID);
+            panel5.Controls.Add(label8);
+            panel5.Location = new Point(0, 23);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(875, 851);
+            panel5.TabIndex = 12;
+            // 
+            // logo1
+            // 
+            logo1.BackColor = Color.Transparent;
+            logo1.BackgroundImage = (Image)resources.GetObject("logo1.BackgroundImage");
+            logo1.BackgroundImageLayout = ImageLayout.Stretch;
+            logo1.Location = new Point(751, -30);
+            logo1.Name = "logo1";
+            logo1.Size = new Size(123, 124);
+            logo1.TabIndex = 32;
+            logo1.TabStop = false;
+            logo1.Click += pictureBox12_Click;
+            // 
+            // Next1Btn
+            // 
+            Next1Btn.BorderColor = Color.FromArgb(220, 223, 230);
+            Next1Btn.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            Next1Btn.DangerColor = Color.FromArgb(245, 108, 108);
+            Next1Btn.DefaultColor = Color.FromArgb(255, 255, 255);
+            Next1Btn.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Next1Btn.HoverTextColor = Color.FromArgb(48, 49, 51);
+            Next1Btn.InfoColor = Color.FromArgb(144, 147, 153);
+            Next1Btn.Location = new Point(639, 674);
+            Next1Btn.Name = "Next1Btn";
+            Next1Btn.PrimaryColor = Color.FromArgb(11, 45, 114);
+            Next1Btn.Size = new Size(149, 49);
+            Next1Btn.SuccessColor = Color.FromArgb(103, 194, 58);
+            Next1Btn.TabIndex = 31;
+            Next1Btn.Text = "Next";
+            Next1Btn.TextColor = Color.White;
+            Next1Btn.WarningColor = Color.FromArgb(230, 162, 60);
+            Next1Btn.Click += Next1Btn_Click;
+            // 
+            // dtpDateofBirth
+            // 
+            dtpDateofBirth.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
+            dtpDateofBirth.Location = new Point(199, 380);
+            dtpDateofBirth.MinimumSize = new Size(0, 30);
+            dtpDateofBirth.Name = "dtpDateofBirth";
+            dtpDateofBirth.Size = new Size(588, 30);
+            dtpDateofBirth.TabIndex = 33;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.White;
+            label7.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(17, 2);
+            label7.Name = "label7";
+            label7.Size = new Size(335, 40);
+            label7.TabIndex = 11;
+            label7.Text = " Patient Information";
+            // 
+            // txtEmergencyContactNumber
+            // 
+            // 
+            // 
+            // 
+            txtEmergencyContactNumber.CustomButton.Image = null;
+            txtEmergencyContactNumber.CustomButton.Location = new Point(415, 1);
+            txtEmergencyContactNumber.CustomButton.Name = "";
+            txtEmergencyContactNumber.CustomButton.Size = new Size(29, 29);
+            txtEmergencyContactNumber.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtEmergencyContactNumber.CustomButton.TabIndex = 1;
+            txtEmergencyContactNumber.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtEmergencyContactNumber.CustomButton.UseSelectable = true;
+            txtEmergencyContactNumber.CustomButton.Visible = false;
+            txtEmergencyContactNumber.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtEmergencyContactNumber.Location = new Point(341, 615);
+            txtEmergencyContactNumber.MaxLength = 32767;
+            txtEmergencyContactNumber.Name = "txtEmergencyContactNumber";
+            txtEmergencyContactNumber.PasswordChar = '\0';
+            txtEmergencyContactNumber.ScrollBars = ScrollBars.None;
+            txtEmergencyContactNumber.SelectedText = "";
+            txtEmergencyContactNumber.SelectionLength = 0;
+            txtEmergencyContactNumber.SelectionStart = 0;
+            txtEmergencyContactNumber.ShortcutsEnabled = true;
+            txtEmergencyContactNumber.Size = new Size(445, 31);
+            txtEmergencyContactNumber.TabIndex = 32;
+            txtEmergencyContactNumber.UseSelectable = true;
+            txtEmergencyContactNumber.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtEmergencyContactNumber.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // txtEmergencyContactName
+            // 
+            // 
+            // 
+            // 
+            txtEmergencyContactName.CustomButton.Image = null;
+            txtEmergencyContactName.CustomButton.Location = new Point(434, 1);
+            txtEmergencyContactName.CustomButton.Name = "";
+            txtEmergencyContactName.CustomButton.Size = new Size(29, 29);
+            txtEmergencyContactName.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtEmergencyContactName.CustomButton.TabIndex = 1;
+            txtEmergencyContactName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtEmergencyContactName.CustomButton.UseSelectable = true;
+            txtEmergencyContactName.CustomButton.Visible = false;
+            txtEmergencyContactName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtEmergencyContactName.Location = new Point(323, 553);
+            txtEmergencyContactName.MaxLength = 32767;
+            txtEmergencyContactName.Name = "txtEmergencyContactName";
+            txtEmergencyContactName.PasswordChar = '\0';
+            txtEmergencyContactName.ScrollBars = ScrollBars.None;
+            txtEmergencyContactName.SelectedText = "";
+            txtEmergencyContactName.SelectionLength = 0;
+            txtEmergencyContactName.SelectionStart = 0;
+            txtEmergencyContactName.ShortcutsEnabled = true;
+            txtEmergencyContactName.Size = new Size(464, 31);
+            txtEmergencyContactName.TabIndex = 31;
+            txtEmergencyContactName.UseSelectable = true;
+            txtEmergencyContactName.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtEmergencyContactName.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // txtContactNo
+            // 
+            // 
+            // 
+            // 
+            txtContactNo.CustomButton.Image = null;
+            txtContactNo.CustomButton.Location = new Point(519, 1);
+            txtContactNo.CustomButton.Name = "";
+            txtContactNo.CustomButton.Size = new Size(29, 29);
+            txtContactNo.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtContactNo.CustomButton.TabIndex = 1;
+            txtContactNo.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtContactNo.CustomButton.UseSelectable = true;
+            txtContactNo.CustomButton.Visible = false;
+            txtContactNo.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtContactNo.Location = new Point(241, 493);
+            txtContactNo.MaxLength = 32767;
+            txtContactNo.Name = "txtContactNo";
+            txtContactNo.PasswordChar = '\0';
+            txtContactNo.ScrollBars = ScrollBars.None;
+            txtContactNo.SelectedText = "";
+            txtContactNo.SelectionLength = 0;
+            txtContactNo.SelectionStart = 0;
+            txtContactNo.ShortcutsEnabled = true;
+            txtContactNo.Size = new Size(549, 31);
+            txtContactNo.TabIndex = 30;
+            txtContactNo.UseSelectable = true;
+            txtContactNo.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtContactNo.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.BackColor = Color.FromArgb(235, 239, 244);
+            label18.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label18.ForeColor = Color.Black;
+            label18.Location = new Point(85, 621);
+            label18.Name = "label18";
+            label18.Size = new Size(250, 20);
+            label18.TabIndex = 29;
+            label18.Text = "Emergency Contact Number:";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.BackColor = Color.FromArgb(235, 239, 244);
+            label17.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.ForeColor = Color.Black;
+            label17.Location = new Point(85, 505);
+            label17.Name = "label17";
+            label17.Size = new Size(151, 20);
+            label17.TabIndex = 28;
+            label17.Text = "Contact Number:";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.BackColor = Color.FromArgb(235, 239, 244);
+            label16.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.ForeColor = Color.Black;
+            label16.Location = new Point(84, 563);
+            label16.Name = "label16";
+            label16.Size = new Size(233, 20);
+            label16.TabIndex = 27;
+            label16.Text = "Emergency Contact Name:";
+            // 
+            // txtAddress
+            // 
+            // 
+            // 
+            // 
+            txtAddress.CustomButton.Image = null;
+            txtAddress.CustomButton.Location = new Point(557, 1);
+            txtAddress.CustomButton.Name = "";
+            txtAddress.CustomButton.Size = new Size(29, 29);
+            txtAddress.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtAddress.CustomButton.TabIndex = 1;
+            txtAddress.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtAddress.CustomButton.UseSelectable = true;
+            txtAddress.CustomButton.Visible = false;
+            txtAddress.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtAddress.Location = new Point(201, 435);
+            txtAddress.MaxLength = 32767;
+            txtAddress.Name = "txtAddress";
+            txtAddress.PasswordChar = '\0';
+            txtAddress.ScrollBars = ScrollBars.None;
+            txtAddress.SelectedText = "";
+            txtAddress.SelectionLength = 0;
+            txtAddress.SelectionStart = 0;
+            txtAddress.ShortcutsEnabled = true;
+            txtAddress.Size = new Size(587, 31);
+            txtAddress.TabIndex = 26;
+            txtAddress.UseSelectable = true;
+            txtAddress.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtAddress.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.BackColor = Color.FromArgb(235, 239, 244);
+            label15.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label15.ForeColor = Color.Black;
+            label15.Location = new Point(95, 447);
+            label15.Name = "label15";
+            label15.Size = new Size(84, 20);
+            label15.TabIndex = 25;
+            label15.Text = "Address:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.BackColor = Color.FromArgb(235, 239, 244);
+            label14.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.ForeColor = Color.Black;
+            label14.Location = new Point(74, 388);
+            label14.Name = "label14";
+            label14.Size = new Size(124, 20);
+            label14.TabIndex = 23;
+            label14.Text = "Date of Birth:";
+            // 
+            // cmbSex
+            // 
+            cmbSex.FormattingEnabled = true;
+            cmbSex.ItemHeight = 24;
+            cmbSex.Items.AddRange(new object[] { "Male", "Female" });
+            cmbSex.Location = new Point(519, 322);
+            cmbSex.Name = "cmbSex";
+            cmbSex.Size = new Size(268, 30);
+            cmbSex.TabIndex = 22;
+            cmbSex.UseSelectable = true;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.FromArgb(235, 239, 244);
+            label13.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.ForeColor = Color.Black;
+            label13.Location = new Point(463, 329);
+            label13.Name = "label13";
+            label13.Size = new Size(46, 20);
+            label13.TabIndex = 21;
+            label13.Text = "Sex:";
+            // 
+            // txtAge
+            // 
+            // 
+            // 
+            // 
+            txtAge.CustomButton.Image = null;
+            txtAge.CustomButton.Location = new Point(231, 1);
+            txtAge.CustomButton.Name = "";
+            txtAge.CustomButton.Size = new Size(29, 29);
+            txtAge.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtAge.CustomButton.TabIndex = 1;
+            txtAge.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtAge.CustomButton.UseSelectable = true;
+            txtAge.CustomButton.Visible = false;
+            txtAge.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtAge.Location = new Point(199, 321);
+            txtAge.MaxLength = 32767;
+            txtAge.Name = "txtAge";
+            txtAge.PasswordChar = '\0';
+            txtAge.ScrollBars = ScrollBars.None;
+            txtAge.SelectedText = "";
+            txtAge.SelectionLength = 0;
+            txtAge.SelectionStart = 0;
+            txtAge.ShortcutsEnabled = true;
+            txtAge.Size = new Size(261, 31);
+            txtAge.TabIndex = 20;
+            txtAge.UseSelectable = true;
+            txtAge.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtAge.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.BackColor = Color.FromArgb(235, 239, 244);
+            label12.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.Black;
+            label12.Location = new Point(146, 329);
+            label12.Name = "label12";
+            label12.Size = new Size(53, 20);
+            label12.TabIndex = 19;
+            label12.Text = "Age: ";
+            // 
+            // txtMI
+            // 
+            // 
+            // 
+            // 
+            txtMI.CustomButton.Image = null;
+            txtMI.CustomButton.Location = new Point(565, 1);
+            txtMI.CustomButton.Name = "";
+            txtMI.CustomButton.Size = new Size(29, 29);
+            txtMI.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtMI.CustomButton.TabIndex = 1;
+            txtMI.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtMI.CustomButton.UseSelectable = true;
+            txtMI.CustomButton.Visible = false;
+            txtMI.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtMI.Location = new Point(192, 263);
+            txtMI.MaxLength = 32767;
+            txtMI.Name = "txtMI";
+            txtMI.PasswordChar = '\0';
+            txtMI.ScrollBars = ScrollBars.None;
+            txtMI.SelectedText = "";
+            txtMI.SelectionLength = 0;
+            txtMI.SelectionStart = 0;
+            txtMI.ShortcutsEnabled = true;
+            txtMI.Size = new Size(595, 31);
+            txtMI.TabIndex = 18;
+            txtMI.UseSelectable = true;
+            txtMI.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtMI.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.FromArgb(235, 239, 244);
+            label11.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.Black;
+            label11.Location = new Point(77, 273);
+            label11.Name = "label11";
+            label11.Size = new Size(122, 20);
+            label11.TabIndex = 17;
+            label11.Text = "Middle Initial:";
+            // 
+            // txtLastName
+            // 
+            // 
+            // 
+            // 
+            txtLastName.CustomButton.Image = null;
+            txtLastName.CustomButton.Location = new Point(565, 1);
+            txtLastName.CustomButton.Name = "";
+            txtLastName.CustomButton.Size = new Size(29, 29);
+            txtLastName.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtLastName.CustomButton.TabIndex = 1;
+            txtLastName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtLastName.CustomButton.UseSelectable = true;
+            txtLastName.CustomButton.Visible = false;
+            txtLastName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtLastName.Location = new Point(192, 210);
+            txtLastName.MaxLength = 32767;
+            txtLastName.Name = "txtLastName";
+            txtLastName.PasswordChar = '\0';
+            txtLastName.ScrollBars = ScrollBars.None;
+            txtLastName.SelectedText = "";
+            txtLastName.SelectionLength = 0;
+            txtLastName.SelectionStart = 0;
+            txtLastName.ShortcutsEnabled = true;
+            txtLastName.Size = new Size(595, 31);
+            txtLastName.TabIndex = 16;
+            txtLastName.UseSelectable = true;
+            txtLastName.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtLastName.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.FromArgb(235, 239, 244);
+            label10.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.Black;
+            label10.Location = new Point(87, 221);
+            label10.Name = "label10";
+            label10.Size = new Size(106, 20);
+            label10.TabIndex = 15;
+            label10.Text = "Last Name:";
+            // 
+            // txtFirstName
+            // 
+            // 
+            // 
+            // 
+            txtFirstName.CustomButton.Image = null;
+            txtFirstName.CustomButton.Location = new Point(565, 1);
+            txtFirstName.CustomButton.Name = "";
+            txtFirstName.CustomButton.Size = new Size(29, 29);
+            txtFirstName.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtFirstName.CustomButton.TabIndex = 1;
+            txtFirstName.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtFirstName.CustomButton.UseSelectable = true;
+            txtFirstName.CustomButton.Visible = false;
+            txtFirstName.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtFirstName.Location = new Point(192, 159);
+            txtFirstName.MaxLength = 32767;
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.PasswordChar = '\0';
+            txtFirstName.ScrollBars = ScrollBars.None;
+            txtFirstName.SelectedText = "";
+            txtFirstName.SelectionLength = 0;
+            txtFirstName.SelectionStart = 0;
+            txtFirstName.ShortcutsEnabled = true;
+            txtFirstName.Size = new Size(595, 31);
+            txtFirstName.TabIndex = 14;
+            txtFirstName.UseSelectable = true;
+            txtFirstName.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtFirstName.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.FromArgb(235, 239, 244);
+            label9.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Black;
+            label9.Location = new Point(87, 169);
+            label9.Name = "label9";
+            label9.Size = new Size(108, 20);
+            label9.TabIndex = 13;
+            label9.Text = "First Name:";
+            // 
+            // txtPatientID
+            // 
+            // 
+            // 
+            // 
+            txtPatientID.CustomButton.Image = null;
+            txtPatientID.CustomButton.Location = new Point(565, 1);
+            txtPatientID.CustomButton.Name = "";
+            txtPatientID.CustomButton.Size = new Size(29, 29);
+            txtPatientID.CustomButton.Style = ReaLTaiizor.Enum.Poison.ColorStyle.Blue;
+            txtPatientID.CustomButton.TabIndex = 1;
+            txtPatientID.CustomButton.Theme = ReaLTaiizor.Enum.Poison.ThemeStyle.Light;
+            txtPatientID.CustomButton.UseSelectable = true;
+            txtPatientID.CustomButton.Visible = false;
+            txtPatientID.FontSize = ReaLTaiizor.Extension.Poison.PoisonTextBoxSize.Tall;
+            txtPatientID.Location = new Point(192, 111);
+            txtPatientID.MaxLength = 32767;
+            txtPatientID.Name = "txtPatientID";
+            txtPatientID.PasswordChar = '\0';
+            txtPatientID.ScrollBars = ScrollBars.None;
+            txtPatientID.SelectedText = "";
+            txtPatientID.SelectionLength = 0;
+            txtPatientID.SelectionStart = 0;
+            txtPatientID.ShortcutsEnabled = true;
+            txtPatientID.Size = new Size(595, 31);
+            txtPatientID.TabIndex = 12;
+            txtPatientID.UseSelectable = true;
+            txtPatientID.WaterMarkColor = Color.FromArgb(109, 109, 109);
+            txtPatientID.WaterMarkFont = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
+            txtPatientID.Click += txtPatientID_Click;
+            txtPatientID.Validating += txtPatientID_Validating;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.FromArgb(235, 239, 244);
+            label8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(85, 121);
+            label8.Name = "label8";
+            label8.Size = new Size(93, 20);
+            label8.TabIndex = 11;
+            label8.Text = "Patient ID";
             // 
             // Step5
             // 
@@ -2797,10 +2797,16 @@
             ((System.ComponentModel.ISupportInitialize)pbStep4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbStep2).EndInit();
             StagePanel.ResumeLayout(false);
-            Step1.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)logo1).EndInit();
+            Step4.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            Step3.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             Step2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -2811,16 +2817,10 @@
             ReferredBy.PerformLayout();
             TypeOfVisitPanel.ResumeLayout(false);
             TypeOfVisitPanel.PerformLayout();
-            Step3.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            Step4.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
+            Step1.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)logo1).EndInit();
             Step5.ResumeLayout(false);
             panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
