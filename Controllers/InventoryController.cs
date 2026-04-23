@@ -57,11 +57,18 @@ namespace AceCareClinicSystem.Controllers
             };
             db.ExecuteWrite(invQuery, invParams);
 
-            // 2. Handle batch renaming
+            // 2. Handle batch renaming safely using UPDATE
             if (!string.IsNullOrWhiteSpace(oldBatch) && oldBatch != newBatch)
             {
-                string deleteOld = "DELETE FROM inventory_batches WHERE item_id = @id AND batch_no = @oldBatch";
-                db.ExecuteWrite(deleteOld, new Dictionary<string, object> { { "@id", id }, { "@oldBatch", oldBatch } });
+                try 
+                {
+                    string renameBatch = "UPDATE inventory_batches SET batch_no = @newBatch WHERE item_id = @id AND batch_no = @oldBatch";
+                    db.ExecuteWrite(renameBatch, new Dictionary<string, object> { { "@id", id }, { "@newBatch", newBatch }, { "@oldBatch", oldBatch } });
+                }
+                catch
+                {
+                    // If rename fails (e.g. duplicate key), it means newBatch already exists. Let the next step handle it via ON DUPLICATE KEY UPDATE.
+                }
             }
 
             // 3. Update or Insert Batch record if newBatch string is provided

@@ -160,7 +160,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 if (string.IsNullOrEmpty(propName)) propName = _activeDateGrid.Columns[_activeDateCol].Name;
 
                 DataRowView drv = _activeDateGrid.Rows[_activeDateRow].DataBoundItem as DataRowView;
-                if (drv != null) drv.Row[propName] = _dtpExpiry.Value.ToString("yyyy-MM-dd");
+                if (drv != null) 
+                {
+                    drv.Row[propName] = _dtpExpiry.Value.ToString("yyyy-MM-dd");
+                    drv.Row.EndEdit();
+                }
 
                 _activeDateGrid.Rows[_activeDateRow].Cells[_activeDateCol].Value = _dtpExpiry.Value.ToString("yyyy-MM-dd");
                 _activeDateGrid.EndEdit();
@@ -177,7 +181,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 if (string.IsNullOrEmpty(propName)) propName = _activeBatchGrid.Columns[_activeBatchCol].Name;
 
                 DataRowView drv = _activeBatchGrid.Rows[_activeBatchRow].DataBoundItem as DataRowView;
-                if (drv != null) drv.Row[propName] = _cboBatch.Text;
+                if (drv != null)
+                {
+                    drv.Row[propName] = _cboBatch.Text;
+                    drv.Row.EndEdit();
+                }
 
                 _activeBatchGrid.Rows[_activeBatchRow].Cells[_activeBatchCol].Value = _cboBatch.Text;
                 _activeBatchGrid.EndEdit();
@@ -537,14 +545,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     {
                         MessageBox.Show("Successfully updated records!", "AceCare",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        _isAddingNew = false;
-                        RefreshDashboard();
                     }
-                    else
-                    {
-                        MessageBox.Show("No changes were saved. Did you edit any rows?", "AceCare Notice",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    
+                    _isAddingNew = false;
+                    RefreshDashboard();
                 }
                 catch (Exception ex)
                 {
