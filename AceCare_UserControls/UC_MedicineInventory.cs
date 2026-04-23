@@ -397,6 +397,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private bool SaveNewRow(DataGridView grid)
         {
+            if (_dtpExpiry.Visible) CommitDateAndHide();
+            if (_cboBatch.Visible) CommitBatchAndHide();
+
             if (!(grid.DataSource is DataTable table) || table.Rows.Count == 0) return false;
             int lastIndex = table.Rows.Count - 1;
             DataRow row = table.Rows[lastIndex];
@@ -425,6 +428,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private void SaveSingleRow(DataGridView grid, int rowIndex)
         {
+            if (_dtpExpiry.Visible) CommitDateAndHide();
+            if (_cboBatch.Visible) CommitBatchAndHide();
+
             if (!(grid.DataSource is DataTable table) || rowIndex < 0 || rowIndex >= table.Rows.Count) return;
             DataRow row = table.Rows[rowIndex];
             if (row.RowState != DataRowState.Modified || row["ItemID"] == DBNull.Value) return;
@@ -434,12 +440,14 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 int id = Convert.ToInt32(row["ItemID"]);
                 if (id == 0) return;
                 string name = row["Name"]?.ToString() ?? "";
-                string batch = row["BatchNumber"]?.ToString() ?? "";
+                string newBatch = row["BatchNumber"]?.ToString() ?? "";
+                string oldBatch = row.HasVersion(DataRowVersion.Original) ? 
+                                  row["BatchNumber", DataRowVersion.Original]?.ToString() ?? "" : newBatch;
                 int qty = Convert.ToInt32(row["Quantity"] ?? 0);
                 double usage = Convert.ToDouble(row["WeeklyUsage"] ?? 0);
                 DateTime expiry = Convert.ToDateTime(row["ExpiryDate"] ?? DateTime.Now);
 
-                if (_controller.UpdateFullItem(id, name, batch, qty, usage, expiry)) row.AcceptChanges();
+                if (_controller.UpdateFullItem(id, name, oldBatch, newBatch, qty, usage, expiry)) row.AcceptChanges();
             }
             catch (Exception ex) { Console.WriteLine($"Auto-save error: {ex.Message}"); }
         }
@@ -553,6 +561,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private bool SaveGridChanges(DataGridView grid, DataTable table)
         {
+            if (_dtpExpiry.Visible) CommitDateAndHide();
+            if (_cboBatch.Visible) CommitBatchAndHide();
+
             if (grid.CurrentCell != null && grid.IsCurrentCellInEditMode)
             {
                 grid.EndEdit();
@@ -615,14 +626,17 @@ namespace AceCareClinicSystem.AceCare_UserControls
                         if (id == 0) continue;
 
                         string name = row["Name"].ToString();
-                        string batch = row["BatchNumber"]?.ToString() ?? "";
+                        string newBatch = row["BatchNumber"]?.ToString() ?? "";
+                        string oldBatch = row.HasVersion(DataRowVersion.Original) ? 
+                                          row["BatchNumber", DataRowVersion.Original]?.ToString() ?? "" : newBatch;
+
                         int qty = Convert.ToInt32(row["Quantity"]);
                         double usage = (row["WeeklyUsage"] == DBNull.Value) ?
                             0 : Convert.ToDouble(row["WeeklyUsage"]);
                         DateTime expiry = (row["ExpiryDate"] == DBNull.Value) ?
                             DateTime.Now : Convert.ToDateTime(row["ExpiryDate"]);
 
-                        if (_controller.UpdateFullItem(id, name, batch, qty, usage, expiry))
+                        if (_controller.UpdateFullItem(id, name, oldBatch, newBatch, qty, usage, expiry))
                         {
                             updateCount++;
                             row.AcceptChanges();

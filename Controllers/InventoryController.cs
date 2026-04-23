@@ -41,7 +41,7 @@ namespace AceCareClinicSystem.Controllers
             return db.ExecuteRead(query, parameters);
         }
 
-        public bool UpdateFullItem(int id, string name, string batch, int qty, double usage, DateTime expiry)
+        public bool UpdateFullItem(int id, string name, string oldBatch, string newBatch, int qty, double usage, DateTime expiry)
         {
             // 1. Update main inventory table
             string invQuery = @"UPDATE inventory 
@@ -57,8 +57,15 @@ namespace AceCareClinicSystem.Controllers
             };
             db.ExecuteWrite(invQuery, invParams);
 
-            // 2. Update or Insert Batch record if batch string is provided
-            if (!string.IsNullOrWhiteSpace(batch))
+            // 2. Handle batch renaming
+            if (!string.IsNullOrWhiteSpace(oldBatch) && oldBatch != newBatch)
+            {
+                string deleteOld = "DELETE FROM inventory_batches WHERE item_id = @id AND batch_no = @oldBatch";
+                db.ExecuteWrite(deleteOld, new Dictionary<string, object> { { "@id", id }, { "@oldBatch", oldBatch } });
+            }
+
+            // 3. Update or Insert Batch record if newBatch string is provided
+            if (!string.IsNullOrWhiteSpace(newBatch))
             {
                 string batchQuery = @"INSERT INTO inventory_batches (item_id, batch_no, quantity, expiry_date)
                                       VALUES (@id, @batch, @qty, @expiry)
@@ -67,7 +74,7 @@ namespace AceCareClinicSystem.Controllers
                 var batchParams = new Dictionary<string, object>
                 {
                     { "@id", id },
-                    { "@batch", batch },
+                    { "@batch", newBatch },
                     { "@qty", qty },
                     { "@expiry", expiry }
                 };
