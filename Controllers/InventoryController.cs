@@ -8,6 +8,25 @@ namespace AceCareClinicSystem.Controllers
     {
         private DbConnection db = new DbConnection();
 
+        public InventoryController()
+        {
+            EnsureBatchNumberColumnExists();
+        }
+
+        private void EnsureBatchNumberColumnExists()
+        {
+            try
+            {
+                // This will fail silently if the column already exists, which is fine
+                string query = "ALTER TABLE inventory ADD COLUMN BatchNumber VARCHAR(50) AFTER Name";
+                db.ExecuteWrite(query);
+            }
+            catch
+            {
+                // Column likely already exists, ignore the exception
+            }
+        }
+
         public DataTable GetRecordsPaginated(string category, string search, int page, int itemsPerPage)
         {
             int offset = (page - 1) * itemsPerPage;
