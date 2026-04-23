@@ -15,9 +15,9 @@ namespace AceCareClinicSystem.Controllers
             string query = @"SELECT 
                                 i.ItemID, 
                                 i.Name, 
-                                COALESCE(b.batch_no, '') AS BatchNumber, 
                                 COALESCE(b.quantity, i.Quantity) AS Quantity, 
                                 i.WeeklyUsage, 
+                                COALESCE(b.batch_no, '') AS BatchNumber, 
                                 COALESCE(b.expiry_date, i.ExpiryDate) AS ExpiryDate 
                            FROM inventory i
                            LEFT JOIN inventory_batches b ON i.ItemID = b.item_id

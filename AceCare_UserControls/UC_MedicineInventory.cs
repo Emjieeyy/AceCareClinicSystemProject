@@ -29,6 +29,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private int _activeDateRow = -1;
         private int _activeDateCol = -1;
 
+        // ComboBox for BatchNumber column
+        private ComboBox _cboBatch = new ComboBox();
+        private DataGridView _activeBatchGrid = null;
+        private int _activeBatchRow = -1;
+        private int _activeBatchCol = -1;
+
         public UC_MedicineInventory()
         {
 
@@ -40,6 +46,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
             _dtpExpiry.CloseUp += _dtpExpiry_CloseUp;
             _dtpExpiry.Leave += _dtpExpiry_Leave;
             this.Controls.Add(_dtpExpiry);
+
+            _cboBatch.DropDownStyle = ComboBoxStyle.DropDown;
+            _cboBatch.Visible = false;
+            _cboBatch.Leave += _cboBatch_Leave;
+            this.Controls.Add(_cboBatch);
 
             SetupGrid(dgvMedicineRecords);
             SetupGrid(dgvSuppliesRecords);
@@ -107,13 +118,36 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 _dtpExpiry.Focus();
                 SendKeys.Send("{F4}"); 
             }
+            else if (grid.Columns[e.ColumnIndex].Name == "BatchNumber")
+            {
+                Rectangle rect = grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                _cboBatch.Size = new Size(rect.Width, rect.Height);
+                
+                Point pt = grid.PointToScreen(new Point(rect.X, rect.Y));
+                _cboBatch.Location = this.PointToClient(pt);
+                
+                object val = grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                _cboBatch.Text = val?.ToString() ?? "";
+                
+                _activeBatchGrid = grid;
+                _activeBatchRow = e.RowIndex;
+                _activeBatchCol = e.ColumnIndex;
+                
+                _cboBatch.Visible = true;
+                _cboBatch.BringToFront();
+                _cboBatch.Focus();
+            }
         }
 
         private void _dtpExpiry_CloseUp(object sender, EventArgs e) => CommitDateAndHide();
         private void _dtpExpiry_Leave(object sender, EventArgs e) => CommitDateAndHide();
+        
+        private void _cboBatch_Leave(object sender, EventArgs e) => CommitBatchAndHide();
+
         private void Grid_Scroll(object sender, EventArgs e)
         {
             if (_dtpExpiry.Visible) CommitDateAndHide();
+            if (_cboBatch.Visible) CommitBatchAndHide();
         }
 
         private void CommitDateAndHide()
@@ -127,11 +161,36 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
         }
 
+        private void CommitBatchAndHide()
+        {
+            if (!_cboBatch.Visible) return;
+            _cboBatch.Visible = false;
+            if (_activeBatchGrid != null && _activeBatchRow >= 0 && _activeBatchCol >= 0)
+            {
+                _activeBatchGrid.Rows[_activeBatchRow].Cells[_activeBatchCol].Value = _cboBatch.Text;
+                _activeBatchGrid.EndEdit();
+            }
+        }
+
+        private void LoadBatchNumbers()
+        {
+            try {
+                DataTable dt = new DbConnection().ExecuteRead("SELECT DISTINCT batch_no FROM inventory_batches WHERE batch_no IS NOT NULL AND batch_no != ''", null);
+                _cboBatch.Items.Clear();
+                if (dt != null) {
+                    foreach (DataRow row in dt.Rows) {
+                        _cboBatch.Items.Add(row[0].ToString());
+                    }
+                }
+            } catch { }
+        }
+
         // FIXED: Removed nested try-catch, added proper closing brace
         private void RefreshDashboard()
         {
             try
             {
+                LoadBatchNumbers();
                 string search = txtSearchInventory.Text.Trim();
 
                 // DEBUG: Check what values we're getting
