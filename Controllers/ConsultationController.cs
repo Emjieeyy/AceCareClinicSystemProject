@@ -63,6 +63,11 @@ namespace AceCareClinicSystem.Controllers
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getting latest consultation: " + ex.Message);
+                return null;
+            }
         }
 
         /// <summary>
