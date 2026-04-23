@@ -11,7 +11,8 @@ namespace AceCareClinicSystem.Controllers
 
         public bool RegisterPatient(string category, string idNo, string fName, string lName,
             string mInitial, string department, string contact, string emergencyName,
-            string emergencyNumber, string yearLevel, DateTime dateOfBirth)
+            string emergencyNumber, string yearLevel, DateTime dateOfBirth,
+            string sex, int? age, string address)
         {
             try
             {
@@ -19,22 +20,27 @@ namespace AceCareClinicSystem.Controllers
                 {
                     conn.Open();
                     string query = @"INSERT INTO patients 
-                        (category, patient_number, first_name, last_name, middle_initial, 
-                         department, contact_number, emergency_contact_name, emergency_contact_number, sex, date_of_birth, year_level) 
-                        VALUES (@cat, @id, @fname, @lname, @mi, @dept, @contact, @eName, @eNum, 'Male', @dob, @year)";
+                        (patient_number, first_name, last_name, middle_initial, category,
+                         department, year_level, age, date_of_birth, sex, address,
+                         contact_number, emergency_contact_name, emergency_contact_number) 
+                        VALUES (@id, @fname, @lname, @mi, @cat, @dept, @year, @age, @dob, @sex, @address,
+                                @contact, @eName, @eNum)";
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@cat", category);
                     cmd.Parameters.AddWithValue("@id", idNo);
                     cmd.Parameters.AddWithValue("@fname", fName);
                     cmd.Parameters.AddWithValue("@lname", lName);
                     cmd.Parameters.AddWithValue("@mi", mInitial);
+                    cmd.Parameters.AddWithValue("@cat", category);
                     cmd.Parameters.AddWithValue("@dept", department);
-                    cmd.Parameters.AddWithValue("@contact", contact);
-                    cmd.Parameters.AddWithValue("@eName", emergencyName);
-                    cmd.Parameters.AddWithValue("@eNum", emergencyNumber);
-                    cmd.Parameters.AddWithValue("@dob", dateOfBirth);
                     cmd.Parameters.AddWithValue("@year", string.IsNullOrEmpty(yearLevel) ? (object)DBNull.Value : yearLevel);
+                    cmd.Parameters.AddWithValue("@age", age.HasValue ? (object)age.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@dob", dateOfBirth);
+                    cmd.Parameters.AddWithValue("@sex", sex);
+                    cmd.Parameters.AddWithValue("@address", string.IsNullOrEmpty(address) ? (object)DBNull.Value : address);
+                    cmd.Parameters.AddWithValue("@contact", string.IsNullOrEmpty(contact) ? (object)DBNull.Value : contact);
+                    cmd.Parameters.AddWithValue("@eName", string.IsNullOrEmpty(emergencyName) ? (object)DBNull.Value : emergencyName);
+                    cmd.Parameters.AddWithValue("@eNum", string.IsNullOrEmpty(emergencyNumber) ? (object)DBNull.Value : emergencyNumber);
 
                     bool success = cmd.ExecuteNonQuery() > 0;
                     if (success) new AuthController().LogActivity(0, "Patient Registered", $"Registered: {fName} {lName} ({idNo})");
@@ -55,7 +61,6 @@ namespace AceCareClinicSystem.Controllers
                 try
                 {
                     conn.Open();
-                    // UPDATED: Now supports date filtering for the reports
                     string query = @"SELECT 
                         CONCAT(p.first_name, ' ', p.last_name) AS PatientName, 
                         p.patient_number AS IDNumber, 
@@ -121,29 +126,36 @@ namespace AceCareClinicSystem.Controllers
 
         public bool UpdatePatient(string originalId, string category, string idNo, string fName, string lName,
             string mInitial, string department, string contact, string emergencyName,
-            string emergencyNumber, string yearLevel, DateTime dateOfBirth)
+            string emergencyNumber, string yearLevel, DateTime dateOfBirth,
+            string sex, int? age, string address)
         {
             try
             {
                 using (MySqlConnection conn = db.GetConnection())
                 {
                     conn.Open();
-                    string query = @"UPDATE patients SET category=@cat, patient_number=@id, first_name=@fname, last_name=@lname, 
-                                     middle_initial=@mi, department=@dept, contact_number=@contact, 
-                                     emergency_contact_name=@eName, emergency_contact_number=@eNum, date_of_birth=@dob, year_level=@year 
-                                     WHERE patient_number=@originalId";
+                    string query = @"UPDATE patients SET 
+                        patient_number=@id, first_name=@fname, last_name=@lname, 
+                        middle_initial=@mi, category=@cat, department=@dept, 
+                        year_level=@year, age=@age, date_of_birth=@dob, sex=@sex, address=@address,
+                        contact_number=@contact, emergency_contact_name=@eName, emergency_contact_number=@eNum
+                        WHERE patient_number=@originalId";
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@cat", category);
                     cmd.Parameters.AddWithValue("@id", idNo);
                     cmd.Parameters.AddWithValue("@fname", fName);
                     cmd.Parameters.AddWithValue("@lname", lName);
                     cmd.Parameters.AddWithValue("@mi", mInitial);
+                    cmd.Parameters.AddWithValue("@cat", category);
                     cmd.Parameters.AddWithValue("@dept", department);
-                    cmd.Parameters.AddWithValue("@contact", contact);
-                    cmd.Parameters.AddWithValue("@eName", emergencyName);
-                    cmd.Parameters.AddWithValue("@eNum", emergencyNumber);
-                    cmd.Parameters.AddWithValue("@dob", dateOfBirth);
                     cmd.Parameters.AddWithValue("@year", string.IsNullOrEmpty(yearLevel) ? (object)DBNull.Value : yearLevel);
+                    cmd.Parameters.AddWithValue("@age", age.HasValue ? (object)age.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@dob", dateOfBirth);
+                    cmd.Parameters.AddWithValue("@sex", sex);
+                    cmd.Parameters.AddWithValue("@address", string.IsNullOrEmpty(address) ? (object)DBNull.Value : address);
+                    cmd.Parameters.AddWithValue("@contact", string.IsNullOrEmpty(contact) ? (object)DBNull.Value : contact);
+                    cmd.Parameters.AddWithValue("@eName", string.IsNullOrEmpty(emergencyName) ? (object)DBNull.Value : emergencyName);
+                    cmd.Parameters.AddWithValue("@eNum", string.IsNullOrEmpty(emergencyNumber) ? (object)DBNull.Value : emergencyNumber);
                     cmd.Parameters.AddWithValue("@originalId", originalId);
                     return cmd.ExecuteNonQuery() > 0;
                 }
@@ -173,6 +185,7 @@ namespace AceCareClinicSystem.Controllers
                 return false;
             }
         }
+
         public DataTable GetReportData(DateTime fromDate, DateTime toDate, string search = "", string category = "All Records")
         {
             using (MySqlConnection conn = db.GetConnection())
@@ -204,7 +217,7 @@ namespace AceCareClinicSystem.Controllers
                     cmd.Parameters.AddWithValue("@from", fromDate.Date);
                     cmd.Parameters.AddWithValue("@to", toDate.Date.AddDays(1).AddTicks(-1));
                     cmd.Parameters.AddWithValue("@s", "%" + search.Trim() + "%");
-                    
+
                     if (category != "All Records" && !string.IsNullOrEmpty(category))
                     {
                         cmd.Parameters.AddWithValue("@cat", category);

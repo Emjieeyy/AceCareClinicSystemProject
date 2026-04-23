@@ -1,4 +1,4 @@
-﻿using AceCareClinicSystem.Services;
+using AceCareClinicSystem.Services;
 using AceCareClinicSystem.Controllers;
 using System;
 using System.Data;
@@ -13,6 +13,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private PictureBox[] stepIcons;
         private Panel[] stepLines;
         private ConsultationController _conController = new ConsultationController();
+        private Label lblAssessmentDate;
 
         // Store loaded patient ID
         private string loadedPatientID = "";
@@ -38,12 +39,54 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
 
             WizardMethods.ShowStep(1, StagePanel, stepIcons, stepLines);
+            InitializeAssessmentDateLabel();
+            SetDefaultUser();
         }
 
+        private void InitializeAssessmentDateLabel()
+        {
+            lblAssessmentDate = new Label();
+            lblAssessmentDate.AutoSize = true;
+            lblAssessmentDate.Font = new Font("Century Gothic", 11F, FontStyle.Italic);
+            lblAssessmentDate.ForeColor = Color.DimGray;
+            lblAssessmentDate.BackColor = Color.White;
+            lblAssessmentDate.Location = new Point(365, 10);
+            
+            // Find panel2 (Step 3) to add the label
+            foreach (Control ctrl in Controls)
+            {
+                if (ctrl.Name == "Step3")
+                {
+                    foreach (Control stepCtrl in ctrl.Controls)
+                    {
+                        if (stepCtrl.Name == "panel2")
+                        {
+                            stepCtrl.Controls.Add(lblAssessmentDate);
+                            lblAssessmentDate.BringToFront();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SetDefaultUser()
+        {
+            txtClinicIncharge.Text = UserSession.FullName;
+            txtStaffID.Text = UserSession.UserId > 0 ? UserSession.UserId.ToString() : "";
+            if (lblAssessmentDate != null)
+                lblAssessmentDate.Text = "Recording: " + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
+        }
+
+
+        // ===========================
+        // UPDATED: LoadPatientData with Age, Sex, Address
+        // ===========================
         public void LoadPatientData(string patientID, string firstName, string lastName,
             string middleInitial, string category, string department,
             DateTime dateOfBirth, string contact, string emergencyContactNumber,
-            string emergencyContactName, string yearLevel)
+            string emergencyContactName, string yearLevel,
+            int? age, string sex, string address)
         {
             // Store patient ID
             loadedPatientID = patientID;
@@ -58,19 +101,24 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtLastName.Text = lastName ?? "";
             txtMI.Text = middleInitial ?? "";
 
-            // Calculate age from date of birth
-            int age = CalculateAge(dateOfBirth);
-            txtAge.Text = age.ToString();
+            // UPDATED: Use age from patient record if available, otherwise calculate from DOB
+            if (age.HasValue)
+                txtAge.Text = age.Value.ToString();
+            else
+                txtAge.Text = CalculateAge(dateOfBirth).ToString();
 
-            // Set sex - default or from record
-            cmbSex.Text = "Male";
+            // UPDATED: Use sex from patient record
+            cmbSex.Text = !string.IsNullOrEmpty(sex) ? sex : "Male";
 
-            // Address - leave blank for input
-            txtAddress.Text = "";
+            // UPDATED: Use address from patient record
+            txtAddress.Text = address ?? "";
+
             txtContactNo.Text = contact ?? "";
 
             txtEmergencyContactName.Text = emergencyContactName ?? "";
             txtEmergencyContactNumber.Text = emergencyContactNumber ?? "";
+
+
 
             // CHECK IF PATIENT HAS EXISTING CONSULTATION
             LoadExistingConsultationIfExists(patientID);
@@ -99,11 +147,19 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 // Change Save button text
                 SaveBtns5.Text = "Update Record";
                 SaveBtns5.BackColor = Color.DodgerBlue;
+                if (lblAssessmentDate != null)
+                    lblAssessmentDate.Text = "Recorded on: " + Convert.ToDateTime(consultation["visit_date"]).ToString("dd-MMM-yyyy hh:mm tt");
 
                 // Load Step 1 data (Patient Info)
-                txtAge.Text = consultation["age"]?.ToString() ?? txtAge.Text;
-                cmbSex.Text = consultation["sex"]?.ToString() ?? cmbSex.Text;
-                txtAddress.Text = consultation["address"]?.ToString() ?? "";
+                // UPDATED: Only override if consultation has values, otherwise keep patient record values
+                if (consultation["age"] != DBNull.Value && !string.IsNullOrWhiteSpace(consultation["age"]?.ToString()))
+                    txtAge.Text = consultation["age"].ToString();
+
+                if (consultation["sex"] != DBNull.Value && !string.IsNullOrWhiteSpace(consultation["sex"]?.ToString()))
+                    cmbSex.Text = consultation["sex"].ToString();
+
+                if (consultation["address"] != DBNull.Value && !string.IsNullOrWhiteSpace(consultation["address"]?.ToString()))
+                    txtAddress.Text = consultation["address"].ToString();
 
                 // Load Step 2 data (Visit Details)
                 string visitType = consultation["visit_type"]?.ToString();
@@ -182,6 +238,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 _existingConsultationId = null;
                 SaveBtns5.Text = "Save";
                 SaveBtns5.BackColor = Color.LimeGreen;
+                SetDefaultUser();
             }
         }
 
@@ -270,6 +327,31 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 MessageBox.Show("Please enter a valid Medicine Quantity.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            // STOCK VALIDATION
+            string medicineName = cmbMedicineName.Text.Trim();
+            if (!string.IsNullOrWhiteSpace(medicineName) && medQty > 0)
+            {
+                InventoryController invController = new InventoryController();
+                int currentStock = invController.GetTotalStock(medicineName);
+
+                // If updating, we should account for the quantity already "held" by this consultation
+                if (_isEditMode && _existingConsultationId.HasValue)
+                {
+                    DataRow currentRecord = _conController.GetConsultationById(_existingConsultationId.Value);
+                    if (currentRecord != null && currentRecord["medicine_name"]?.ToString() == medicineName)
+                    {
+                        currentStock += Convert.ToInt32(currentRecord["medicine_quantity"] ?? 0);
+                    }
+                }
+
+                if (currentStock < medQty)
+                {
+                    MessageBox.Show($"Insufficient stock for {medicineName}.\nAvailable: {currentStock}\nRequested: {medQty}",
+                        "Out of Stock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
             string confirmText = _isEditMode ? "Update this consultation record?" : "Finalize and save this consultation?";
@@ -428,7 +510,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             loadedPatientID = "";
 
             txtPatientID.Clear();
-            txtStaffID.Clear();
             txtTemperature.Clear();
             txtBloodPressure.Clear();
             txtPhysicalFindings.Clear();
@@ -450,7 +531,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             rtbTreatmentNotes.Clear();
             rtbRemarksInstructions.Clear();
             rtbFinalNotes.Clear();
-            txtClinicIncharge.Clear();
+            SetDefaultUser();
             txtAge.Clear();
             txtAddress.Clear();
 

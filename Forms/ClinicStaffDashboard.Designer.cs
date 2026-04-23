@@ -47,6 +47,8 @@
             panel2 = new Panel();
             Homebtn = new ReaLTaiizor.Controls.HopeButton();
             SideBarPanel = new Panel();
+            pictureBox10 = new PictureBox();
+            btnPatientHistory = new ReaLTaiizor.Controls.HopeButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
@@ -57,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             SideBarPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
             SuspendLayout();
             // 
             // HomemainPanel
@@ -104,7 +107,7 @@
             pictureBox6.BackgroundImage = Properties.Resources.information_button;
             pictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox6.InitialImage = (Image)resources.GetObject("pictureBox6.InitialImage");
-            pictureBox6.Location = new Point(24, 504);
+            pictureBox6.Location = new Point(24, 560);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(43, 35);
             pictureBox6.TabIndex = 15;
@@ -115,7 +118,7 @@
             pictureBox5.BackgroundImage = (Image)resources.GetObject("pictureBox5.BackgroundImage");
             pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox5.InitialImage = (Image)resources.GetObject("pictureBox5.InitialImage");
-            pictureBox5.Location = new Point(22, 434);
+            pictureBox5.Location = new Point(22, 490);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(43, 35);
             pictureBox5.TabIndex = 14;
@@ -126,7 +129,7 @@
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
             pictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox4.InitialImage = (Image)resources.GetObject("pictureBox4.InitialImage");
-            pictureBox4.Location = new Point(23, 360);
+            pictureBox4.Location = new Point(23, 416);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(43, 35);
             pictureBox4.TabIndex = 13;
@@ -137,7 +140,7 @@
             pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
             pictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox3.InitialImage = (Image)resources.GetObject("pictureBox3.InitialImage");
-            pictureBox3.Location = new Point(22, 291);
+            pictureBox3.Location = new Point(22, 347);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(43, 35);
             pictureBox3.TabIndex = 12;
@@ -184,7 +187,7 @@
             btnAbout.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAbout.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnAbout.InfoColor = Color.FromArgb(144, 147, 153);
-            btnAbout.Location = new Point(-40, 500);
+            btnAbout.Location = new Point(-40, 556);
             btnAbout.Name = "btnAbout";
             btnAbout.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnAbout.Size = new Size(297, 51);
@@ -204,7 +207,7 @@
             ReportBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ReportBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             ReportBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            ReportBtn.Location = new Point(-50, 429);
+            ReportBtn.Location = new Point(-50, 485);
             ReportBtn.Name = "ReportBtn";
             ReportBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             ReportBtn.Size = new Size(299, 51);
@@ -224,7 +227,7 @@
             InventoryBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             InventoryBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             InventoryBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            InventoryBtn.Location = new Point(-14, 356);
+            InventoryBtn.Location = new Point(-14, 412);
             InventoryBtn.Name = "InventoryBtn";
             InventoryBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             InventoryBtn.Size = new Size(283, 51);
@@ -244,7 +247,7 @@
             ConsultationBtn.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ConsultationBtn.HoverTextColor = Color.FromArgb(48, 49, 51);
             ConsultationBtn.InfoColor = Color.FromArgb(144, 147, 153);
-            ConsultationBtn.Location = new Point(-17, 287);
+            ConsultationBtn.Location = new Point(-17, 345);
             ConsultationBtn.Name = "ConsultationBtn";
             ConsultationBtn.PrimaryColor = Color.FromArgb(11, 45, 114);
             ConsultationBtn.Size = new Size(267, 51);
@@ -306,6 +309,8 @@
             // SideBarPanel
             // 
             SideBarPanel.BackColor = Color.FromArgb(11, 45, 114);
+            SideBarPanel.Controls.Add(pictureBox10);
+            SideBarPanel.Controls.Add(btnPatientHistory);
             SideBarPanel.Controls.Add(pictureBox7);
             SideBarPanel.Controls.Add(LogoutBtn);
             SideBarPanel.Controls.Add(pictureBox6);
@@ -326,6 +331,37 @@
             SideBarPanel.Name = "SideBarPanel";
             SideBarPanel.Size = new Size(258, 872);
             SideBarPanel.TabIndex = 2;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.BackgroundImage = Properties.Resources.health_report;
+            pictureBox10.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox10.InitialImage = (Image)resources.GetObject("pictureBox10.InitialImage");
+            pictureBox10.Location = new Point(22, 284);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(43, 35);
+            pictureBox10.TabIndex = 23;
+            pictureBox10.TabStop = false;
+            // 
+            // btnPatientHistory
+            // 
+            btnPatientHistory.BorderColor = Color.FromArgb(220, 223, 230);
+            btnPatientHistory.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            btnPatientHistory.DangerColor = Color.FromArgb(245, 108, 108);
+            btnPatientHistory.DefaultColor = Color.FromArgb(255, 255, 255);
+            btnPatientHistory.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPatientHistory.HoverTextColor = Color.FromArgb(48, 49, 51);
+            btnPatientHistory.InfoColor = Color.FromArgb(144, 147, 153);
+            btnPatientHistory.Location = new Point(-28, 281);
+            btnPatientHistory.Name = "btnPatientHistory";
+            btnPatientHistory.PrimaryColor = Color.FromArgb(11, 45, 114);
+            btnPatientHistory.Size = new Size(297, 51);
+            btnPatientHistory.SuccessColor = Color.FromArgb(103, 194, 58);
+            btnPatientHistory.TabIndex = 22;
+            btnPatientHistory.Text = "      Patient History";
+            btnPatientHistory.TextColor = Color.White;
+            btnPatientHistory.WarningColor = Color.FromArgb(230, 162, 60);
+            btnPatientHistory.Click += btnPatientHistory_Click;
             // 
             // ClinicStaffDashboard
             // 
@@ -349,6 +385,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             SideBarPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ResumeLayout(false);
         }
 
@@ -372,5 +409,7 @@
         private Panel panel2;
         private ReaLTaiizor.Controls.HopeButton Homebtn;
         private Panel SideBarPanel;
+        private PictureBox pictureBox10;
+        private ReaLTaiizor.Controls.HopeButton btnPatientHistory;
     }
 }

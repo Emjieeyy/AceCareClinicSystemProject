@@ -7,7 +7,7 @@ namespace AceCareClinicSystem.Controllers
 {
     public class ConsultationController
     {
-        private string connStr = "server=localhost;port=3306;database=acecaredb;user=root;password=;Charset=utf8;SslMode=Disabled;";
+        private string connStr = "server=localhost;port=3306;database=acecare_db;user=root;password=;Charset=utf8;SslMode=Disabled;";
 
         /// <summary>
         /// Get patient_id from patient_number
@@ -65,7 +65,39 @@ namespace AceCareClinicSystem.Controllers
             }
             catch (Exception ex)
             {
+
+                MessageBox.Show("Error getting latest consultation: " + ex.Message);
+
                 MessageBox.Show("GetLatestConsultation Error: " + ex.Message);
+
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Get consultation by ID
+        /// </summary>
+        public DataRow GetConsultationById(int consultationId)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM consultations WHERE id = @conId";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@conId", consultationId);
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("GetConsultationById Error: " + ex.Message);
                 return null;
             }
         }
@@ -198,7 +230,16 @@ namespace AceCareClinicSystem.Controllers
                         cmd.Parameters.AddWithValue("@fNote", finalNotes ?? "");
 
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0) new AuthController().LogActivity(0, "Consultation Saved", $"Saved consultation for patient ID: {pId}");
+                        if (rowsAffected > 0)
+                        {
+                            new AuthController().LogActivity(0, "Consultation Saved", $"Saved consultation for patient ID: {pId}");
+
+                            // DEDUCT INVENTORY
+                            if (!string.IsNullOrWhiteSpace(medName) && medQty > 0)
+                            {
+                                new InventoryController().DeductInventory(medName, medQty);
+                            }
+                        }
                         return rowsAffected > 0;
                     }
                 }
@@ -303,8 +344,33 @@ namespace AceCareClinicSystem.Controllers
                         cmd.Parameters.AddWithValue("@uId", sId);
                         cmd.Parameters.AddWithValue("@fNote", finalNotes ?? "");
 
+                        // BEFORE UPDATING: Get old consultation to adjust inventory
+                        DataRow oldConsultation = GetConsultationById(consultationId);
+                        string oldMedName = oldConsultation?["medicine_name"]?.ToString();
+                        int oldMedQty = (oldConsultation != null && oldConsultation["medicine_quantity"] != DBNull.Value)
+                                        ? Convert.ToInt32(oldConsultation["medicine_quantity"]) : 0;
+
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0) new AuthController().LogActivity(0, "Consultation Updated", $"Updated consultation ID: {consultationId}");
+                        if (rowsAffected > 0)
+                        {
+                            new AuthController().LogActivity(0, "Consultation Updated", $"Updated consultation ID: {consultationId}");
+
+                            // ADJUST INVENTORY
+                            if (oldMedName != medName || oldMedQty != medQty)
+                            {
+                                // 1. Return old quantity to inventory
+                                if (!string.IsNullOrWhiteSpace(oldMedName) && oldMedQty > 0)
+                                {
+                                    AdjustInventory(oldMedName, -oldMedQty); // Negative deduction = addition
+                                }
+
+                                // 2. Deduct new quantity from inventory
+                                if (!string.IsNullOrWhiteSpace(medName) && medQty > 0)
+                                {
+                                    new InventoryController().DeductInventory(medName, medQty);
+                                }
+                            }
+                        }
                         return rowsAffected > 0;
                     }
                 }
@@ -314,6 +380,28 @@ namespace AceCareClinicSystem.Controllers
                 MessageBox.Show($"Update Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Helper to adjust inventory (can add or subtract)
+        /// </summary>
+        private void AdjustInventory(string itemName, int quantity)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    conn.Open();
+                    string query = "UPDATE inventory SET Quantity = Quantity - @qty WHERE Name = @name";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@name", itemName);
+                        cmd.Parameters.AddWithValue("@qty", quantity);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch { /* Ignore errors in background adjustment */ }
         }
 
         public DataTable GetConsultationReport(DateTime fromDate, DateTime toDate, string search = "")

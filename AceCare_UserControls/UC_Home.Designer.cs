@@ -38,7 +38,7 @@
             lblTotalPatients = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
-            label1 = new Label();
+            lblDashboardTitle = new Label();
             panel1 = new Panel();
             lblTodaysVisit = new Label();
             label5 = new Label();
@@ -81,6 +81,8 @@
             ReloadPix = new PictureBox();
             toolTip1 = new ToolTip(components);
             label13 = new Label();
+            lblUserID = new Label();
+            lblUserName = new Label();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -147,15 +149,15 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // label1
+            // lblDashboardTitle
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(13, 26);
-            label1.Name = "label1";
-            label1.Size = new Size(389, 51);
-            label1.TabIndex = 3;
-            label1.Text = "Clinic Dashboard";
+            lblDashboardTitle.AutoSize = true;
+            lblDashboardTitle.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDashboardTitle.Location = new Point(13, 25);
+            lblDashboardTitle.Name = "lblDashboardTitle";
+            lblDashboardTitle.Size = new Size(389, 51);
+            lblDashboardTitle.TabIndex = 3;
+            lblDashboardTitle.Text = "Clinic Dashboard";
             // 
             // panel1
             // 
@@ -512,9 +514,9 @@
             pictureBox12.BackColor = Color.Transparent;
             pictureBox12.BackgroundImage = (Image)resources.GetObject("pictureBox12.BackgroundImage");
             pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox12.Location = new Point(1124, -6);
+            pictureBox12.Location = new Point(1128, -8);
             pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(113, 105);
+            pictureBox12.Size = new Size(120, 122);
             pictureBox12.TabIndex = 5;
             pictureBox12.TabStop = false;
             // 
@@ -644,7 +646,7 @@
             // 
             pictureBox13.BackgroundImage = (Image)resources.GetObject("pictureBox13.BackgroundImage");
             pictureBox13.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox13.Location = new Point(917, 107);
+            pictureBox13.Location = new Point(921, 107);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(289, 152);
             pictureBox13.TabIndex = 32;
@@ -670,17 +672,39 @@
             label13.BackColor = Color.Transparent;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.Gray;
-            label13.Location = new Point(20, 81);
+            label13.Location = new Point(20, 82);
             label13.Name = "label13";
             label13.Size = new Size(480, 20);
             label13.TabIndex = 50;
             label13.Text = "Manage real-time clinic operations and track recent patient consultations.\r\n";
+            // 
+            // lblUserID
+            // 
+            lblUserID.AutoSize = true;
+            lblUserID.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUserID.Location = new Point(1015, 35);
+            lblUserID.Name = "lblUserID";
+            lblUserID.Size = new Size(93, 27);
+            lblUserID.TabIndex = 51;
+            lblUserID.Text = "User ID:";
+            // 
+            // lblUserName
+            // 
+            lblUserName.AutoSize = true;
+            lblUserName.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUserName.Location = new Point(1017, 71);
+            lblUserName.Name = "lblUserName";
+            lblUserName.Size = new Size(105, 21);
+            lblUserName.TabIndex = 52;
+            lblUserName.Text = "User Name";
             // 
             // UC_Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(lblUserName);
+            Controls.Add(lblUserID);
             Controls.Add(label13);
             Controls.Add(ReloadPix);
             Controls.Add(panel1);
@@ -689,7 +713,6 @@
             Controls.Add(btnNext);
             Controls.Add(panel5);
             Controls.Add(panel4);
-            Controls.Add(pictureBox12);
             Controls.Add(parrotWidgetPanel1);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
@@ -697,7 +720,7 @@
             Controls.Add(dgvRecent);
             Controls.Add(panel2);
             Controls.Add(panel3);
-            Controls.Add(label1);
+            Controls.Add(lblDashboardTitle);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox10);
             Controls.Add(pictureBox9);
@@ -705,6 +728,7 @@
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox6);
             Controls.Add(pictureBox13);
+            Controls.Add(pictureBox12);
             MinimumSize = new Size(126, 50);
             Name = "UC_Home";
             Size = new Size(1250, 848);
@@ -747,7 +771,7 @@
         private Label lblTotalPatients;
         private Label label2;
         private PictureBox pictureBox1;
-        private Label label1;
+        private Label lblDashboardTitle;
         private Panel panel1;
         private Label lblTodaysVisit;
         private Label label5;
@@ -790,5 +814,7 @@
         private PictureBox ReloadPix;
         private ToolTip toolTip1;
         private Label label13;
+        private Label lblUserID;
+        private Label lblUserName;
     }
 }

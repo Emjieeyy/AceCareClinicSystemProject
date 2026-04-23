@@ -1,4 +1,4 @@
-﻿using AceCareClinicSystem.Controllers;
+using AceCareClinicSystem.Controllers;
 using Microsoft.VisualBasic;
 using System;
 using System.Data;
@@ -22,10 +22,36 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private DataTable _medicineTable;
         private DataTable _suppliesTable;
+
+        // DatePicker for ExpiryDate column
+        private DateTimePicker _dtpExpiry = new DateTimePicker();
+        private DataGridView _activeDateGrid = null;
+        private int _activeDateRow = -1;
+        private int _activeDateCol = -1;
+
+        // ComboBox for BatchNumber column
+        private ComboBox _cboBatch = new ComboBox();
+        private DataGridView _activeBatchGrid = null;
+        private int _activeBatchRow = -1;
+        private int _activeBatchCol = -1;
+
         public UC_MedicineInventory()
         {
 
             InitializeComponent();
+
+            _dtpExpiry.Format = DateTimePickerFormat.Custom;
+            _dtpExpiry.CustomFormat = "yyyy-MM-dd";
+            _dtpExpiry.Visible = false;
+            _dtpExpiry.CloseUp += _dtpExpiry_CloseUp;
+            _dtpExpiry.Leave += _dtpExpiry_Leave;
+            this.Controls.Add(_dtpExpiry);
+
+            _cboBatch.DropDownStyle = ComboBoxStyle.DropDown;
+            _cboBatch.FlatStyle = FlatStyle.Flat;
+            _cboBatch.Visible = false;
+            _cboBatch.Leave += _cboBatch_Leave;
+            this.Controls.Add(_cboBatch);
 
             SetupGrid(dgvMedicineRecords);
             SetupGrid(dgvSuppliesRecords);
@@ -40,6 +66,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
             grid.DataError += (s, e) => { e.ThrowException = false; e.Cancel = true; };
             grid.CellEndEdit += Grid_CellEndEdit;
             grid.RowValidated += Grid_RowValidated;
+            grid.CellClick += Grid_CellClick;
+            grid.Scroll += Grid_Scroll;
+            grid.ColumnWidthChanged += Grid_Scroll;
         }
 
         private void Grid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -61,11 +90,140 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
         }
 
+        // ========== DATETIMEPICKER HANDLERS ==========
+        private void Grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = sender as DataGridView;
+            if (e.RowIndex < 0 || grid.ReadOnly) return;
+            
+            if (grid.Columns[e.ColumnIndex].Name == "ExpiryDate" || grid.Columns[e.ColumnIndex].Name == "Expiry")
+            {
+                Rectangle rect = grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                
+                if (_dtpExpiry.Parent != grid)
+                {
+                    grid.Controls.Add(_dtpExpiry);
+                }
+
+                _dtpExpiry.Font = grid.DefaultCellStyle.Font ?? grid.Font;
+                _dtpExpiry.Width = rect.Width;
+                int yDate = rect.Y + (rect.Height - _dtpExpiry.Height) / 2;
+                _dtpExpiry.Location = new Point(rect.X, yDate);
+                
+                object val = grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if (val != null && val != DBNull.Value && DateTime.TryParse(val.ToString(), out DateTime dt))
+                    _dtpExpiry.Value = dt;
+                else
+                    _dtpExpiry.Value = DateTime.Now;
+                
+                _activeDateGrid = grid;
+                _activeDateRow = e.RowIndex;
+                _activeDateCol = e.ColumnIndex;
+                
+                _dtpExpiry.Visible = true;
+                _dtpExpiry.BringToFront();
+                _dtpExpiry.Focus();
+                SendKeys.Send("{F4}"); 
+            }
+            else if (grid.Columns[e.ColumnIndex].Name == "BatchNumber")
+            {
+                Rectangle rect = grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                
+                if (_cboBatch.Parent != grid)
+                {
+                    grid.Controls.Add(_cboBatch);
+                }
+
+                _cboBatch.Font = grid.DefaultCellStyle.Font ?? grid.Font;
+                _cboBatch.Width = rect.Width;
+                int yBatch = rect.Y + (rect.Height - _cboBatch.Height) / 2;
+                _cboBatch.Location = new Point(rect.X, yBatch);
+                
+                object val = grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                _cboBatch.Text = val?.ToString() ?? "";
+                
+                _activeBatchGrid = grid;
+                _activeBatchRow = e.RowIndex;
+                _activeBatchCol = e.ColumnIndex;
+                
+                _cboBatch.Visible = true;
+                _cboBatch.BringToFront();
+                _cboBatch.Focus();
+            }
+        }
+
+        private void _dtpExpiry_CloseUp(object sender, EventArgs e) => CommitDateAndHide();
+        private void _dtpExpiry_Leave(object sender, EventArgs e) => CommitDateAndHide();
+        
+        private void _cboBatch_Leave(object sender, EventArgs e) => CommitBatchAndHide();
+
+        private void Grid_Scroll(object sender, EventArgs e)
+        {
+            if (_dtpExpiry.Visible) CommitDateAndHide();
+            if (_cboBatch.Visible) CommitBatchAndHide();
+        }
+
+        private void CommitDateAndHide()
+        {
+            if (!_dtpExpiry.Visible) return;
+            _dtpExpiry.Visible = false;
+            if (_activeDateGrid != null && _activeDateRow >= 0 && _activeDateCol >= 0)
+            {
+                string propName = _activeDateGrid.Columns[_activeDateCol].DataPropertyName;
+                if (string.IsNullOrEmpty(propName)) propName = _activeDateGrid.Columns[_activeDateCol].Name;
+
+                DataRowView drv = _activeDateGrid.Rows[_activeDateRow].DataBoundItem as DataRowView;
+                if (drv != null) 
+                {
+                    drv.Row[propName] = _dtpExpiry.Value.ToString("yyyy-MM-dd");
+                    drv.Row.EndEdit();
+                }
+
+                _activeDateGrid.Rows[_activeDateRow].Cells[_activeDateCol].Value = _dtpExpiry.Value.ToString("yyyy-MM-dd");
+                _activeDateGrid.EndEdit();
+            }
+        }
+
+        private void CommitBatchAndHide()
+        {
+            if (!_cboBatch.Visible) return;
+            _cboBatch.Visible = false;
+            if (_activeBatchGrid != null && _activeBatchRow >= 0 && _activeBatchCol >= 0)
+            {
+                string propName = _activeBatchGrid.Columns[_activeBatchCol].DataPropertyName;
+                if (string.IsNullOrEmpty(propName)) propName = _activeBatchGrid.Columns[_activeBatchCol].Name;
+
+                DataRowView drv = _activeBatchGrid.Rows[_activeBatchRow].DataBoundItem as DataRowView;
+                if (drv != null)
+                {
+                    drv.Row[propName] = _cboBatch.Text;
+                    drv.Row.EndEdit();
+                }
+
+                _activeBatchGrid.Rows[_activeBatchRow].Cells[_activeBatchCol].Value = _cboBatch.Text;
+                _activeBatchGrid.EndEdit();
+            }
+        }
+
+        private void LoadBatchNumbers()
+        {
+            try {
+                DataTable dt = new DbConnection().ExecuteRead("SELECT DISTINCT batch_no FROM inventory_batches WHERE batch_no IS NOT NULL AND batch_no != ''", null);
+                _cboBatch.Items.Clear();
+                if (dt != null) {
+                    foreach (DataRow row in dt.Rows) {
+                        _cboBatch.Items.Add(row[0].ToString());
+                    }
+                }
+            } catch { }
+        }
+
         // FIXED: Removed nested try-catch, added proper closing brace
         private void RefreshDashboard()
         {
             try
             {
+                LoadBatchNumbers();
                 string search = txtSearchInventory.Text.Trim();
 
                 // DEBUG: Check what values we're getting
@@ -87,6 +245,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 dgvSuppliesRecords.DataSource = _suppliesTable;
                 HideIdColumn(dgvSuppliesRecords);
 
+                ReorderGridColumns(dgvMedicineRecords);
+                ReorderGridColumns(dgvSuppliesRecords);
+
                 UpdateMedicinePaginationDisplay();
                 UpdateSuppliesPaginationDisplay();
 
@@ -107,8 +268,26 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             if (dgv.Columns["ItemID"] != null)
                 dgv.Columns["ItemID"].Visible = false;
+            if (dgv.Columns["colMedItemID"] != null)
+                dgv.Columns["colMedItemID"].Visible = false;
         }
 
+        private void ReorderGridColumns(DataGridView dgv)
+        {
+            try
+            {
+                // Find column indexes visually
+                var batchCol = dgv.Columns["BatchNumber"];
+                var expiryCol = dgv.Columns["Expiry"] ?? dgv.Columns["ExpiryDate"];
+
+                if (batchCol != null && expiryCol != null)
+                {
+                    batchCol.DisplayIndex = 3;
+                    expiryCol.DisplayIndex = 4;
+                }
+            }
+            catch { }
+        }
 
         // ========== UPDATE MEDICINE PAGINATION UI ==========
         private void UpdateMedicinePaginationDisplay()
@@ -206,6 +385,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             DataRow row = table.NewRow();
             row["ItemID"] = 0;
             row["Name"] = "";
+            row["BatchNumber"] = "";
             row["Quantity"] = 0;
             row["WeeklyUsage"] = 0;
             row["ExpiryDate"] = DateTime.Now.AddYears(1);
@@ -238,6 +418,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private bool SaveNewRow(DataGridView grid)
         {
+            if (_dtpExpiry.Visible) CommitDateAndHide();
+            if (_cboBatch.Visible) CommitBatchAndHide();
+
             if (!(grid.DataSource is DataTable table) || table.Rows.Count == 0) return false;
             int lastIndex = table.Rows.Count - 1;
             DataRow row = table.Rows[lastIndex];
@@ -246,13 +429,14 @@ namespace AceCareClinicSystem.AceCare_UserControls
             try
             {
                 string name = row["Name"]?.ToString() ?? "";
+                string batch = row["BatchNumber"]?.ToString() ?? "";
                 if (string.IsNullOrWhiteSpace(name)) { MessageBox.Show("Name cannot be empty.", "Validation Error"); return false; }
 
                 int qty = Convert.ToInt32(row["Quantity"] ?? 0);
                 DateTime expiry = Convert.ToDateTime(row["ExpiryDate"] ?? DateTime.Now);
                 string category = grid == dgvMedicineRecords ? "Medicine" : "Supply";
 
-                if (_controller.AddItem(name, qty, category, expiry))
+                if (_controller.AddItem(name, batch, qty, category, expiry))
                 {
                     row.AcceptChanges();
                     return true;
@@ -265,6 +449,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private void SaveSingleRow(DataGridView grid, int rowIndex)
         {
+            if (_dtpExpiry.Visible) CommitDateAndHide();
+            if (_cboBatch.Visible) CommitBatchAndHide();
+
             if (!(grid.DataSource is DataTable table) || rowIndex < 0 || rowIndex >= table.Rows.Count) return;
             DataRow row = table.Rows[rowIndex];
             if (row.RowState != DataRowState.Modified || row["ItemID"] == DBNull.Value) return;
@@ -274,11 +461,14 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 int id = Convert.ToInt32(row["ItemID"]);
                 if (id == 0) return;
                 string name = row["Name"]?.ToString() ?? "";
+                string newBatch = row["BatchNumber"]?.ToString() ?? "";
+                string oldBatch = row.HasVersion(DataRowVersion.Original) ? 
+                                  row["BatchNumber", DataRowVersion.Original]?.ToString() ?? "" : newBatch;
                 int qty = Convert.ToInt32(row["Quantity"] ?? 0);
                 double usage = Convert.ToDouble(row["WeeklyUsage"] ?? 0);
                 DateTime expiry = Convert.ToDateTime(row["ExpiryDate"] ?? DateTime.Now);
 
-                if (_controller.UpdateFullItem(id, name, qty, usage, expiry)) row.AcceptChanges();
+                if (_controller.UpdateFullItem(id, name, oldBatch, newBatch, qty, usage, expiry)) row.AcceptChanges();
             }
             catch (Exception ex) { Console.WriteLine($"Auto-save error: {ex.Message}"); }
         }
@@ -368,14 +558,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     {
                         MessageBox.Show("Successfully updated records!", "AceCare",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        _isAddingNew = false;
-                        RefreshDashboard();
                     }
-                    else
-                    {
-                        MessageBox.Show("No changes were saved. Did you edit any rows?", "AceCare Notice",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    
+                    _isAddingNew = false;
+                    RefreshDashboard();
                 }
                 catch (Exception ex)
                 {
@@ -392,6 +578,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private bool SaveGridChanges(DataGridView grid, DataTable table)
         {
+            if (_dtpExpiry.Visible) CommitDateAndHide();
+            if (_cboBatch.Visible) CommitBatchAndHide();
+
             if (grid.CurrentCell != null && grid.IsCurrentCellInEditMode)
             {
                 grid.EndEdit();
@@ -419,6 +608,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     try
                     {
                         string name = row["Name"].ToString();
+                        string batch = row["BatchNumber"]?.ToString() ?? "";
                         if (string.IsNullOrWhiteSpace(name))
                         {
                             MessageBox.Show("Name cannot be empty.");
@@ -431,7 +621,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
                         string category = (grid == dgvMedicineRecords) ? "Medicine" : "Supply";
 
-                        if (_controller.AddItem(name, qty, category, expiry))
+                        if (_controller.AddItem(name, batch, qty, category, expiry))
                         {
                             insertCount++;
                             row.AcceptChanges();
@@ -453,13 +643,17 @@ namespace AceCareClinicSystem.AceCare_UserControls
                         if (id == 0) continue;
 
                         string name = row["Name"].ToString();
+                        string newBatch = row["BatchNumber"]?.ToString() ?? "";
+                        string oldBatch = row.HasVersion(DataRowVersion.Original) ? 
+                                          row["BatchNumber", DataRowVersion.Original]?.ToString() ?? "" : newBatch;
+
                         int qty = Convert.ToInt32(row["Quantity"]);
                         double usage = (row["WeeklyUsage"] == DBNull.Value) ?
                             0 : Convert.ToDouble(row["WeeklyUsage"]);
                         DateTime expiry = (row["ExpiryDate"] == DBNull.Value) ?
                             DateTime.Now : Convert.ToDateTime(row["ExpiryDate"]);
 
-                        if (_controller.UpdateFullItem(id, name, qty, usage, expiry))
+                        if (_controller.UpdateFullItem(id, name, oldBatch, newBatch, qty, usage, expiry))
                         {
                             updateCount++;
                             row.AcceptChanges();
