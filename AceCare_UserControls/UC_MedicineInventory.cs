@@ -48,6 +48,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             this.Controls.Add(_dtpExpiry);
 
             _cboBatch.DropDownStyle = ComboBoxStyle.DropDown;
+            _cboBatch.FlatStyle = FlatStyle.Flat;
             _cboBatch.Visible = false;
             _cboBatch.Leave += _cboBatch_Leave;
             this.Controls.Add(_cboBatch);
@@ -95,13 +96,19 @@ namespace AceCareClinicSystem.AceCare_UserControls
             DataGridView grid = sender as DataGridView;
             if (e.RowIndex < 0 || grid.ReadOnly) return;
             
-            if (grid.Columns[e.ColumnIndex].Name == "ExpiryDate")
+            if (grid.Columns[e.ColumnIndex].Name == "ExpiryDate" || grid.Columns[e.ColumnIndex].Name == "Expiry")
             {
                 Rectangle rect = grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-                _dtpExpiry.Size = new Size(rect.Width, rect.Height);
                 
-                Point pt = grid.PointToScreen(new Point(rect.X, rect.Y));
-                _dtpExpiry.Location = this.PointToClient(pt);
+                if (_dtpExpiry.Parent != grid)
+                {
+                    grid.Controls.Add(_dtpExpiry);
+                }
+
+                _dtpExpiry.Font = grid.DefaultCellStyle.Font ?? grid.Font;
+                _dtpExpiry.Width = rect.Width;
+                int yDate = rect.Y + (rect.Height - _dtpExpiry.Height) / 2;
+                _dtpExpiry.Location = new Point(rect.X, yDate);
                 
                 object val = grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 if (val != null && val != DBNull.Value && DateTime.TryParse(val.ToString(), out DateTime dt))
@@ -121,10 +128,16 @@ namespace AceCareClinicSystem.AceCare_UserControls
             else if (grid.Columns[e.ColumnIndex].Name == "BatchNumber")
             {
                 Rectangle rect = grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-                _cboBatch.Size = new Size(rect.Width, rect.Height);
                 
-                Point pt = grid.PointToScreen(new Point(rect.X, rect.Y));
-                _cboBatch.Location = this.PointToClient(pt);
+                if (_cboBatch.Parent != grid)
+                {
+                    grid.Controls.Add(_cboBatch);
+                }
+
+                _cboBatch.Font = grid.DefaultCellStyle.Font ?? grid.Font;
+                _cboBatch.Width = rect.Width;
+                int yBatch = rect.Y + (rect.Height - _cboBatch.Height) / 2;
+                _cboBatch.Location = new Point(rect.X, yBatch);
                 
                 object val = grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 _cboBatch.Text = val?.ToString() ?? "";

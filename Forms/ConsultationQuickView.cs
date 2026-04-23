@@ -1,13 +1,17 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace AceCareClinicSystem.Forms
 {
     public partial class ConsultationQuickView : Form
     {
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int PatientId { get; private set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DialogResult ResultAction { get; private set; }
 
         public ConsultationQuickView(DataRow row)

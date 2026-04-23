@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -14,6 +14,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private int selectedPatientId = 0;
         private bool isInitialized = false;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int SelectedPatientId
         {
             get { return selectedPatientId; }
