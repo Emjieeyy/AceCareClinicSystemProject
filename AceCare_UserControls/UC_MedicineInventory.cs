@@ -22,10 +22,24 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private DataTable _medicineTable;
         private DataTable _suppliesTable;
+
+        // DatePicker for ExpiryDate column
+        private DateTimePicker _dtpExpiry = new DateTimePicker();
+        private DataGridView _activeDateGrid = null;
+        private int _activeDateRow = -1;
+        private int _activeDateCol = -1;
+
         public UC_MedicineInventory()
         {
 
             InitializeComponent();
+
+            _dtpExpiry.Format = DateTimePickerFormat.Custom;
+            _dtpExpiry.CustomFormat = "yyyy-MM-dd";
+            _dtpExpiry.Visible = false;
+            _dtpExpiry.CloseUp += _dtpExpiry_CloseUp;
+            _dtpExpiry.Leave += _dtpExpiry_Leave;
+            this.Controls.Add(_dtpExpiry);
 
             SetupGrid(dgvMedicineRecords);
             SetupGrid(dgvSuppliesRecords);
@@ -40,6 +54,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
             grid.DataError += (s, e) => { e.ThrowException = false; e.Cancel = true; };
             grid.CellEndEdit += Grid_CellEndEdit;
             grid.RowValidated += Grid_RowValidated;
+            grid.CellClick += Grid_CellClick;
+            grid.Scroll += Grid_Scroll;
+            grid.ColumnWidthChanged += Grid_Scroll;
         }
 
         private void Grid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -58,6 +75,55 @@ namespace AceCareClinicSystem.AceCare_UserControls
             {
                 _isAddingNew = false;
                 this.BeginInvoke(new Action(() => RefreshDashboard()));
+            }
+        }
+
+        // ========== DATETIMEPICKER HANDLERS ==========
+        private void Grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = sender as DataGridView;
+            if (e.RowIndex < 0 || grid.ReadOnly) return;
+            
+            if (grid.Columns[e.ColumnIndex].Name == "ExpiryDate")
+            {
+                Rectangle rect = grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                _dtpExpiry.Size = new Size(rect.Width, rect.Height);
+                
+                Point pt = grid.PointToScreen(new Point(rect.X, rect.Y));
+                _dtpExpiry.Location = this.PointToClient(pt);
+                
+                object val = grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if (val != null && val != DBNull.Value && DateTime.TryParse(val.ToString(), out DateTime dt))
+                    _dtpExpiry.Value = dt;
+                else
+                    _dtpExpiry.Value = DateTime.Now;
+                
+                _activeDateGrid = grid;
+                _activeDateRow = e.RowIndex;
+                _activeDateCol = e.ColumnIndex;
+                
+                _dtpExpiry.Visible = true;
+                _dtpExpiry.BringToFront();
+                _dtpExpiry.Focus();
+                SendKeys.Send("{F4}"); 
+            }
+        }
+
+        private void _dtpExpiry_CloseUp(object sender, EventArgs e) => CommitDateAndHide();
+        private void _dtpExpiry_Leave(object sender, EventArgs e) => CommitDateAndHide();
+        private void Grid_Scroll(object sender, EventArgs e)
+        {
+            if (_dtpExpiry.Visible) CommitDateAndHide();
+        }
+
+        private void CommitDateAndHide()
+        {
+            if (!_dtpExpiry.Visible) return;
+            _dtpExpiry.Visible = false;
+            if (_activeDateGrid != null && _activeDateRow >= 0 && _activeDateCol >= 0)
+            {
+                _activeDateGrid.Rows[_activeDateRow].Cells[_activeDateCol].Value = _dtpExpiry.Value.ToString("yyyy-MM-dd");
+                _activeDateGrid.EndEdit();
             }
         }
 
