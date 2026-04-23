@@ -13,6 +13,7 @@ namespace AceCareClinicSystem.Forms
         public AdminDashboard()
         {
             InitializeComponent();
+            
 
             addUserControl(new UC_Home());
         }
@@ -34,7 +35,7 @@ namespace AceCareClinicSystem.Forms
                 ucConsultationWizard = new UC_ConsultationWizard();
             }
 
-            // Load patient data into consultation - FIXED: Added emergencyContactNumber parameter
+            // Load patient data into consultation - FIXED: Added age, sex, address parameters
             ucConsultationWizard.LoadPatientData(
                 patient["patient_number"].ToString(),
                 patient["first_name"].ToString(),
@@ -44,15 +45,15 @@ namespace AceCareClinicSystem.Forms
                 patient["department"].ToString(),
                 Convert.ToDateTime(patient["date_of_birth"]),
                 patient["contact_number"].ToString(),
-                patient["emergency_contact_number"].ToString(),  // ✅ ADDED: Emergency Contact NUMBER
-                patient["emergency_contact_name"].ToString(),      // ✅ Emergency Contact NAME
-                patient["year_level"]?.ToString()
+                patient["emergency_contact_number"].ToString(),
+                patient["emergency_contact_name"].ToString(),
+                patient["year_level"]?.ToString() ?? "",
+                // NEW: Added age, sex, address from patient record
+                patient["age"] != DBNull.Value ? Convert.ToInt32(patient["age"]) : (int?)null,
+                patient["sex"]?.ToString() ?? "",
+                patient["address"]?.ToString() ?? ""
             );
-
-            // Switch to consultation view
-            addUserControl(ucConsultationWizard);
         }
-
         private void Homebtn_Click(object sender, EventArgs e)
         {
             addUserControl(new UC_Home());
@@ -118,6 +119,11 @@ namespace AceCareClinicSystem.Forms
         private void btnAboutAd_Click(object sender, EventArgs e)
         {
             addUserControl(new UC_About());
+        }
+
+        private void btnPatientHistory_Click(object sender, EventArgs e)
+        {
+            addUserControl(new UC_PatientHistory());
         }
     }
 }

@@ -7,7 +7,7 @@ namespace AceCareClinicSystem.Controllers
 {
     public class ConsultationController
     {
-        private string connStr = "server=localhost;port=3306;database=acecaredb;user=root;password=;Charset=utf8;SslMode=Disabled;";
+        private string connStr = "server=localhost;port=3306;database=acecare_db;user=root;password=;Charset=utf8;SslMode=Disabled;";
 
         /// <summary>
         /// Get patient_id from patient_number

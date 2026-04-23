@@ -49,6 +49,7 @@
             pictureBox8 = new PictureBox();
             Homebtn = new ReaLTaiizor.Controls.HopeButton();
             HomemainPanel = new Panel();
+            btnPatientHistory = new ReaLTaiizor.Controls.HopeButton();
             SideBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
@@ -65,6 +66,7 @@
             // SideBarPanel
             // 
             SideBarPanel.BackColor = Color.FromArgb(11, 45, 114);
+            SideBarPanel.Controls.Add(btnPatientHistory);
             SideBarPanel.Controls.Add(pictureBox9);
             SideBarPanel.Controls.Add(btnAboutAd);
             SideBarPanel.Controls.Add(pictureBox7);
@@ -363,6 +365,26 @@
             HomemainPanel.TabIndex = 1;
             HomemainPanel.Paint += HomemainPanel_Paint;
             // 
+            // btnPatientHistory
+            // 
+            btnPatientHistory.BorderColor = Color.FromArgb(220, 223, 230);
+            btnPatientHistory.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            btnPatientHistory.DangerColor = Color.FromArgb(245, 108, 108);
+            btnPatientHistory.DefaultColor = Color.FromArgb(255, 255, 255);
+            btnPatientHistory.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPatientHistory.HoverTextColor = Color.FromArgb(48, 49, 51);
+            btnPatientHistory.InfoColor = Color.FromArgb(144, 147, 153);
+            btnPatientHistory.Location = new Point(-28, 623);
+            btnPatientHistory.Name = "btnPatientHistory";
+            btnPatientHistory.PrimaryColor = Color.FromArgb(11, 45, 114);
+            btnPatientHistory.Size = new Size(297, 51);
+            btnPatientHistory.SuccessColor = Color.FromArgb(103, 194, 58);
+            btnPatientHistory.TabIndex = 20;
+            btnPatientHistory.Text = "      Patient History";
+            btnPatientHistory.TextColor = Color.White;
+            btnPatientHistory.WarningColor = Color.FromArgb(230, 162, 60);
+            btnPatientHistory.Click += btnPatientHistory_Click;
+            // 
             // AdminDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -411,5 +433,6 @@
         private PictureBox pictureBox8;
         private PictureBox pictureBox9;
         private ReaLTaiizor.Controls.HopeButton btnAboutAd;
+        private ReaLTaiizor.Controls.HopeButton btnPatientHistory;
     }
 }

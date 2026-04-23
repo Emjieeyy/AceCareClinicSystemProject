@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_PatientRecords));
             label1 = new Label();
             panel1 = new Panel();
@@ -82,6 +82,12 @@
             label4 = new Label();
             label3 = new Label();
             toolTip1 = new ToolTip(components);
+            txtAge = new TextBox();
+            label17 = new Label();
+            cmbSex = new ReaLTaiizor.Controls.PoisonComboBox();
+            label19 = new Label();
+            txtAddress = new TextBox();
+            label18 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPatients).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -222,41 +228,41 @@
             dgvPatients.BorderStyle = BorderStyle.None;
             dgvPatients.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
             dgvPatients.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle1.Padding = new Padding(7);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle5.Padding = new Padding(7);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPatients.Columns.AddRange(new DataGridViewColumn[] { PatientName, IDNumber, PatientType, Dept, LastVisit, Delete });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.Padding = new Padding(7);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(192, 255, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvPatients.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.Padding = new Padding(7);
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(192, 255, 255);
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvPatients.DefaultCellStyle = dataGridViewCellStyle7;
             dgvPatients.EnableHeadersVisualStyles = false;
             dgvPatients.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvPatients.GridColor = Color.FromArgb(11, 45, 114);
             dgvPatients.Location = new Point(0, 265);
             dgvPatients.Name = "dgvPatients";
             dgvPatients.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.DarkBlue;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.Padding = new Padding(7);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.DarkBlue;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.Padding = new Padding(7);
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvPatients.RowHeadersWidth = 51;
             dgvPatients.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvPatients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -269,9 +275,9 @@
             // 
             PatientName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             PatientName.DataPropertyName = "PatientName";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            PatientName.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            PatientName.DefaultCellStyle = dataGridViewCellStyle6;
             PatientName.HeaderText = "Patients Name";
             PatientName.MinimumWidth = 6;
             PatientName.Name = "PatientName";
@@ -369,6 +375,12 @@
             // 
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
             panel2.BackgroundImageLayout = ImageLayout.Zoom;
+            panel2.Controls.Add(label18);
+            panel2.Controls.Add(txtAddress);
+            panel2.Controls.Add(label19);
+            panel2.Controls.Add(cmbSex);
+            panel2.Controls.Add(label17);
+            panel2.Controls.Add(txtAge);
             panel2.Controls.Add(label16);
             panel2.Controls.Add(pictureBox12);
             panel2.Controls.Add(label14);
@@ -432,7 +444,7 @@
             label14.AutoSize = true;
             label14.BackColor = Color.FromArgb(235, 239, 244);
             label14.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.Location = new Point(273, 533);
+            label14.Location = new Point(273, 568);
             label14.Name = "label14";
             label14.Size = new Size(206, 19);
             label14.TabIndex = 58;
@@ -441,7 +453,7 @@
             // txtEmergencyContactNo
             // 
             txtEmergencyContactNo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEmergencyContactNo.Location = new Point(274, 571);
+            txtEmergencyContactNo.Location = new Point(274, 599);
             txtEmergencyContactNo.Name = "txtEmergencyContactNo";
             txtEmergencyContactNo.Size = new Size(224, 34);
             txtEmergencyContactNo.TabIndex = 57;
@@ -452,7 +464,7 @@
             pictureBox2.BackgroundImage = Properties.Resources.add__1_;
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
-            pictureBox2.Location = new Point(190, 128);
+            pictureBox2.Location = new Point(190, 119);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(57, 29);
             pictureBox2.TabIndex = 54;
@@ -467,7 +479,7 @@
             btnAddNewPatient.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddNewPatient.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnAddNewPatient.InfoColor = Color.FromArgb(144, 147, 153);
-            btnAddNewPatient.Location = new Point(66, 120);
+            btnAddNewPatient.Location = new Point(66, 111);
             btnAddNewPatient.Name = "btnAddNewPatient";
             btnAddNewPatient.PrimaryColor = Color.White;
             btnAddNewPatient.Size = new Size(431, 45);
@@ -481,7 +493,7 @@
             // dobTimePicker
             // 
             dobTimePicker.FontSize = ReaLTaiizor.Extension.Poison.PoisonDateTimeSize.Medium;
-            dobTimePicker.Location = new Point(274, 405);
+            dobTimePicker.Location = new Point(274, 384);
             dobTimePicker.MinimumSize = new Size(0, 30);
             dobTimePicker.Name = "dobTimePicker";
             dobTimePicker.Size = new Size(224, 30);
@@ -492,7 +504,7 @@
             label13.AutoSize = true;
             label13.BackColor = Color.FromArgb(235, 239, 244);
             label13.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(274, 376);
+            label13.Location = new Point(274, 355);
             label13.Name = "label13";
             label13.Size = new Size(106, 19);
             label13.TabIndex = 51;
@@ -502,9 +514,9 @@
             // 
             cmbYearLevel.FormattingEnabled = true;
             cmbYearLevel.ItemHeight = 24;
-            cmbYearLevel.Location = new Point(274, 484);
+            cmbYearLevel.Location = new Point(404, 456);
             cmbYearLevel.Name = "cmbYearLevel";
-            cmbYearLevel.Size = new Size(224, 30);
+            cmbYearLevel.Size = new Size(94, 30);
             cmbYearLevel.TabIndex = 49;
             cmbYearLevel.UseSelectable = true;
             // 
@@ -513,11 +525,12 @@
             label12.AutoSize = true;
             label12.BackColor = Color.FromArgb(235, 239, 244);
             label12.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(274, 453);
+            label12.Location = new Point(402, 424);
             label12.Name = "label12";
             label12.Size = new Size(95, 19);
             label12.TabIndex = 48;
             label12.Text = "Year Level";
+            label12.Click += label12_Click;
             // 
             // btnClear
             // 
@@ -528,7 +541,7 @@
             btnClear.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClear.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnClear.InfoColor = Color.FromArgb(144, 147, 153);
-            btnClear.Location = new Point(145, 707);
+            btnClear.Location = new Point(145, 727);
             btnClear.Name = "btnClear";
             btnClear.PrimaryColor = Color.DarkRed;
             btnClear.Size = new Size(160, 59);
@@ -548,7 +561,7 @@
             btnSave.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnSave.InfoColor = Color.FromArgb(144, 147, 153);
-            btnSave.Location = new Point(329, 707);
+            btnSave.Location = new Point(329, 727);
             btnSave.Name = "btnSave";
             btnSave.PrimaryColor = Color.LimeGreen;
             btnSave.Size = new Size(172, 59);
@@ -562,7 +575,7 @@
             // txtEmergencyContactName
             // 
             txtEmergencyContactName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEmergencyContactName.Location = new Point(67, 653);
+            txtEmergencyContactName.Location = new Point(67, 673);
             txtEmergencyContactName.Name = "txtEmergencyContactName";
             txtEmergencyContactName.Size = new Size(434, 34);
             txtEmergencyContactName.TabIndex = 45;
@@ -572,7 +585,7 @@
             label11.AutoSize = true;
             label11.BackColor = Color.FromArgb(235, 239, 244);
             label11.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(65, 622);
+            label11.Location = new Point(65, 647);
             label11.Name = "label11";
             label11.Size = new Size(228, 19);
             label11.TabIndex = 44;
@@ -581,7 +594,7 @@
             // txtContact
             // 
             txtContact.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContact.Location = new Point(66, 571);
+            txtContact.Location = new Point(66, 599);
             txtContact.Name = "txtContact";
             txtContact.Size = new Size(196, 34);
             txtContact.TabIndex = 43;
@@ -591,7 +604,7 @@
             label10.AutoSize = true;
             label10.BackColor = Color.FromArgb(235, 239, 244);
             label10.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(64, 533);
+            label10.Location = new Point(64, 567);
             label10.Name = "label10";
             label10.Size = new Size(107, 19);
             label10.TabIndex = 42;
@@ -601,9 +614,9 @@
             // 
             cmbDepartment.FormattingEnabled = true;
             cmbDepartment.ItemHeight = 24;
-            cmbDepartment.Location = new Point(65, 484);
+            cmbDepartment.Location = new Point(288, 456);
             cmbDepartment.Name = "cmbDepartment";
-            cmbDepartment.Size = new Size(197, 30);
+            cmbDepartment.Size = new Size(102, 30);
             cmbDepartment.TabIndex = 41;
             cmbDepartment.UseSelectable = true;
             // 
@@ -612,7 +625,7 @@
             label9.AutoSize = true;
             label9.BackColor = Color.FromArgb(235, 239, 244);
             label9.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(65, 452);
+            label9.Location = new Point(285, 424);
             label9.Name = "label9";
             label9.Size = new Size(104, 19);
             label9.TabIndex = 40;
@@ -621,7 +634,7 @@
             // txtMI
             // 
             txtMI.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtMI.Location = new Point(64, 408);
+            txtMI.Location = new Point(64, 382);
             txtMI.Name = "txtMI";
             txtMI.Size = new Size(198, 34);
             txtMI.TabIndex = 39;
@@ -629,7 +642,7 @@
             // txtLastName
             // 
             txtLastName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLastName.Location = new Point(274, 331);
+            txtLastName.Location = new Point(274, 311);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(224, 34);
             txtLastName.TabIndex = 38;
@@ -637,7 +650,7 @@
             // txtFirstName
             // 
             txtFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtFirstName.Location = new Point(64, 331);
+            txtFirstName.Location = new Point(64, 311);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(198, 34);
             txtFirstName.TabIndex = 56;
@@ -647,7 +660,7 @@
             label8.AutoSize = true;
             label8.BackColor = Color.FromArgb(235, 239, 244);
             label8.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(66, 376);
+            label8.Location = new Point(66, 355);
             label8.Name = "label8";
             label8.Size = new Size(112, 19);
             label8.TabIndex = 36;
@@ -659,7 +672,7 @@
             label7.AutoSize = true;
             label7.BackColor = Color.FromArgb(235, 239, 244);
             label7.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(274, 299);
+            label7.Location = new Point(274, 285);
             label7.Name = "label7";
             label7.Size = new Size(95, 19);
             label7.TabIndex = 35;
@@ -670,7 +683,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.FromArgb(235, 239, 244);
             label6.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(64, 299);
+            label6.Location = new Point(64, 286);
             label6.Name = "label6";
             label6.Size = new Size(94, 19);
             label6.TabIndex = 34;
@@ -679,7 +692,7 @@
             // txtIDNumber
             // 
             txtIDNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtIDNumber.Location = new Point(66, 251);
+            txtIDNumber.Location = new Point(66, 241);
             txtIDNumber.Name = "txtIDNumber";
             txtIDNumber.Size = new Size(434, 34);
             txtIDNumber.TabIndex = 33;
@@ -690,7 +703,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.FromArgb(235, 239, 244);
             label5.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(64, 222);
+            label5.Location = new Point(64, 212);
             label5.Name = "label5";
             label5.Size = new Size(97, 19);
             label5.TabIndex = 32;
@@ -701,7 +714,7 @@
             cmbCategory.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             cmbCategory.FormattingEnabled = true;
             cmbCategory.ItemHeight = 24;
-            cmbCategory.Location = new Point(235, 184);
+            cmbCategory.Location = new Point(235, 174);
             cmbCategory.Name = "cmbCategory";
             cmbCategory.Size = new Size(263, 30);
             cmbCategory.TabIndex = 31;
@@ -713,7 +726,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.FromArgb(235, 239, 244);
             label4.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(63, 186);
+            label4.Location = new Point(63, 176);
             label4.Name = "label4";
             label4.Size = new Size(157, 22);
             label4.TabIndex = 30;
@@ -728,6 +741,66 @@
             label3.Size = new Size(269, 34);
             label3.TabIndex = 29;
             label3.Text = "Patient Information";
+            // 
+            // txtAge
+            // 
+            txtAge.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAge.Location = new Point(63, 452);
+            txtAge.Name = "txtAge";
+            txtAge.Size = new Size(95, 34);
+            txtAge.TabIndex = 60;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.BackColor = Color.FromArgb(235, 239, 244);
+            label17.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.Location = new Point(66, 425);
+            label17.Name = "label17";
+            label17.Size = new Size(44, 19);
+            label17.TabIndex = 61;
+            label17.Text = "Age";
+            // 
+            // cmbSex
+            // 
+            cmbSex.FormattingEnabled = true;
+            cmbSex.ItemHeight = 24;
+            cmbSex.Items.AddRange(new object[] { "Male", "Female" });
+            cmbSex.Location = new Point(168, 456);
+            cmbSex.Name = "cmbSex";
+            cmbSex.Size = new Size(107, 30);
+            cmbSex.TabIndex = 62;
+            cmbSex.UseSelectable = true;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.BackColor = Color.FromArgb(235, 239, 244);
+            label19.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label19.Location = new Point(166, 428);
+            label19.Name = "label19";
+            label19.Size = new Size(39, 19);
+            label19.TabIndex = 64;
+            label19.Text = "Sex";
+            // 
+            // txtAddress
+            // 
+            txtAddress.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAddress.Location = new Point(65, 521);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(434, 34);
+            txtAddress.TabIndex = 65;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.BackColor = Color.FromArgb(235, 239, 244);
+            label18.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label18.Location = new Point(66, 494);
+            label18.Name = "label18";
+            label18.Size = new Size(76, 19);
+            label18.TabIndex = 66;
+            label18.Text = "Address";
             // 
             // UC_PatientRecords
             // 
@@ -801,5 +874,11 @@
         private PictureBox pictureBox12;
         private Label label15;
         private Label label16;
+        private TextBox txtAge;
+        private Label label19;
+        private ReaLTaiizor.Controls.PoisonComboBox cmbSex;
+        private Label label17;
+        private Label label18;
+        private TextBox txtAddress;
     }
 }
