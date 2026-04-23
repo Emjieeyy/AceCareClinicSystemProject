@@ -156,6 +156,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
             _dtpExpiry.Visible = false;
             if (_activeDateGrid != null && _activeDateRow >= 0 && _activeDateCol >= 0)
             {
+                string propName = _activeDateGrid.Columns[_activeDateCol].DataPropertyName;
+                if (string.IsNullOrEmpty(propName)) propName = _activeDateGrid.Columns[_activeDateCol].Name;
+
+                DataRowView drv = _activeDateGrid.Rows[_activeDateRow].DataBoundItem as DataRowView;
+                if (drv != null) drv.Row[propName] = _dtpExpiry.Value.ToString("yyyy-MM-dd");
+
                 _activeDateGrid.Rows[_activeDateRow].Cells[_activeDateCol].Value = _dtpExpiry.Value.ToString("yyyy-MM-dd");
                 _activeDateGrid.EndEdit();
             }
@@ -167,6 +173,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
             _cboBatch.Visible = false;
             if (_activeBatchGrid != null && _activeBatchRow >= 0 && _activeBatchCol >= 0)
             {
+                string propName = _activeBatchGrid.Columns[_activeBatchCol].DataPropertyName;
+                if (string.IsNullOrEmpty(propName)) propName = _activeBatchGrid.Columns[_activeBatchCol].Name;
+
+                DataRowView drv = _activeBatchGrid.Rows[_activeBatchRow].DataBoundItem as DataRowView;
+                if (drv != null) drv.Row[propName] = _cboBatch.Text;
+
                 _activeBatchGrid.Rows[_activeBatchRow].Cells[_activeBatchCol].Value = _cboBatch.Text;
                 _activeBatchGrid.EndEdit();
             }
@@ -212,6 +224,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 dgvSuppliesRecords.DataSource = _suppliesTable;
                 HideIdColumn(dgvSuppliesRecords);
 
+                ReorderGridColumns(dgvMedicineRecords);
+                ReorderGridColumns(dgvSuppliesRecords);
+
                 UpdateMedicinePaginationDisplay();
                 UpdateSuppliesPaginationDisplay();
 
@@ -232,8 +247,26 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             if (dgv.Columns["ItemID"] != null)
                 dgv.Columns["ItemID"].Visible = false;
+            if (dgv.Columns["colMedItemID"] != null)
+                dgv.Columns["colMedItemID"].Visible = false;
         }
 
+        private void ReorderGridColumns(DataGridView dgv)
+        {
+            try
+            {
+                // Find column indexes visually
+                var batchCol = dgv.Columns["BatchNumber"];
+                var expiryCol = dgv.Columns["Expiry"] ?? dgv.Columns["ExpiryDate"];
+
+                if (batchCol != null && expiryCol != null)
+                {
+                    batchCol.DisplayIndex = 3;
+                    expiryCol.DisplayIndex = 4;
+                }
+            }
+            catch { }
+        }
 
         // ========== UPDATE MEDICINE PAGINATION UI ==========
         private void UpdateMedicinePaginationDisplay()
