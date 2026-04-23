@@ -79,10 +79,12 @@
             Column9 = new DataGridViewTextBoxColumn();
             Column11 = new DataGridViewTextBoxColumn();
             Remarks = new DataGridViewTextBoxColumn();
-            Scrollbar = new ReaLTaiizor.Controls.PoisonScrollBar();
             ReloadPix = new PictureBox();
             btnPrev = new ReaLTaiizor.Controls.HopeRoundButton();
             btnNext = new ReaLTaiizor.Controls.HopeRoundButton();
+            btnSearch = new ReaLTaiizor.Controls.HopeRoundButton();
+            txtSearch = new TextBox();
+            btnExport = new ReaLTaiizor.Controls.HopeRoundButton();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -95,7 +97,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 20);
+            label1.Location = new Point(13, 17);
             label1.Name = "label1";
             label1.Size = new Size(269, 44);
             label1.TabIndex = 0;
@@ -133,16 +135,16 @@
             panel3.Controls.Add(label13);
             panel3.Controls.Add(label14);
             panel3.Controls.Add(label15);
-            panel3.Location = new Point(610, 74);
+            panel3.Location = new Point(610, 64);
             panel3.Name = "panel3";
-            panel3.Size = new Size(626, 272);
+            panel3.Size = new Size(626, 282);
             panel3.TabIndex = 9;
             // 
             // lblVitalsTimestamp
             // 
             lblVitalsTimestamp.AutoSize = true;
             lblVitalsTimestamp.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblVitalsTimestamp.Location = new Point(245, 223);
+            lblVitalsTimestamp.Location = new Point(196, 224);
             lblVitalsTimestamp.Name = "lblVitalsTimestamp";
             lblVitalsTimestamp.Size = new Size(117, 17);
             lblVitalsTimestamp.TabIndex = 29;
@@ -150,11 +152,10 @@
             // 
             // lblPF
             // 
-            lblPF.AutoSize = true;
             lblPF.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPF.Location = new Point(484, 185);
+            lblPF.Location = new Point(424, 177);
             lblPF.Name = "lblPF";
-            lblPF.Size = new Size(59, 23);
+            lblPF.Size = new Size(163, 62);
             lblPF.TabIndex = 28;
             lblPF.Text = "lblAdd";
             // 
@@ -162,7 +163,7 @@
             // 
             lblOxSat.AutoSize = true;
             lblOxSat.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOxSat.Location = new Point(481, 139);
+            lblOxSat.Location = new Point(425, 136);
             lblOxSat.Name = "lblOxSat";
             lblOxSat.Size = new Size(59, 23);
             lblOxSat.TabIndex = 27;
@@ -172,7 +173,7 @@
             // 
             lblRR.AutoSize = true;
             lblRR.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblRR.Location = new Point(481, 91);
+            lblRR.Location = new Point(424, 91);
             lblRR.Name = "lblRR";
             lblRR.Size = new Size(59, 23);
             lblRR.TabIndex = 26;
@@ -182,7 +183,7 @@
             // 
             lblPR.AutoSize = true;
             lblPR.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPR.Location = new Point(226, 185);
+            lblPR.Location = new Point(196, 173);
             lblPR.Name = "lblPR";
             lblPR.Size = new Size(59, 23);
             lblPR.TabIndex = 25;
@@ -192,7 +193,7 @@
             // 
             lblBP.AutoSize = true;
             lblBP.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblBP.Location = new Point(226, 136);
+            lblBP.Location = new Point(196, 133);
             lblBP.Name = "lblBP";
             lblBP.Size = new Size(59, 23);
             lblBP.TabIndex = 24;
@@ -202,7 +203,7 @@
             // 
             lblTemp.AutoSize = true;
             lblTemp.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTemp.Location = new Point(226, 91);
+            lblTemp.Location = new Point(196, 90);
             lblTemp.Name = "lblTemp";
             lblTemp.Size = new Size(59, 23);
             lblTemp.TabIndex = 23;
@@ -211,60 +212,60 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Sans Serif Collection", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(314, 127);
+            label9.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(271, 128);
             label9.Name = "label9";
-            label9.Size = new Size(119, 58);
+            label9.Size = new Size(103, 23);
             label9.TabIndex = 8;
             label9.Text = "Oxygen Sat:";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Sans Serif Collection", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(315, 174);
+            label10.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Location = new Point(271, 174);
             label10.Name = "label10";
-            label10.Size = new Size(163, 58);
+            label10.Size = new Size(144, 23);
             label10.TabIndex = 7;
             label10.Text = "Physical Findings:";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Sans Serif Collection", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(314, 81);
+            label11.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(268, 82);
             label11.Name = "label11";
-            label11.Size = new Size(161, 58);
+            label11.Size = new Size(142, 23);
             label11.TabIndex = 6;
             label11.Text = "Respiratory Rate:";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Sans Serif Collection", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.Location = new Point(86, 175);
+            label12.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.Location = new Point(56, 177);
             label12.Name = "label12";
-            label12.Size = new Size(112, 58);
+            label12.Size = new Size(94, 23);
             label12.TabIndex = 5;
             label12.Text = "Pulse Rate:";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Font = new Font("Sans Serif Collection", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new Point(85, 126);
+            label13.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.Location = new Point(55, 129);
             label13.Name = "label13";
-            label13.Size = new Size(148, 58);
+            label13.Size = new Size(127, 23);
             label13.TabIndex = 4;
             label13.Text = "Blood Pressure:";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new Font("Sans Serif Collection", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.Location = new Point(85, 79);
+            label14.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.Location = new Point(55, 82);
             label14.Name = "label14";
-            label14.Size = new Size(135, 58);
+            label14.Size = new Size(110, 23);
             label14.TabIndex = 3;
             label14.Text = "Temperature:";
             // 
@@ -272,7 +273,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.Location = new Point(69, 41);
+            label15.Location = new Point(53, 41);
             label15.Name = "label15";
             label15.Size = new Size(157, 27);
             label15.TabIndex = 2;
@@ -298,18 +299,19 @@
             panel2.Controls.Add(label17);
             panel2.Controls.Add(label16);
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(3, 76);
+            panel2.Location = new Point(3, 65);
             panel2.Name = "panel2";
-            panel2.Size = new Size(626, 272);
+            panel2.Size = new Size(626, 284);
             panel2.TabIndex = 1;
+            panel2.Paint += panel2_Paint;
             // 
             // lblAddress
             // 
-            lblAddress.AutoSize = true;
             lblAddress.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAddress.Location = new Point(435, 194);
+            lblAddress.Location = new Point(354, 169);
+            lblAddress.MaximumSize = new Size(280, 0);
             lblAddress.Name = "lblAddress";
-            lblAddress.Size = new Size(59, 23);
+            lblAddress.Size = new Size(225, 78);
             lblAddress.TabIndex = 22;
             lblAddress.Text = "lblAdd";
             // 
@@ -317,7 +319,7 @@
             // 
             lblContactNo.AutoSize = true;
             lblContactNo.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblContactNo.Location = new Point(435, 137);
+            lblContactNo.Location = new Point(381, 130);
             lblContactNo.Name = "lblContactNo";
             lblContactNo.Size = new Size(88, 23);
             lblContactNo.TabIndex = 21;
@@ -327,7 +329,7 @@
             // 
             lblDob.AutoSize = true;
             lblDob.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDob.Location = new Point(433, 87);
+            lblDob.Location = new Point(382, 82);
             lblDob.Name = "lblDob";
             lblDob.Size = new Size(60, 23);
             lblDob.TabIndex = 20;
@@ -337,7 +339,7 @@
             // 
             lblSex.AutoSize = true;
             lblSex.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSex.Location = new Point(257, 194);
+            lblSex.Location = new Point(106, 207);
             lblSex.Name = "lblSex";
             lblSex.Size = new Size(54, 23);
             lblSex.TabIndex = 19;
@@ -347,7 +349,7 @@
             // 
             lblAge.AutoSize = true;
             lblAge.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAge.Location = new Point(125, 194);
+            lblAge.Location = new Point(109, 167);
             lblAge.Name = "lblAge";
             lblAge.Size = new Size(58, 23);
             lblAge.TabIndex = 18;
@@ -357,7 +359,7 @@
             // 
             lblName.AutoSize = true;
             lblName.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblName.Location = new Point(180, 134);
+            lblName.Location = new Point(109, 125);
             lblName.Name = "lblName";
             lblName.Size = new Size(74, 23);
             lblName.TabIndex = 17;
@@ -367,7 +369,7 @@
             // 
             lblPatient.AutoSize = true;
             lblPatient.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPatient.Location = new Point(180, 87);
+            lblPatient.Location = new Point(142, 83);
             lblPatient.Name = "lblPatient";
             lblPatient.Size = new Size(81, 23);
             lblPatient.TabIndex = 16;
@@ -376,8 +378,8 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(327, 194);
+            label8.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(279, 186);
             label8.Name = "label8";
             label8.Size = new Size(74, 23);
             label8.TabIndex = 15;
@@ -386,8 +388,8 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(327, 135);
+            label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(277, 130);
             label6.Name = "label6";
             label6.Size = new Size(102, 23);
             label6.TabIndex = 14;
@@ -396,8 +398,8 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(327, 87);
+            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(277, 81);
             label5.Name = "label5";
             label5.Size = new Size(91, 23);
             label5.TabIndex = 13;
@@ -406,18 +408,18 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(211, 194);
+            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(50, 209);
             label4.Name = "label4";
-            label4.Size = new Size(40, 23);
+            label4.Size = new Size(41, 23);
             label4.TabIndex = 12;
             label4.Text = "Sex:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(75, 194);
+            label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(51, 166);
             label3.Name = "label3";
             label3.Size = new Size(44, 23);
             label3.TabIndex = 11;
@@ -426,8 +428,8 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label17.Location = new Point(75, 137);
+            label17.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.Location = new Point(49, 124);
             label17.Name = "label17";
             label17.Size = new Size(60, 23);
             label17.TabIndex = 10;
@@ -436,10 +438,10 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label16.Location = new Point(74, 87);
+            label16.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.Location = new Point(50, 81);
             label16.Name = "label16";
-            label16.Size = new Size(89, 23);
+            label16.Size = new Size(90, 23);
             label16.TabIndex = 9;
             label16.Text = "Patient ID:";
             // 
@@ -447,7 +449,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(47, 32);
+            label2.Location = new Point(46, 37);
             label2.Name = "label2";
             label2.Size = new Size(222, 27);
             label2.TabIndex = 2;
@@ -458,7 +460,7 @@
             logo1.BackColor = Color.Transparent;
             logo1.BackgroundImage = (Image)resources.GetObject("logo1.BackgroundImage");
             logo1.BackgroundImageLayout = ImageLayout.Stretch;
-            logo1.Location = new Point(1145, 0);
+            logo1.Location = new Point(1149, -13);
             logo1.Name = "logo1";
             logo1.Size = new Size(102, 97);
             logo1.TabIndex = 33;
@@ -492,7 +494,7 @@
             dgvPatientHistory.EnableHeadersVisualStyles = false;
             dgvPatientHistory.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvPatientHistory.GridColor = Color.FromArgb(255, 255, 255);
-            dgvPatientHistory.Location = new Point(3, 365);
+            dgvPatientHistory.Location = new Point(4, 387);
             dgvPatientHistory.Name = "dgvPatientHistory";
             dgvPatientHistory.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -506,7 +508,7 @@
             dgvPatientHistory.RowHeadersWidth = 51;
             dgvPatientHistory.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvPatientHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPatientHistory.Size = new Size(1226, 416);
+            dgvPatientHistory.Size = new Size(1243, 408);
             dgvPatientHistory.TabIndex = 2;
             // 
             // Column1
@@ -602,28 +604,13 @@
             Remarks.Name = "Remarks";
             Remarks.Width = 125;
             // 
-            // Scrollbar
-            // 
-            Scrollbar.LargeChange = 10;
-            Scrollbar.Location = new Point(1235, 352);
-            Scrollbar.Maximum = 100;
-            Scrollbar.Minimum = 0;
-            Scrollbar.MouseWheelBarPartitions = 10;
-            Scrollbar.Name = "Scrollbar";
-            Scrollbar.Orientation = ReaLTaiizor.Enum.Poison.ScrollOrientationType.Vertical;
-            Scrollbar.ScrollbarSize = 12;
-            Scrollbar.Size = new Size(12, 699);
-            Scrollbar.TabIndex = 3;
-            Scrollbar.Text = "poisonScrollBar1";
-            Scrollbar.UseSelectable = true;
-            // 
             // ReloadPix
             // 
             ReloadPix.BackColor = Color.Transparent;
             ReloadPix.BackgroundImage = Properties.Resources.loading_arrow;
             ReloadPix.BackgroundImageLayout = ImageLayout.Zoom;
             ReloadPix.InitialImage = Properties.Resources.loading_arrow;
-            ReloadPix.Location = new Point(1005, 795);
+            ReloadPix.Location = new Point(907, 810);
             ReloadPix.Name = "ReloadPix";
             ReloadPix.Size = new Size(50, 32);
             ReloadPix.TabIndex = 52;
@@ -639,7 +626,7 @@
             btnPrev.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPrev.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnPrev.InfoColor = Color.FromArgb(144, 147, 153);
-            btnPrev.Location = new Point(1072, 795);
+            btnPrev.Location = new Point(969, 810);
             btnPrev.Name = "btnPrev";
             btnPrev.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnPrev.Size = new Size(70, 35);
@@ -659,7 +646,7 @@
             btnNext.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnNext.HoverTextColor = Color.FromArgb(48, 49, 51);
             btnNext.InfoColor = Color.FromArgb(144, 147, 153);
-            btnNext.Location = new Point(1159, 795);
+            btnNext.Location = new Point(1051, 810);
             btnNext.Name = "btnNext";
             btnNext.PrimaryColor = Color.FromArgb(11, 45, 114);
             btnNext.Size = new Size(70, 35);
@@ -670,15 +657,65 @@
             btnNext.WarningColor = Color.FromArgb(230, 162, 60);
             btnNext.Click += btnNext_Click;
             // 
+            // btnSearch
+            // 
+            btnSearch.BorderColor = Color.FromArgb(220, 223, 230);
+            btnSearch.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            btnSearch.DangerColor = Color.FromArgb(245, 108, 108);
+            btnSearch.DefaultColor = Color.FromArgb(255, 255, 255);
+            btnSearch.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearch.HoverTextColor = Color.FromArgb(48, 49, 51);
+            btnSearch.InfoColor = Color.FromArgb(144, 147, 153);
+            btnSearch.Location = new Point(1110, 340);
+            btnSearch.Name = "btnSearch";
+            btnSearch.PrimaryColor = Color.FromArgb(11, 45, 114);
+            btnSearch.Size = new Size(109, 35);
+            btnSearch.SuccessColor = Color.FromArgb(103, 194, 58);
+            btnSearch.TabIndex = 35;
+            btnSearch.Text = "Search";
+            btnSearch.TextColor = Color.White;
+            btnSearch.WarningColor = Color.FromArgb(230, 162, 60);
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(814, 342);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(281, 27);
+            txtSearch.TabIndex = 34;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
+            // btnExport
+            // 
+            btnExport.BorderColor = Color.FromArgb(220, 223, 230);
+            btnExport.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            btnExport.DangerColor = Color.FromArgb(245, 108, 108);
+            btnExport.DefaultColor = Color.FromArgb(255, 255, 255);
+            btnExport.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExport.HoverTextColor = Color.FromArgb(48, 49, 51);
+            btnExport.InfoColor = Color.FromArgb(144, 147, 153);
+            btnExport.Location = new Point(1130, 810);
+            btnExport.Name = "btnExport";
+            btnExport.PrimaryColor = Color.FromArgb(11, 45, 114);
+            btnExport.Size = new Size(91, 35);
+            btnExport.SuccessColor = Color.FromArgb(103, 194, 58);
+            btnExport.TabIndex = 53;
+            btnExport.Text = "Export";
+            btnExport.TextColor = Color.White;
+            btnExport.WarningColor = Color.FromArgb(230, 162, 60);
+            btnExport.Click += btnExport_Click;
+            // 
             // UC_PatientHistory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(btnExport);
+            Controls.Add(btnSearch);
             Controls.Add(ReloadPix);
+            Controls.Add(txtSearch);
             Controls.Add(btnPrev);
             Controls.Add(btnNext);
-            Controls.Add(Scrollbar);
             Controls.Add(dgvPatientHistory);
             Controls.Add(panel1);
             Name = "UC_PatientHistory";
@@ -693,6 +730,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvPatientHistory).EndInit();
             ((System.ComponentModel.ISupportInitialize)ReloadPix).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -731,7 +769,6 @@
         private Label lblPR;
         private Label lblBP;
         private Label lblTemp;
-        private ReaLTaiizor.Controls.PoisonScrollBar Scrollbar;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column13;
@@ -748,5 +785,8 @@
         private ReaLTaiizor.Controls.HopeRoundButton btnPrev;
         private ReaLTaiizor.Controls.HopeRoundButton btnNext;
         private Label lblVitalsTimestamp;
+        private ReaLTaiizor.Controls.HopeRoundButton btnSearch;
+        private TextBox txtSearch;
+        private ReaLTaiizor.Controls.HopeRoundButton btnExport;
     }
 }

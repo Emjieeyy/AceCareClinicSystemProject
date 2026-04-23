@@ -65,11 +65,11 @@ namespace AceCareClinicSystem.Controllers
             }
             catch (Exception ex)
             {
-<<<<<<< Updated upstream
+
                 MessageBox.Show("Error getting latest consultation: " + ex.Message);
-=======
+
                 MessageBox.Show("GetLatestConsultation Error: " + ex.Message);
->>>>>>> Stashed changes
+
                 return null;
             }
         }

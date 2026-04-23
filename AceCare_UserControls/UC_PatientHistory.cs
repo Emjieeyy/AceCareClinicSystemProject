@@ -2,9 +2,16 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 using AceCareClinicSystem.Controllers;
 using AceCareClinicSystem.Services;
 using System.ComponentModel;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.Kernel.Font;
+using iText.IO.Font.Constants;
 
 namespace AceCareClinicSystem.AceCare_UserControls
 {
@@ -14,19 +21,16 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private int selectedPatientId = 0;
         private bool isInitialized = false;
 
-<<<<<<< HEAD
-        // ⭐ Pagination variables
+        // Pagination
         private int currentPage = 1;
-        private int pageSize = 7;        // Show 7 rows per page (fits your screen)
+        private int pageSize = 7;
         private int totalRecords = 0;
         private int totalPages = 0;
-        private DataTable allData;       // Store all data for pagination
+        private DataTable allData;
+        private DataTable filteredData;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
-=======
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
->>>>>>> ce99f27ccf54fdef208917347df673532355d7e7
         public int SelectedPatientId
         {
             get { return selectedPatientId; }
@@ -54,123 +58,101 @@ namespace AceCareClinicSystem.AceCare_UserControls
             ClearPatientLabels();
             ClearVitalsLabels();
 
-            // ⭐ CRITICAL: Clear designer columns first to avoid conflicts
             dgvPatientHistory.Columns.Clear();
             dgvPatientHistory.AutoGenerateColumns = false;
 
-            // Apply design
             DataGridViewStyle.ApplyModernDesign(dgvPatientHistory);
-
-            // Setup columns
             SetupGridColumns();
 
-            // Setup pagination buttons
-            SetupPaginationButtons();
+            ReloadPix.Click += ReloadPix_Click;
+            btnPrev.Click += btnPrev_Click;
+            btnNext.Click += btnNext_Click;
+            btnSearch.Click += btnSearch_Click;
 
-            // Load data with pagination
+            txtSearch.KeyDown += TxtSearch_KeyDown;
+
             LoadAllConsultations();
 
             if (selectedPatientId > 0)
                 SelectPatientRow(selectedPatientId);
 
-            // Wire events
             dgvPatientHistory.CellClick += dgvPatientHistory_CellClick;
             dgvPatientHistory.CellDoubleClick += dgvPatientHistory_CellDoubleClick;
             dgvPatientHistory.CellFormatting += dgvPatientHistory_CellFormatting;
+            dgvPatientHistory.CellMouseEnter += dgvPatientHistory_CellMouseEnter;
         }
 
         private void UC_PatientHistory_Load(object sender, EventArgs e) { }
 
-        // ⭐ SETUP PAGINATION BUTTONS
-        private void SetupPaginationButtons()
-        {
-            // Clear existing handlers to avoid duplicates
-            ReloadPix.Click -= ReloadPix_Click;
-            btnPrev.Click -= btnPrev_Click;
-            btnNext.Click -= btnNext_Click;
-
-            ReloadPix.Click += ReloadPix_Click;
-            btnPrev.Click += btnPrev_Click;
-            btnNext.Click += btnNext_Click;
-
-            UpdatePaginationButtons();
-        }
-
         private void SetupGridColumns()
         {
-            // ⭐ IMPORTANT: Set these BEFORE adding columns
-            dgvPatientHistory.ScrollBars = ScrollBars.Horizontal;  // Horizontal only since we paginate vertically
+            dgvPatientHistory.ScrollBars = ScrollBars.Horizontal;
             dgvPatientHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvPatientHistory.AllowUserToResizeColumns = true;
-            dgvPatientHistory.AllowUserToOrderColumns = true;
-            dgvPatientHistory.RowTemplate.Height = 36;            // Taller rows
-            dgvPatientHistory.DefaultCellStyle.WrapMode = DataGridViewTriState.False;  // No wrap for clean rows
-            dgvPatientHistory.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 250, 252);
+            dgvPatientHistory.RowTemplate.Height = 36;
             dgvPatientHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPatientHistory.MultiSelect = false;
             dgvPatientHistory.ReadOnly = true;
             dgvPatientHistory.AllowUserToAddRows = false;
             dgvPatientHistory.AllowUserToDeleteRows = false;
 
-            // Hidden columns
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "ConsultationId", DataPropertyName = "consultation_id", HeaderText = "ConID", Visible = false });
-
-            dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "PatientId", DataPropertyName = "patient_id", HeaderText = "PID", Visible = false });
-
-            // ⭐ VISIBLE COLUMNS — calculated widths to fit your screen (~1050px usable width)
-            // Total: 50+140+75+95+130+140+140+160+110+85+130+180 = 1435px → need horizontal scroll
+            { Name = "ConsultationId", DataPropertyName = "consultation_id", Visible = false });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "DateTime", DataPropertyName = "visit_date", HeaderText = "Date & Time", Width = 135, MinimumWidth = 120 });
+            { Name = "PatientId", DataPropertyName = "patient_id", Visible = false });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "PatientName", DataPropertyName = "patient_name", HeaderText = "Patient Name", Width = 145, MinimumWidth = 130 });
+            { Name = "DateTime", DataPropertyName = "visit_date", HeaderText = "Date & Time", Width = 135 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "AgeSex", DataPropertyName = "age_sex", HeaderText = "Age/Sex", Width = 70, MinimumWidth = 65 });
+            { Name = "PatientName", DataPropertyName = "patient_name", HeaderText = "Patient Name", Width = 145 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "VisitType", DataPropertyName = "visit_type", HeaderText = "Visit Type", Width = 90, MinimumWidth = 80 });
+            { Name = "AgeSex", DataPropertyName = "age_sex", HeaderText = "Age/Sex", Width = 70 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "ChiefComplaint", DataPropertyName = "chief_complaint", HeaderText = "Chief Complaint", Width = 130, MinimumWidth = 110 });
+            { Name = "VisitType", DataPropertyName = "visit_type", HeaderText = "Visit Type", Width = 90 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Vitals", DataPropertyName = "vitals_summary", HeaderText = "Vitals", Width = 125, MinimumWidth = 110 });
-
-            // ⭐ NEW: Vitals Recorded timestamp column
-            dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "VitalsRecorded", DataPropertyName = "vitals_recorded_at", HeaderText = "Vitals Recorded", Width = 135, MinimumWidth = 120 });
+            { Name = "ChiefComplaint", DataPropertyName = "chief_complaint", HeaderText = "Chief Complaint", Width = 130 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Diagnosis", DataPropertyName = "diagnosis", HeaderText = "Diagnosis", Width = 150, MinimumWidth = 130 });
+            { Name = "Vitals", DataPropertyName = "vitals_summary", HeaderText = "Vitals", Width = 125 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Medicine", DataPropertyName = "medicine_name", HeaderText = "Medicine", Width = 105, MinimumWidth = 90 });
+            { Name = "VitalsRecorded", DataPropertyName = "vitals_recorded_at", HeaderText = "Vitals Recorded", Width = 135 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Outcome", DataPropertyName = "outcome", HeaderText = "Outcome", Width = 100, MinimumWidth = 85 });
+            { Name = "Diagnosis", DataPropertyName = "diagnosis", HeaderText = "Diagnosis", Width = 150 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Status", DataPropertyName = "status", HeaderText = "Status", Width = 85, MinimumWidth = 75 });
+            { Name = "Medicine", DataPropertyName = "medicine_name", HeaderText = "Medicine", Width = 105 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "HandledBy", DataPropertyName = "handled_by", HeaderText = "Handled By", Width = 130, MinimumWidth = 110 });
+            { Name = "Outcome", DataPropertyName = "outcome", HeaderText = "Outcome", Width = 100 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Remarks", DataPropertyName = "remarks", HeaderText = "Remarks", Width = 160, MinimumWidth = 140 });
+            { Name = "Status", DataPropertyName = "status", HeaderText = "Status", Width = 85 });
 
-            // Header style
-            dgvPatientHistory.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 58, 95);  // AceCare dark blue
-            dgvPatientHistory.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvPatientHistory.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "HandledBy", DataPropertyName = "handled_by", HeaderText = "Handled By", Width = 130 });
+
+            dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "Remarks", DataPropertyName = "remarks", HeaderText = "Remarks", Width = 160 });
+
+            dgvPatientHistory.Columns["Remarks"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvPatientHistory.Columns["Diagnosis"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvPatientHistory.Columns["ChiefComplaint"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvPatientHistory.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+
+            dgvPatientHistory.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(30, 58, 95);
+            dgvPatientHistory.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            dgvPatientHistory.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9, System.Drawing.FontStyle.Bold);
             dgvPatientHistory.ColumnHeadersHeight = 32;
             dgvPatientHistory.EnableHeadersVisualStyles = false;
         }
 
-        // ⭐ COLOR CODING
         private void dgvPatientHistory_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -180,20 +162,20 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 string status = e.Value.ToString().ToLower();
                 if (status == "completed")
                 {
-                    e.CellStyle.ForeColor = Color.FromArgb(39, 103, 73);
-                    e.CellStyle.BackColor = Color.FromArgb(198, 246, 213);
-                    e.CellStyle.Font = new Font(dgvPatientHistory.Font, FontStyle.Bold);
+                    e.CellStyle.ForeColor = System.Drawing.Color.FromArgb(39, 103, 73);
+                    e.CellStyle.BackColor = System.Drawing.Color.FromArgb(198, 246, 213);
+                    e.CellStyle.Font = new System.Drawing.Font(dgvPatientHistory.Font, System.Drawing.FontStyle.Bold);
                 }
                 else if (status == "referred")
                 {
-                    e.CellStyle.ForeColor = Color.FromArgb(192, 86, 33);
-                    e.CellStyle.BackColor = Color.FromArgb(254, 235, 200);
-                    e.CellStyle.Font = new Font(dgvPatientHistory.Font, FontStyle.Bold);
+                    e.CellStyle.ForeColor = System.Drawing.Color.FromArgb(192, 86, 33);
+                    e.CellStyle.BackColor = System.Drawing.Color.FromArgb(254, 235, 200);
+                    e.CellStyle.Font = new System.Drawing.Font(dgvPatientHistory.Font, System.Drawing.FontStyle.Bold);
                 }
                 else if (status == "pending")
                 {
-                    e.CellStyle.ForeColor = Color.FromArgb(183, 121, 31);
-                    e.CellStyle.BackColor = Color.FromArgb(254, 252, 191);
+                    e.CellStyle.ForeColor = System.Drawing.Color.FromArgb(183, 121, 31);
+                    e.CellStyle.BackColor = System.Drawing.Color.FromArgb(254, 252, 191);
                 }
             }
 
@@ -202,29 +184,43 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 string type = e.Value.ToString().ToLower();
                 if (type == "emergency")
                 {
-                    e.CellStyle.ForeColor = Color.FromArgb(197, 48, 48);
-                    e.CellStyle.BackColor = Color.FromArgb(254, 215, 215);
+                    e.CellStyle.ForeColor = System.Drawing.Color.FromArgb(197, 48, 48);
+                    e.CellStyle.BackColor = System.Drawing.Color.FromArgb(254, 215, 215);
                 }
                 else if (type == "consultation")
                 {
-                    e.CellStyle.ForeColor = Color.FromArgb(43, 108, 176);
-                    e.CellStyle.BackColor = Color.FromArgb(235, 248, 255);
+                    e.CellStyle.ForeColor = System.Drawing.Color.FromArgb(43, 108, 176);
+                    e.CellStyle.BackColor = System.Drawing.Color.FromArgb(235, 248, 255);
                 }
                 else if (type == "first aid")
                 {
-                    e.CellStyle.ForeColor = Color.FromArgb(151, 90, 22);
-                    e.CellStyle.BackColor = Color.FromArgb(254, 252, 191);
+                    e.CellStyle.ForeColor = System.Drawing.Color.FromArgb(151, 90, 22);
+                    e.CellStyle.BackColor = System.Drawing.Color.FromArgb(254, 252, 191);
                 }
             }
         }
 
-        // ⭐ PAGINATION METHODS
+        private void dgvPatientHistory_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            string colName = dgvPatientHistory.Columns[e.ColumnIndex].Name;
+            if (colName == "Remarks" || colName == "Diagnosis" || colName == "ChiefComplaint" || colName == "Medicine")
+            {
+                string cellText = dgvPatientHistory.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
+                if (!string.IsNullOrEmpty(cellText) && cellText.Length > 15)
+                {
+                    dgvPatientHistory.Rows[e.RowIndex].Cells[e.ColumnIndex].ToolTipText = cellText;
+                }
+            }
+        }
+
         private void LoadAllConsultations()
         {
             allData = controller.GetAllConsultationsList();
+            filteredData = null;
             totalRecords = allData.Rows.Count;
             totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
-
             if (totalPages == 0) totalPages = 1;
             if (currentPage > totalPages) currentPage = totalPages;
             if (currentPage < 1) currentPage = 1;
@@ -234,14 +230,18 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private void LoadPage()
         {
-            DataTable pageData = allData.Clone();
+            DataTable sourceData = filteredData ?? allData;
+            totalRecords = sourceData.Rows.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+            if (totalPages == 0) totalPages = 1;
 
+            DataTable pageData = sourceData.Clone();
             int startIndex = (currentPage - 1) * pageSize;
             int endIndex = Math.Min(startIndex + pageSize, totalRecords);
 
             for (int i = startIndex; i < endIndex; i++)
             {
-                pageData.ImportRow(allData.Rows[i]);
+                pageData.ImportRow(sourceData.Rows[i]);
             }
 
             dgvPatientHistory.DataSource = null;
@@ -254,18 +254,14 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             btnPrev.Enabled = currentPage > 1;
             btnNext.Enabled = currentPage < totalPages;
-
-            // Optional: Show page info on ReloadPix or a label
-            // lblPageInfo.Text = $"Page {currentPage} of {totalPages} ({totalRecords} records)";
         }
 
-        // ⭐ BUTTON HANDLERS
         private void ReloadPix_Click(object sender, EventArgs e)
         {
+            txtSearch.Clear();
             currentPage = 1;
+            filteredData = null;
             LoadAllConsultations();
-
-            // Clear selection
             dgvPatientHistory.ClearSelection();
             ClearPatientLabels();
             ClearVitalsLabels();
@@ -286,6 +282,148 @@ namespace AceCareClinicSystem.AceCare_UserControls
             {
                 currentPage++;
                 LoadPage();
+            }
+        }
+
+        private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btnSearch_Click(sender, e);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string search = txtSearch.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(search))
+            {
+                filteredData = null;
+                currentPage = 1;
+                LoadPage();
+                return;
+            }
+
+            filteredData = allData.Clone();
+            foreach (DataRow row in allData.Rows)
+            {
+                if (row["patient_name"].ToString().ToLower().Contains(search) ||
+                    row["chief_complaint"].ToString().ToLower().Contains(search) ||
+                    row["handled_by"].ToString().ToLower().Contains(search) ||
+                    row["visit_type"].ToString().ToLower().Contains(search) ||
+                    row["diagnosis"].ToString().ToLower().Contains(search))
+                {
+                    filteredData.ImportRow(row);
+                }
+            }
+
+            currentPage = 1;
+            LoadPage();
+        }
+
+        // ⭐ EXPORT TO PDF ONLY
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable exportData = controller.GetAllConsultationsList();
+
+                if (exportData.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data to export.", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+                saveDialog.FileName = $"AceCare_PatientHistory_{DateTime.Now:yyyyMMdd_HHmm}.pdf";
+                saveDialog.Title = "Export Patient History";
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (PdfWriter writer = new PdfWriter(saveDialog.FileName))
+                    {
+                        using (PdfDocument pdf = new PdfDocument(writer))
+                        {
+                            pdf.SetDefaultPageSize(iText.Kernel.Geom.PageSize.A4.Rotate());
+                            Document document = new Document(pdf);
+
+                            PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+                            PdfFont normalFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+
+                            document.Add(new Paragraph("AceCare Clinic Management System")
+                                .SetTextAlignment(TextAlignment.CENTER)
+                                .SetFontSize(20)
+                                .SetFont(boldFont));
+
+                            document.Add(new Paragraph("Patient History Report")
+                                .SetTextAlignment(TextAlignment.CENTER)
+                                .SetFontSize(14)
+                                .SetFontColor(iText.Kernel.Colors.ColorConstants.DARK_GRAY));
+
+                            document.Add(new Paragraph($"Generated: {DateTime.Now:MMMM dd, yyyy HH:mm}")
+                                .SetTextAlignment(TextAlignment.CENTER)
+                                .SetFontSize(10));
+
+                            document.Add(new Paragraph("\n"));
+
+                            document.Add(new Paragraph($"Total Records: {exportData.Rows.Count}")
+                                .SetFont(boldFont).SetFontSize(11));
+
+                            if (filteredData != null)
+                            {
+                                document.Add(new Paragraph($"Search Filter: {txtSearch.Text}")
+                                    .SetFontSize(10));
+                            }
+
+                            document.Add(new Paragraph("\n"));
+
+                            float[] columnWidths = { 12, 12, 8, 10, 12, 10, 12, 12, 10, 10, 10, 12, 12 };
+                            Table table = new Table(UnitValue.CreatePercentArray(columnWidths)).UseAllAvailableWidth();
+
+                            string[] headers = { "Date & Time", "Patient Name", "Age/Sex", "Visit Type",
+                                "Chief Complaint", "Vitals", "Vitals Recorded", "Diagnosis", "Medicine",
+                                "Outcome", "Status", "Handled By", "Remarks" };
+
+                            foreach (string header in headers)
+                            {
+                                table.AddHeaderCell(new Cell()
+                                    .Add(new Paragraph(header).SetFont(boldFont).SetFontSize(8))
+                                    .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY));
+                            }
+
+                            for (int row = 0; row < exportData.Rows.Count; row++)
+                            {
+                                DataRow dr = exportData.Rows[row];
+                                table.AddCell(new Paragraph(dr["visit_date"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["patient_name"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["age_sex"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["visit_type"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["chief_complaint"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["vitals_summary"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["vitals_recorded_at"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["diagnosis"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["medicine_name"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["outcome"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["status"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["handled_by"]?.ToString() ?? "N/A").SetFontSize(7));
+                                table.AddCell(new Paragraph(dr["remarks"]?.ToString() ?? "N/A").SetFontSize(7));
+                            }
+
+                            document.Add(table);
+                            document.Close();
+                        }
+                    }
+
+                    MessageBox.Show($"Exported {exportData.Rows.Count} records to PDF successfully!",
+                        "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Export failed: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -328,7 +466,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             if (lblVitalsTimestamp != null)
             {
                 lblVitalsTimestamp.Text = "No records";
-                lblVitalsTimestamp.ForeColor = Color.Gray;
+                lblVitalsTimestamp.ForeColor = System.Drawing.Color.Gray;
             }
         }
 
@@ -381,13 +519,13 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 {
                     DateTime recordedAt = Convert.ToDateTime(r["visit_date"]);
                     lblVitalsTimestamp.Text = "Recorded: " + recordedAt.ToString("MMM dd, yyyy @ hh:mm tt");
-                    lblVitalsTimestamp.ForeColor = Color.FromArgb(100, 116, 139);
-                    lblVitalsTimestamp.Font = new Font(this.Font.FontFamily, 9, FontStyle.Italic);
+                    lblVitalsTimestamp.ForeColor = System.Drawing.Color.FromArgb(100, 116, 139);
+                    lblVitalsTimestamp.Font = new System.Drawing.Font(this.Font.FontFamily, 9, System.Drawing.FontStyle.Italic);
                 }
                 else
                 {
                     lblVitalsTimestamp.Text = "Recorded: Unknown date";
-                    lblVitalsTimestamp.ForeColor = Color.Gray;
+                    lblVitalsTimestamp.ForeColor = System.Drawing.Color.Gray;
                 }
             }
             else
@@ -396,7 +534,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
         }
 
-        // Empty handlers
         private void label1_Click(object sender, EventArgs e) { }
         private void label16_Click(object sender, EventArgs e) { }
         private void lblPatient_Click(object sender, EventArgs e) { }
@@ -413,5 +550,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private void panel3_Paint(object sender, PaintEventArgs e) { }
         private void lblOxSat_Click(object sender, EventArgs e) { }
         private void lblPF_Click(object sender, EventArgs e) { }
+        private void txtSearch_TextChanged(object sender, EventArgs e) { }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

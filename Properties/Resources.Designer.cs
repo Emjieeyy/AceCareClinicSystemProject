@@ -413,6 +413,16 @@ namespace AceCareClinicSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap health_report {
+            get {
+                object obj = ResourceManager.GetObject("health-report", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap healthcare {
             get {
                 object obj = ResourceManager.GetObject("healthcare", resourceCulture);
@@ -516,6 +526,16 @@ namespace AceCareClinicSystem.Properties {
         internal static System.Drawing.Bitmap medical {
             get {
                 object obj = ResourceManager.GetObject("medical", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap medical_record {
+            get {
+                object obj = ResourceManager.GetObject("medical-record", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

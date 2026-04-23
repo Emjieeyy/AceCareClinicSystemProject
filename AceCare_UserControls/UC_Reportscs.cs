@@ -24,76 +24,128 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private ConsultationController consultationController = new ConsultationController();
         private DbConnection db = new DbConnection();
 
-        // Pagination variables
+        // Pagination
         private int currentOffset = 0;
         private int totalRecords = 0;
         private const int PageSize = 10;
-
-        // Cache for unified data
         private DataTable _unifiedDataCache = null;
 
         public UC_Reportscs()
         {
             InitializeComponent();
 
-            // Setup date filter combobox (replaces date pickers)
             SetupDateFilterCombo();
-
-            // Setup category filter dropdown
             SetupCategoryFilter();
+            SetupGridColumns(); // ⭐ NEW: Setup columns with hidden extras
 
-            // Wire up filters
             cbDateFilter.SelectedIndexChanged += (s, e) => { currentOffset = 0; LoadData(); };
             cbDataViewFilter.SelectedIndexChanged += (s, e) => { currentOffset = 0; LoadReportTable(); };
 
-            // Search text
             poisonTextBox1.TextChanged += (s, e) =>
             {
-                if (poisonTextBox1.Text != "Search")
-                {
-                    currentOffset = 0;
-                    LoadReportTable();
-                }
+                if (poisonTextBox1.Text != "Search") { currentOffset = 0; LoadReportTable(); }
             };
+            poisonTextBox1.Click += (s, e) => { if (poisonTextBox1.Text == "Search") poisonTextBox1.Text = ""; };
+            poisonTextBox1.Leave += (s, e) => { if (string.IsNullOrWhiteSpace(poisonTextBox1.Text)) poisonTextBox1.Text = "Search"; };
 
-            poisonTextBox1.Click += (s, e) =>
-            {
-                if (poisonTextBox1.Text == "Search") poisonTextBox1.Text = "";
-            };
-
-            poisonTextBox1.Leave += (s, e) =>
-            {
-                if (string.IsNullOrWhiteSpace(poisonTextBox1.Text))
-                {
-                    poisonTextBox1.Text = "Search";
-                }
-            };
-
-            // Wire up buttons
             hopeRoundButton2.Click += (s, e) => HandleExport();
             btnNext.Click += btnNext_Click;
             btnPrev.Click += btnPrev_Click;
             ReloadPix.Click += ReloadPix_Click;
 
-            // Initial load - show ALL records by default
-            cbDateFilter.SelectedIndex = 0; // "All Time"
+            // ⭐ DOUBLE-CLICK to open Patient History
+            poisonDataGridView1.CellDoubleClick += poisonDataGridView1_CellDoubleClick;
+
+            cbDateFilter.SelectedIndex = 0;
             LoadData();
 
             poisonDataGridView1.RowTemplate.Height = 45;
-            poisonDataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            poisonDataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None; // ⭐ Changed from Fill
+        }
+
+        // ⭐ SETUP COLUMNS — visible + hidden
+        private void SetupGridColumns()
+        {
+            poisonDataGridView1.Columns.Clear();
+            poisonDataGridView1.AutoGenerateColumns = false;
+
+            // === VISIBLE COLUMNS (default view) ===
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "LastVisit", HeaderText = "Last Visit", Width = 100, DataPropertyName = "LastVisit" });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "IDNumber", HeaderText = "ID No.", Width = 80, DataPropertyName = "IDNumber" });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "PatientName", HeaderText = "Patients Name", Width = 120, DataPropertyName = "PatientName" });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "PatientType", HeaderText = "Category", Width = 90, DataPropertyName = "PatientType" });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "Description", HeaderText = "Description", Width = 150, DataPropertyName = "Description" });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "QtyDosage", HeaderText = "Qty / Dosage", Width = 100, DataPropertyName = "QtyDosage" });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "Personnel", HeaderText = "Personnel", Width = 120, DataPropertyName = "Personnel" });
+
+            // === HIDDEN COLUMNS (for export + Patient History jump) ===
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "PatientId", HeaderText = "PID", Width = 50, DataPropertyName = "PatientId", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "ConsultationId", HeaderText = "ConID", Width = 50, DataPropertyName = "ConsultationId", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "AgeSex", HeaderText = "Age/Sex", Width = 70, DataPropertyName = "AgeSex", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "VisitType", HeaderText = "Visit Type", Width = 90, DataPropertyName = "VisitType", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "ChiefComplaint", HeaderText = "Chief Complaint", Width = 130, DataPropertyName = "ChiefComplaint", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "Vitals", HeaderText = "Vitals", Width = 125, DataPropertyName = "Vitals", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "VitalsRecorded", HeaderText = "Vitals Recorded", Width = 135, DataPropertyName = "VitalsRecorded", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "Diagnosis", HeaderText = "Diagnosis", Width = 150, DataPropertyName = "Diagnosis", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "Medicine", HeaderText = "Medicine", Width = 105, DataPropertyName = "Medicine", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "Outcome", HeaderText = "Outcome", Width = 100, DataPropertyName = "Outcome", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "Status", HeaderText = "Status", Width = 85, DataPropertyName = "Status", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "HandledBy", HeaderText = "Handled By", Width = 130, DataPropertyName = "HandledBy", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "Remarks", HeaderText = "Remarks", Width = 160, DataPropertyName = "Remarks", Visible = false });
+
+            poisonDataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "RecordCategory", HeaderText = "Category", Width = 80, DataPropertyName = "RecordCategory", Visible = false });
         }
 
         private void SetupDateFilterCombo()
         {
             cbDateFilter.Items.Clear();
-            cbDateFilter.Items.Add("All Time");           // Show everything
-            cbDateFilter.Items.Add("Today");              // Today only
-            cbDateFilter.Items.Add("Yesterday");          // Yesterday only
-            cbDateFilter.Items.Add("Last 7 Days");        // Last week
-            cbDateFilter.Items.Add("Last 30 Days");       // Last month
-            cbDateFilter.Items.Add("This Month");         // Current month
-            cbDateFilter.Items.Add("Last Month");         // Previous month
-            cbDateFilter.Items.Add("This Year");          // Current year
+            cbDateFilter.Items.Add("All Time");
+            cbDateFilter.Items.Add("Today");
+            cbDateFilter.Items.Add("Yesterday");
+            cbDateFilter.Items.Add("Last 7 Days");
+            cbDateFilter.Items.Add("Last 30 Days");
+            cbDateFilter.Items.Add("This Month");
+            cbDateFilter.Items.Add("Last Month");
+            cbDateFilter.Items.Add("This Year");
             cbDateFilter.SelectedIndex = 0;
         }
 
@@ -107,56 +159,28 @@ namespace AceCareClinicSystem.AceCare_UserControls
             cbDataViewFilter.SelectedIndex = 0;
         }
 
-        // Get date range based on selected filter
         private (DateTime from, DateTime to) GetDateRangeFromFilter()
         {
             DateTime today = DateTime.Today;
-            DateTime fromDate = new DateTime(2000, 1, 1); // Default: all time
+            DateTime fromDate = new DateTime(2000, 1, 1);
             DateTime toDate = DateTime.Today.AddYears(50);
 
             switch (cbDateFilter.SelectedItem?.ToString())
             {
-                case "Today":
-                    fromDate = today;
-                    toDate = today.AddDays(1).AddTicks(-1);
-                    break;
-                case "Yesterday":
-                    fromDate = today.AddDays(-1);
-                    toDate = today.AddTicks(-1);
-                    break;
-                case "Last 7 Days":
-                    fromDate = today.AddDays(-7);
-                    toDate = today.AddDays(1).AddTicks(-1);
-                    break;
-                case "Last 30 Days":
-                    fromDate = today.AddDays(-30);
-                    toDate = today.AddDays(1).AddTicks(-1);
-                    break;
-                case "This Month":
-                    fromDate = new DateTime(today.Year, today.Month, 1);
-                    toDate = fromDate.AddMonths(1).AddTicks(-1);
-                    break;
-                case "Last Month":
-                    fromDate = new DateTime(today.Year, today.Month, 1).AddMonths(-1);
-                    toDate = new DateTime(today.Year, today.Month, 1).AddTicks(-1);
-                    break;
-                case "This Year":
-                    fromDate = new DateTime(today.Year, 1, 1);
-                    toDate = new DateTime(today.Year + 1, 1, 1).AddTicks(-1);
-                    break;
-                case "All Time":
-                default:
-                    fromDate = new DateTime(1900, 1, 1);
-                    toDate = DateTime.Today.AddYears(100);
-                    break;
+                case "Today": fromDate = today; toDate = today.AddDays(1).AddTicks(-1); break;
+                case "Yesterday": fromDate = today.AddDays(-1); toDate = today.AddTicks(-1); break;
+                case "Last 7 Days": fromDate = today.AddDays(-7); toDate = today.AddDays(1).AddTicks(-1); break;
+                case "Last 30 Days": fromDate = today.AddDays(-30); toDate = today.AddDays(1).AddTicks(-1); break;
+                case "This Month": fromDate = new DateTime(today.Year, today.Month, 1); toDate = fromDate.AddMonths(1).AddTicks(-1); break;
+                case "Last Month": fromDate = new DateTime(today.Year, today.Month, 1).AddMonths(-1); toDate = new DateTime(today.Year, today.Month, 1).AddTicks(-1); break;
+                case "This Year": fromDate = new DateTime(today.Year, 1, 1); toDate = new DateTime(today.Year + 1, 1, 1).AddTicks(-1); break;
+                default: fromDate = new DateTime(1900, 1, 1); toDate = DateTime.Today.AddYears(100); break;
             }
-
             return (fromDate, toDate);
         }
 
         public void LoadData()
         {
-            // Load stats from dashboard (these are totals)
             UpdateStatsCards();
             currentOffset = 0;
             LoadReportTable();
@@ -165,68 +189,29 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private void UpdateStatsCards()
         {
             var stats = GetAccurateCounts();
-
             label1.Text = stats.TotalConsultations.ToString();
             label3.Text = stats.TotalInventory.ToString();
             label5.Text = stats.LowInventory.ToString();
             label10.Text = stats.TotalPatients.ToString();
-
             UpdateStockCircle();
         }
 
-        // Get accurate counts directly from database
         private dynamic GetAccurateCounts()
         {
-            var stats = new
-            {
-                TotalConsultations = 0,
-                TotalPatients = 0,
-                TotalInventory = 0,
-                LowInventory = 0
-            };
-
+            var stats = new { TotalConsultations = 0, TotalPatients = 0, TotalInventory = 0, LowInventory = 0 };
             try
             {
                 using (MySqlConnection conn = db.GetConnection())
                 {
                     conn.Open();
-
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM consultations", conn))
-                    {
-                        int consultCount = Convert.ToInt32(cmd.ExecuteScalar());
-
-                        using (MySqlCommand cmd2 = new MySqlCommand("SELECT COUNT(*) FROM patients", conn))
-                        {
-                            int patientCount = Convert.ToInt32(cmd2.ExecuteScalar());
-
-                            using (MySqlCommand cmd3 = new MySqlCommand(
-                                "SELECT IFNULL(SUM(Quantity), 0) FROM inventory", conn))
-                            {
-                                int inventoryTotal = Convert.ToInt32(cmd3.ExecuteScalar());
-
-                                using (MySqlCommand cmd4 = new MySqlCommand(
-                                    "SELECT COUNT(*) FROM inventory WHERE Quantity < 10", conn))
-                                {
-                                    int lowCount = Convert.ToInt32(cmd4.ExecuteScalar());
-
-                                    stats = new
-                                    {
-                                        TotalConsultations = consultCount,
-                                        TotalPatients = patientCount,
-                                        TotalInventory = inventoryTotal,
-                                        LowInventory = lowCount
-                                    };
-                                }
-                            }
-                        }
-                    }
+                    int consultCount = Convert.ToInt32(new MySqlCommand("SELECT COUNT(*) FROM consultations", conn).ExecuteScalar());
+                    int patientCount = Convert.ToInt32(new MySqlCommand("SELECT COUNT(*) FROM patients", conn).ExecuteScalar());
+                    int inventoryTotal = Convert.ToInt32(new MySqlCommand("SELECT IFNULL(SUM(Quantity), 0) FROM inventory", conn).ExecuteScalar());
+                    int lowCount = Convert.ToInt32(new MySqlCommand("SELECT COUNT(*) FROM inventory WHERE Quantity < 10", conn).ExecuteScalar());
+                    stats = new { TotalConsultations = consultCount, TotalPatients = patientCount, TotalInventory = inventoryTotal, LowInventory = lowCount };
                 }
             }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("GetAccurateCounts Error: " + ex.Message);
-            }
-
+            catch (Exception ex) { System.Diagnostics.Debug.WriteLine("GetAccurateCounts Error: " + ex.Message); }
             return stats;
         }
 
@@ -235,26 +220,14 @@ namespace AceCareClinicSystem.AceCare_UserControls
             try
             {
                 string searchTerm = string.IsNullOrEmpty(search) ? poisonTextBox1.Text : search;
-                if (searchTerm == "Search" || string.IsNullOrWhiteSpace(searchTerm))
-                    searchTerm = "";
+                if (searchTerm == "Search" || string.IsNullOrWhiteSpace(searchTerm)) searchTerm = "";
 
                 string categoryFilter = cbDataViewFilter.SelectedItem?.ToString() ?? "All Records";
-
-                // Get date range from combobox
                 var (fromDate, toDate) = GetDateRangeFromFilter();
 
-                // Build unified data from all sources
                 DataTable unifiedData = BuildUnifiedData(fromDate, toDate, searchTerm, categoryFilter);
-
                 totalRecords = unifiedData.Rows.Count;
 
-                // DEBUG: Log counts
-                int patientCount = unifiedData.AsEnumerable().Count(r => r["RecordCategory"].ToString() == "Patients");
-                int inventoryCount = unifiedData.AsEnumerable().Count(r => r["RecordCategory"].ToString() == "Inventory");
-                int consultCount = unifiedData.AsEnumerable().Count(r => r["RecordCategory"].ToString() == "Consultations");
-                System.Diagnostics.Debug.WriteLine($"DEBUG - Patients: {patientCount}, Inventory: {inventoryCount}, Consultations: {consultCount}, Total: {totalRecords}");
-
-                // Apply pagination
                 DataTable paginatedDt = unifiedData.Clone();
                 int startRow = currentOffset;
                 int endRow = Math.Min(currentOffset + PageSize, unifiedData.Rows.Count);
@@ -264,24 +237,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     paginatedDt.ImportRow(unifiedData.Rows[i]);
                 }
 
-                // Clear and bind to grid
-                poisonDataGridView1.Rows.Clear();
-
-                if (paginatedDt.Rows.Count > 0)
-                {
-                    foreach (DataRow row in paginatedDt.Rows)
-                    {
-                        poisonDataGridView1.Rows.Add(
-                            row["LastVisit"],
-                            row["IDNumber"],
-                            row["PatientName"],
-                            row["PatientType"],
-                            row["Description"] ?? "N/A",
-                            row["QtyDosage"] ?? "N/A",
-                            row["Personnel"] ?? "N/A"
-                        );
-                    }
-                }
+                // ⭐ BIND using DataSource so hidden columns work properly
+                poisonDataGridView1.DataSource = null;
+                poisonDataGridView1.DataSource = paginatedDt;
 
                 UpdatePaginationButtons();
             }
@@ -292,9 +250,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
         }
 
+        // ⭐ BUILD UNIFIED DATA with ALL columns from Patient History
         private DataTable BuildUnifiedData(DateTime fromDate, DateTime toDate, string search, string categoryFilter)
         {
             DataTable unified = new DataTable();
+            // Visible columns
             unified.Columns.Add("LastVisit", typeof(string));
             unified.Columns.Add("IDNumber", typeof(string));
             unified.Columns.Add("PatientName", typeof(string));
@@ -302,6 +262,20 @@ namespace AceCareClinicSystem.AceCare_UserControls
             unified.Columns.Add("Description", typeof(string));
             unified.Columns.Add("QtyDosage", typeof(string));
             unified.Columns.Add("Personnel", typeof(string));
+            // Hidden columns (Patient History data)
+            unified.Columns.Add("PatientId", typeof(int));
+            unified.Columns.Add("ConsultationId", typeof(int));
+            unified.Columns.Add("AgeSex", typeof(string));
+            unified.Columns.Add("VisitType", typeof(string));
+            unified.Columns.Add("ChiefComplaint", typeof(string));
+            unified.Columns.Add("Vitals", typeof(string));
+            unified.Columns.Add("VitalsRecorded", typeof(string));
+            unified.Columns.Add("Diagnosis", typeof(string));
+            unified.Columns.Add("Medicine", typeof(string));
+            unified.Columns.Add("Outcome", typeof(string));
+            unified.Columns.Add("Status", typeof(string));
+            unified.Columns.Add("HandledBy", typeof(string));
+            unified.Columns.Add("Remarks", typeof(string));
             unified.Columns.Add("RecordCategory", typeof(string));
 
             // === PATIENT RECORDS ===
@@ -310,27 +284,33 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 try
                 {
                     DataTable patientData = GetAllPatients(search, fromDate, toDate);
-                    if (patientData != null && patientData.Rows.Count > 0)
+                    foreach (DataRow row in patientData.Rows)
                     {
-                        foreach (DataRow row in patientData.Rows)
-                        {
-                            DataRow newRow = unified.NewRow();
-                            newRow["LastVisit"] = row["LastVisit"] ?? "N/A";
-                            newRow["IDNumber"] = row["IDNumber"];
-                            newRow["PatientName"] = row["PatientName"];
-                            newRow["PatientType"] = row["PatientType"] ?? "Patient";
-                            newRow["Description"] = row["Description"] ?? "Patient Record";
-                            newRow["QtyDosage"] = row["QtyDosage"] ?? "N/A";
-                            newRow["Personnel"] = row["Personnel"] ?? "N/A";
-                            newRow["RecordCategory"] = "Patients";
-                            unified.Rows.Add(newRow);
-                        }
+                        DataRow newRow = unified.NewRow();
+                        newRow["LastVisit"] = row["LastVisit"] ?? "N/A";
+                        newRow["IDNumber"] = row["IDNumber"];
+                        newRow["PatientName"] = row["PatientName"];
+                        newRow["PatientType"] = row["PatientType"] ?? "Patient";
+                        newRow["Description"] = row["Description"] ?? "Patient Record";
+                        newRow["QtyDosage"] = row["QtyDosage"] ?? "N/A";
+                        newRow["Personnel"] = row["Personnel"] ?? "N/A";
+                        newRow["PatientId"] = row["PatientId"];
+                        newRow["AgeSex"] = row["AgeSex"] ?? "N/A";
+                        newRow["VisitType"] = "N/A";
+                        newRow["ChiefComplaint"] = row["Description"] ?? "N/A";
+                        newRow["Vitals"] = "N/A";
+                        newRow["VitalsRecorded"] = row["LastVisit"] ?? "N/A";
+                        newRow["Diagnosis"] = "Patient Record";
+                        newRow["Medicine"] = "N/A";
+                        newRow["Outcome"] = "N/A";
+                        newRow["Status"] = "Active";
+                        newRow["HandledBy"] = row["Personnel"] ?? "N/A";
+                        newRow["Remarks"] = "N/A";
+                        newRow["RecordCategory"] = "Patients";
+                        unified.Rows.Add(newRow);
                     }
                 }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine("Patient load error: " + ex.Message);
-                }
+                catch (Exception ex) { System.Diagnostics.Debug.WriteLine("Patient load error: " + ex.Message); }
             }
 
             // === INVENTORY RECORDS ===
@@ -339,56 +319,69 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 try
                 {
                     DataTable inventoryData = GetInventoryForReport(search, fromDate, toDate);
-                    if (inventoryData != null && inventoryData.Rows.Count > 0)
+                    foreach (DataRow row in inventoryData.Rows)
                     {
-                        foreach (DataRow row in inventoryData.Rows)
-                        {
-                            DataRow newRow = unified.NewRow();
-                            newRow["LastVisit"] = row["LastVisit"] ?? "N/A";
-                            newRow["IDNumber"] = row["IDNumber"];
-                            newRow["PatientName"] = row["PatientName"];
-                            newRow["PatientType"] = "Inventory";
-                            newRow["Description"] = row["Description"] ?? "Inventory Item";
-                            newRow["QtyDosage"] = row["QtyDosage"] ?? "N/A";
-                            newRow["Personnel"] = row["Personnel"] ?? "System";
-                            newRow["RecordCategory"] = "Inventory";
-                            unified.Rows.Add(newRow);
-                        }
+                        DataRow newRow = unified.NewRow();
+                        newRow["LastVisit"] = row["LastVisit"] ?? "N/A";
+                        newRow["IDNumber"] = row["IDNumber"];
+                        newRow["PatientName"] = row["PatientName"];
+                        newRow["PatientType"] = "Inventory";
+                        newRow["Description"] = row["Description"] ?? "Inventory Item";
+                        newRow["QtyDosage"] = row["QtyDosage"] ?? "N/A";
+                        newRow["Personnel"] = row["Personnel"] ?? "System";
+                        newRow["PatientId"] = 0;
+                        newRow["AgeSex"] = "N/A";
+                        newRow["VisitType"] = "N/A";
+                        newRow["ChiefComplaint"] = "N/A";
+                        newRow["Vitals"] = "N/A";
+                        newRow["VitalsRecorded"] = row["LastVisit"] ?? "N/A";
+                        newRow["Diagnosis"] = "Inventory";
+                        newRow["Medicine"] = row["PatientName"];
+                        newRow["Outcome"] = "N/A";
+                        newRow["Status"] = row["QtyDosage"].ToString().Contains("0") ? "Out of Stock" : "Available";
+                        newRow["HandledBy"] = "System";
+                        newRow["Remarks"] = "N/A";
+                        newRow["RecordCategory"] = "Inventory";
+                        unified.Rows.Add(newRow);
                     }
                 }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine("Inventory load error: " + ex.Message);
-                }
+                catch (Exception ex) { System.Diagnostics.Debug.WriteLine("Inventory load error: " + ex.Message); }
             }
 
-            // === CONSULTATION RECORDS ===
+            // === CONSULTATION RECORDS (FULL Patient History data) ===
             if (categoryFilter == "All Records" || categoryFilter == "Consultations")
             {
                 try
                 {
-                    DataTable consultData = GetConsultationsForReport(search, fromDate, toDate);
-                    if (consultData != null && consultData.Rows.Count > 0)
+                    DataTable consultData = GetConsultationsFullData(search, fromDate, toDate);
+                    foreach (DataRow row in consultData.Rows)
                     {
-                        foreach (DataRow row in consultData.Rows)
-                        {
-                            DataRow newRow = unified.NewRow();
-                            newRow["LastVisit"] = row["LastVisit"] ?? "N/A";
-                            newRow["IDNumber"] = row["IDNumber"];
-                            newRow["PatientName"] = row["PatientName"];
-                            newRow["PatientType"] = "Consultation";
-                            newRow["Description"] = row["Description"] ?? "Consultation";
-                            newRow["QtyDosage"] = row["QtyDosage"] ?? "N/A";
-                            newRow["Personnel"] = row["Personnel"] ?? "N/A";
-                            newRow["RecordCategory"] = "Consultations";
-                            unified.Rows.Add(newRow);
-                        }
+                        DataRow newRow = unified.NewRow();
+                        newRow["LastVisit"] = row["visit_date"] ?? "N/A";
+                        newRow["IDNumber"] = row["patient_number"] ?? ("PID-" + row["patient_id"]);
+                        newRow["PatientName"] = row["patient_name"] ?? "Unknown";
+                        newRow["PatientType"] = row["category"] ?? "Patient";
+                        newRow["Description"] = row["chief_complaint"] ?? "N/A";
+                        newRow["QtyDosage"] = (row["medicine_quantity"] ?? "0") + " (" + (row["dosage"] ?? "N/A") + ")";
+                        newRow["Personnel"] = row["clinic_incharge"] ?? "N/A";
+                        newRow["PatientId"] = row["patient_id"];
+                        newRow["ConsultationId"] = row["consultation_id"];
+                        newRow["AgeSex"] = (row["age"] ?? "?") + "/" + (row["sex"] ?? "?");
+                        newRow["VisitType"] = row["visit_type"] ?? "N/A";
+                        newRow["ChiefComplaint"] = row["chief_complaint"] ?? "N/A";
+                        newRow["Vitals"] = "T:" + (row["temperature"] ?? "-") + " BP:" + (row["blood_pressure"] ?? "-") + " PR:" + (row["pulse_rate"] ?? "-");
+                        newRow["VitalsRecorded"] = row["visit_date"] ?? "N/A";
+                        newRow["Diagnosis"] = row["physical_findings"] ?? "N/A";
+                        newRow["Medicine"] = row["medicine_name"] ?? "None";
+                        newRow["Outcome"] = row["outcome"] ?? "Pending";
+                        newRow["Status"] = row["outcome"]?.ToString().Contains("Refer") == true ? "Referred" : (row["outcome"]?.ToString().Contains("Home") == true ? "Completed" : "Pending");
+                        newRow["HandledBy"] = row["handled_by"] ?? "N/A";
+                        newRow["Remarks"] = row["remarks_instructions"] ?? "";
+                        newRow["RecordCategory"] = "Consultations";
+                        unified.Rows.Add(newRow);
                     }
                 }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine("Consultation load error: " + ex.Message);
-                }
+                catch (Exception ex) { System.Diagnostics.Debug.WriteLine("Consultation load error: " + ex.Message); }
             }
 
             // Sort by date descending
@@ -399,13 +392,78 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 unified = dv.ToTable();
             }
 
-            // Cache for export
             _unifiedDataCache = unified;
-
             return unified;
         }
 
-        // Get all patients - with optional date filtering
+        // ⭐ NEW: Get full consultation data with ALL Patient History fields
+        private DataTable GetConsultationsFullData(string search, DateTime fromDate, DateTime toDate)
+        {
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+                    bool applyDateFilter = !(fromDate.Year == 1900 && toDate.Year > 2100);
+
+                    string query = @"SELECT 
+                        c.id AS consultation_id,
+                        c.patient_id,
+                        DATE_FORMAT(c.visit_date, '%d-%b-%y %H:%i') AS visit_date,
+                        COALESCE(p.patient_number, CONCAT('PID-', c.patient_id)) AS patient_number,
+                        COALESCE(CONCAT(p.first_name, ' ', p.last_name), 'Unknown Patient') AS patient_name,
+                        p.category,
+                        COALESCE(c.age, '?') AS age,
+                        COALESCE(c.sex, '?') AS sex,
+                        COALESCE(c.visit_type, 'N/A') AS visit_type,
+                        COALESCE(c.chief_complaint, 'N/A') AS chief_complaint,
+                        COALESCE(c.temperature, '-') AS temperature,
+                        COALESCE(c.blood_pressure, '-') AS blood_pressure,
+                        COALESCE(c.pulse_rate, '-') AS pulse_rate,
+                        COALESCE(c.respiratory_rate, '-') AS respiratory_rate,
+                        COALESCE(c.oxygen_saturation, '-') AS oxygen_saturation,
+                        COALESCE(c.physical_findings, 'N/A') AS physical_findings,
+                        COALESCE(c.medicine_name, 'None') AS medicine_name,
+                        COALESCE(c.medicine_quantity, '0') AS medicine_quantity,
+                        COALESCE(c.dosage, 'N/A') AS dosage,
+                        COALESCE(c.outcome, 'Pending') AS outcome,
+                        COALESCE(c.remarks_instructions, '') AS remarks_instructions,
+                        COALESCE(c.clinic_incharge, 'N/A') AS clinic_incharge,
+                        COALESCE(u.full_name, c.clinic_incharge, 'N/A') AS handled_by
+                        FROM consultations c
+                        LEFT JOIN patients p ON c.patient_id = p.patient_id
+                        LEFT JOIN users u ON c.handled_by_user_id = u.user_id
+                        WHERE ((p.first_name LIKE @s OR p.last_name LIKE @s OR p.patient_number LIKE @s OR c.chief_complaint LIKE @s OR @s = '')
+                               OR (p.patient_id IS NULL AND @s = ''))";
+
+                    if (applyDateFilter)
+                        query += " AND c.visit_date BETWEEN @from AND @to";
+
+                    query += " ORDER BY c.visit_date DESC";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@s", "%" + search + "%");
+                        if (applyDateFilter)
+                        {
+                            cmd.Parameters.AddWithValue("@from", fromDate);
+                            cmd.Parameters.AddWithValue("@to", toDate);
+                        }
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("GetConsultationsFullData Error: " + ex.Message);
+                return new DataTable();
+            }
+        }
+
+        // Get patients (updated to include PatientId)
         private DataTable GetAllPatients(string search, DateTime fromDate, DateTime toDate)
         {
             try
@@ -413,7 +471,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 using (MySqlConnection conn = db.GetConnection())
                 {
                     conn.Open();
-
                     bool applyDateFilter = !(fromDate.Year == 1900 && toDate.Year > 2100);
 
                     string query = @"SELECT 
@@ -425,6 +482,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
                         p.patient_number AS IDNumber,
                         CONCAT(p.first_name, ' ', p.last_name) AS PatientName,
                         p.category AS PatientType,
+                        p.patient_id AS PatientId,
+                        CONCAT(COALESCE(p.age, '?'), '/', COALESCE(p.sex, '?')) AS AgeSex,
                         COALESCE(
                             (SELECT c.chief_complaint FROM consultations c WHERE c.patient_id = p.patient_id ORDER BY c.visit_date DESC LIMIT 1),
                             'New Patient'
@@ -451,7 +510,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                             )
                         )";
                     }
-
                     query += " ORDER BY p.created_at DESC";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -462,7 +520,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                             cmd.Parameters.AddWithValue("@from", fromDate);
                             cmd.Parameters.AddWithValue("@to", toDate);
                         }
-
                         MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
@@ -477,7 +534,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
         }
 
-        // Get inventory items for report - with optional date filtering
         private DataTable GetInventoryForReport(string search, DateTime fromDate, DateTime toDate)
         {
             try
@@ -485,7 +541,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 using (MySqlConnection conn = db.GetConnection())
                 {
                     conn.Open();
-
                     bool applyDateFilter = !(fromDate.Year == 1900 && toDate.Year > 2100);
 
                     string query = @"SELECT 
@@ -500,9 +555,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
                         WHERE (Name LIKE @s OR @s = '')";
 
                     if (applyDateFilter)
-                    {
                         query += " AND (ExpiryDate BETWEEN @from AND @to OR ExpiryDate IS NULL)";
-                    }
 
                     query += " ORDER BY ExpiryDate DESC";
 
@@ -514,7 +567,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                             cmd.Parameters.AddWithValue("@from", fromDate);
                             cmd.Parameters.AddWithValue("@to", toDate);
                         }
-
                         MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
@@ -529,75 +581,31 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
         }
 
-        // Get consultations for report - FIXED: Use LEFT JOIN to include all consultations
-        private DataTable GetConsultationsForReport(string search, DateTime fromDate, DateTime toDate)
+        // ⭐ DOUBLE-CLICK: Jump to Patient History
+        private void poisonDataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                using (MySqlConnection conn = db.GetConnection())
-                {
-                    conn.Open();
+            if (e.RowIndex < 0) return;
 
-                    bool applyDateFilter = !(fromDate.Year == 1900 && toDate.Year > 2100);
+            // Get PatientId from hidden column
+            var patientIdCell = poisonDataGridView1.Rows[e.RowIndex].Cells["PatientId"].Value;
+            if (patientIdCell == null || patientIdCell == DBNull.Value) return;
 
-                    string query = @"SELECT 
-                        COALESCE(DATE_FORMAT(c.visit_date, '%d-%b-%y %H:%i'), 'N/A') AS LastVisit,
-                        COALESCE(p.patient_number, CONCAT('PID-', c.patient_id)) AS IDNumber,
-                        COALESCE(CONCAT(p.first_name, ' ', p.last_name), 'Unknown Patient') AS PatientName,
-                        'Consultation' AS PatientType,
-                        COALESCE(c.chief_complaint, 'No Complaint') AS Description,
-                        CONCAT(COALESCE(c.medicine_quantity, '0'), ' (', COALESCE(c.dosage, 'N/A'), ')') AS QtyDosage,
-                        COALESCE(c.clinic_incharge, 'N/A') AS Personnel
-                        FROM consultations c
-                        LEFT JOIN patients p ON c.patient_id = p.patient_id
-                        WHERE ((p.first_name LIKE @s OR p.last_name LIKE @s OR p.patient_number LIKE @s OR c.chief_complaint LIKE @s OR @s = '')
-                               OR (p.patient_id IS NULL AND @s = ''))";
+            int patientId = Convert.ToInt32(patientIdCell);
+            if (patientId <= 0) return;
 
-                    if (applyDateFilter)
-                    {
-                        query += " AND c.visit_date BETWEEN @from AND @to";
-                    }
+            // Open Patient History with this patient
+            UC_PatientHistory patientHistory = new UC_PatientHistory(patientId);
+            patientHistory.Dock = DockStyle.Fill;
 
-                    query += " ORDER BY c.visit_date DESC";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@s", "%" + search + "%");
-                        if (applyDateFilter)
-                        {
-                            cmd.Parameters.AddWithValue("@from", fromDate);
-                            cmd.Parameters.AddWithValue("@to", toDate);
-                        }
-
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-
-                        System.Diagnostics.Debug.WriteLine($"GetConsultationsForReport returned {dt.Rows.Count} rows");
-                        return dt;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("GetConsultationsForReport Error: " + ex.Message);
-                return new DataTable();
-            }
+            // Add to parent panel and bring to front
+            this.Parent.Controls.Add(patientHistory);
+            patientHistory.BringToFront();
         }
 
         private void UpdatePaginationButtons()
         {
             btnPrev.Enabled = currentOffset > 0;
             btnNext.Enabled = (currentOffset + PageSize) < totalRecords;
-
-            // Update button text to show page info
-            if (totalRecords > 0)
-            {
-                int currentPage = (currentOffset / PageSize) + 1;
-                int totalPages = (int)Math.Ceiling((double)totalRecords / PageSize);
-                // If you have a label for page info, update it here
-                // lblPageInfo.Text = $"Page {currentPage} of {totalPages} ({totalRecords} records)";
-            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -620,8 +628,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private void ReloadPix_Click(object sender, EventArgs e)
         {
-            // Reset to show ALL records
-            cbDateFilter.SelectedIndex = 0; // "All Time"
+            cbDateFilter.SelectedIndex = 0;
             poisonTextBox1.Text = "Search";
             currentOffset = 0;
             cbDataViewFilter.SelectedIndex = 0;
@@ -629,6 +636,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             LoadData();
         }
 
+        // ⭐ EXPORT PDF with ALL columns (including hidden)
         private void ExportToPdf()
         {
             try
@@ -658,66 +666,60 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
                                 // Header
                                 document.Add(new Paragraph("AceCare Clinic Management System")
-                                    .SetTextAlignment(TextAlignment.CENTER)
-                                    .SetFontSize(20)
-                                    .SetFont(boldFont));
-
+                                    .SetTextAlignment(TextAlignment.CENTER).SetFontSize(20).SetFont(boldFont));
                                 document.Add(new Paragraph("Unified Clinic Report")
-                                    .SetTextAlignment(TextAlignment.CENTER)
-                                    .SetFontSize(14)
-                                    .SetFont(italicFont));
-
-                                string dateRangeText = cbDateFilter.SelectedItem?.ToString() ?? "All Time";
-                                document.Add(new Paragraph($"Period: {dateRangeText}")
-                                    .SetTextAlignment(TextAlignment.CENTER)
-                                    .SetFontSize(10));
-
+                                    .SetTextAlignment(TextAlignment.CENTER).SetFontSize(14).SetFont(italicFont));
+                                document.Add(new Paragraph($"Period: {cbDateFilter.SelectedItem?.ToString() ?? "All Time"}")
+                                    .SetTextAlignment(TextAlignment.CENTER).SetFontSize(10));
                                 document.Add(new Paragraph("\n"));
 
-                                // Summary Section
+                                // Summary
                                 document.Add(new Paragraph("Report Summary").SetFont(boldFont).SetFontSize(12));
                                 document.Add(new Paragraph($"Category Filter: {cbDataViewFilter.SelectedItem?.ToString() ?? "All"}"));
-                                document.Add(new Paragraph($"Search Filter: {(string.IsNullOrEmpty(poisonTextBox1.Text) || poisonTextBox1.Text == "Search" ? "None" : poisonTextBox1.Text)}"));
                                 document.Add(new Paragraph($"Total Records: {totalRecords}"));
                                 document.Add(new Paragraph($"Date Generated: {DateTime.Now:MMMM dd, yyyy HH:mm}"));
-
                                 document.Add(new Paragraph("\n"));
 
-                                // Table
-                                document.Add(new Paragraph("Records Log").SetFont(boldFont).SetFontSize(12));
+                                // ⭐ FULL TABLE with ALL columns
+                                document.Add(new Paragraph("Complete Records Log").SetFont(boldFont).SetFontSize(12));
 
-                                float[] columnWidths = { 15, 10, 15, 10, 20, 15, 15 };
+                                float[] columnWidths = { 10, 8, 10, 8, 10, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8 };
                                 Table table = new Table(UnitValue.CreatePercentArray(columnWidths)).UseAllAvailableWidth();
 
-                                // Headers
-                                table.AddHeaderCell(new Cell().Add(new Paragraph("Last Visit").SetFont(boldFont)));
-                                table.AddHeaderCell(new Cell().Add(new Paragraph("ID No.").SetFont(boldFont)));
-                                table.AddHeaderCell(new Cell().Add(new Paragraph("Name").SetFont(boldFont)));
-                                table.AddHeaderCell(new Cell().Add(new Paragraph("Category").SetFont(boldFont)));
-                                table.AddHeaderCell(new Cell().Add(new Paragraph("Description").SetFont(boldFont)));
-                                table.AddHeaderCell(new Cell().Add(new Paragraph("Qty / Dosage").SetFont(boldFont)));
-                                table.AddHeaderCell(new Cell().Add(new Paragraph("Personnel").SetFont(boldFont)));
+                                // ALL headers
+                                string[] headers = { "Last Visit", "ID No.", "Name", "Category", "Age/Sex", "Visit Type",
+                                    "Chief Complaint", "Vitals", "Vitals Recorded", "Diagnosis", "Medicine",
+                                    "Qty/Dosage", "Outcome", "Status", "Handled By", "Remarks" };
 
-                                // Use cached data for export
-                                if (_unifiedDataCache != null)
+                                foreach (string header in headers)
                                 {
-                                    foreach (DataRow row in _unifiedDataCache.Rows)
-                                    {
-                                        table.AddCell(new Paragraph(row["LastVisit"]?.ToString() ?? "N/A").SetFontSize(8));
-                                        table.AddCell(new Paragraph(row["IDNumber"]?.ToString() ?? "N/A").SetFontSize(8));
-                                        table.AddCell(new Paragraph(row["PatientName"]?.ToString() ?? "N/A").SetFontSize(8));
-                                        table.AddCell(new Paragraph(row["PatientType"]?.ToString() ?? "N/A").SetFontSize(8));
-                                        table.AddCell(new Paragraph(row["Description"]?.ToString() ?? "N/A").SetFontSize(8));
-                                        table.AddCell(new Paragraph(row["QtyDosage"]?.ToString() ?? "N/A").SetFontSize(8));
-                                        table.AddCell(new Paragraph(row["Personnel"]?.ToString() ?? "N/A").SetFontSize(8));
-                                    }
+                                    table.AddHeaderCell(new Cell().Add(new Paragraph(header).SetFont(boldFont).SetFontSize(7)));
+                                }
+
+                                foreach (DataRow row in _unifiedDataCache.Rows)
+                                {
+                                    table.AddCell(new Paragraph(row["LastVisit"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["IDNumber"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["PatientName"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["PatientType"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["AgeSex"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["VisitType"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["ChiefComplaint"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["Vitals"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["VitalsRecorded"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["Diagnosis"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["Medicine"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["QtyDosage"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["Outcome"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["Status"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["HandledBy"]?.ToString() ?? "N/A").SetFontSize(6));
+                                    table.AddCell(new Paragraph(row["Remarks"]?.ToString() ?? "N/A").SetFontSize(6));
                                 }
 
                                 document.Add(table);
                                 document.Close();
                             }
                         }
-
                         MessageBox.Show("Report exported successfully!", "Export PDF", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -731,14 +733,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private void HandleExport()
         {
             int index = poisonComboBox1.SelectedIndex;
-            if (index == 0) // PDF
-            {
-                ExportToPdf();
-            }
-            else // CSV
-            {
-                ExportToCsv(index == 1 ? ".csv" : ".csv");
-            }
+            if (index == 0) ExportToPdf();
+            else ExportToCsv(index == 1 ? ".csv" : ".csv");
         }
 
         private void ExportToCsv(string extension)
@@ -759,32 +755,37 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     if (sfd.ShowDialog() == DialogResult.OK)
                     {
                         StringBuilder sb = new StringBuilder();
-
                         sb.AppendLine("AceCare Clinic Management System - Unified Report");
-                        string dateRangeText = cbDateFilter.SelectedItem?.ToString() ?? "All Time";
-                        sb.AppendLine($"Period: {dateRangeText}");
-                        sb.AppendLine($"Category: {cbDataViewFilter.SelectedItem?.ToString() ?? "All"}");
+                        sb.AppendLine($"Period: {cbDateFilter.SelectedItem?.ToString() ?? "All Time"}");
                         sb.AppendLine($"Generated: {DateTime.Now:MMMM dd, yyyy HH:mm}");
                         sb.AppendLine();
 
-                        string[] columnNames = { "Last Visit", "ID No.", "Name", "Category", "Description", "Qty / Dosage", "Personnel" };
+                        // ⭐ ALL columns in CSV
+                        string[] columnNames = { "Last Visit", "ID No.", "Name", "Category", "Age/Sex", "Visit Type",
+                            "Chief Complaint", "Vitals", "Vitals Recorded", "Diagnosis", "Medicine",
+                            "Qty / Dosage", "Outcome", "Status", "Handled By", "Remarks" };
                         sb.AppendLine(string.Join(",", columnNames));
 
-                        if (_unifiedDataCache != null)
+                        foreach (DataRow row in _unifiedDataCache.Rows)
                         {
-                            foreach (DataRow row in _unifiedDataCache.Rows)
-                            {
-                                string[] cells = new string[7];
-                                cells[0] = EscapeCsv(row["LastVisit"]?.ToString() ?? "N/A");
-                                cells[1] = EscapeCsv(row["IDNumber"]?.ToString() ?? "N/A");
-                                cells[2] = EscapeCsv(row["PatientName"]?.ToString() ?? "N/A");
-                                cells[3] = EscapeCsv(row["PatientType"]?.ToString() ?? "N/A");
-                                cells[4] = EscapeCsv(row["Description"]?.ToString() ?? "N/A");
-                                cells[5] = EscapeCsv(row["QtyDosage"]?.ToString() ?? "N/A");
-                                cells[6] = EscapeCsv(row["Personnel"]?.ToString() ?? "N/A");
-
-                                sb.AppendLine(string.Join(",", cells));
-                            }
+                            string[] cells = new string[16];
+                            cells[0] = EscapeCsv(row["LastVisit"]?.ToString() ?? "N/A");
+                            cells[1] = EscapeCsv(row["IDNumber"]?.ToString() ?? "N/A");
+                            cells[2] = EscapeCsv(row["PatientName"]?.ToString() ?? "N/A");
+                            cells[3] = EscapeCsv(row["PatientType"]?.ToString() ?? "N/A");
+                            cells[4] = EscapeCsv(row["AgeSex"]?.ToString() ?? "N/A");
+                            cells[5] = EscapeCsv(row["VisitType"]?.ToString() ?? "N/A");
+                            cells[6] = EscapeCsv(row["ChiefComplaint"]?.ToString() ?? "N/A");
+                            cells[7] = EscapeCsv(row["Vitals"]?.ToString() ?? "N/A");
+                            cells[8] = EscapeCsv(row["VitalsRecorded"]?.ToString() ?? "N/A");
+                            cells[9] = EscapeCsv(row["Diagnosis"]?.ToString() ?? "N/A");
+                            cells[10] = EscapeCsv(row["Medicine"]?.ToString() ?? "N/A");
+                            cells[11] = EscapeCsv(row["QtyDosage"]?.ToString() ?? "N/A");
+                            cells[12] = EscapeCsv(row["Outcome"]?.ToString() ?? "N/A");
+                            cells[13] = EscapeCsv(row["Status"]?.ToString() ?? "N/A");
+                            cells[14] = EscapeCsv(row["HandledBy"]?.ToString() ?? "N/A");
+                            cells[15] = EscapeCsv(row["Remarks"]?.ToString() ?? "N/A");
+                            sb.AppendLine(string.Join(",", cells));
                         }
 
                         File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
@@ -801,46 +802,29 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private string EscapeCsv(string value)
         {
             if (string.IsNullOrEmpty(value)) return "\"\"";
-
-            if (value.All(char.IsDigit) && value.Length > 5)
-            {
-                value = "=\"" + value + "\"";
-            }
+            if (value.All(char.IsDigit) && value.Length > 5) value = "=\"" + value + "\"";
             else if (value.Contains(",") || value.Contains("\"") || value.Contains("\n") || value.Contains("\r"))
-            {
                 value = "\"" + value.Replace("\"", "\"\"") + "\"";
-            }
-
             return value;
         }
 
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-        }
+        private void panel5_Paint(object sender, PaintEventArgs e) { }
+
         private void UpdateStockCircle()
         {
             try
             {
-                // Get stock fill percentage from dashboard controller (0-100)
                 int capacityPercent = dashboardController.GetStockFillPercentage();
-
-                // Update the circle percentage
                 medicineCircle.Percentage = capacityPercent;
-
-                // Apply color logic - use ProgressColor for the fill
-                if (capacityPercent < 50)
-                    medicineCircle.FilledColor = Color.Green;
-                else if (capacityPercent < 80)
-                    medicineCircle.FilledColor = Color.Orange;
-                else
-                    medicineCircle.FilledColor = Color.Red;
+                if (capacityPercent < 50) medicineCircle.FilledColor = System.Drawing.Color.Green;
+                else if (capacityPercent < 80) medicineCircle.FilledColor = System.Drawing.Color.Orange;
+                else medicineCircle.FilledColor = System.Drawing.Color.Red;
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("UpdateStockCircle Error: " + ex.Message);
-                // Fallback values
                 medicineCircle.Percentage = 0;
-                medicineCircle.FilledColor = Color.Gray;
+                medicineCircle.FilledColor = System.Drawing.Color.Gray;
             }
         }
     }

@@ -56,7 +56,7 @@ namespace AceCareClinicSystem.Forms
 
             if (result == DialogResult.Yes)
             {
-                
+
                 // Open your Landing Page
                 AceCareLanding landing = new AceCareLanding();
                 landing.Show();
@@ -68,6 +68,11 @@ namespace AceCareClinicSystem.Forms
         private void ConsultationBtn_Click(object sender, EventArgs e)
         {
             addUserControl(new UC_ConsultationWizard());
+        }
+
+        private void btnPatientHistory_Click(object sender, EventArgs e)
+        {
+            addUserControl(new UC_PatientHistory());
         }
     }
 }

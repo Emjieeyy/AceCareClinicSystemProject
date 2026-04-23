@@ -153,7 +153,7 @@
             // 
             lblDashboardTitle.AutoSize = true;
             lblDashboardTitle.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDashboardTitle.Location = new Point(13, 26);
+            lblDashboardTitle.Location = new Point(13, 25);
             lblDashboardTitle.Name = "lblDashboardTitle";
             lblDashboardTitle.Size = new Size(389, 51);
             lblDashboardTitle.TabIndex = 3;
@@ -514,9 +514,9 @@
             pictureBox12.BackColor = Color.Transparent;
             pictureBox12.BackgroundImage = (Image)resources.GetObject("pictureBox12.BackgroundImage");
             pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox12.Location = new Point(1124, -6);
+            pictureBox12.Location = new Point(1128, -8);
             pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(113, 105);
+            pictureBox12.Size = new Size(120, 122);
             pictureBox12.TabIndex = 5;
             pictureBox12.TabStop = false;
             // 
@@ -646,7 +646,7 @@
             // 
             pictureBox13.BackgroundImage = (Image)resources.GetObject("pictureBox13.BackgroundImage");
             pictureBox13.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox13.Location = new Point(917, 107);
+            pictureBox13.Location = new Point(921, 107);
             pictureBox13.Name = "pictureBox13";
             pictureBox13.Size = new Size(289, 152);
             pictureBox13.TabIndex = 32;
@@ -672,7 +672,7 @@
             label13.BackColor = Color.Transparent;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.Gray;
-            label13.Location = new Point(20, 81);
+            label13.Location = new Point(20, 82);
             label13.Name = "label13";
             label13.Size = new Size(480, 20);
             label13.TabIndex = 50;
@@ -682,7 +682,7 @@
             // 
             lblUserID.AutoSize = true;
             lblUserID.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUserID.Location = new Point(1015, 36);
+            lblUserID.Location = new Point(1015, 35);
             lblUserID.Name = "lblUserID";
             lblUserID.Size = new Size(93, 27);
             lblUserID.TabIndex = 51;
@@ -692,7 +692,7 @@
             // 
             lblUserName.AutoSize = true;
             lblUserName.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblUserName.Location = new Point(1017, 72);
+            lblUserName.Location = new Point(1017, 71);
             lblUserName.Name = "lblUserName";
             lblUserName.Size = new Size(105, 21);
             lblUserName.TabIndex = 52;

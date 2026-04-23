@@ -58,39 +58,38 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(52, 19);
+            label1.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(66, 24);
             label1.Name = "label1";
-            label1.Size = new Size(436, 37);
+            label1.Size = new Size(419, 34);
             label1.TabIndex = 1;
-            label1.Text = "Consultation Quick Summary";
-           
+            label1.Text = "Patient Consultation Summary";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label16.Location = new Point(51, 86);
+            label16.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.Location = new Point(65, 87);
             label16.Name = "label16";
-            label16.Size = new Size(67, 23);
+            label16.Size = new Size(68, 23);
             label16.TabIndex = 10;
             label16.Text = "Patient:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(54, 150);
+            label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(67, 161);
             label2.Name = "label2";
-            label2.Size = new Size(45, 23);
+            label2.Size = new Size(46, 23);
             label2.TabIndex = 11;
             label2.Text = "Sex: ";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(50, 186);
+            label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(61, 199);
             label3.Name = "label3";
             label3.Size = new Size(61, 23);
             label3.TabIndex = 12;
@@ -99,8 +98,8 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(50, 227);
+            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(64, 240);
             label4.Name = "label4";
             label4.Size = new Size(93, 23);
             label4.TabIndex = 13;
@@ -109,8 +108,8 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(52, 274);
+            label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(67, 286);
             label5.Name = "label5";
             label5.Size = new Size(65, 23);
             label5.TabIndex = 14;
@@ -119,8 +118,8 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(50, 323);
+            label6.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(67, 333);
             label6.Name = "label6";
             label6.Size = new Size(87, 23);
             label6.TabIndex = 15;
@@ -129,28 +128,28 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(48, 385);
+            label7.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(63, 395);
             label7.Name = "label7";
-            label7.Size = new Size(88, 23);
+            label7.Size = new Size(89, 23);
             label7.TabIndex = 16;
             label7.Text = " Medicine:";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(48, 476);
+            label8.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(63, 486);
             label8.Name = "label8";
-            label8.Size = new Size(106, 23);
+            label8.Size = new Size(108, 23);
             label8.TabIndex = 17;
             label8.Text = " Handled By:";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(50, 433);
+            label9.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Location = new Point(66, 443);
             label9.Name = "label9";
             label9.Size = new Size(90, 23);
             label9.TabIndex = 18;
@@ -159,8 +158,8 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(52, 521);
+            label10.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Location = new Point(69, 531);
             label10.Name = "label10";
             label10.Size = new Size(50, 23);
             label10.TabIndex = 19;
@@ -168,19 +167,23 @@
             // 
             // btnViewHistory
             // 
-            btnViewHistory.Location = new Point(225, 568);
+            btnViewHistory.BackColor = Color.DarkBlue;
+            btnViewHistory.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnViewHistory.ForeColor = Color.White;
+            btnViewHistory.Location = new Point(232, 573);
             btnViewHistory.Name = "btnViewHistory";
-            btnViewHistory.Size = new Size(168, 29);
+            btnViewHistory.Size = new Size(168, 48);
             btnViewHistory.TabIndex = 20;
             btnViewHistory.Text = "View Full History";
-            btnViewHistory.UseVisualStyleBackColor = true;
+            btnViewHistory.UseVisualStyleBackColor = false;
             btnViewHistory.Click += btnViewHistory_Click;
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(412, 568);
+            btnClose.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClose.Location = new Point(419, 573);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(135, 29);
+            btnClose.Size = new Size(135, 48);
             btnClose.TabIndex = 21;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
@@ -190,7 +193,7 @@
             // 
             lblPatientName.AutoSize = true;
             lblPatientName.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPatientName.Location = new Point(215, 86);
+            lblPatientName.Location = new Point(229, 86);
             lblPatientName.Name = "lblPatientName";
             lblPatientName.Size = new Size(67, 23);
             lblPatientName.TabIndex = 22;
@@ -200,7 +203,7 @@
             // 
             lblSex.AutoSize = true;
             lblSex.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSex.Location = new Point(215, 151);
+            lblSex.Location = new Point(229, 159);
             lblSex.Name = "lblSex";
             lblSex.Size = new Size(67, 23);
             lblSex.TabIndex = 23;
@@ -210,7 +213,7 @@
             // 
             lblVisitType.AutoSize = true;
             lblVisitType.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblVisitType.Location = new Point(215, 186);
+            lblVisitType.Location = new Point(229, 197);
             lblVisitType.Name = "lblVisitType";
             lblVisitType.Size = new Size(67, 23);
             lblVisitType.TabIndex = 24;
@@ -220,7 +223,7 @@
             // 
             lblComplaint.AutoSize = true;
             lblComplaint.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblComplaint.Location = new Point(215, 227);
+            lblComplaint.Location = new Point(229, 237);
             lblComplaint.Name = "lblComplaint";
             lblComplaint.Size = new Size(67, 23);
             lblComplaint.TabIndex = 25;
@@ -230,7 +233,7 @@
             // 
             lblVitals.AutoSize = true;
             lblVitals.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblVitals.Location = new Point(215, 265);
+            lblVitals.Location = new Point(229, 282);
             lblVitals.Name = "lblVitals";
             lblVitals.Size = new Size(67, 23);
             lblVitals.TabIndex = 26;
@@ -239,7 +242,7 @@
             // lblDiagnosis
             // 
             lblDiagnosis.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDiagnosis.Location = new Point(215, 318);
+            lblDiagnosis.Location = new Point(229, 328);
             lblDiagnosis.MaximumSize = new Size(280, 60);
             lblDiagnosis.Name = "lblDiagnosis";
             lblDiagnosis.Size = new Size(280, 60);
@@ -250,7 +253,7 @@
             // 
             lblMedicine.AutoSize = true;
             lblMedicine.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMedicine.Location = new Point(215, 389);
+            lblMedicine.Location = new Point(229, 399);
             lblMedicine.Name = "lblMedicine";
             lblMedicine.Size = new Size(67, 23);
             lblMedicine.TabIndex = 28;
@@ -260,7 +263,7 @@
             // 
             lblOutcome.AutoSize = true;
             lblOutcome.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOutcome.Location = new Point(215, 430);
+            lblOutcome.Location = new Point(229, 440);
             lblOutcome.Name = "lblOutcome";
             lblOutcome.Size = new Size(67, 23);
             lblOutcome.TabIndex = 29;
@@ -270,7 +273,7 @@
             // 
             lblHandledBy.AutoSize = true;
             lblHandledBy.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblHandledBy.Location = new Point(215, 478);
+            lblHandledBy.Location = new Point(229, 488);
             lblHandledBy.Name = "lblHandledBy";
             lblHandledBy.Size = new Size(67, 23);
             lblHandledBy.TabIndex = 30;
@@ -280,7 +283,7 @@
             // 
             lblDate.AutoSize = true;
             lblDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDate.Location = new Point(215, 521);
+            lblDate.Location = new Point(229, 531);
             lblDate.Name = "lblDate";
             lblDate.Size = new Size(67, 23);
             lblDate.TabIndex = 31;
@@ -289,8 +292,8 @@
             // label
             // 
             label.AutoSize = true;
-            label.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label.Location = new Point(57, 116);
+            label.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label.Location = new Point(67, 122);
             label.Name = "label";
             label.Size = new Size(44, 23);
             label.TabIndex = 32;
@@ -300,7 +303,7 @@
             // 
             lblAge.AutoSize = true;
             lblAge.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAge.Location = new Point(215, 119);
+            lblAge.Location = new Point(228, 121);
             lblAge.Name = "lblAge";
             lblAge.Size = new Size(67, 23);
             lblAge.TabIndex = 33;
@@ -312,7 +315,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(577, 628);
+            ClientSize = new Size(572, 637);
             Controls.Add(lblAge);
             Controls.Add(label);
             Controls.Add(lblDate);
