@@ -20,6 +20,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
         {
             InitializeComponent();
             dgvRecent.AutoGenerateColumns = false;
+
+            lblDashboardTitle.Text = $"Welcome, {UserSession.FullName}!";
+            lblUserName.Text = $"Role: {UserSession.Role}";
+            lblUserID.Text = $"ID: {UserSession.UserId}";
         }
 
         public UC_Home(string userRole) : this()
@@ -33,6 +37,18 @@ namespace AceCareClinicSystem.AceCare_UserControls
             SetupColumns();
             ConfigureUIBasedOnRole();
             RefreshDashboard();
+
+            // CRITICAL: Wire up click events properly
+            dgvRecent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRecent.MultiSelect = false;
+            dgvRecent.ReadOnly = true;
+
+            // Remove old handlers first to prevent duplicates
+            dgvRecent.CellClick -= dgvRecent_CellClick;
+            dgvRecent.CellClick += dgvRecent_CellClick;
+
+            dgvRecent.CellDoubleClick -= dgvRecent_CellDoubleClick;
+            dgvRecent.CellDoubleClick += dgvRecent_CellDoubleClick;
         }
 
         private void ConfigureUIBasedOnRole()
@@ -102,6 +118,83 @@ namespace AceCareClinicSystem.AceCare_UserControls
             BindingHelper.BindToGrid(dgvRecent, dt);
             UpdatePaginationButtons();
         }
+
+        // ============================================
+        // FIXED: Single Click - Show Popup
+        // ============================================
+        // In UC_Home.cs - dgvRecent_CellClick
+        private void dgvRecent_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            try
+            {
+                DataRowView rowView = dgvRecent.Rows[e.RowIndex].DataBoundItem as DataRowView;
+                if (rowView == null) return;
+
+                // CRITICAL: Pass the PARENT FORM as owner, not 'this' UserControl
+                Form ownerForm = this.FindForm();  // Gets the AdminDashboard/ClinicStaffDashboard
+
+                using (var popup = new ConsultationQuickView(rowView.Row))
+                {
+                    // Use the form, not the UserControl, as owner
+                    DialogResult result = popup.ShowDialog(ownerForm);
+
+                    if (result == DialogResult.OK)
+                    {
+                        int patientId = popup.PatientId;
+                        if (patientId > 0)
+                            OpenPatientHistory(patientId);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error showing popup: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        // ============================================
+        // Double Click - Direct to Patient History
+        // ============================================
+        private void dgvRecent_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            try
+            {
+                DataRowView rowView = dgvRecent.Rows[e.RowIndex].DataBoundItem as DataRowView;
+                if (rowView == null) return;
+
+                int patientId = rowView.Row.Table.Columns.Contains("PatientId") && rowView.Row["PatientId"] != DBNull.Value
+                    ? Convert.ToInt32(rowView.Row["PatientId"])
+                    : 0;
+
+                if (patientId > 0)
+                {
+                    OpenPatientHistory(patientId);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void OpenPatientHistory(int patientId)
+        {
+            var historyUC = new UC_PatientHistory(patientId);
+
+            if (this.ParentForm is AdminDashboard main)
+                main.addUserControl(historyUC);
+            else if (this.ParentForm is ClinicStaffDashboard staffMain)
+                staffMain.addUserControl(historyUC);  // ← FIXED: was staffMain
+        }
+
+        // ============================================
+        // Existing methods (unchanged)
+        // ============================================
 
         private void ChangeToExpiringSoonIcon()
         {
@@ -190,8 +283,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
                 PicCreateUser.SizeMode = PictureBoxSizeMode.Zoom;
                 PicCreateUser.BackColor = Color.Transparent;
-
-                // Use the about/info icon - change this to your actual resource name
                 PicCreateUser.Image = Properties.Resources.information_button__1_;
 
                 this.ResumeLayout(true);
@@ -224,8 +315,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
                 PicCreateUser.SizeMode = PictureBoxSizeMode.Zoom;
                 PicCreateUser.BackColor = Color.Transparent;
-
-                // Use the user/group icon for Create User
                 PicCreateUser.Image = Properties.Resources.patient;
 
                 this.ResumeLayout(true);

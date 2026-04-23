@@ -11,9 +11,6 @@ namespace AceCareClinicSystem.Controllers
         private AuthController _auth = new AuthController();
         private InventoryController _inventory = new InventoryController();
 
-        // ============================================
-        // Get Expiring Soon Count
-        // ============================================
         public string GetExpiringSoonCount()
         {
             try
@@ -24,9 +21,6 @@ namespace AceCareClinicSystem.Controllers
             catch { return "0"; }
         }
 
-        // ============================================
-        // Get Low Inventory Count
-        // ============================================
         public string GetLowInventoryCount()
         {
             try
@@ -37,9 +31,6 @@ namespace AceCareClinicSystem.Controllers
             catch { return "0"; }
         }
 
-        // ============================================
-        // Get Total Users (for Admin)
-        // ============================================
         public string GetTotalUsers()
         {
             try
@@ -49,9 +40,6 @@ namespace AceCareClinicSystem.Controllers
             catch { return "0"; }
         }
 
-        // ============================================
-        // Get Total Patients
-        // ============================================
         public string GetTotalPatients()
         {
             try
@@ -66,9 +54,6 @@ namespace AceCareClinicSystem.Controllers
             catch { return "0"; }
         }
 
-        // ============================================
-        // Get Today's Visits
-        // ============================================
         public string GetTodaysVisits()
         {
             try
@@ -93,27 +78,19 @@ namespace AceCareClinicSystem.Controllers
             catch { return "0"; }
         }
 
-        // ============================================
-        // CAPACITY PERCENTAGE (NEW)
-        // ============================================
         public int GetStockFillPercentage()
         {
             try
             {
                 var stats = _inventory.GetDashboardStats();
-                int currentStock = int.Parse(stats.med) + int.Parse(stats.sup); // 119 + 19 = 138
-
-                int maxCapacity = 200; // ADJUST THIS to your clinic's max capacity!
-
+                int currentStock = int.Parse(stats.med) + int.Parse(stats.sup);
+                int maxCapacity = 200;
                 int percentage = (int)((currentStock / (double)maxCapacity) * 100);
                 return percentage > 100 ? 100 : percentage;
             }
             catch { return 0; }
         }
 
-        // ============================================
-        // Get Total Supplies (for Reports)
-        // ============================================
         public string GetTotalSupplies()
         {
             try
@@ -125,7 +102,7 @@ namespace AceCareClinicSystem.Controllers
         }
 
         // ============================================
-        // Get Recent Consultations Table
+        // FIXED: Separate Age and Sex columns
         // ============================================
         public DataTable GetRecentConsultations(int offset, int pageSize = 10, string searchTerm = "")
         {
@@ -140,24 +117,42 @@ namespace AceCareClinicSystem.Controllers
                     if (string.IsNullOrEmpty(searchTerm))
                     {
                         query = @"SELECT 
+                            c.patient_id AS PatientId,
                             CONCAT(COALESCE(p.first_name, ''), ' ', COALESCE(p.last_name, '')) AS 'Patients Name', 
+                            COALESCE(p.age, '') AS Age,
+                            COALESCE(p.sex, '') AS Sex,
                             c.chief_complaint AS 'Chief Complaint', 
-                            DATE_FORMAT(c.visit_date, '%h:%i:%s %p') AS 'Time of Visit', 
-                            c.outcome AS 'Outcome' 
+                            c.visit_date AS 'Time of Visit', 
+                            c.outcome AS 'Outcome',
+                            c.visit_type AS VisitType,
+                            CONCAT('T:', COALESCE(c.temperature, ''), ' BP:', COALESCE(c.blood_pressure, ''), ' PR:', COALESCE(c.pulse_rate, '')) AS Vitals,
+                            c.symptoms_description AS Diagnosis,
+                            c.medicine_name AS Medicine,
+                            COALESCE(u.full_name, c.clinic_incharge) AS HandledBy
                          FROM consultations c 
                          INNER JOIN patients p ON c.patient_id = p.patient_id 
+                         LEFT JOIN users u ON c.handled_by_user_id = u.user_id
                          ORDER BY c.visit_date DESC 
                          LIMIT @pageSize OFFSET @offset";
                     }
                     else
                     {
                         query = @"SELECT 
+                            c.patient_id AS PatientId,
                             CONCAT(COALESCE(p.first_name, ''), ' ', COALESCE(p.last_name, '')) AS 'Patients Name', 
+                            COALESCE(p.age, '') AS Age,
+                            COALESCE(p.sex, '') AS Sex,
                             c.chief_complaint AS 'Chief Complaint', 
-                            DATE_FORMAT(c.visit_date, '%h:%i:%s %p') AS 'Time of Visit', 
-                            c.outcome AS 'Outcome' 
+                            c.visit_date AS 'Time of Visit', 
+                            c.outcome AS 'Outcome',
+                            c.visit_type AS VisitType,
+                            CONCAT('T:', COALESCE(c.temperature, ''), ' BP:', COALESCE(c.blood_pressure, ''), ' PR:', COALESCE(c.pulse_rate, '')) AS Vitals,
+                            c.symptoms_description AS Diagnosis,
+                            c.medicine_name AS Medicine,
+                            COALESCE(u.full_name, c.clinic_incharge) AS HandledBy
                          FROM consultations c 
                          INNER JOIN patients p ON c.patient_id = p.patient_id 
+                         LEFT JOIN users u ON c.handled_by_user_id = u.user_id
                          WHERE CONCAT(COALESCE(p.first_name, ''), ' ', COALESCE(p.last_name, '')) LIKE @search 
                             OR c.chief_complaint LIKE @search
                             OR p.patient_number LIKE @search
@@ -185,9 +180,6 @@ namespace AceCareClinicSystem.Controllers
             return dt;
         }
 
-        // ============================================
-        // Get Total Consultations Count
-        // ============================================
         public int GetTotalConsultations(string searchTerm = "")
         {
             try

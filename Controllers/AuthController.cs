@@ -35,6 +35,7 @@ namespace AceCareClinicSystem.Controllers
                                 UserSession.Username = reader.GetString("username");
                                 UserSession.FullName = reader.GetString("full_name");
                                 UserSession.Role = reader.GetString("role_name");
+                                UserSession.IsLoggedIn = true;  // <-- CHANGED: Added this line
 
                                 reader.Close();
                                 LogActivity(UserSession.UserId, "Login", "User logged into the system");
@@ -51,6 +52,10 @@ namespace AceCareClinicSystem.Controllers
                 return false;
             }
         }
+
+        // ============================================
+        // ALL OTHER METHODS UNCHANGED BELOW
+        // ============================================
 
         public DataTable GetUserList()
         {
@@ -133,10 +138,6 @@ namespace AceCareClinicSystem.Controllers
             }
         }
 
-        // ============================================
-        // FIXED DELETE USER METHOD
-        // Deletes audit logs first, then deletes user
-        // ============================================
         public bool DeleteUser(int userId)
         {
             try
@@ -145,12 +146,10 @@ namespace AceCareClinicSystem.Controllers
                 {
                     conn.Open();
 
-                    // Start a transaction to ensure both operations succeed or both fail
                     using (var transaction = conn.BeginTransaction())
                     {
                         try
                         {
-                            // Step 1: Delete all audit logs for this user
                             string deleteLogsQuery = "DELETE FROM audit_logs WHERE user_id = @id";
                             using (MySqlCommand deleteLogsCmd = new MySqlCommand(deleteLogsQuery, conn, transaction))
                             {
@@ -158,7 +157,6 @@ namespace AceCareClinicSystem.Controllers
                                 deleteLogsCmd.ExecuteNonQuery();
                             }
 
-                            // Step 2: Delete the user
                             string deleteUserQuery = "DELETE FROM users WHERE user_id = @id";
                             using (MySqlCommand deleteUserCmd = new MySqlCommand(deleteUserQuery, conn, transaction))
                             {
@@ -167,16 +165,12 @@ namespace AceCareClinicSystem.Controllers
 
                                 if (rowsAffected > 0)
                                 {
-                                    // Commit the transaction
                                     transaction.Commit();
-
-                                    // Log the deletion (using system user since user is now deleted)
                                     LogActivity(0, "User Deleted", $"Deleted user ID: {userId}");
                                     return true;
                                 }
                                 else
                                 {
-                                    // Rollback if user wasn't found
                                     transaction.Rollback();
                                     return false;
                                 }
@@ -184,7 +178,6 @@ namespace AceCareClinicSystem.Controllers
                         }
                         catch (Exception)
                         {
-                            // Rollback on any error
                             transaction.Rollback();
                             throw;
                         }

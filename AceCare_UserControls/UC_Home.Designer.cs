@@ -30,15 +30,15 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel3 = new Panel();
             lblTotalPatients = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
-            label1 = new Label();
+            lblDashboardTitle = new Label();
             panel1 = new Panel();
             lblTodaysVisit = new Label();
             label5 = new Label();
@@ -81,6 +81,8 @@
             ReloadPix = new PictureBox();
             toolTip1 = new ToolTip(components);
             label13 = new Label();
+            lblUserID = new Label();
+            lblUserName = new Label();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -147,15 +149,15 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // label1
+            // lblDashboardTitle
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(13, 26);
-            label1.Name = "label1";
-            label1.Size = new Size(389, 51);
-            label1.TabIndex = 3;
-            label1.Text = "Clinic Dashboard";
+            lblDashboardTitle.AutoSize = true;
+            lblDashboardTitle.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDashboardTitle.Location = new Point(13, 26);
+            lblDashboardTitle.Name = "lblDashboardTitle";
+            lblDashboardTitle.Size = new Size(389, 51);
+            lblDashboardTitle.TabIndex = 3;
+            lblDashboardTitle.Text = "Clinic Dashboard";
             // 
             // panel1
             // 
@@ -248,39 +250,39 @@
             dgvRecent.BorderStyle = BorderStyle.None;
             dgvRecent.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
             dgvRecent.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvRecent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecent.Columns.AddRange(new DataGridViewColumn[] { Patient, Column1, Column3, Column4 });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle3.Padding = new Padding(7);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(192, 255, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvRecent.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle7.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle7.Padding = new Padding(7);
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(192, 255, 255);
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvRecent.DefaultCellStyle = dataGridViewCellStyle7;
             dgvRecent.EnableHeadersVisualStyles = false;
             dgvRecent.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvRecent.GridColor = Color.FromArgb(11, 45, 114);
             dgvRecent.Location = new Point(29, 333);
             dgvRecent.Name = "dgvRecent";
             dgvRecent.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvRecent.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvRecent.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvRecent.RowHeadersWidth = 51;
             dgvRecent.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvRecent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -290,9 +292,9 @@
             // Patient
             // 
             Patient.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            Patient.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            Patient.DefaultCellStyle = dataGridViewCellStyle6;
             Patient.HeaderText = "Patients Name";
             Patient.MinimumWidth = 6;
             Patient.Name = "Patient";
@@ -676,11 +678,33 @@
             label13.TabIndex = 50;
             label13.Text = "Manage real-time clinic operations and track recent patient consultations.\r\n";
             // 
+            // lblUserID
+            // 
+            lblUserID.AutoSize = true;
+            lblUserID.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUserID.Location = new Point(1025, 26);
+            lblUserID.Name = "lblUserID";
+            lblUserID.Size = new Size(93, 27);
+            lblUserID.TabIndex = 51;
+            lblUserID.Text = "User ID:";
+            // 
+            // lblUserName
+            // 
+            lblUserName.AutoSize = true;
+            lblUserName.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUserName.Location = new Point(1025, 62);
+            lblUserName.Name = "lblUserName";
+            lblUserName.Size = new Size(105, 21);
+            lblUserName.TabIndex = 52;
+            lblUserName.Text = "User Name";
+            // 
             // UC_Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(lblUserName);
+            Controls.Add(lblUserID);
             Controls.Add(label13);
             Controls.Add(ReloadPix);
             Controls.Add(panel1);
@@ -697,7 +721,7 @@
             Controls.Add(dgvRecent);
             Controls.Add(panel2);
             Controls.Add(panel3);
-            Controls.Add(label1);
+            Controls.Add(lblDashboardTitle);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox10);
             Controls.Add(pictureBox9);
@@ -747,7 +771,7 @@
         private Label lblTotalPatients;
         private Label label2;
         private PictureBox pictureBox1;
-        private Label label1;
+        private Label lblDashboardTitle;
         private Panel panel1;
         private Label lblTodaysVisit;
         private Label label5;
@@ -790,5 +814,7 @@
         private PictureBox ReloadPix;
         private ToolTip toolTip1;
         private Label label13;
+        private Label lblUserID;
+        private Label lblUserName;
     }
 }

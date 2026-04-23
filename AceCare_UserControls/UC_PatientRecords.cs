@@ -175,7 +175,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             LoadPatientIntoForm(e.RowIndex);
         }
 
-        // MODIFIED: Direct navigation to ConsultationWizard for both Admin and Clinic Staff
         private void dgvPatients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -184,10 +183,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
             DataRow p = _patientController.GetPatientById(id);
             if (p == null) return;
 
-            // Create wizard and load patient data
             UC_ConsultationWizard wizard = new UC_ConsultationWizard();
 
-            // Load patient data into wizard
             wizard.LoadPatientData(
                 patientID: p["patient_number"].ToString(),
                 firstName: p["first_name"].ToString(),
@@ -199,10 +196,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 contact: p["contact_number"].ToString(),
                 emergencyContactNumber: p["emergency_contact_number"].ToString(),
                 emergencyContactName: p["emergency_contact_name"].ToString(),
-                yearLevel: p["year_level"]?.ToString() ?? ""
+                yearLevel: p["year_level"]?.ToString() ?? "",
+                age: p["age"] != DBNull.Value ? Convert.ToInt32(p["age"]) : (int?)null,
+                sex: p["sex"]?.ToString() ?? "",
+                address: p["address"]?.ToString() ?? ""
             );
 
-            // Navigate based on which dashboard is parent
             if (this.ParentForm is AdminDashboard adminMain)
             {
                 adminMain.addUserControl(wizard);
@@ -231,6 +230,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtEmergencyContactNo.Text = patient["emergency_contact_number"].ToString();
             cmbCategory.Text = patient["category"].ToString();
             cmbDepartment.Text = patient["department"]?.ToString() ?? "";
+
+            // Age, Sex, Address — matching your DB types
+            txtAge.Text = patient["age"] != DBNull.Value ? patient["age"].ToString() : "";
+            cmbSex.Text = patient["sex"] != DBNull.Value ? patient["sex"].ToString() : "";
+            txtAddress.Text = patient["address"] != DBNull.Value ? patient["address"].ToString() : "";
 
             if (patient["year_level"] != DBNull.Value)
                 cmbYearLevel.Text = patient["year_level"].ToString();
@@ -286,7 +290,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     return;
                 }
 
-                // Validation: Department required for Students and Faculty only
                 if (RequiresDepartment(cmbCategory.Text) && string.IsNullOrWhiteSpace(cmbDepartment.Text))
                 {
                     MessageBox.Show("Please select Department.", "Validation Error");
@@ -296,6 +299,14 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 bool success = false;
                 string yearLevelValue = IsStudentCategory(cmbCategory.Text) ? cmbYearLevel.Text : "";
                 string departmentValue = RequiresDepartment(cmbCategory.Text) ? cmbDepartment.Text : "N/A";
+
+                // Parse age as int (matches your DB schema int(11))
+                int? ageValue = null;
+                if (!string.IsNullOrWhiteSpace(txtAge.Text) && int.TryParse(txtAge.Text.Trim(), out int parsedAge))
+                    ageValue = parsedAge;
+
+                string sexValue = cmbSex.Text;
+                string addressValue = txtAddress.Text.Trim();
 
                 if (btnSave.Text == "Update" && btnSave.Tag != null)
                 {
@@ -312,7 +323,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
                         txtEmergencyContactName.Text.Trim(),
                         txtEmergencyContactNo.Text.Trim(),
                         yearLevelValue,
-                        dobTimePicker.Value
+                        dobTimePicker.Value,
+                        sexValue,
+                        ageValue,
+                        addressValue
                     );
                 }
                 else
@@ -336,7 +350,10 @@ namespace AceCareClinicSystem.AceCare_UserControls
                         txtEmergencyContactName.Text.Trim(),
                         txtEmergencyContactNo.Text.Trim(),
                         yearLevelValue,
-                        dobTimePicker.Value
+                        dobTimePicker.Value,
+                        sexValue,
+                        ageValue,
+                        addressValue
                     );
                 }
 
@@ -375,9 +392,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             RefreshPatientTable();
         }
 
-        // ===========================
-        // PICTURE BOX CLICKS
-        // ===========================
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             txtSearch.Clear();
@@ -393,7 +407,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
         }
 
         // ===========================
-        // CATEGORY HANDLING (UPDATED)
+        // CATEGORY HANDLING
         // ===========================
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -402,7 +416,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private void ApplyCategoryRules(string category)
         {
-            // Department enabled for Students and Faculty only
             if (IsDepartmentDisabled(category))
             {
                 cmbDepartment.Enabled = false;
@@ -415,7 +428,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 cmbDepartment.BackColor = Color.White;
             }
 
-            // Year level only for Students (including JDVP)
             if (IsStudentCategory(category))
             {
                 cmbYearLevel.Enabled = true;
@@ -432,7 +444,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
             }
         }
 
-        // Department disabled for JDVP, Staff types, Employee, Visitor
         private bool IsDepartmentDisabled(string category)
         {
             return category == "JDVP" ||
@@ -442,7 +453,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
                    category == "Visitor";
         }
 
-        // Department required for Students and Faculty
         private bool RequiresDepartment(string category)
         {
             return category == "Student" || category == "Faculty";
@@ -471,6 +481,8 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 "1st Year", "2nd Year", "3rd Year",
                 "4th Year", "Grade 11", "Grade 12"
             });
+
+            cmbSex.Items.AddRange(new string[] { "Male", "Female" });
         }
 
         private void InitializeDatePickers()
@@ -489,6 +501,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtContact.Clear();
             txtEmergencyContactName.Clear();
             txtEmergencyContactNo.Clear();
+            txtAge.Clear();
+            txtAddress.Clear();
+            cmbSex.SelectedIndex = -1;
 
             cmbCategory.SelectedIndex = -1;
             cmbDepartment.SelectedIndex = -1;
@@ -504,5 +519,6 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         private void txtIDNumber_TextChanged(object sender, EventArgs e) { }
         private void label8_Click(object sender, EventArgs e) { }
+        private void label12_Click(object sender, EventArgs e) { }
     }
 }

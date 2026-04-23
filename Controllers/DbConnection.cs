@@ -9,7 +9,7 @@ namespace AceCareClinicSystem.Controllers
     public class DbConnection
     {
         private readonly string connectionString =
-            "server=localhost;database=acecaredb;uid=root;pwd=;";
+            "server=localhost;database=acecare_db;uid=root;pwd=;";
 
         // OPEN CONNECTION (helper)
         public MySqlConnection GetConnection()

@@ -78,10 +78,15 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 lblAssessmentDate.Text = "Recording: " + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
         }
 
+
+        // ===========================
+        // UPDATED: LoadPatientData with Age, Sex, Address
+        // ===========================
         public void LoadPatientData(string patientID, string firstName, string lastName,
             string middleInitial, string category, string department,
             DateTime dateOfBirth, string contact, string emergencyContactNumber,
-            string emergencyContactName, string yearLevel)
+            string emergencyContactName, string yearLevel,
+            int? age, string sex, string address)
         {
             // Store patient ID
             loadedPatientID = patientID;
@@ -96,19 +101,24 @@ namespace AceCareClinicSystem.AceCare_UserControls
             txtLastName.Text = lastName ?? "";
             txtMI.Text = middleInitial ?? "";
 
-            // Calculate age from date of birth
-            int age = CalculateAge(dateOfBirth);
-            txtAge.Text = age.ToString();
+            // UPDATED: Use age from patient record if available, otherwise calculate from DOB
+            if (age.HasValue)
+                txtAge.Text = age.Value.ToString();
+            else
+                txtAge.Text = CalculateAge(dateOfBirth).ToString();
 
-            // Set sex - default or from record
-            cmbSex.Text = "Male";
+            // UPDATED: Use sex from patient record
+            cmbSex.Text = !string.IsNullOrEmpty(sex) ? sex : "Male";
 
-            // Address - leave blank for input
-            txtAddress.Text = "";
+            // UPDATED: Use address from patient record
+            txtAddress.Text = address ?? "";
+
             txtContactNo.Text = contact ?? "";
 
             txtEmergencyContactName.Text = emergencyContactName ?? "";
             txtEmergencyContactNumber.Text = emergencyContactNumber ?? "";
+
+
 
             // CHECK IF PATIENT HAS EXISTING CONSULTATION
             LoadExistingConsultationIfExists(patientID);
@@ -141,9 +151,15 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     lblAssessmentDate.Text = "Recorded on: " + Convert.ToDateTime(consultation["visit_date"]).ToString("dd-MMM-yyyy hh:mm tt");
 
                 // Load Step 1 data (Patient Info)
-                txtAge.Text = consultation["age"]?.ToString() ?? txtAge.Text;
-                cmbSex.Text = consultation["sex"]?.ToString() ?? cmbSex.Text;
-                txtAddress.Text = consultation["address"]?.ToString() ?? "";
+                // UPDATED: Only override if consultation has values, otherwise keep patient record values
+                if (consultation["age"] != DBNull.Value && !string.IsNullOrWhiteSpace(consultation["age"]?.ToString()))
+                    txtAge.Text = consultation["age"].ToString();
+
+                if (consultation["sex"] != DBNull.Value && !string.IsNullOrWhiteSpace(consultation["sex"]?.ToString()))
+                    cmbSex.Text = consultation["sex"].ToString();
+
+                if (consultation["address"] != DBNull.Value && !string.IsNullOrWhiteSpace(consultation["address"]?.ToString()))
+                    txtAddress.Text = consultation["address"].ToString();
 
                 // Load Step 2 data (Visit Details)
                 string visitType = consultation["visit_type"]?.ToString();
