@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -14,6 +14,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private int selectedPatientId = 0;
         private bool isInitialized = false;
 
+<<<<<<< HEAD
         // ⭐ Pagination variables
         private int currentPage = 1;
         private int pageSize = 7;        // Show 7 rows per page (fits your screen)
@@ -23,6 +24,9 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
+=======
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+>>>>>>> ce99f27ccf54fdef208917347df673532355d7e7
         public int SelectedPatientId
         {
             get { return selectedPatientId; }
