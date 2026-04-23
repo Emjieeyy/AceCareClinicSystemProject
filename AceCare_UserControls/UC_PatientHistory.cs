@@ -14,28 +14,32 @@ namespace AceCareClinicSystem.AceCare_UserControls
         private int selectedPatientId = 0;
         private bool isInitialized = false;
 
+        // ⭐ Pagination variables
+        private int currentPage = 1;
+        private int pageSize = 7;        // Show 7 rows per page (fits your screen)
+        private int totalRecords = 0;
+        private int totalPages = 0;
+        private DataTable allData;       // Store all data for pagination
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
         public int SelectedPatientId
         {
             get { return selectedPatientId; }
             set { selectedPatientId = value; }
         }
 
-        // Default constructor (for menu click)
         public UC_PatientHistory()
         {
             InitializeComponent();
             controller = new PatientHistoryController();
         }
 
-        // Constructor with patient ID (for "View Full History")
         public UC_PatientHistory(int patientId) : this()
         {
             selectedPatientId = patientId;
         }
 
-        // ============================================
-        // NUCLEAR FIX: OnHandleCreated fires reliably
-        // ============================================
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
@@ -43,9 +47,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
             if (isInitialized) return;
             isInitialized = true;
 
-            // Clear designer placeholders immediately
             ClearPatientLabels();
             ClearVitalsLabels();
+
+            // ⭐ CRITICAL: Clear designer columns first to avoid conflicts
+            dgvPatientHistory.Columns.Clear();
+            dgvPatientHistory.AutoGenerateColumns = false;
 
             // Apply design
             DataGridViewStyle.ApplyModernDesign(dgvPatientHistory);
@@ -53,75 +60,229 @@ namespace AceCareClinicSystem.AceCare_UserControls
             // Setup columns
             SetupGridColumns();
 
-            // Load data
+            // Setup pagination buttons
+            SetupPaginationButtons();
+
+            // Load data with pagination
             LoadAllConsultations();
 
-            // Select patient if pre-selected
             if (selectedPatientId > 0)
                 SelectPatientRow(selectedPatientId);
 
             // Wire events
             dgvPatientHistory.CellClick += dgvPatientHistory_CellClick;
             dgvPatientHistory.CellDoubleClick += dgvPatientHistory_CellDoubleClick;
+            dgvPatientHistory.CellFormatting += dgvPatientHistory_CellFormatting;
         }
 
-        // Keep for designer compatibility (won't fire, but safe to have)
         private void UC_PatientHistory_Load(object sender, EventArgs e) { }
+
+        // ⭐ SETUP PAGINATION BUTTONS
+        private void SetupPaginationButtons()
+        {
+            // Clear existing handlers to avoid duplicates
+            ReloadPix.Click -= ReloadPix_Click;
+            btnPrev.Click -= btnPrev_Click;
+            btnNext.Click -= btnNext_Click;
+
+            ReloadPix.Click += ReloadPix_Click;
+            btnPrev.Click += btnPrev_Click;
+            btnNext.Click += btnNext_Click;
+
+            UpdatePaginationButtons();
+        }
 
         private void SetupGridColumns()
         {
-            dgvPatientHistory.AutoGenerateColumns = false;
-            dgvPatientHistory.Columns.Clear();
+            // ⭐ IMPORTANT: Set these BEFORE adding columns
+            dgvPatientHistory.ScrollBars = ScrollBars.Horizontal;  // Horizontal only since we paginate vertically
+            dgvPatientHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dgvPatientHistory.AllowUserToResizeColumns = true;
+            dgvPatientHistory.AllowUserToOrderColumns = true;
+            dgvPatientHistory.RowTemplate.Height = 36;            // Taller rows
+            dgvPatientHistory.DefaultCellStyle.WrapMode = DataGridViewTriState.False;  // No wrap for clean rows
+            dgvPatientHistory.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 250, 252);
+            dgvPatientHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPatientHistory.MultiSelect = false;
+            dgvPatientHistory.ReadOnly = true;
+            dgvPatientHistory.AllowUserToAddRows = false;
+            dgvPatientHistory.AllowUserToDeleteRows = false;
+
+            // Hidden columns
+            dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "ConsultationId", DataPropertyName = "consultation_id", HeaderText = "ConID", Visible = false });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "ConsultationId", DataPropertyName = "consultation_id", HeaderText = "ConID", Width = 50, Visible = false });
+            { Name = "PatientId", DataPropertyName = "patient_id", HeaderText = "PID", Visible = false });
+
+            // ⭐ VISIBLE COLUMNS — calculated widths to fit your screen (~1050px usable width)
+            // Total: 50+140+75+95+130+140+140+160+110+85+130+180 = 1435px → need horizontal scroll
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "PatientId", DataPropertyName = "patient_id", HeaderText = "PID", Width = 50, Visible = false });
+            { Name = "DateTime", DataPropertyName = "visit_date", HeaderText = "Date & Time", Width = 135, MinimumWidth = 120 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "DateTime", DataPropertyName = "visit_date", HeaderText = "Date & Time", Width = 140 });
+            { Name = "PatientName", DataPropertyName = "patient_name", HeaderText = "Patient Name", Width = 145, MinimumWidth = 130 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "PatientName", DataPropertyName = "patient_name", HeaderText = "Patient Name", Width = 150 });
+            { Name = "AgeSex", DataPropertyName = "age_sex", HeaderText = "Age/Sex", Width = 70, MinimumWidth = 65 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "AgeSex", DataPropertyName = "age_sex", HeaderText = "Age/Sex", Width = 80 });
+            { Name = "VisitType", DataPropertyName = "visit_type", HeaderText = "Visit Type", Width = 90, MinimumWidth = 80 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "VisitType", DataPropertyName = "visit_type", HeaderText = "Visit Type", Width = 90 });
+            { Name = "ChiefComplaint", DataPropertyName = "chief_complaint", HeaderText = "Chief Complaint", Width = 130, MinimumWidth = 110 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "ChiefComplaint", DataPropertyName = "chief_complaint", HeaderText = "Chief Complaint", Width = 140 });
+            { Name = "Vitals", DataPropertyName = "vitals_summary", HeaderText = "Vitals", Width = 125, MinimumWidth = 110 });
+
+            // ⭐ NEW: Vitals Recorded timestamp column
+            dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
+            { Name = "VitalsRecorded", DataPropertyName = "vitals_recorded_at", HeaderText = "Vitals Recorded", Width = 135, MinimumWidth = 120 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Vitals", DataPropertyName = "vitals_summary", HeaderText = "Vitals", Width = 150 });
+            { Name = "Diagnosis", DataPropertyName = "diagnosis", HeaderText = "Diagnosis", Width = 150, MinimumWidth = 130 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Diagnosis", DataPropertyName = "diagnosis", HeaderText = "Diagnosis", Width = 180 });
+            { Name = "Medicine", DataPropertyName = "medicine_name", HeaderText = "Medicine", Width = 105, MinimumWidth = 90 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Medicine", DataPropertyName = "medicine_name", HeaderText = "Medicine", Width = 100 });
+            { Name = "Outcome", DataPropertyName = "outcome", HeaderText = "Outcome", Width = 100, MinimumWidth = 85 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Outcome", DataPropertyName = "outcome", HeaderText = "Outcome", Width = 100 });
+            { Name = "Status", DataPropertyName = "status", HeaderText = "Status", Width = 85, MinimumWidth = 75 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Status", DataPropertyName = "status", HeaderText = "Status", Width = 90 });
+            { Name = "HandledBy", DataPropertyName = "handled_by", HeaderText = "Handled By", Width = 130, MinimumWidth = 110 });
 
             dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "HandledBy", DataPropertyName = "handled_by", HeaderText = "Handled By", Width = 120 });
+            { Name = "Remarks", DataPropertyName = "remarks", HeaderText = "Remarks", Width = 160, MinimumWidth = 140 });
 
-            dgvPatientHistory.Columns.Add(new DataGridViewTextBoxColumn
-            { Name = "Remarks", DataPropertyName = "remarks", HeaderText = "Remarks", Width = 200 });
-
-            dgvPatientHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            // Header style
+            dgvPatientHistory.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 58, 95);  // AceCare dark blue
+            dgvPatientHistory.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvPatientHistory.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            dgvPatientHistory.ColumnHeadersHeight = 32;
+            dgvPatientHistory.EnableHeadersVisualStyles = false;
         }
 
+        // ⭐ COLOR CODING
+        private void dgvPatientHistory_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            if (dgvPatientHistory.Columns[e.ColumnIndex].Name == "Status" && e.Value != null)
+            {
+                string status = e.Value.ToString().ToLower();
+                if (status == "completed")
+                {
+                    e.CellStyle.ForeColor = Color.FromArgb(39, 103, 73);
+                    e.CellStyle.BackColor = Color.FromArgb(198, 246, 213);
+                    e.CellStyle.Font = new Font(dgvPatientHistory.Font, FontStyle.Bold);
+                }
+                else if (status == "referred")
+                {
+                    e.CellStyle.ForeColor = Color.FromArgb(192, 86, 33);
+                    e.CellStyle.BackColor = Color.FromArgb(254, 235, 200);
+                    e.CellStyle.Font = new Font(dgvPatientHistory.Font, FontStyle.Bold);
+                }
+                else if (status == "pending")
+                {
+                    e.CellStyle.ForeColor = Color.FromArgb(183, 121, 31);
+                    e.CellStyle.BackColor = Color.FromArgb(254, 252, 191);
+                }
+            }
+
+            if (dgvPatientHistory.Columns[e.ColumnIndex].Name == "VisitType" && e.Value != null)
+            {
+                string type = e.Value.ToString().ToLower();
+                if (type == "emergency")
+                {
+                    e.CellStyle.ForeColor = Color.FromArgb(197, 48, 48);
+                    e.CellStyle.BackColor = Color.FromArgb(254, 215, 215);
+                }
+                else if (type == "consultation")
+                {
+                    e.CellStyle.ForeColor = Color.FromArgb(43, 108, 176);
+                    e.CellStyle.BackColor = Color.FromArgb(235, 248, 255);
+                }
+                else if (type == "first aid")
+                {
+                    e.CellStyle.ForeColor = Color.FromArgb(151, 90, 22);
+                    e.CellStyle.BackColor = Color.FromArgb(254, 252, 191);
+                }
+            }
+        }
+
+        // ⭐ PAGINATION METHODS
         private void LoadAllConsultations()
         {
-            DataTable dt = controller.GetAllConsultationsList();
-            BindingHelper.BindToGrid(dgvPatientHistory, dt);
+            allData = controller.GetAllConsultationsList();
+            totalRecords = allData.Rows.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            if (totalPages == 0) totalPages = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+
+            LoadPage();
+        }
+
+        private void LoadPage()
+        {
+            DataTable pageData = allData.Clone();
+
+            int startIndex = (currentPage - 1) * pageSize;
+            int endIndex = Math.Min(startIndex + pageSize, totalRecords);
+
+            for (int i = startIndex; i < endIndex; i++)
+            {
+                pageData.ImportRow(allData.Rows[i]);
+            }
+
+            dgvPatientHistory.DataSource = null;
+            BindingHelper.BindToGrid(dgvPatientHistory, pageData);
+
+            UpdatePaginationButtons();
+        }
+
+        private void UpdatePaginationButtons()
+        {
+            btnPrev.Enabled = currentPage > 1;
+            btnNext.Enabled = currentPage < totalPages;
+
+            // Optional: Show page info on ReloadPix or a label
+            // lblPageInfo.Text = $"Page {currentPage} of {totalPages} ({totalRecords} records)";
+        }
+
+        // ⭐ BUTTON HANDLERS
+        private void ReloadPix_Click(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            LoadAllConsultations();
+
+            // Clear selection
+            dgvPatientHistory.ClearSelection();
+            ClearPatientLabels();
+            ClearVitalsLabels();
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
         }
 
         private void SelectPatientRow(int patientId)
@@ -160,6 +321,11 @@ namespace AceCareClinicSystem.AceCare_UserControls
             lblRR.Text = "-";
             lblOxSat.Text = "-";
             lblPF.Text = "-";
+            if (lblVitalsTimestamp != null)
+            {
+                lblVitalsTimestamp.Text = "No records";
+                lblVitalsTimestamp.ForeColor = Color.Gray;
+            }
         }
 
         private void dgvPatientHistory_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -206,15 +372,23 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 lblRR.Text = r["respiratory_rate"] != DBNull.Value ? r["respiratory_rate"].ToString() + " /min" : "N/A";
                 lblOxSat.Text = r["oxygen_saturation"] != DBNull.Value ? r["oxygen_saturation"].ToString() + "%" : "N/A";
                 lblPF.Text = r["physical_findings"] != DBNull.Value ? r["physical_findings"].ToString() : "N/A";
+
+                if (r["visit_date"] != DBNull.Value)
+                {
+                    DateTime recordedAt = Convert.ToDateTime(r["visit_date"]);
+                    lblVitalsTimestamp.Text = "Recorded: " + recordedAt.ToString("MMM dd, yyyy @ hh:mm tt");
+                    lblVitalsTimestamp.ForeColor = Color.FromArgb(100, 116, 139);
+                    lblVitalsTimestamp.Font = new Font(this.Font.FontFamily, 9, FontStyle.Italic);
+                }
+                else
+                {
+                    lblVitalsTimestamp.Text = "Recorded: Unknown date";
+                    lblVitalsTimestamp.ForeColor = Color.Gray;
+                }
             }
             else
             {
-                lblTemp.Text = "No records";
-                lblBP.Text = "No records";
-                lblPR.Text = "No records";
-                lblRR.Text = "No records";
-                lblOxSat.Text = "No records";
-                lblPF.Text = "No records";
+                ClearVitalsLabels();
             }
         }
 

@@ -35,6 +35,7 @@
             label1 = new Label();
             panel1 = new Panel();
             panel3 = new Panel();
+            lblVitalsTimestamp = new Label();
             lblPF = new Label();
             lblOxSat = new Label();
             lblRR = new Label();
@@ -66,7 +67,6 @@
             label2 = new Label();
             logo1 = new PictureBox();
             dgvPatientHistory = new ReaLTaiizor.Controls.PoisonDataGridView();
-            poisonScrollBar1 = new ReaLTaiizor.Controls.PoisonScrollBar();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column13 = new DataGridViewTextBoxColumn();
@@ -79,11 +79,16 @@
             Column9 = new DataGridViewTextBoxColumn();
             Column11 = new DataGridViewTextBoxColumn();
             Remarks = new DataGridViewTextBoxColumn();
+            Scrollbar = new ReaLTaiizor.Controls.PoisonScrollBar();
+            ReloadPix = new PictureBox();
+            btnPrev = new ReaLTaiizor.Controls.HopeRoundButton();
+            btnNext = new ReaLTaiizor.Controls.HopeRoundButton();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvPatientHistory).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ReloadPix).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -114,6 +119,7 @@
             panel3.BackColor = Color.Transparent;
             panel3.BackgroundImage = Properties.Resources._21;
             panel3.BackgroundImageLayout = ImageLayout.Stretch;
+            panel3.Controls.Add(lblVitalsTimestamp);
             panel3.Controls.Add(lblPF);
             panel3.Controls.Add(lblOxSat);
             panel3.Controls.Add(lblRR);
@@ -131,6 +137,16 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(626, 272);
             panel3.TabIndex = 9;
+            // 
+            // lblVitalsTimestamp
+            // 
+            lblVitalsTimestamp.AutoSize = true;
+            lblVitalsTimestamp.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblVitalsTimestamp.Location = new Point(245, 223);
+            lblVitalsTimestamp.Name = "lblVitalsTimestamp";
+            lblVitalsTimestamp.Size = new Size(117, 17);
+            lblVitalsTimestamp.TabIndex = 29;
+            lblVitalsTimestamp.Text = "lblVitalsTimestamp";
             // 
             // lblPF
             // 
@@ -490,23 +506,8 @@
             dgvPatientHistory.RowHeadersWidth = 51;
             dgvPatientHistory.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvPatientHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPatientHistory.Size = new Size(1226, 501);
+            dgvPatientHistory.Size = new Size(1226, 416);
             dgvPatientHistory.TabIndex = 2;
-            // 
-            // poisonScrollBar1
-            // 
-            poisonScrollBar1.LargeChange = 10;
-            poisonScrollBar1.Location = new Point(1235, 352);
-            poisonScrollBar1.Maximum = 100;
-            poisonScrollBar1.Minimum = 0;
-            poisonScrollBar1.MouseWheelBarPartitions = 10;
-            poisonScrollBar1.Name = "poisonScrollBar1";
-            poisonScrollBar1.Orientation = ReaLTaiizor.Enum.Poison.ScrollOrientationType.Vertical;
-            poisonScrollBar1.ScrollbarSize = 12;
-            poisonScrollBar1.Size = new Size(12, 699);
-            poisonScrollBar1.TabIndex = 3;
-            poisonScrollBar1.Text = "poisonScrollBar1";
-            poisonScrollBar1.UseSelectable = true;
             // 
             // Column1
             // 
@@ -601,16 +602,87 @@
             Remarks.Name = "Remarks";
             Remarks.Width = 125;
             // 
+            // Scrollbar
+            // 
+            Scrollbar.LargeChange = 10;
+            Scrollbar.Location = new Point(1235, 352);
+            Scrollbar.Maximum = 100;
+            Scrollbar.Minimum = 0;
+            Scrollbar.MouseWheelBarPartitions = 10;
+            Scrollbar.Name = "Scrollbar";
+            Scrollbar.Orientation = ReaLTaiizor.Enum.Poison.ScrollOrientationType.Vertical;
+            Scrollbar.ScrollbarSize = 12;
+            Scrollbar.Size = new Size(12, 699);
+            Scrollbar.TabIndex = 3;
+            Scrollbar.Text = "poisonScrollBar1";
+            Scrollbar.UseSelectable = true;
+            // 
+            // ReloadPix
+            // 
+            ReloadPix.BackColor = Color.Transparent;
+            ReloadPix.BackgroundImage = Properties.Resources.loading_arrow;
+            ReloadPix.BackgroundImageLayout = ImageLayout.Zoom;
+            ReloadPix.InitialImage = Properties.Resources.loading_arrow;
+            ReloadPix.Location = new Point(1005, 795);
+            ReloadPix.Name = "ReloadPix";
+            ReloadPix.Size = new Size(50, 32);
+            ReloadPix.TabIndex = 52;
+            ReloadPix.TabStop = false;
+            ReloadPix.Click += ReloadPix_Click;
+            // 
+            // btnPrev
+            // 
+            btnPrev.BorderColor = Color.FromArgb(220, 223, 230);
+            btnPrev.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            btnPrev.DangerColor = Color.FromArgb(245, 108, 108);
+            btnPrev.DefaultColor = Color.FromArgb(255, 255, 255);
+            btnPrev.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPrev.HoverTextColor = Color.FromArgb(48, 49, 51);
+            btnPrev.InfoColor = Color.FromArgb(144, 147, 153);
+            btnPrev.Location = new Point(1072, 795);
+            btnPrev.Name = "btnPrev";
+            btnPrev.PrimaryColor = Color.FromArgb(11, 45, 114);
+            btnPrev.Size = new Size(70, 35);
+            btnPrev.SuccessColor = Color.FromArgb(103, 194, 58);
+            btnPrev.TabIndex = 51;
+            btnPrev.Text = "<<";
+            btnPrev.TextColor = Color.White;
+            btnPrev.WarningColor = Color.FromArgb(230, 162, 60);
+            btnPrev.Click += btnPrev_Click;
+            // 
+            // btnNext
+            // 
+            btnNext.BorderColor = Color.FromArgb(220, 223, 230);
+            btnNext.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            btnNext.DangerColor = Color.FromArgb(245, 108, 108);
+            btnNext.DefaultColor = Color.FromArgb(255, 255, 255);
+            btnNext.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnNext.HoverTextColor = Color.FromArgb(48, 49, 51);
+            btnNext.InfoColor = Color.FromArgb(144, 147, 153);
+            btnNext.Location = new Point(1159, 795);
+            btnNext.Name = "btnNext";
+            btnNext.PrimaryColor = Color.FromArgb(11, 45, 114);
+            btnNext.Size = new Size(70, 35);
+            btnNext.SuccessColor = Color.FromArgb(103, 194, 58);
+            btnNext.TabIndex = 50;
+            btnNext.Text = ">>";
+            btnNext.TextColor = Color.White;
+            btnNext.WarningColor = Color.FromArgb(230, 162, 60);
+            btnNext.Click += btnNext_Click;
+            // 
             // UC_PatientHistory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(poisonScrollBar1);
+            Controls.Add(ReloadPix);
+            Controls.Add(btnPrev);
+            Controls.Add(btnNext);
+            Controls.Add(Scrollbar);
             Controls.Add(dgvPatientHistory);
             Controls.Add(panel1);
             Name = "UC_PatientHistory";
-            Size = new Size(1247, 1051);
+            Size = new Size(1247, 852);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel3.ResumeLayout(false);
@@ -619,6 +691,7 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)logo1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvPatientHistory).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ReloadPix).EndInit();
             ResumeLayout(false);
         }
 
@@ -658,7 +731,7 @@
         private Label lblPR;
         private Label lblBP;
         private Label lblTemp;
-        private ReaLTaiizor.Controls.PoisonScrollBar poisonScrollBar1;
+        private ReaLTaiizor.Controls.PoisonScrollBar Scrollbar;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column13;
@@ -671,5 +744,9 @@
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column11;
         private DataGridViewTextBoxColumn Remarks;
+        private PictureBox ReloadPix;
+        private ReaLTaiizor.Controls.HopeRoundButton btnPrev;
+        private ReaLTaiizor.Controls.HopeRoundButton btnNext;
+        private Label lblVitalsTimestamp;
     }
 }

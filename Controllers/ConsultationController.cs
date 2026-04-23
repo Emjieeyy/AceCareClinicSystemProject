@@ -65,7 +65,11 @@ namespace AceCareClinicSystem.Controllers
             }
             catch (Exception ex)
             {
+<<<<<<< Updated upstream
                 MessageBox.Show("Error getting latest consultation: " + ex.Message);
+=======
+                MessageBox.Show("GetLatestConsultation Error: " + ex.Message);
+>>>>>>> Stashed changes
                 return null;
             }
         }
@@ -343,7 +347,7 @@ namespace AceCareClinicSystem.Controllers
                         // BEFORE UPDATING: Get old consultation to adjust inventory
                         DataRow oldConsultation = GetConsultationById(consultationId);
                         string oldMedName = oldConsultation?["medicine_name"]?.ToString();
-                        int oldMedQty = (oldConsultation != null && oldConsultation["medicine_quantity"] != DBNull.Value) 
+                        int oldMedQty = (oldConsultation != null && oldConsultation["medicine_quantity"] != DBNull.Value)
                                         ? Convert.ToInt32(oldConsultation["medicine_quantity"]) : 0;
 
                         int rowsAffected = cmd.ExecuteNonQuery();

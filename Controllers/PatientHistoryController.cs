@@ -34,7 +34,8 @@ namespace AceCareClinicSystem.Controllers
                     ELSE 'Pending'
                 END AS status,
                 COALESCE(c.remarks_instructions, '') AS remarks,
-                COALESCE(u.full_name, c.clinic_incharge, 'N/A') AS handled_by
+                COALESCE(u.full_name, c.clinic_incharge, 'N/A') AS handled_by,
+                c.visit_date AS vitals_recorded_at
             FROM consultations c
             INNER JOIN patients p ON c.patient_id = p.patient_id
             LEFT JOIN users u ON c.handled_by_user_id = u.user_id
@@ -81,6 +82,7 @@ namespace AceCareClinicSystem.Controllers
             return dt;
         }
 
+        // ⭐ SINGLE GetRecentVitals — fixed and complete
         public DataTable GetRecentVitals(int patientId)
         {
             DataTable dt = new DataTable();
@@ -94,9 +96,15 @@ namespace AceCareClinicSystem.Controllers
                         pulse_rate,
                         respiratory_rate,
                         oxygen_saturation,
-                        physical_findings
+                        physical_findings,
+                        visit_date
                     FROM consultations
                     WHERE patient_id = @patientId
+                        AND (temperature IS NOT NULL 
+                             OR blood_pressure IS NOT NULL 
+                             OR pulse_rate IS NOT NULL
+                             OR respiratory_rate IS NOT NULL
+                             OR oxygen_saturation IS NOT NULL)
                     ORDER BY visit_date DESC
                     LIMIT 1";
 

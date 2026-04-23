@@ -30,10 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel3 = new Panel();
             lblTotalPatients = new Label();
             label2 = new Label();
@@ -250,39 +250,39 @@
             dgvRecent.BorderStyle = BorderStyle.None;
             dgvRecent.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
             dgvRecent.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle5.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(11, 45, 114);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(11, 45, 114);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvRecent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvRecent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecent.Columns.AddRange(new DataGridViewColumn[] { Patient, Column1, Column3, Column4 });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle7.Padding = new Padding(7);
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(192, 255, 255);
-            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvRecent.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle3.Padding = new Padding(7);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(192, 255, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvRecent.DefaultCellStyle = dataGridViewCellStyle3;
             dgvRecent.EnableHeadersVisualStyles = false;
             dgvRecent.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvRecent.GridColor = Color.FromArgb(11, 45, 114);
             dgvRecent.Location = new Point(29, 333);
             dgvRecent.Name = "dgvRecent";
             dgvRecent.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dgvRecent.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvRecent.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvRecent.RowHeadersWidth = 51;
             dgvRecent.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvRecent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -292,9 +292,9 @@
             // Patient
             // 
             Patient.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            Patient.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            Patient.DefaultCellStyle = dataGridViewCellStyle2;
             Patient.HeaderText = "Patients Name";
             Patient.MinimumWidth = 6;
             Patient.Name = "Patient";
@@ -682,7 +682,7 @@
             // 
             lblUserID.AutoSize = true;
             lblUserID.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUserID.Location = new Point(1025, 26);
+            lblUserID.Location = new Point(1015, 36);
             lblUserID.Name = "lblUserID";
             lblUserID.Size = new Size(93, 27);
             lblUserID.TabIndex = 51;
@@ -692,7 +692,7 @@
             // 
             lblUserName.AutoSize = true;
             lblUserName.Font = new Font("Century Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblUserName.Location = new Point(1025, 62);
+            lblUserName.Location = new Point(1017, 72);
             lblUserName.Name = "lblUserName";
             lblUserName.Size = new Size(105, 21);
             lblUserName.TabIndex = 52;
@@ -713,7 +713,6 @@
             Controls.Add(btnNext);
             Controls.Add(panel5);
             Controls.Add(panel4);
-            Controls.Add(pictureBox12);
             Controls.Add(parrotWidgetPanel1);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
@@ -729,6 +728,7 @@
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox6);
             Controls.Add(pictureBox13);
+            Controls.Add(pictureBox12);
             MinimumSize = new Size(126, 50);
             Name = "UC_Home";
             Size = new Size(1250, 848);
