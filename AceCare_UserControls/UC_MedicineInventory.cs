@@ -1,4 +1,4 @@
-﻿using AceCareClinicSystem.Controllers;
+using AceCareClinicSystem.Controllers;
 using Microsoft.VisualBasic;
 using System;
 using System.Data;
@@ -206,6 +206,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
             DataRow row = table.NewRow();
             row["ItemID"] = 0;
             row["Name"] = "";
+            row["BatchNumber"] = "";
             row["Quantity"] = 0;
             row["WeeklyUsage"] = 0;
             row["ExpiryDate"] = DateTime.Now.AddYears(1);
@@ -246,13 +247,14 @@ namespace AceCareClinicSystem.AceCare_UserControls
             try
             {
                 string name = row["Name"]?.ToString() ?? "";
+                string batch = row["BatchNumber"]?.ToString() ?? "";
                 if (string.IsNullOrWhiteSpace(name)) { MessageBox.Show("Name cannot be empty.", "Validation Error"); return false; }
 
                 int qty = Convert.ToInt32(row["Quantity"] ?? 0);
                 DateTime expiry = Convert.ToDateTime(row["ExpiryDate"] ?? DateTime.Now);
                 string category = grid == dgvMedicineRecords ? "Medicine" : "Supply";
 
-                if (_controller.AddItem(name, qty, category, expiry))
+                if (_controller.AddItem(name, batch, qty, category, expiry))
                 {
                     row.AcceptChanges();
                     return true;
@@ -274,11 +276,12 @@ namespace AceCareClinicSystem.AceCare_UserControls
                 int id = Convert.ToInt32(row["ItemID"]);
                 if (id == 0) return;
                 string name = row["Name"]?.ToString() ?? "";
+                string batch = row["BatchNumber"]?.ToString() ?? "";
                 int qty = Convert.ToInt32(row["Quantity"] ?? 0);
                 double usage = Convert.ToDouble(row["WeeklyUsage"] ?? 0);
                 DateTime expiry = Convert.ToDateTime(row["ExpiryDate"] ?? DateTime.Now);
 
-                if (_controller.UpdateFullItem(id, name, qty, usage, expiry)) row.AcceptChanges();
+                if (_controller.UpdateFullItem(id, name, batch, qty, usage, expiry)) row.AcceptChanges();
             }
             catch (Exception ex) { Console.WriteLine($"Auto-save error: {ex.Message}"); }
         }
@@ -419,6 +422,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
                     try
                     {
                         string name = row["Name"].ToString();
+                        string batch = row["BatchNumber"]?.ToString() ?? "";
                         if (string.IsNullOrWhiteSpace(name))
                         {
                             MessageBox.Show("Name cannot be empty.");
@@ -431,7 +435,7 @@ namespace AceCareClinicSystem.AceCare_UserControls
 
                         string category = (grid == dgvMedicineRecords) ? "Medicine" : "Supply";
 
-                        if (_controller.AddItem(name, qty, category, expiry))
+                        if (_controller.AddItem(name, batch, qty, category, expiry))
                         {
                             insertCount++;
                             row.AcceptChanges();
@@ -453,13 +457,14 @@ namespace AceCareClinicSystem.AceCare_UserControls
                         if (id == 0) continue;
 
                         string name = row["Name"].ToString();
+                        string batch = row["BatchNumber"]?.ToString() ?? "";
                         int qty = Convert.ToInt32(row["Quantity"]);
                         double usage = (row["WeeklyUsage"] == DBNull.Value) ?
                             0 : Convert.ToDouble(row["WeeklyUsage"]);
                         DateTime expiry = (row["ExpiryDate"] == DBNull.Value) ?
                             DateTime.Now : Convert.ToDateTime(row["ExpiryDate"]);
 
-                        if (_controller.UpdateFullItem(id, name, qty, usage, expiry))
+                        if (_controller.UpdateFullItem(id, name, batch, qty, usage, expiry))
                         {
                             updateCount++;
                             row.AcceptChanges();
