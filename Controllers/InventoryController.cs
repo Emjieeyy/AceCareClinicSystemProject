@@ -1,4 +1,4 @@
-﻿using System;  // ADD THIS LINE
+using System;  // ADD THIS LINE
 using System.Data;
 using System.Collections.Generic;
 
@@ -12,7 +12,7 @@ namespace AceCareClinicSystem.Controllers
         {
             int offset = (page - 1) * itemsPerPage;
 
-            string query = @"SELECT ItemID, Name, Quantity, WeeklyUsage, ExpiryDate 
+            string query = @"SELECT ItemID, Name, BatchNumber, Quantity, WeeklyUsage, ExpiryDate 
                            FROM inventory 
                            WHERE Category = @cat";
 
@@ -34,10 +34,11 @@ namespace AceCareClinicSystem.Controllers
             return db.ExecuteRead(query, parameters);
         }
 
-        public bool UpdateFullItem(int id, string name, int qty, double usage, DateTime expiry)
+        public bool UpdateFullItem(int id, string name, string batch, int qty, double usage, DateTime expiry)
         {
             string query = @"UPDATE inventory 
                            SET Name = @name, 
+                               BatchNumber = @batch,
                                Quantity = @qty, 
                                WeeklyUsage = @usage, 
                                ExpiryDate = @expiry 
@@ -47,6 +48,7 @@ namespace AceCareClinicSystem.Controllers
             {
                 { "@id", id },
                 { "@name", name },
+                { "@batch", batch },
                 { "@qty", qty },
                 { "@usage", usage },
                 { "@expiry", expiry }
@@ -109,14 +111,15 @@ namespace AceCareClinicSystem.Controllers
             return 1;
         }
 
-        public bool AddItem(string name, int qty, string category, DateTime expiry)
+        public bool AddItem(string name, string batch, int qty, string category, DateTime expiry)
         {
-            string query = @"INSERT INTO inventory (Name, Quantity, Category, ExpiryDate, WeeklyUsage) 
-                           VALUES (@name, @qty, @cat, @expiry, 0)";
+            string query = @"INSERT INTO inventory (Name, BatchNumber, Quantity, Category, ExpiryDate, WeeklyUsage) 
+                           VALUES (@name, @batch, @qty, @cat, @expiry, 0)";
 
             var parameters = new Dictionary<string, object>
             {
                 { "@name", name },
+                { "@batch", batch },
                 { "@qty", qty },
                 { "@cat", category },
                 { "@expiry", expiry }
@@ -137,16 +140,64 @@ namespace AceCareClinicSystem.Controllers
             int rowsAffected = db.ExecuteWrite(query, parameters);
             return rowsAffected > 0;
         }
+
+        public int GetTotalStock(string itemName)
+        {
+            if (string.IsNullOrWhiteSpace(itemName)) return 0;
+            string query = "SELECT IFNULL(SUM(Quantity), 0) FROM inventory WHERE Name = @name";
+            var parameters = new Dictionary<string, object> { { "@name", itemName } };
+            DataTable dt = db.ExecuteRead(query, parameters);
+            return dt != null && dt.Rows.Count > 0 ? Convert.ToInt32(dt.Rows[0][0]) : 0;
+        }
+
+        public bool DeductInventory(string itemName, int quantity)
+        {
+            if (string.IsNullOrWhiteSpace(itemName) || quantity <= 0) return false;
+
+            // Check total availability first
+            if (GetTotalStock(itemName) < quantity) return false;
+
+            // FEFO Logic: Get all batches for this item, ordered by expiry date
+            string selectQuery = "SELECT ItemID, Quantity FROM inventory WHERE Name = @name AND Quantity > 0 ORDER BY ExpiryDate ASC";
+            var selectParams = new Dictionary<string, object> { { "@name", itemName } };
+            DataTable batches = db.ExecuteRead(selectQuery, selectParams);
+
+            if (batches == null || batches.Rows.Count == 0) return false;
+
+            int remainingToDeduct = quantity;
+            int totalDeducted = 0;
+
+            foreach (DataRow batch in batches.Rows)
+            {
+                int batchId = Convert.ToInt32(batch["ItemID"]);
+                int batchQty = Convert.ToInt32(batch["Quantity"]);
+
+                int deductFromThisBatch = Math.Min(batchQty, remainingToDeduct);
+
+                string updateQuery = "UPDATE inventory SET Quantity = Quantity - @qty WHERE ItemID = @id";
+                var updateParams = new Dictionary<string, object> {
+                    { "@id", batchId },
+                    { "@qty", deductFromThisBatch }
+                };
+                db.ExecuteWrite(updateQuery, updateParams);
+
+                remainingToDeduct -= deductFromThisBatch;
+                totalDeducted += deductFromThisBatch;
+
+                if (remainingToDeduct <= 0) break;
+            }
+
+            return totalDeducted > 0;
+        }
     
-    // Add this method to InventoryController
-public DataTable GetInventoryReport(DateTime? fromDate = null, DateTime? toDate = null, string search = "")
+        public DataTable GetInventoryReport(DateTime? fromDate = null, DateTime? toDate = null, string search = "")
         {
             string query = @"SELECT 
         DATE_FORMAT(ExpiryDate, '%d-%b-%y') AS LastVisit,
-        CONCAT('ITEM-', ItemID) AS IDNumber,
+        COALESCE(BatchNumber, CONCAT('ITEM-', ItemID)) AS IDNumber,
         Name AS PatientName,
         Category AS PatientType,
-        CONCAT('Stock: ', Quantity, ' units') AS Description,
+        CONCAT('Batch: ', COALESCE(BatchNumber, 'N/A'), ' - Stock: ', Quantity, ' units') AS Description,
         CONCAT(Quantity, ' (', WeeklyUsage, '/week)') AS QtyDosage,
         'Inventory System' AS Personnel
         FROM inventory 
